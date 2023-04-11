@@ -10,7 +10,7 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
-  "ignorePatterns": ["webpack.config.js", "**/*.html", "./dist/*.*"],
+  "ignorePatterns": ["webpack.config.js", "**/*.html", "dist"],
   "settings": {
     "react": {
       "version": "detect"
