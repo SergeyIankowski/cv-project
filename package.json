@@ -1,0 +1,23 @@
+{
+  "name": "cv-project",
+  "version": "1.0.0",
+  "description": "cv-project for innowise trainingship",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergeyIankowski/cv-project.git"
+  },
+  "keywords": [
+    "cv",
+    "cv-project"
+  ],
+  "author": "Sergey Iankowski <garret933@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergeyIankowski/cv-project/issues"
+  },
+  "homepage": "https://github.com/SergeyIankowski/cv-project#readme"
+}
