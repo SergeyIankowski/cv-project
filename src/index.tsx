@@ -1,11 +1,16 @@
-console.log("Hello World!");
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import Signup from './pages/Signup/Signup';
+// console.log("Hello World!");
 
-const someTest = (saaas: number) => {
-  return saaas;
-};
-console.log(someTest(1));
-const Comp = () => {
-  return <div>1</div>;
-};
+// const someTest = (saaas: number) => {
+//   return saaas;
+// };
+// console.log(someTest(1));
 
-<Comp></Comp>;
+const root = createRoot(document.getElementById('root') as HTMLElement)
+root.render(
+  <React.StrictMode>
+    <Signup />
+  </React.StrictMode>
+)
