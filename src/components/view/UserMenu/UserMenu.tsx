@@ -1,5 +1,4 @@
 import {FC} from "react";
-import {UserMenuProps} from "./interface";
 import {userMenuStyle} from "./userMenuStyle";
 import Divider from "@mui/material/Divider";
 import Menu from "@mui/material/Menu";
@@ -8,6 +7,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
+
+interface UserMenuProps {
+  isOpened: boolean;
+  anchorElem: HTMLElement | null;
+  closeMenuCallback: () => void;
+}
 
 export const UserMenu: FC<UserMenuProps> = ({
   isOpened,
