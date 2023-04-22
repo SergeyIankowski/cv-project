@@ -1,27 +1,16 @@
 import {FC} from "react";
 import Drawer from "@mui/material/Drawer";
-import {SlideMenuProps} from "./interface";
 import {SlideMenuItems} from "../../view/SlideMenuItems/SlideMenuItems";
 
-export const SlideMenu: FC<SlideMenuProps> = ({opened, openCallback}) => {
-  const toggleDrawer =
-    (open: boolean) => (event: KeyboardEvent | MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as KeyboardEvent).key === "Tab" ||
-          (event as KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
+interface SlideMenuProps {
+  isOpen: boolean;
+  onCloseVisibility: (value: boolean) => void;
+}
 
-      openCallback(open);
-    };
-
+export const SlideMenu: FC<SlideMenuProps> = ({isOpen, onCloseVisibility}) => {
   return (
-    <>
-      <Drawer anchor={"left"} open={opened} onClose={toggleDrawer(false)}>
-        <SlideMenuItems toggleCallback={toggleDrawer} />
-      </Drawer>
-    </>
+    <Drawer anchor={"left"} open={isOpen} onClose={onCloseVisibility}>
+      <SlideMenuItems />
+    </Drawer>
   );
 };
