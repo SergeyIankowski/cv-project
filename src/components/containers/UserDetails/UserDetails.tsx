@@ -1,11 +1,14 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import {FC, MouseEvent, useState} from "react";
-import {UserDetailsProps} from "./interface";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
-import {UserMenu} from "../../view/UserMenu/UserMenu";
+import {UserMenu} from "@view/UserMenu/UserMenu";
+
+interface UserDetailsProps {
+  userName: string;
+}
 
 export const UserDetails: FC<UserDetailsProps> = ({userName}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
