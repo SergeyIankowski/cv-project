@@ -11,21 +11,21 @@ import Logout from "@mui/icons-material/Logout";
 interface UserMenuProps {
   isOpened: boolean;
   anchorElem: HTMLElement | null;
-  closeMenuCallback: () => void;
+  onCloseMenu: () => void;
 }
 
 export const UserMenu: FC<UserMenuProps> = ({
   isOpened,
   anchorElem,
-  closeMenuCallback,
+  onCloseMenu,
 }) => {
   return (
     <Menu
       anchorEl={anchorElem}
       id="account-menu"
       open={isOpened}
-      onClose={closeMenuCallback}
-      onClick={closeMenuCallback}
+      onClose={onCloseMenu}
+      onClick={onCloseMenu}
       PaperProps={{
         elevation: 0,
         sx: {userMenuStyle},
@@ -33,20 +33,20 @@ export const UserMenu: FC<UserMenuProps> = ({
       transformOrigin={{horizontal: "right", vertical: "top"}}
       anchorOrigin={{horizontal: "right", vertical: "bottom"}}
     >
-      <MenuItem onClick={closeMenuCallback}>
+      <MenuItem onClick={onCloseMenu}>
         <ListItemIcon>
           <AccountCircleIcon fontSize="medium" />
         </ListItemIcon>
         Profile
       </MenuItem>
-      <MenuItem onClick={closeMenuCallback}>
+      <MenuItem onClick={onCloseMenu}>
         <ListItemIcon>
           <Settings fontSize="medium" />
         </ListItemIcon>
         Settings
       </MenuItem>
       <Divider />
-      <MenuItem onClick={closeMenuCallback}>
+      <MenuItem onClick={onCloseMenu}>
         <ListItemIcon>
           <Logout fontSize="medium" />
         </ListItemIcon>

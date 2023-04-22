@@ -49,7 +49,7 @@ export const UserDetails: FC<UserDetailsProps> = ({userName}) => {
       <UserMenu
         isOpened={open}
         anchorElem={anchorEl}
-        closeMenuCallback={handleClose}
+        onCloseMenu={handleClose}
       />
     </>
   );
