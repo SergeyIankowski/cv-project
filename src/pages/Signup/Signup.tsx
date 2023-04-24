@@ -1,10 +1,10 @@
 import {useState, FC} from "react";
 import {Typography, Checkbox, Box} from "@mui/material";
-import {ElemStyle, ContentStyle} from "../MuiPagesStyles";
-import {Button} from "../../components/containers/Button";
-import {Input} from "../../components/containers/Input";
-import {HeaderAuth} from "../../components/view/HeaderAuth";
-import {PageContainer} from "../../components/view/PageContainer";
+import {ElemStyle, ContentStyle} from "@view/MuiPagesStyles";
+import {Button} from "@containers/Button";
+import {Input} from "@containers/Input";
+import {HeaderAuth} from "@view/AuthHeader/HeaderAuth";
+import {PageContainer} from "@view/PageContainer/PageContainer";
 
 export const Signup: FC = () => {
   const [pswrdVisibility, setPswrdVisibility] = useState<boolean>(false);
