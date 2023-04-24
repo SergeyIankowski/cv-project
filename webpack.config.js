@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const {TsconfigPathsPlugin} = require("tsconfig-paths-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -13,6 +14,10 @@ const config = {
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
+    plugins: [new TsconfigPathsPlugin()],
   },
   devServer: {
     open: true,
@@ -40,7 +45,7 @@ const config = {
             loader: "css-loader",
             options: {
               modules: {
-                auto: (resPath) => resPath.includes(".module."),
+                auto: resPath => resPath.includes(".module."),
                 localIdentName: isDev
                   ? "[path][name]__[local]--[hash:base64:5]"
                   : "[hash:base64:8]",
@@ -59,9 +64,6 @@ const config = {
   performance: {
     maxAssetSize: 2000000,
     maxEntrypointSize: 2000000,
-  },
-  resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
   },
 };
 
