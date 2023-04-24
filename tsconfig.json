@@ -14,9 +14,11 @@
     "strict": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
-    "baseUrl": "./src",
+    "baseUrl": "./src/",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "@view/*": ["components/view/*"],
+      "@containers/*": ["components/containers/*"]
     }
   },
   "files": ["src/index.tsx"]

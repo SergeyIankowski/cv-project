@@ -1,11 +1,11 @@
-console.log("Hello World!");
+import {createRoot} from "react-dom/client";
+import {BrowserRouter} from "react-router-dom";
+import {AppRouter} from "./AppRouter";
+import "./scss/main.scss";
 
-const someTest = (saaas: number) => {
-  return saaas;
-};
-console.log(someTest(1));
-const Comp = () => {
-  return <div>1</div>;
-};
-
-<Comp></Comp>;
+const root = createRoot(document.getElementById("root") as HTMLElement);
+root.render(
+  <BrowserRouter>
+    <AppRouter />
+  </BrowserRouter>
+);
