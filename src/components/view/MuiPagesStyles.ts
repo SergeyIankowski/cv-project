@@ -13,11 +13,19 @@ export const HeaderStyle = {
   justifyContent: "center",
   alignItems: "flex-end",
   height: "60px",
-  width: "100vw",
+  width: "100%",
   backgroundColor: "#3b3b4f",
   color: "#eeeef0",
   gap: "5px",
-  paddingBottom: "5px",
+  padding: "0 50px 5px",
+};
+export const MainHeaderStyle = {
+  ...HeaderStyle,
+  alignItems: "center",
+  justifyContent: "space-around",
+  "@media(max-width: 1079px)": {
+    justifyContent: "space-between",
+  },
 };
 export const ElemStyle = {
   width: "140px",
@@ -34,4 +42,11 @@ export const ContentStyle = {
   padding: "0px 20px",
   textAlign: "center",
   gap: "5px",
+};
+export const BreadCrumbsStyle = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  gap: "10px",
+  height: "50px",
 };
