@@ -1,8 +1,8 @@
+import {FC} from "react";
+import HomeIcon from "@mui/icons-material/Home";
 import {PageLayout} from "@/components/view/PageLayout/PageLayout";
 import {BreadCrumbsData} from "@/models/BreadCrumbsData.type";
-import HomeIcon from "@mui/icons-material/Home";
 import {Pages} from "@/models/Pages";
-import {FC} from "react";
 
 const breadCrumbs: BreadCrumbsData = [
   {

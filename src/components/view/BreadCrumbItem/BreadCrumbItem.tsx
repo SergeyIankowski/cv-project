@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {NavLink} from "react-router-dom";
-import {BreadCrumb} from "@/models/BreadCrumb.type";
 import Box from "@mui/material/Box";
+import {BreadCrumb} from "@/models/BreadCrumb.type";
 import {BreadCrumbLayout} from "./BreadCrumbStyle";
 import classes from "./breadCrumb.module.scss";
 

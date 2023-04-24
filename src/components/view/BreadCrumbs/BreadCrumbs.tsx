@@ -1,10 +1,10 @@
+import {FC} from "react";
 import {BreadCrumbsStyle} from "../MuiPagesStyles";
 import Container from "@mui/material/Container";
-import {FC} from "react";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import {BreadCrumbsData} from "@/models/BreadCrumbsData.type";
-import {BreadCrumbItem} from "../BreadCrumbItem/BreadCrumbItem";
+import {BreadCrumbItem} from "@view/BreadCrumbItem/BreadCrumbItem";
 
 interface BreadCrumbsProps {
   breadCrumbsLinks: BreadCrumbsData;
