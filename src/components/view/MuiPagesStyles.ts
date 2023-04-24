@@ -22,10 +22,7 @@ export const HeaderStyle = {
 export const MainHeaderStyle = {
   ...HeaderStyle,
   alignItems: "center",
-  justifyContent: "space-around",
-  "@media(max-width: 1079px)": {
-    justifyContent: "space-between",
-  },
+  justifyContent: "space-between",
 };
 export const ElemStyle = {
   width: "140px",
@@ -49,4 +46,5 @@ export const BreadCrumbsStyle = {
   justifyContent: "flex-start",
   gap: "10px",
   height: "50px",
+  padding: "0 50px",
 };
