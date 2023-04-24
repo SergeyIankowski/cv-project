@@ -1,11 +1,11 @@
-console.log("Hello World!");
+import React from "react";
+import {createRoot} from "react-dom/client";
+import {AppRouter} from "./AppRouter";
+import "./scss/main.scss";
 
-const someTest = (saaas: number) => {
-  return saaas;
-};
-console.log(someTest(1));
-const Comp = () => {
-  return <div>1</div>;
-};
-
-<Comp></Comp>;
+const root = createRoot(document.getElementById("root") as HTMLElement);
+root.render(
+  <React.StrictMode>
+    <AppRouter />
+  </React.StrictMode>
+);
