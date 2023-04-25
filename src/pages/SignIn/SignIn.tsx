@@ -1,17 +1,21 @@
 import {FC} from "react";
-import {Typography, Box} from "@mui/material";
-import {ElemStyle, ContentStyle} from "@view/MuiPagesStyles";
+import {useNavigate} from "react-router-dom";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {Button} from "@containers/Button";
 import {Input} from "@containers/Input";
 import {HeaderAuth} from "@view/AuthHeader/HeaderAuth";
 import {PageContainer} from "@view/PageContainer/PageContainer";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import {ElemStyle, ContentStyle} from "@view/MuiPagesStyles";
+import {Pages} from "@/models/Pages";
 import {useBooleanState} from "@/hooks/useBooleanState";
 
 export const SignIn: FC = () => {
   const [pswrdVisibility, setVisibilityTrue, setVisibilityFalse] =
     useBooleanState(false);
+  const navigate = useNavigate();
 
   return (
     <PageContainer>
@@ -22,7 +26,9 @@ export const SignIn: FC = () => {
           </Typography>
         </Box>
         <Box sx={ElemStyle}>
-          <Typography variant="h6">SIGNUP</Typography>
+          <Typography variant="h6" onClick={() => navigate(Pages.signup)}>
+            SIGNUP
+          </Typography>
         </Box>
       </HeaderAuth>
       <Box sx={ContentStyle}>
