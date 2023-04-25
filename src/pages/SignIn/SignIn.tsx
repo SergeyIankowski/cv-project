@@ -5,12 +5,11 @@ import {Button} from "@containers/Button";
 import {Input} from "@containers/Input";
 import {HeaderAuth} from "@view/AuthHeader/HeaderAuth";
 import {PageContainer} from "@view/PageContainer/PageContainer";
-
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {useBooleanState} from "@/hooks/useBooleanState";
 
-export const Signup: FC = () => {
+export const SignIn: FC = () => {
   const [pswrdVisibility, setVisibilityTrue, setVisibilityFalse] =
     useBooleanState(false);
 
