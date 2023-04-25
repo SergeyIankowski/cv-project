@@ -1,13 +1,18 @@
-import {useState, FC} from "react";
-import {Typography, Checkbox, Box} from "@mui/material";
+import {FC} from "react";
+import {Typography, Box} from "@mui/material";
 import {ElemStyle, ContentStyle} from "@view/MuiPagesStyles";
 import {Button} from "@containers/Button";
 import {Input} from "@containers/Input";
 import {HeaderAuth} from "@view/AuthHeader/HeaderAuth";
 import {PageContainer} from "@view/PageContainer/PageContainer";
 
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import {useBooleanState} from "@/hooks/useBooleanState";
+
 export const Signup: FC = () => {
-  const [pswrdVisibility, setPswrdVisibility] = useState<boolean>(false);
+  const [pswrdVisibility, setVisibilityTrue, setVisibilityFalse] =
+    useBooleanState(false);
 
   return (
     <PageContainer>
@@ -25,22 +30,25 @@ export const Signup: FC = () => {
         <Typography variant="h3">Welcome Back</Typography>
         <Typography variant="h6">Hello Again! Sign up to continue!</Typography>
         <Input sx={{width: "300px"}} margin="dense" id="email" label="Email" />
-        <Input
-          sx={{width: "300px"}}
-          margin="normal"
-          id="password"
-          label="Password"
-          type={pswrdVisibility ? "text" : "password"}
-        />
-        <Box style={{display: "flex"}}>
-          <Checkbox
-            size="small"
-            checked={pswrdVisibility}
-            onChange={() => setPswrdVisibility(!pswrdVisibility)}
+        <Box sx={{position: "relative"}}>
+          <Input
+            sx={{width: "300px"}}
+            margin="normal"
+            id="password"
+            label="Password"
+            type={pswrdVisibility ? "text" : "password"}
           />
-          <Typography variant="subtitle2" sx={{marginTop: "10px"}}>
-            Show Password
-          </Typography>
+          {pswrdVisibility ? (
+            <VisibilityOffIcon
+              sx={{position: "absolute", top: "37%", right: "3%"}}
+              onClick={setVisibilityFalse}
+            />
+          ) : (
+            <VisibilityIcon
+              sx={{position: "absolute", top: "37%", right: "3%"}}
+              onClick={setVisibilityTrue}
+            />
+          )}
         </Box>
         <Button
           variant="contained"
