@@ -63,8 +63,14 @@ export const SignUp: FC = () => {
         >
           {"SIGN IN"}
         </Button>
-        <Button variant="text" color="error" type="reset" sx={{width: "300px"}}>
-          {"RESET PASSWORD"}
+        <Button
+          variant="text"
+          color="error"
+          type="reset"
+          sx={{width: "300px"}}
+          onClick={() => navigate(Pages.login)}
+        >
+          {"HAVE YOU ALREADY AN ACCOUNT?"}
         </Button>
       </Box>
     </PageContainer>
