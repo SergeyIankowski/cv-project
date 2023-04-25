@@ -23,8 +23,13 @@ export const MainHeaderStyle = {
   ...HeaderStyle,
   alignItems: "center",
   justifyContent: "space-around",
-  "@media(max-width: 1079px)": {
+  "@media(max-width: 1199px)": {
     justifyContent: "space-between",
+  },
+};
+export const PageLayoutStyle = {
+  "@media(max-width: 1199px)": {
+    padding: "0 50px",
   },
 };
 export const ElemStyle = {

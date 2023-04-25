@@ -12,20 +12,18 @@ interface BreadCrumbsProps {
 
 export const BreadCrumbs: FC<BreadCrumbsProps> = ({breadCrumbsLinks}) => {
   return (
-    <Container disableGutters={true}>
-      <Breadcrumbs
-        separator={<NavigateNextIcon fontSize="small" />}
-        sx={BreadCrumbsStyle}
-      >
-        {breadCrumbsLinks.map(data => (
-          <BreadCrumbItem
-            path={data.path}
-            text={data.text}
-            icon={data.icon}
-            key={data.text}
-          />
-        ))}
-      </Breadcrumbs>
-    </Container>
+    <Breadcrumbs
+      separator={<NavigateNextIcon fontSize="small" />}
+      sx={BreadCrumbsStyle}
+    >
+      {breadCrumbsLinks.map(data => (
+        <BreadCrumbItem
+          path={data.path}
+          text={data.text}
+          icon={data.icon}
+          key={data.text}
+        />
+      ))}
+    </Breadcrumbs>
   );
 };
