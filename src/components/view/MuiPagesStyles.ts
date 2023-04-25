@@ -41,7 +41,7 @@ export const ContentStyle = {
   marginTop: "80px",
   padding: "0px 20px",
   textAlign: "center",
-  gap: "5px",
+  gap: "10px",
 };
 export const BreadCrumbsStyle = {
   display: "flex",
@@ -49,4 +49,9 @@ export const BreadCrumbsStyle = {
   justifyContent: "flex-start",
   gap: "10px",
   height: "50px",
+};
+export const PasswordIconStyle = {
+  position: "absolute",
+  top: "37%",
+  right: "3%",
 };

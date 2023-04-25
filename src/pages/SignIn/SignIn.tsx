@@ -8,7 +8,7 @@ import {Button} from "@containers/Button";
 import {Input} from "@containers/Input";
 import {HeaderAuth} from "@view/AuthHeader/HeaderAuth";
 import {PageContainer} from "@view/PageContainer/PageContainer";
-import {ElemStyle, ContentStyle} from "@view/MuiPagesStyles";
+import {ElemStyle, ContentStyle, PasswordIconStyle} from "@view/MuiPagesStyles";
 import {Pages} from "@/models/Pages";
 import {useBooleanState} from "@/hooks/useBooleanState";
 
@@ -45,12 +45,12 @@ export const SignIn: FC = () => {
           />
           {pswrdVisibility ? (
             <VisibilityOffIcon
-              sx={{position: "absolute", top: "37%", right: "3%"}}
+              sx={PasswordIconStyle}
               onClick={setVisibilityFalse}
             />
           ) : (
             <VisibilityIcon
-              sx={{position: "absolute", top: "37%", right: "3%"}}
+              sx={PasswordIconStyle}
               onClick={setVisibilityTrue}
             />
           )}
