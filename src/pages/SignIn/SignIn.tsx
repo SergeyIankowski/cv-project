@@ -1,6 +1,5 @@
 import {FC} from "react";
 import {useNavigate} from "react-router-dom";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -11,6 +10,11 @@ import {PageContainer} from "@view/PageContainer/PageContainer";
 import {ElemStyle, ContentStyle, PasswordIconStyle} from "@view/MuiPagesStyles";
 import {Pages} from "@/models/Pages";
 import {useBooleanState} from "@/hooks/useBooleanState";
+import {
+  TypographyH3,
+  TypographyH6,
+  TypographySignUpHeader,
+} from "@/components/view/Typographics/Typographics";
 
 export const SignIn: FC = () => {
   const [
@@ -24,19 +28,19 @@ export const SignIn: FC = () => {
     <PageContainer>
       <HeaderAuth>
         <Box sx={ElemStyle}>
-          <Typography variant="h6" sx={{borderBottom: "2px #eeeef0 solid"}}>
-            LOGIN
-          </Typography>
+          <TypographySignUpHeader text="LOGIN" underline />
         </Box>
         <Box sx={ElemStyle}>
-          <Typography variant="h6" onClick={() => navigate(Pages.signup)}>
-            SIGNUP
-          </Typography>
+          <TypographySignUpHeader
+            text="SiGNUP"
+            underline={false}
+            onClick={() => navigate(Pages.signup)}
+          />
         </Box>
       </HeaderAuth>
       <Box sx={ContentStyle}>
-        <Typography variant="h3">Welcome Back</Typography>
-        <Typography variant="h6">Hello Again! Sign up to continue!</Typography>
+        <TypographyH3 text="Welcome Back" />
+        <TypographyH6 text="Hello Again! Sign up to continue!" />
         <Input sx={{width: "300px"}} margin="dense" id="email" label="Email" />
         <Box sx={{position: "relative"}}>
           <Input
