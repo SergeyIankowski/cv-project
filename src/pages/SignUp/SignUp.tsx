@@ -13,7 +13,7 @@ import {Pages} from "@/models/Pages";
 import {useBooleanState} from "@/hooks/useBooleanState";
 
 export const SignUp: FC = () => {
-  const [pswrdVisibility, setVisibilityTrue, setVisibilityFalse] =
+  const [passwordVisibility, setVisibilityTrue, setVisibilityFalse] =
     useBooleanState(false);
   const navigate = useNavigate();
 
@@ -41,9 +41,9 @@ export const SignUp: FC = () => {
             margin="normal"
             id="password"
             label="Password"
-            type={pswrdVisibility ? "text" : "password"}
+            type={passwordVisibility ? "text" : "password"}
           />
-          {pswrdVisibility ? (
+          {passwordVisibility ? (
             <VisibilityOffIcon
               sx={PasswordIconStyle}
               onClick={setVisibilityFalse}
