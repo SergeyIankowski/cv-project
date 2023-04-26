@@ -1,4 +1,4 @@
-const breakPoints = {
+const breakpoints = {
   smallDesktop: "1199px",
 };
 
@@ -27,12 +27,12 @@ export const MainHeaderStyle = {
   ...HeaderStyle,
   alignItems: "center",
   justifyContent: "space-around",
-  [`@media(max-width: ${breakPoints.smallDesktop})`]: {
+  [`@media(max-width: ${breakpoints.smallDesktop})`]: {
     justifyContent: "space-between",
   },
 };
 export const PageLayoutStyle = {
-  [`@media(max-width: ${breakPoints.smallDesktop})`]: {
+  [`@media(max-width: ${breakpoints.smallDesktop})`]: {
     padding: "0 50px",
   },
 };
