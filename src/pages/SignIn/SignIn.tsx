@@ -15,6 +15,7 @@ import {
   TypographyH6,
   TypographySignUpHeader,
 } from "@/components/view/Typographics/Typographics";
+import Grid from "@mui/material/Grid";
 
 export const SignIn: FC = () => {
   const [
@@ -32,48 +33,45 @@ export const SignIn: FC = () => {
         </Box>
         <Box sx={ElemStyle}>
           <TypographySignUpHeader
-            text="SiGNUP"
+            text="SIGNUP"
             underline={false}
             onClick={() => navigate(Pages.signup)}
           />
         </Box>
       </HeaderAuth>
-      <Box sx={ContentStyle}>
-        <TypographyH3 text="Welcome Back" />
-        <TypographyH6 text="Hello Again! Sign up to continue!" />
-        <Input sx={{width: "300px"}} margin="dense" id="email" label="Email" />
-        <Box sx={{position: "relative"}}>
-          <Input
-            sx={{width: "300px"}}
-            margin="normal"
-            id="password"
-            label="Password"
-            type={passwordVisibility ? "text" : "password"}
-          />
-          {passwordVisibility ? (
-            <VisibilityOffIcon
-              sx={PasswordIconStyle}
-              onClick={setPasswordVisibilityFalse}
+      <Grid container justifyContent="center" alignItems="flex-start">
+        <Box sx={ContentStyle}>
+          <TypographyH3 text="Welcome Back" />
+          <TypographyH6 text="Hello Again! Sign up to continue!" />
+          <Input margin="dense" id="email" label="Email" />
+          <Box sx={{position: "relative"}}>
+            <Input
+              sx={{width: "100%"}}
+              margin="dense"
+              id="password"
+              label="Password"
+              type={passwordVisibility ? "text" : "password"}
             />
-          ) : (
-            <VisibilityIcon
-              sx={PasswordIconStyle}
-              onClick={setPasswordVisibilityTrue}
-            />
-          )}
+            {passwordVisibility ? (
+              <VisibilityOffIcon
+                sx={PasswordIconStyle}
+                onClick={setPasswordVisibilityFalse}
+              />
+            ) : (
+              <VisibilityIcon
+                sx={PasswordIconStyle}
+                onClick={setPasswordVisibilityTrue}
+              />
+            )}
+          </Box>
+          <Button variant="contained" color="error" size="small" type="submit">
+            {"SIGN IN"}
+          </Button>
+          <Button variant="text" color="error" type="reset">
+            {"RESET PASSWORD"}
+          </Button>
         </Box>
-        <Button
-          variant="contained"
-          color="error"
-          sx={{width: "300px"}}
-          type="submit"
-        >
-          {"SIGN IN"}
-        </Button>
-        <Button variant="text" color="error" type="reset" sx={{width: "300px"}}>
-          {"RESET PASSWORD"}
-        </Button>
-      </Box>
+      </Grid>
     </PageContainer>
   );
 };

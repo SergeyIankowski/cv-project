@@ -23,8 +23,13 @@ export const MainHeaderStyle = {
   ...HeaderStyle,
   alignItems: "center",
   justifyContent: "space-around",
-  "@media(max-width: 1079px)": {
+  "@media(max-width: 1199px)": {
     justifyContent: "space-between",
+  },
+};
+export const PageLayoutStyle = {
+  "@media(max-width: 1199px)": {
+    padding: "0 50px",
   },
 };
 export const ElemStyle = {
@@ -37,11 +42,12 @@ export const ContentStyle = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "center",
+  alignItems: "stretch",
   marginTop: "80px",
   padding: "0px 20px",
   textAlign: "center",
   gap: "10px",
+  width: "400px",
 };
 export const BreadCrumbsStyle = {
   display: "flex",
@@ -52,6 +58,6 @@ export const BreadCrumbsStyle = {
 };
 export const PasswordIconStyle = {
   position: "absolute",
-  top: "37%",
+  top: "30%",
   right: "3%",
 };
