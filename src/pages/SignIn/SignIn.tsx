@@ -13,8 +13,11 @@ import {Pages} from "@/models/Pages";
 import {useBooleanState} from "@/hooks/useBooleanState";
 
 export const SignIn: FC = () => {
-  const [passwordVisibility, setVisibilityTrue, setVisibilityFalse] =
-    useBooleanState(false);
+  const [
+    passwordVisibility,
+    setPasswordVisibilityTrue,
+    setPasswordVisibilityFalse,
+  ] = useBooleanState(false);
   const navigate = useNavigate();
 
   return (
@@ -46,12 +49,12 @@ export const SignIn: FC = () => {
           {passwordVisibility ? (
             <VisibilityOffIcon
               sx={PasswordIconStyle}
-              onClick={setVisibilityFalse}
+              onClick={setPasswordVisibilityFalse}
             />
           ) : (
             <VisibilityIcon
               sx={PasswordIconStyle}
-              onClick={setVisibilityTrue}
+              onClick={setPasswordVisibilityTrue}
             />
           )}
         </Box>
