@@ -13,7 +13,7 @@ type MainHeaderProps = BoxProps;
 export const MainHeader: FC<MainHeaderProps> = () => {
   const [isOpen, setTrue, setFalse] = useBooleanState(false);
   return (
-    <Box sx={MainHeaderStyle}>
+    <Box component={"header"} sx={MainHeaderStyle}>
       <MenuIcon onClick={setTrue} />
       <UserDetails userName="Sergei" />
       <SlideMenu isOpen={isOpen} onCloseVisibility={setFalse} />
