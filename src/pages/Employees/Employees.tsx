@@ -6,6 +6,7 @@ import {Pages} from "@/models/Pages";
 
 import {SearchInput} from "@/components/view/SearchInput/SearchInput";
 import {TableEmployees} from "@/components/containers/TableEmployees/TableEmployees";
+import {usersMockData} from "./usersMockData";
 
 const breadCrumbs: BreadCrumbsData = [
   {
@@ -13,14 +14,14 @@ const breadCrumbs: BreadCrumbsData = [
     path: Pages.main,
     icon: <HomeIcon fontSize="small" />,
   },
-  {text: "Login", path: Pages.login},
+  {text: "Employees", path: Pages.employees},
 ];
 
 export const Employees: FC = () => {
   return (
     <PageLayout linksData={breadCrumbs}>
       <SearchInput onSearch={value => console.log(value)} />
-      <TableEmployees />
+      <TableEmployees usersData={usersMockData} />
     </PageLayout>
   );
 };
