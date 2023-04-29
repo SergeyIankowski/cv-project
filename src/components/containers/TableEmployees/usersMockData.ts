@@ -7,7 +7,7 @@ export const usersMockData: UserData[] = [
     lastName: "Alien",
     email: "some@example.com",
     department: "React",
-    position: "Lead",
+    position: "A",
   },
   {
     imgPath: "",
@@ -15,7 +15,7 @@ export const usersMockData: UserData[] = [
     lastName: "Streisand",
     email: "barbara@example.com",
     department: "Python",
-    position: "Junior",
+    position: "Z",
   },
   {
     imgPath: "",
@@ -23,6 +23,22 @@ export const usersMockData: UserData[] = [
     lastName: "Doe",
     email: "elvis111@example.com",
     department: "Java",
-    position: "Middle+",
+    position: "B",
+  },
+  {
+    imgPath: "",
+    firstName: "Catrine",
+    lastName: "Johns",
+    email: "missa@example.com",
+    department: "Kotlin",
+    position: "C",
+  },
+  {
+    imgPath: "",
+    firstName: "Karl",
+    lastName: "Young",
+    email: "solo_lern@example.com",
+    department: "Android",
+    position: "F",
   },
 ];

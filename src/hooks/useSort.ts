@@ -14,11 +14,12 @@ export function useSort<Type>(
 ] {
   const [order, setOrder] = useState<Order>(defaultOrder);
   const [orderBy, setOrderBy] = useState(defaultOrderBy);
-  const [sortedArray, setsortedArray] = useState(data);
+  const [sortedArray, setSortedArray] = useState<Type[]>([]);
 
   useEffect(() => {
     const arrayOnMount = data.sort(getComparator(defaultOrder, defaultOrderBy));
-    setsortedArray(arrayOnMount);
+    setSortedArray(arrayOnMount);
+    console.log(arrayOnMount);
   }, []);
 
   const handleRequestSort = useCallback(
@@ -29,8 +30,10 @@ export function useSort<Type>(
       setOrder(toggledOrder);
       setOrderBy(newOrderBy);
 
-      const sortedRows = sortedArray.sort(getComparator(toggledOrder, orderBy));
-      setsortedArray(sortedRows);
+      const sortedRows = sortedArray.sort(
+        getComparator(toggledOrder, newOrderBy)
+      );
+      setSortedArray(sortedRows);
     },
     [order, orderBy, sortedArray]
   );
