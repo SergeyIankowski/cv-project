@@ -1,4 +1,4 @@
-import {FC, useState} from "react";
+import {FC, useCallback, useState} from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import {PageLayout} from "@/components/view/PageLayout/PageLayout";
 import {BreadCrumbsData} from "@/models/BreadCrumbsData.type";
@@ -18,11 +18,22 @@ const breadCrumbs: BreadCrumbsData = [
 ];
 
 export const Employees: FC = () => {
-  const [users, setUsers] = useState(usersMockData);
+  const [searchedUsers, setSearchedUsers] = useState(usersMockData);
+
+  const handleSearchingUsers = useCallback((value: string) => {
+    const newReference = [...usersMockData];
+    const usersOnMount = newReference.filter(item => {
+      const stringItem = Object.values(item).toString().toLocaleLowerCase();
+      const lowerCasedValue = value.toLowerCase();
+      return stringItem.includes(lowerCasedValue);
+    });
+    setSearchedUsers(usersOnMount);
+  }, []);
+
   return (
     <PageLayout linksData={breadCrumbs}>
-      <SearchInput onSearch={value => console.log(value)} />
-      <TableEmployees usersData={users} />
+      <SearchInput onSearch={handleSearchingUsers} />
+      <TableEmployees usersData={searchedUsers} />
     </PageLayout>
   );
 };

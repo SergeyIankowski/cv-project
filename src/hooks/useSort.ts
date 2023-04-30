@@ -20,6 +20,9 @@ export function useSort<Type>(
     const arrayOnMount = data.sort(getComparator(defaultOrder, defaultOrderBy));
     setSortedArray(arrayOnMount);
   }, []);
+  useEffect(() => {
+    setSortedArray(data);
+  }, [data]);
 
   const handleRequestSort = useCallback(
     (event: MouseEvent, newOrderBy: keyof Type) => {
