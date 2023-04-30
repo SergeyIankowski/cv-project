@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useState} from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import {PageLayout} from "@/components/view/PageLayout/PageLayout";
 import {BreadCrumbsData} from "@/models/BreadCrumbsData.type";
@@ -18,10 +18,11 @@ const breadCrumbs: BreadCrumbsData = [
 ];
 
 export const Employees: FC = () => {
+  const [users, setUsers] = useState(usersMockData);
   return (
     <PageLayout linksData={breadCrumbs}>
       <SearchInput onSearch={value => console.log(value)} />
-      <TableEmployees usersData={usersMockData} />
+      <TableEmployees usersData={users} />
     </PageLayout>
   );
 };

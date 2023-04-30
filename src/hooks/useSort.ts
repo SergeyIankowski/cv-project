@@ -19,7 +19,6 @@ export function useSort<Type>(
   useEffect(() => {
     const arrayOnMount = data.sort(getComparator(defaultOrder, defaultOrderBy));
     setSortedArray(arrayOnMount);
-    console.log(arrayOnMount);
   }, []);
 
   const handleRequestSort = useCallback(
