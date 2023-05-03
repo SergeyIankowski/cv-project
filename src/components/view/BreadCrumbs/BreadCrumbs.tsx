@@ -1,6 +1,5 @@
 import {FC} from "react";
 import {BreadCrumbsStyle} from "../MuiPagesStyles";
-import Container from "@mui/material/Container";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import {BreadCrumbsData} from "@/models/BreadCrumbsData.type";
