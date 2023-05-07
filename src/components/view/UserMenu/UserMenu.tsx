@@ -7,6 +7,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
+import {useNavigate} from "react-router-dom";
+import {Pages} from "@/models/Pages";
 
 interface UserMenuProps {
   isOpened: boolean;
@@ -14,11 +16,13 @@ interface UserMenuProps {
   onCloseMenu: () => void;
 }
 
+const MOCK_USER_ID = 123;
 export const UserMenu: FC<UserMenuProps> = ({
   isOpened,
   anchorElem,
   onCloseMenu,
 }) => {
+  const navigate = useNavigate();
   return (
     <Menu
       anchorEl={anchorElem}
@@ -33,7 +37,11 @@ export const UserMenu: FC<UserMenuProps> = ({
       transformOrigin={{horizontal: "right", vertical: "top"}}
       anchorOrigin={{horizontal: "right", vertical: "bottom"}}
     >
-      <MenuItem onClick={onCloseMenu}>
+      <MenuItem
+        onClick={() => {
+          navigate(`${MOCK_USER_ID}/${Pages.info.profile}`);
+        }}
+      >
         <ListItemIcon>
           <AccountCircleIcon fontSize="medium" />
         </ListItemIcon>
