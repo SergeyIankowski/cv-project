@@ -1,4 +1,5 @@
 import {FC, ReactNode} from "react";
+import {useParams} from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import {PageLayout} from "@view/PageLayout/PageLayout";
 import {Pages} from "@/models/Pages";
@@ -19,6 +20,7 @@ const breadCrumbs: BreadCrumbsData = [
 ];
 
 export const ProfilePageLayout: FC<ProfileLayoutProps> = ({children}) => {
+  const {id} = useParams();
   return (
     <PageLayout linksData={breadCrumbs}>
       <ProfileTabs />
