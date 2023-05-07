@@ -12,6 +12,7 @@ export const Input: FC<Props> = ({
   label,
   type,
   placeholder,
+  select,
 }) => {
   return (
     <MuiTextField
@@ -23,6 +24,7 @@ export const Input: FC<Props> = ({
       label={label}
       type={type}
       placeholder={placeholder}
+      select={select}
     >
       {children}
     </MuiTextField>
