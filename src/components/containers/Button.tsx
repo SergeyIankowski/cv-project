@@ -7,6 +7,7 @@ export const Button: FC<Props> = ({
   color,
   type,
   sx,
+  disabled,
   onClick,
 }) => {
   return (
@@ -16,6 +17,7 @@ export const Button: FC<Props> = ({
       sx={sx}
       type={type}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </MuiButton>

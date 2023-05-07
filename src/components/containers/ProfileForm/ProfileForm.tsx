@@ -1,11 +1,14 @@
 import {FC, useState} from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import {MenuItem, Typography} from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
+import Typography from "@mui/material/Typography";
 import {FetchedUser} from "@/models/FetchedUser.type";
 import {AvatarProfileInput} from "@containers/AvatarProfileInput/AvatarProfileInput";
 import {InputsContainerStyle} from "./ProfileFormStyle";
-import {Input} from "../Input";
+import {Input} from "@containers/Input";
+import {Button} from "@containers/Button";
 
 const mock: FetchedUser = {
   id: "1600",
@@ -46,14 +49,23 @@ export const ProfileForm: FC = () => {
             A member since {date.toLocaleDateString("en-US", DATE_OPTIONS)}
           </Typography>
         </Box>
-        <Box sx={InputsContainerStyle}>
+        <FormControl sx={InputsContainerStyle} onSubmit={() => {}}>
           <Input type="text" id="firstName" label="First Name" />
           <Input type="text" id="lastName" label="Last Name" />
-          <Input select id="Select Department" label="Departments">
+          <Input select id="department" label="Departments">
             <MenuItem value="some">some</MenuItem>
           </Input>
-          <Input type="text" id="Position" label="Position" />
-        </Box>
+          <Input select id="position" label="Position" />
+          <Button
+            variant="contained"
+            color="error"
+            size="small"
+            type="submit"
+            disabled
+          >
+            Update
+          </Button>
+        </FormControl>
       </Grid>
     </Grid>
   );
