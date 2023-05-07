@@ -5,7 +5,7 @@ export const Pages = {
   employees: "/employees",
   notFound: "/*",
   info: {
-    root: `employees/:id/`,
+    root: `employees/:id`,
     profile: "profile",
     skills: "skills",
     languages: "languages",
