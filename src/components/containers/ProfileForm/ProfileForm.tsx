@@ -1,14 +1,13 @@
 import {FC, useState} from "react";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
 import {FetchedUser} from "@/models/FetchedUser.type";
 import {AvatarProfileInput} from "@containers/AvatarProfileInput/AvatarProfileInput";
 import {InputsContainerStyle} from "./ProfileFormStyle";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
+import {ProfileUserInfo} from "@/components/view/ProfileUserInfo/ProfileUserInfo";
 
 const mock: FetchedUser = {
   id: "1600",
@@ -26,29 +25,18 @@ const mock: FetchedUser = {
   },
   role: "employee",
 };
-const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-};
 
 export const ProfileForm: FC = () => {
-  const [date, setDate] = useState(new Date(Number(mock.created_at)));
-
   return (
     <Grid container direction="column" alignItems="center" sx={{p: "50px 0"}}>
       <Grid container direction="column" gap="30px" sx={{width: "700px"}}>
         <AvatarProfileInput avatarPath={mock.profile.avatar} />
-        <Box>
-          <Typography variant="h4">
-            {mock.profile.first_name} {mock.profile.last_name}
-          </Typography>
-          <Typography variant="subtitle1">{mock.email}</Typography>
-          <Typography variant="subtitle1">
-            A member since {date.toLocaleDateString("en-US", DATE_OPTIONS)}
-          </Typography>
-        </Box>
+        <ProfileUserInfo
+          firstName={mock.profile.first_name}
+          lastName={mock.profile.last_name}
+          email={mock.email}
+          createdAt={mock.created_at}
+        />
         <FormControl sx={InputsContainerStyle} onSubmit={() => {}}>
           <Input type="text" id="firstName" label="First Name" />
           <Input type="text" id="lastName" label="Last Name" />
