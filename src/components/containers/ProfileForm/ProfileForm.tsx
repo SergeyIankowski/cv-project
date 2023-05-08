@@ -26,12 +26,12 @@ const mock: FetchedUser = {
   },
   role: "employee",
 };
-const DATE_OPTIONS = {
+const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
   weekday: "long",
   year: "numeric",
   month: "long",
   day: "numeric",
-} as Intl.DateTimeFormatOptions;
+};
 
 export const ProfileForm: FC = () => {
   const [date, setDate] = useState(new Date(Number(mock.created_at)));
