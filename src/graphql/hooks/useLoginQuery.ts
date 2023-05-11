@@ -10,10 +10,7 @@ export const useLoginQuery = () => {
 
   useEffect(() => {
     if (error) return;
-    if (!loading && called) {
-      setAuthToken(data.login.access_token);
-      console.log(data.login.access_token);
-    }
+    if (!loading && called) setAuthToken(data.login.access_token);
   }, [loading, error]);
 
   return [loading, data, LoadLoginData];
