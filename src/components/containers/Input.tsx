@@ -4,7 +4,15 @@ import {
   TextFieldProps as Props,
 } from "@mui/material";
 
-export const Input: FC<Props> = ({children, sx, margin, id, label, type}) => {
+export const Input: FC<Props> = ({
+  children,
+  sx,
+  margin,
+  id,
+  label,
+  type,
+  placeholder,
+}) => {
   return (
     <MuiTextField
       size="small"
@@ -14,6 +22,7 @@ export const Input: FC<Props> = ({children, sx, margin, id, label, type}) => {
       id={id}
       label={label}
       type={type}
+      placeholder={placeholder}
     >
       {children}
     </MuiTextField>
