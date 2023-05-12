@@ -96,4 +96,12 @@ export const MenuStyle = {
   },
 };
 
+export const HeaderLinksStyle = {
+  "& button": {
+    fontSize: "1.3rem",
+    color: "white",
+  },
+  "& button.Mui-selected": {
+    color: colors.authLinksColor,
+  },
 };
