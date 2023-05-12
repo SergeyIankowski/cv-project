@@ -1,7 +1,5 @@
 export const Pages = {
   main: "/",
-  login: "/login",
-  signup: "/signup",
   employees: "/employees",
   notFound: "/*",
   info: {
@@ -10,5 +8,10 @@ export const Pages = {
     skills: "skills",
     languages: "languages",
     cvs: "cvs",
+  },
+  auth: {
+    root: "/auth",
+    login: "login",
+    signup: "signup",
   },
 };
