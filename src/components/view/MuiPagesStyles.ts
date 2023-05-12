@@ -1,6 +1,9 @@
 const breakpoints = {
   smallDesktop: "1199px",
 };
+export const colors = {
+  authLinksColor: "#ef9d10",
+};
 
 export const PageStyle = {
   display: "flex",
@@ -93,10 +96,12 @@ export const MenuStyle = {
   },
 };
 
-export const HeaderLinkStyle = {
-  width: "140px",
-  display: "flex",
-  justifyContent: "center",
-  cursor: "pointer",
-  color: "white",
+export const HeaderLinksStyle = {
+  "& button": {
+    fontSize: "1.3rem",
+    color: "white",
+  },
+  "& button.Mui-selected": {
+    color: colors.authLinksColor,
+  },
 };

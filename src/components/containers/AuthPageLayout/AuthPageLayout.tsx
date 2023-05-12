@@ -1,8 +1,8 @@
 import {FC, ReactNode} from "react";
 import {useNavigate} from "react-router-dom";
-import {HeaderAuth} from "@/components/view/AuthHeader/HeaderAuth";
-import {HeaderLinkStyle} from "@/components/view/MuiPagesStyles";
-import {PageContainer} from "@/components/view/PageContainer/PageContainer";
+import {HeaderAuth} from "@view/AuthHeader/HeaderAuth";
+import {HeaderLinksStyle, colors} from "@view/MuiPagesStyles";
+import {PageContainer} from "@view/PageContainer/PageContainer";
 import {Pages} from "@/models/Pages";
 import Grid from "@mui/material/Grid";
 import Tab from "@mui/material/Tab";
@@ -25,29 +25,19 @@ export const AuthPageLayout: FC<AuthPageLayoutProps> = ({children}) => {
           onChange={handleChange}
           TabIndicatorProps={{
             style: {
-              backgroundColor: "#ef9d10",
+              backgroundColor: colors.authLinksColor,
             },
           }}
-          sx={{
-            "& button": {
-              fontSize: "1.3rem",
-              color: "white",
-            },
-            "& button.Mui-selected": {
-              color: "#ef9d10",
-            },
-          }}
+          sx={HeaderLinksStyle}
         >
           <Tab
             value={Pages.auth.login}
             label="LOGIN"
-            sx={HeaderLinkStyle}
             onClick={() => navigate(Pages.auth.login)}
           />
           <Tab
             value={Pages.auth.signup}
             label="SIGNUP"
-            sx={HeaderLinkStyle}
             onClick={() => navigate(Pages.auth.signup)}
           />
         </Tabs>
