@@ -7,6 +7,7 @@ export const PageStyle = {
   flexDirection: "column",
   height: "100vh",
   boxSizing: "border-box",
+  background: "#e7e7e7",
   "@media(min-width: 320px)": {
     maxWidth: "none",
     padding: "0px",
@@ -21,7 +22,7 @@ export const HeaderStyle = {
   backgroundColor: "#3b3b4f",
   color: "#eeeef0",
   gap: "5px",
-  padding: "0 50px 5px",
+  padding: "0 50px 0px",
 };
 export const MainHeaderStyle = {
   ...HeaderStyle,
@@ -90,4 +91,12 @@ export const MenuStyle = {
     transform: "translateY(-50%) rotate(45deg)",
     zIndex: 0,
   },
+};
+
+export const HeaderLinkStyle = {
+  width: "140px",
+  display: "flex",
+  justifyContent: "center",
+  cursor: "pointer",
+  color: "white",
 };
