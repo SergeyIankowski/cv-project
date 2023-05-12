@@ -1,27 +1,15 @@
-import {FC, SyntheticEvent, useLayoutEffect, useState} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import {FC} from "react";
+import {useNavigate} from "react-router-dom";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import {Pages} from "@/models/Pages";
 import {TabStyle} from "./ProfileTabsStyle";
+import {useTabsLinksHighlighting} from "@/hooks/useTabsLinksHighlighting";
 
 export const ProfileTabs: FC = () => {
-  const [value, setValue] = useState(Pages.info.profile);
+  const [value, handleChange] = useTabsLinksHighlighting(Pages.info.profile);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  useLayoutEffect(() => {
-    const endOfPath = location.pathname.split("/");
-    setValue(endOfPath[endOfPath.length - 1]);
-  }, []);
-
-  const handleChange = (
-    e: SyntheticEvent<Element, Event>,
-    newValue: string
-  ) => {
-    setValue(newValue);
-  };
   return (
     <Box sx={{width: "100%"}}>
       <Box sx={{borderBottom: 1, borderColor: "divider", color: "green"}}>
