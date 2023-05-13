@@ -14,6 +14,8 @@ import {
 import {Button} from "@containers/Button";
 import {useForm} from "react-hook-form";
 import {AuthValues} from "@/models/AuthValues.type";
+import {useLoginQuery} from "@/graphql/hooks/useLoginQuery";
+import {useEffect} from "react";
 
 export const SignInForm = () => {
   const [
@@ -32,9 +34,14 @@ export const SignInForm = () => {
       password: "",
     },
   });
+  const {loading, data, loadLoginData} = useLoginQuery();
+
+  useEffect(() => {
+    if (!loading && data) console.log(data.login);
+  }, [loading]);
 
   const onSubmit = (data: AuthValues) => {
-    console.log(data);
+    loadLoginData({variables: {auth: data}});
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -62,12 +69,9 @@ export const SignInForm = () => {
             control={control}
             rules={{
               required: true,
-              minLength: 8,
             }}
             error={errors.password ? true : false}
-            helperText={
-              errors.password && "password must be at least 8 characters long"
-            }
+            helperText={errors.password && "password field is empty"}
           />
           {passwordVisibility ? (
             <VisibilityOffIcon
