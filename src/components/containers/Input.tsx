@@ -3,8 +3,10 @@ import {
   TextField as MuiTextField,
   TextFieldProps as Props,
 } from "@mui/material";
+import {useController, UseControllerProps} from "react-hook-form";
+import {AuthValues} from "@/models/AuthValues.type";
 
-export const Input: FC<Props> = ({
+export const Input: FC<Props & UseControllerProps<AuthValues>> = ({
   children,
   sx,
   margin,
@@ -13,7 +15,14 @@ export const Input: FC<Props> = ({
   type,
   placeholder,
   select,
+  error,
+  helperText,
+
+  name,
+  control,
+  rules,
 }) => {
+  const {field} = useController({name, control, rules: rules});
   return (
     <MuiTextField
       size="small"
@@ -25,6 +34,13 @@ export const Input: FC<Props> = ({
       type={type}
       placeholder={placeholder}
       select={select}
+      error={error}
+      helperText={helperText}
+      onChange={field.onChange}
+      onBlur={field.onBlur}
+      value={field.value}
+      name={field.name}
+      ref={field.ref}
     >
       {children}
     </MuiTextField>
