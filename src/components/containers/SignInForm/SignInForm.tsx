@@ -1,21 +1,15 @@
-import {useBooleanState} from "@/hooks/useBooleanState";
+import {useEffect} from "react";
+import {useForm} from "react-hook-form";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import {
-  TypographyH3,
-  TypographyH6,
-} from "@/components/view/Typographics/Typographics";
 import Box from "@mui/material/Box";
+import {useBooleanState} from "@/hooks/useBooleanState";
+import {TypographyH3, TypographyH6} from "@view/Typographics/Typographics";
 import {Input} from "@containers/Input";
-import {
-  ContentStyle,
-  PasswordIconStyle,
-} from "@/components/view/MuiPagesStyles";
+import {ContentStyle, PasswordIconStyle} from "@view/MuiPagesStyles";
 import {Button} from "@containers/Button";
-import {useForm} from "react-hook-form";
 import {AuthValues} from "@/models/AuthValues.type";
 import {useLoginQuery} from "@/graphql/hooks/useLoginQuery";
-import {useEffect} from "react";
 
 export const SignInForm = () => {
   const [
@@ -43,6 +37,7 @@ export const SignInForm = () => {
   const onSubmit = (data: AuthValues) => {
     loadLoginData({variables: {auth: data}});
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={ContentStyle}>
