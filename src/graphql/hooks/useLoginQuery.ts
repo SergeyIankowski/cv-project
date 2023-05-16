@@ -5,7 +5,7 @@ import {useAuthToken} from "../../hooks/useAuthToken";
 
 export const useLoginQuery = () => {
   const {setAuthToken} = useAuthToken();
-  const [LoadLoginData, {called, error, loading, data}] =
+  const [loadLoginData, {called, error, loading, data}] =
     useLazyQuery(LOGIN_QUERY);
 
   useEffect(() => {
@@ -13,5 +13,5 @@ export const useLoginQuery = () => {
     if (!loading && called) setAuthToken(data.login.access_token);
   }, [loading, error]);
 
-  return [loading, data, LoadLoginData];
+  return {loading, data, loadLoginData};
 };
