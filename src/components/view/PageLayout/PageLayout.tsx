@@ -12,7 +12,7 @@ interface PageLayoutProps {
 
 export const PageLayout: FC<PageLayoutProps> = ({children, linksData}) => {
   return (
-    <Container sx={{...PageStyle, backgroundColor: "#cfcfcf"}}>
+    <Container sx={PageStyle}>
       <MainHeader />
       <Container component={"main"} sx={PageLayoutStyle} disableGutters={true}>
         <BreadCrumbs breadCrumbsLinks={linksData} />

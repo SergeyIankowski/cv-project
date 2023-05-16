@@ -1,12 +1,16 @@
 const breakpoints = {
   smallDesktop: "1199px",
 };
+export const colors = {
+  authLinksColor: "#ef9d10",
+};
 
 export const PageStyle = {
   display: "flex",
   flexDirection: "column",
   height: "100vh",
   boxSizing: "border-box",
+  background: "#e7e7e7",
   "@media(min-width: 320px)": {
     maxWidth: "none",
     padding: "0px",
@@ -21,7 +25,7 @@ export const HeaderStyle = {
   backgroundColor: "#3b3b4f",
   color: "#eeeef0",
   gap: "5px",
-  padding: "0 50px 5px",
+  padding: "0 50px 0px",
 };
 export const MainHeaderStyle = {
   ...HeaderStyle,
@@ -89,5 +93,15 @@ export const MenuStyle = {
     bgcolor: "background.paper",
     transform: "translateY(-50%) rotate(45deg)",
     zIndex: 0,
+  },
+};
+
+export const HeaderLinksStyle = {
+  "& button": {
+    fontSize: "1.3rem",
+    color: "white",
+  },
+  "& button.Mui-selected": {
+    color: colors.authLinksColor,
   },
 };
