@@ -1,16 +1,10 @@
 import {useBooleanState} from "@/hooks/useBooleanState";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import {
-  TypographyH3,
-  TypographyH6,
-} from "@/components/view/Typographics/Typographics";
+import {TypographyH3, TypographyH6} from "@view/Typographics/Typographics";
 import Box from "@mui/material/Box";
 import {Input} from "@containers/Input";
-import {
-  ContentStyle,
-  PasswordIconStyle,
-} from "@/components/view/MuiPagesStyles";
+import {ContentStyle, PasswordIconStyle} from "@view/MuiPagesStyles";
 import {Button} from "@containers/Button";
 import {useForm} from "react-hook-form";
 import {AuthValues} from "@/models/AuthValues.type";
@@ -34,7 +28,7 @@ export const SignInForm = () => {
       password: "",
     },
   });
-  const {loading, data, loadLoginData} = useLoginQuery();
+  const [loading, data, loadLoginData] = useLoginQuery();
 
   useEffect(() => {
     if (!loading && data) console.log(data.login);
