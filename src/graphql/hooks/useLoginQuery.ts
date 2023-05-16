@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {useLazyQuery} from "@apollo/client";
-import {LOGIN_QUERY} from "@/graphql/queries/login";
+import {LOGIN_QUERY} from "@/graphql/queries";
 import {useAuthToken} from "../../hooks/useAuthToken";
 
 export const useLoginQuery = () => {
