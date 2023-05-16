@@ -28,11 +28,7 @@ export const SignInForm = () => {
       password: "",
     },
   });
-  const [loading, data, loadLoginData] = useLoginQuery();
-
-  useEffect(() => {
-    if (!loading && data) console.log(data.login);
-  }, [loading]);
+  const {loadLoginData} = useLoginQuery();
 
   const onSubmit = (data: AuthValues) => {
     loadLoginData({variables: {auth: data}});
