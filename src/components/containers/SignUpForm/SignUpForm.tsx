@@ -29,15 +29,15 @@ export const SignUpForm: FC = () => {
     <FormControl sx={ContentStyle}>
       <TypographyH3 text="Register now" />
       <TypographyH6 text="Welcome! Sign up to continue." />
-      <Input margin="dense" id="email" label="Email" />
+      {/* <Input margin="dense" id="email" label="Email" /> */}
       <Box sx={{position: "relative"}}>
-        <Input
+        {/* <Input
           sx={{width: "100%"}}
           margin="dense"
           id="password"
           label="Password"
           type={passwordVisibility ? "text" : "password"}
-        />
+        /> */}
         {passwordVisibility ? (
           <VisibilityOffIcon
             sx={PasswordIconStyle}
