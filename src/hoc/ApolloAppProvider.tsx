@@ -9,13 +9,14 @@ import {
 } from "@apollo/client";
 import {onError} from "@apollo/client/link/error";
 import {useAuthToken} from "@/hooks/useAuthToken";
+import {Pages} from "@/models/Pages";
 
 interface ApolloAppProviderProps {
   children: ReactNode;
 }
 
 export const ApolloAppProvider: FC<ApolloAppProviderProps> = ({children}) => {
-  const {authToken} = useAuthToken();
+  const {authToken, removeAuthToken} = useAuthToken();
 
   const httpLink = new HttpLink({
     uri: "https://cv-project-js.inno.ws/api/graphql",
@@ -26,7 +27,7 @@ export const ApolloAppProvider: FC<ApolloAppProviderProps> = ({children}) => {
       if (authToken) {
         operation.setContext({
           headers: {
-            authorization: `Baerer ${authToken}`,
+            authorization: `Bearer ${authToken}`,
           },
         });
       }
@@ -37,11 +38,15 @@ export const ApolloAppProvider: FC<ApolloAppProviderProps> = ({children}) => {
 
   const errorLink = onError(({graphQLErrors, networkError}) => {
     if (graphQLErrors)
-      graphQLErrors.forEach(({message, locations, path}) =>
-        console.log(
-          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-        )
-      );
+      graphQLErrors.forEach(({extensions}) => {
+        if (extensions.code === "UNAUTHENTICATED" && authToken) {
+          removeAuthToken();
+        }
+        if (extensions.code === "UNAUTHENTICATED") {
+          const pathToLoginPage = `${Pages.auth.root}/${Pages.auth.login}`;
+          location.href = pathToLoginPage;
+        }
+      });
     if (networkError) console.log(`[Network error]: ${networkError}`);
   });
 
