@@ -38,12 +38,12 @@ export const ProfileForm: FC = () => {
           createdAt={mock.created_at}
         />
         <FormControl sx={InputsContainerStyle} onSubmit={() => {}}>
-          <Input type="text" id="firstName" label="First Name" />
+          {/* <Input type="text" id="firstName" label="First Name" />
           <Input type="text" id="lastName" label="Last Name" />
           <Input select id="department" label="Departments">
             <MenuItem value="some">some</MenuItem>
           </Input>
-          <Input select id="position" label="Position" />
+          <Input select id="position" label="Position" /> */}
           <Button
             variant="contained"
             color="error"
