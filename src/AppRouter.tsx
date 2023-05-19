@@ -7,6 +7,7 @@ import {ProfileForm} from "@containers/ProfileForm/ProfileForm";
 import {SignInForm} from "@containers/SignInForm/SignInForm";
 import {Authentication} from "@/pages/Authentication/Authentication";
 import {SignUpForm} from "@containers/SignUpForm/SignUpForm";
+import {AuthRedirect} from "@containers/AuthRedirect/AuthRedirect";
 
 export const AppRouter = () => {
   return (
@@ -23,8 +24,22 @@ export const AppRouter = () => {
       </Route>
       <Route path={Pages.auth.root} element={<Authentication />}>
         <Route index element={<Navigate to={Pages.auth.login} />} />
-        <Route path={Pages.auth.login} element={<SignInForm />} />
-        <Route path={Pages.auth.signup} element={<SignUpForm />} />
+        <Route
+          path={Pages.auth.login}
+          element={
+            <AuthRedirect>
+              <SignInForm />
+            </AuthRedirect>
+          }
+        />
+        <Route
+          path={Pages.auth.signup}
+          element={
+            <AuthRedirect>
+              <SignUpForm />
+            </AuthRedirect>
+          }
+        />
       </Route>
     </Routes>
   );
