@@ -9,7 +9,6 @@ import {Button} from "@containers/Button";
 import {useForm} from "react-hook-form";
 import {AuthValues} from "@/models/AuthValues.type";
 import {useLoginQuery} from "@/graphql/hooks/useLoginQuery";
-import {useEffect} from "react";
 
 export const SignInForm = () => {
   const [
