@@ -8,8 +8,6 @@ export interface FetchedUser {
   };
   email: string;
   department_name: string;
-  position: {
-    name: string;
-  };
+  position_name: string;
   role: "employee" | "admin";
 }
