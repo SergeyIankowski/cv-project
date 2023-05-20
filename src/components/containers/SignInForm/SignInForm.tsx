@@ -3,7 +3,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {TypographyH3, TypographyH6} from "@view/Typographics/Typographics";
 import Box from "@mui/material/Box";
-import {Input} from "@containers/Input";
+import {Input, InputFields} from "@containers/Input";
 import {ContentStyle, PasswordIconStyle} from "@view/MuiPagesStyles";
 import {Button} from "@containers/Button";
 import {useForm} from "react-hook-form";
@@ -21,7 +21,7 @@ export const SignInForm = () => {
     control,
     handleSubmit,
     formState: {errors},
-  } = useForm<AuthValues>({
+  } = useForm<InputFields>({
     defaultValues: {
       email: "",
       password: "",
