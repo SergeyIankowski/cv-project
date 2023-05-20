@@ -20,6 +20,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
   lastName,
   department,
   position,
+  onLoadUserInfo,
 }) => {
   const {
     control,
@@ -34,7 +35,9 @@ export const ProfileForm: FC<ProfileFormProps> = ({
     },
   });
 
-  const onSubmit = (data: UploadedUser) => {};
+  const onSubmit = (data: UploadedUser) => {
+    onLoadUserInfo();
+  };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={InputsContainerStyle}>
