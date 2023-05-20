@@ -3,7 +3,7 @@ import {Page404} from "@/pages/Page404/Page404";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {Employees} from "@/pages/Employees/Employees";
 import {Profile} from "@/pages/Profile/Profile";
-import {ProfileForm} from "@containers/ProfileForm/ProfileForm";
+import {ProfileInfo} from "@containers/ProfileInfo/ProfileInfo";
 import {SignInForm} from "@containers/SignInForm/SignInForm";
 import {Authentication} from "@/pages/Authentication/Authentication";
 import {SignUpForm} from "@containers/SignUpForm/SignUpForm";
@@ -17,7 +17,7 @@ export const AppRouter = () => {
       <Route path={Pages.notFound} element={<Page404 />} />
       <Route path={Pages.info.root} element={<Profile />}>
         <Route index element={<Navigate to={Pages.info.profile} />}></Route>
-        <Route path={Pages.info.profile} element={<ProfileForm />} />
+        <Route path={Pages.info.profile} element={<ProfileInfo />} />
         <Route path={Pages.info.skills} element={<></>} />
         <Route path={Pages.info.languages} element={<></>} />
         <Route path={Pages.info.cvs} element={<></>} />
