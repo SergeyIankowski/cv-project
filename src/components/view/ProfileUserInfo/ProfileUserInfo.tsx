@@ -1,4 +1,4 @@
-import {FC, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
@@ -22,7 +22,12 @@ export const ProfileUserInfo: FC<ProfileUserInfoProps> = ({
   email,
   createdAt,
 }) => {
-  const [date] = useState(new Date(Number(createdAt)));
+  const [date, setDate] = useState<Date>(new Date());
+
+  useEffect(() => {
+    const mountedDate = new Date(Number(createdAt));
+    setDate(mountedDate);
+  }, [createdAt]);
 
   return (
     <Box>
