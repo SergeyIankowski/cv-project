@@ -1,60 +1,79 @@
-import {FC, useState} from "react";
-import Grid from "@mui/material/Grid";
-import FormControl from "@mui/material/FormControl";
+import {FC} from "react";
 import MenuItem from "@mui/material/MenuItem";
-import {FetchedUser} from "@/models/FetchedUser.type";
-import {AvatarProfileInput} from "@containers/AvatarProfileInput/AvatarProfileInput";
+import {Box} from "@mui/material";
 import {InputsContainerStyle} from "./ProfileFormStyle";
-import {Input} from "@containers/Input";
+import {Input, InputFields} from "@containers/Input";
 import {Button} from "@containers/Button";
-import {ProfileUserInfo} from "@/components/view/ProfileUserInfo/ProfileUserInfo";
+import {useForm} from "react-hook-form";
+import {UploadedUser} from "@/models/UploadedUser.type";
 
-const mock: FetchedUser = {
-  id: "1600",
-  created_at: "1680070634519",
-  profile: {
-    avatar:
-      "https://res.cloudinary.com/cv-gen-cloud/image/upload/v1681132206/user_avatars/gbypdFYcCZDFY5D_YNJ5g.jpg",
-    first_name: "Luke",
-    last_name: "Skywalker",
-  },
-  email: "LukeSkywalker@gmail.com",
-  department_name: "Devops",
-  position: {
-    name: "Business Analyst",
-  },
-  role: "employee",
-};
+interface ProfileFormProps {
+  firstName: string;
+  lastName: string;
+  department: string;
+  position: string;
+  onLoadUserInfo: () => void;
+}
 
-export const ProfileForm: FC = () => {
+export const ProfileForm: FC<ProfileFormProps> = ({
+  firstName,
+  lastName,
+  department,
+  position,
+}) => {
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = useForm<InputFields>({
+    defaultValues: {
+      first_name: firstName,
+      last_name: lastName,
+      departmentId: department,
+      positionId: position,
+    },
+  });
+
+  const onSubmit = (data: UploadedUser) => {
+    console.log(data);
+  };
   return (
-    <Grid container direction="column" alignItems="center" sx={{p: "50px 0"}}>
-      <Grid container direction="column" gap="30px" sx={{width: "700px"}}>
-        <AvatarProfileInput avatarPath={mock.profile.avatar} />
-        <ProfileUserInfo
-          firstName={mock.profile.first_name}
-          lastName={mock.profile.last_name}
-          email={mock.email}
-          createdAt={mock.created_at}
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Box sx={InputsContainerStyle}>
+        <Input
+          control={control}
+          type="text"
+          id="firstName"
+          label="First Name"
+          name="first_name"
         />
-        <FormControl sx={InputsContainerStyle} onSubmit={() => {}}>
-          {/* <Input type="text" id="firstName" label="First Name" />
-          <Input type="text" id="lastName" label="Last Name" />
-          <Input select id="department" label="Departments">
-            <MenuItem value="some">some</MenuItem>
-          </Input>
-          <Input select id="position" label="Position" /> */}
-          <Button
-            variant="contained"
-            color="error"
-            size="small"
-            type="submit"
-            disabled
-          >
-            Update
-          </Button>
-        </FormControl>
-      </Grid>
-    </Grid>
+        <Input
+          control={control}
+          type="text"
+          id="lastName"
+          label="Last Name"
+          name="last_name"
+        />
+        <Input
+          control={control}
+          select
+          id="department"
+          label="Departments"
+          name="departmentId"
+        >
+          <MenuItem value="some">some</MenuItem>
+        </Input>
+        <Input
+          control={control}
+          type="text"
+          id="position"
+          label="Position"
+          name="positionId"
+        />
+        <Button variant="contained" color="error" size="small" type="submit">
+          Update
+        </Button>
+      </Box>
+    </form>
   );
 };
