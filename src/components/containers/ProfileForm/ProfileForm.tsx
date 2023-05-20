@@ -34,9 +34,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
     },
   });
 
-  const onSubmit = (data: UploadedUser) => {
-    console.log(data);
-  };
+  const onSubmit = (data: UploadedUser) => {};
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={InputsContainerStyle}>

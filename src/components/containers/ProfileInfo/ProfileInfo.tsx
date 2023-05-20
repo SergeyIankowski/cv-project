@@ -19,11 +19,7 @@ export const ProfileInfo: FC = () => {
   }, [id]);
 
   useEffect(() => {
-    if (id) {
-      loadProfileInfo();
-      console.log("id", id);
-      console.log("data", data);
-    }
+    if (id) loadProfileInfo();
   }, [id, data]);
 
   return (
