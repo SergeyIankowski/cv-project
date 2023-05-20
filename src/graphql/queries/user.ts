@@ -5,7 +5,6 @@ export const USER = gql`
     user(id: $id) {
       id
       created_at
-      is_verified
       profile {
         avatar
         first_name
