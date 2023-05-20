@@ -5,8 +5,11 @@ import {
 } from "@mui/material";
 import {useController, UseControllerProps} from "react-hook-form";
 import {AuthValues} from "@/models/AuthValues.type";
+import {UploadedUser} from "@/models/UploadedUser.type";
 
-export const Input: FC<Props & UseControllerProps<AuthValues>> = ({
+export interface InputFields extends AuthValues, UploadedUser {}
+
+export const Input: FC<Props & UseControllerProps<InputFields>> = ({
   children,
   sx,
   margin,
