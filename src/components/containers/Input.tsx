@@ -20,6 +20,7 @@ export const Input: FC<Props & UseControllerProps<InputFields>> = ({
   select,
   error,
   helperText,
+  defaultValue,
 
   name,
   control,
@@ -36,6 +37,7 @@ export const Input: FC<Props & UseControllerProps<InputFields>> = ({
       label={label}
       type={type}
       placeholder={placeholder}
+      defaultValue={defaultValue}
       select={select}
       error={error}
       helperText={helperText}
