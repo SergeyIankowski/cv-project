@@ -6,6 +6,8 @@ import {Input, InputFields} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {useForm} from "react-hook-form";
 import {UploadedUser} from "@/models/UploadedUser.type";
+import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
+import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
 
 interface ProfileFormProps {
   firstName: string;
@@ -22,6 +24,8 @@ export const ProfileForm: FC<ProfileFormProps> = ({
   position,
   onLoadUserInfo,
 }) => {
+  const {departments} = useDepartmentsQuery();
+  const {positions} = usePositionsQuery();
   const {
     control,
     handleSubmit,
@@ -37,6 +41,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
 
   const onSubmit = (data: UploadedUser) => {
     onLoadUserInfo();
+    console.log(data);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -62,15 +67,25 @@ export const ProfileForm: FC<ProfileFormProps> = ({
           label="Departments"
           name="departmentId"
         >
-          <MenuItem value="some">some</MenuItem>
+          {departments.map((department: string) => (
+            <MenuItem key={department} value={department}>
+              {department}
+            </MenuItem>
+          ))}
         </Input>
         <Input
           control={control}
-          type="text"
+          select
           id="position"
           label="Position"
           name="positionId"
-        />
+        >
+          {positions.map((position: string) => (
+            <MenuItem key={position} value={position}>
+              {position}
+            </MenuItem>
+          ))}
+        </Input>
         <Button variant="contained" color="error" size="small" type="submit">
           Update
         </Button>
