@@ -6,10 +6,10 @@ export const convertProfileFormDataToRequestData = (
 ): ProfileRequestData => {
   return {
     profile: {
-      first_name: data.first_name,
-      last_name: data.last_name,
+      first_name: data.first_name || "",
+      last_name: data.last_name || "",
     },
-    departmentId: data.departmentId,
-    positionId: data.positionId,
+    departmentId: data.departmentId || "",
+    positionId: data.positionId || "",
   };
 };

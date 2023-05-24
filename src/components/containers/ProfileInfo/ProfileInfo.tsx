@@ -38,8 +38,8 @@ export const ProfileInfo: FC = () => {
         <ProfileForm
           firstName={data?.user.profile?.first_name}
           lastName={data?.user.profile?.last_name}
-          department={data?.user.department.id}
-          position={data?.user.position.id}
+          department={data?.user?.department?.id}
+          position={data?.user?.position?.id}
           onLoadUserInfo={loadProfileInfo}
         />
       </Grid>

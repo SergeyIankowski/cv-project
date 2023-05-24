@@ -47,6 +47,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
   });
 
   const onSubmit = async (data: UploadedUser) => {
+    console.log(data);
     try {
       const dataForSend = convertProfileFormDataToRequestData(data);
 
