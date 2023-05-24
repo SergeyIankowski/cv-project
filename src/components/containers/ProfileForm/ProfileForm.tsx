@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useParams} from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
 import {Box} from "@mui/material";
 import {InputsContainerStyle} from "./ProfileFormStyle";
@@ -8,6 +9,8 @@ import {useForm} from "react-hook-form";
 import {UploadedUser} from "@/models/UploadedUser.type";
 import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
 import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
+import {useUpdateUser} from "@/graphql/hooks/useUpdateUser";
+import {convertProfileFormDataToRequestData} from "@/utils/convertProfileFormDataToRequestData";
 
 interface ProfileFormProps {
   firstName: string;
@@ -26,10 +29,13 @@ export const ProfileForm: FC<ProfileFormProps> = ({
 }) => {
   const {departments} = useDepartmentsQuery();
   const {positions} = usePositionsQuery();
+  const {updateUser} = useUpdateUser();
+  const {id} = useParams();
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: {isDirty},
+    reset,
   } = useForm<InputFields>({
     defaultValues: {
       first_name: firstName,
@@ -37,11 +43,30 @@ export const ProfileForm: FC<ProfileFormProps> = ({
       departmentId: department,
       positionId: position,
     },
+    resetOptions: {keepDirtyValues: true},
   });
 
-  const onSubmit = (data: UploadedUser) => {
-    onLoadUserInfo();
-    console.log(data);
+  const onSubmit = async (data: UploadedUser) => {
+    try {
+      const dataForSend = convertProfileFormDataToRequestData(data);
+
+      await updateUser({
+        variables: {
+          id: id,
+          user: dataForSend,
+        },
+      });
+
+      onLoadUserInfo();
+    } catch (e) {
+      console.error(e);
+    }
+    reset({
+      first_name: firstName,
+      last_name: lastName,
+      departmentId: department,
+      positionId: position,
+    });
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -49,7 +74,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
         <Input
           control={control}
           type="text"
-          id="firstName"
+          id="first_name"
           label="First Name"
           name="first_name"
         />
@@ -67,9 +92,9 @@ export const ProfileForm: FC<ProfileFormProps> = ({
           label="Departments"
           name="departmentId"
         >
-          {departments.map((department: string) => (
-            <MenuItem key={department} value={department}>
-              {department}
+          {departments.map((department: {name: string; id: number}) => (
+            <MenuItem key={department.name} value={department.id}>
+              {department.name}
             </MenuItem>
           ))}
         </Input>
@@ -80,13 +105,19 @@ export const ProfileForm: FC<ProfileFormProps> = ({
           label="Position"
           name="positionId"
         >
-          {positions.map((position: string) => (
-            <MenuItem key={position} value={position}>
-              {position}
+          {positions.map((position: {name: string; id: number}) => (
+            <MenuItem key={position.name} value={position.id}>
+              {position.name}
             </MenuItem>
           ))}
         </Input>
-        <Button variant="contained" color="error" size="small" type="submit">
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          type="submit"
+          disabled={!isDirty}
+        >
           Update
         </Button>
       </Box>
