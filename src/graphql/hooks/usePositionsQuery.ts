@@ -2,10 +2,6 @@ import {useQuery} from "@apollo/client";
 import {POSITIONS} from "../queries";
 import {useEffect, useState} from "react";
 
-interface Position {
-  name: string;
-}
-
 export const usePositionsQuery = () => {
   const [positions, setPositions] = useState([]);
   const {data, loading, error} = useQuery(POSITIONS);
@@ -13,7 +9,7 @@ export const usePositionsQuery = () => {
   useEffect(() => {
     if (loading) return;
     if (error) return;
-    setPositions(data.departments.map((item: Position) => item.name));
+    setPositions(data.positions);
   }, [loading, error]);
 
   return {positions};
