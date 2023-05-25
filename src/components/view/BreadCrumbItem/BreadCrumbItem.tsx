@@ -9,7 +9,7 @@ export const BreadCrumbItem: FC<BreadCrumb> = ({text, path, icon}) => {
   return (
     <Box sx={BreadCrumbLayout}>
       {icon}
-      <NavLink className={classes.breadCrumbLink} to={path}>
+      <NavLink className={classes.breadCrumbLink} to={path!}>
         {text}
       </NavLink>
     </Box>
