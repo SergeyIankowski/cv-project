@@ -9,6 +9,7 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import {useNavigate} from "react-router-dom";
 import {Pages} from "@/models/Pages";
+import {useAuthToken} from "@/hooks/useAuthToken";
 
 interface UserMenuProps {
   isOpened: boolean;
@@ -22,6 +23,7 @@ export const UserMenu: FC<UserMenuProps> = ({
   anchorElem,
   onCloseMenu,
 }) => {
+  const {removeAuthToken} = useAuthToken();
   const navigate = useNavigate();
   return (
     <Menu
@@ -54,7 +56,7 @@ export const UserMenu: FC<UserMenuProps> = ({
         Settings
       </MenuItem>
       <Divider />
-      <MenuItem onClick={onCloseMenu}>
+      <MenuItem onClick={removeAuthToken}>
         <ListItemIcon>
           <Logout fontSize="medium" />
         </ListItemIcon>
