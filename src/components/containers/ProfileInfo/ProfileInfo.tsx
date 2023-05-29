@@ -22,7 +22,10 @@ export const ProfileInfo: FC = () => {
   return (
     <Grid container direction="column" alignItems="center" sx={{p: "50px 0"}}>
       <Grid container direction="column" gap="30px" sx={{width: "700px"}}>
-        <AvatarProfileInput avatarPath={userData?.user.profile.avatar} />
+        <AvatarProfileInput
+          avatarPath={userData?.user.profile.avatar}
+          onLoadUserInfo={loadProfileInfo}
+        />
         <ProfileUserInfo
           firstName={userData?.user.profile?.first_name}
           lastName={userData?.user.profile?.last_name}
