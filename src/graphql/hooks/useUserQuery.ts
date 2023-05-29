@@ -3,7 +3,9 @@ import {USER} from "../queries";
 import {useCallback} from "react";
 
 export const useUserQuery = () => {
-  const [loadInfo, {called, loading, data}] = useLazyQuery(USER);
+  const [loadInfo, {called, loading, data}] = useLazyQuery(USER, {
+    fetchPolicy: "network-only",
+  });
 
   const loadUserInfo = useCallback((id: string | number) => {
     return loadInfo({variables: {id}});
