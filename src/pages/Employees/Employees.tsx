@@ -1,22 +1,9 @@
 import {FC, useCallback, useEffect, useState} from "react";
-import HomeIcon from "@mui/icons-material/Home";
 import {PageLayout} from "@view/PageLayout/PageLayout";
 import {SearchInput} from "@view/SearchInput/SearchInput";
 import {TableEmployees} from "@containers/TableEmployees/TableEmployees";
-import {BreadCrumbsData} from "@/models/BreadCrumbsData.type";
-import {Pages} from "@/models/Pages";
 import {UserData} from "@/models/UserData.type";
 import {useEmployeesQuery} from "@/graphql/hooks/useEmployeesQuery";
-import {useBreadCrumbs} from "@/hooks/useBreadCrumbs";
-
-// const breadCrumbs: BreadCrumbsData = [
-//   {
-//     text: "Home",
-//     path: Pages.main,
-//     icon: <HomeIcon fontSize="small" />,
-//   },
-//   {text: "Employees", path: Pages.employees},
-// ];
 
 export const Employees: FC = () => {
   const {loading, data} = useEmployeesQuery();
