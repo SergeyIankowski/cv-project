@@ -5,6 +5,7 @@ export const LOGIN_QUERY = gql`
     login(auth: $auth) {
       user {
         id
+        role
       }
       access_token
     }

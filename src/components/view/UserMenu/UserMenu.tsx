@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useNavigate} from "react-router-dom";
 import {userMenuStyle} from "./userMenuStyle";
 import Divider from "@mui/material/Divider";
 import Menu from "@mui/material/Menu";
@@ -7,9 +8,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import {useNavigate} from "react-router-dom";
 import {Pages} from "@/models/Pages";
 import {useAuthToken} from "@/hooks/useAuthToken";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 interface UserMenuProps {
   isOpened: boolean;
@@ -17,7 +18,6 @@ interface UserMenuProps {
   onCloseMenu: () => void;
 }
 
-const MOCK_USER_ID = 123;
 export const UserMenu: FC<UserMenuProps> = ({
   isOpened,
   anchorElem,
@@ -41,7 +41,8 @@ export const UserMenu: FC<UserMenuProps> = ({
     >
       <MenuItem
         onClick={() => {
-          navigate(`${MOCK_USER_ID}/${Pages.info.profile}`);
+          const {id} = AuthInfoService.getAuthInfo();
+          navigate(`${id}/${Pages.info.profile}`);
         }}
       >
         <ListItemIcon>

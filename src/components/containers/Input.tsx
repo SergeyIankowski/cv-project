@@ -20,6 +20,7 @@ export const Input: FC<Props & UseControllerProps<InputFields>> = ({
   select,
   error,
   helperText,
+  required,
 
   name,
   control,
@@ -29,7 +30,7 @@ export const Input: FC<Props & UseControllerProps<InputFields>> = ({
   return (
     <MuiTextField
       size="small"
-      required
+      required={required}
       sx={sx}
       margin={margin}
       id={id}

@@ -3,19 +3,17 @@ import Container from "@mui/material/Container";
 import {MainHeader} from "@/components/view/MainHeader/MainHeader";
 import {PageLayoutStyle, PageStyle} from "@view/MuiPagesStyles";
 import {BreadCrumbs} from "@/components/view/BreadCrumbs/BreadCrumbs";
-import {BreadCrumbsData} from "@/models/BreadCrumbsData.type";
 
 interface PageLayoutProps {
   children: ReactNode;
-  linksData: BreadCrumbsData;
 }
 
-export const PageLayout: FC<PageLayoutProps> = ({children, linksData}) => {
+export const PageLayout: FC<PageLayoutProps> = ({children}) => {
   return (
     <Container sx={PageStyle}>
       <MainHeader />
       <Container component={"main"} sx={PageLayoutStyle} disableGutters={true}>
-        <BreadCrumbs breadCrumbsLinks={linksData} />
+        <BreadCrumbs />
         {children}
       </Container>
     </Container>
