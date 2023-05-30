@@ -9,6 +9,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import {Pages} from "@/models/Pages";
+import {useAuthToken} from "@/hooks/useAuthToken";
 import {AuthInfoService} from "@/services/AuthInfoService";
 
 interface UserMenuProps {
@@ -22,6 +23,7 @@ export const UserMenu: FC<UserMenuProps> = ({
   anchorElem,
   onCloseMenu,
 }) => {
+  const {removeAuthToken} = useAuthToken();
   const navigate = useNavigate();
   return (
     <Menu
@@ -55,7 +57,7 @@ export const UserMenu: FC<UserMenuProps> = ({
         Settings
       </MenuItem>
       <Divider />
-      <MenuItem onClick={onCloseMenu}>
+      <MenuItem onClick={removeAuthToken}>
         <ListItemIcon>
           <Logout fontSize="medium" />
         </ListItemIcon>

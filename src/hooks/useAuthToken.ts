@@ -8,7 +8,7 @@ export const useAuthToken = () => {
   const setAuthToken = (authToken: string) =>
     setCookie(AUTH_TOKEN, authToken, {path: "/"});
 
-  const removeAuthToken = () => removeCookie(AUTH_TOKEN);
+  const removeAuthToken = () => removeCookie(AUTH_TOKEN, {path: "/"});
 
   return {authToken: cookies[AUTH_TOKEN], setAuthToken, removeAuthToken};
 };
