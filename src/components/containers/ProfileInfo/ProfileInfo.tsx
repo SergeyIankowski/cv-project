@@ -14,8 +14,8 @@ export const ProfileInfo: FC = () => {
   const loadProfileInfo = useCallback(() => loadUserInfo(id!), [id]);
 
   useEffect(() => {
-    if (id) loadProfileInfo();
-  }, [id, userData]);
+    if (id && !called) loadProfileInfo();
+  }, [id, userData, called]);
 
   if (!called || !userData) return <ProgressSpinner />;
 
