@@ -7,15 +7,16 @@ import {BreadCrumbsData} from "@/models/BreadCrumbsData.type";
 import {Pages} from "@/models/Pages";
 import {UserData} from "@/models/UserData.type";
 import {useEmployeesQuery} from "@/graphql/hooks/useEmployeesQuery";
+import {useBreadCrumbs} from "@/hooks/useBreadCrumbs";
 
-const breadCrumbs: BreadCrumbsData = [
-  {
-    text: "Home",
-    path: Pages.main,
-    icon: <HomeIcon fontSize="small" />,
-  },
-  {text: "Employees", path: Pages.employees},
-];
+// const breadCrumbs: BreadCrumbsData = [
+//   {
+//     text: "Home",
+//     path: Pages.main,
+//     icon: <HomeIcon fontSize="small" />,
+//   },
+//   {text: "Employees", path: Pages.employees},
+// ];
 
 export const Employees: FC = () => {
   const {loading, data} = useEmployeesQuery();
@@ -38,7 +39,7 @@ export const Employees: FC = () => {
     [data]
   );
   return (
-    <PageLayout linksData={breadCrumbs}>
+    <PageLayout>
       <SearchInput onSearch={handleSearchingUsers} />
       <TableEmployees usersData={searchedUsers} />
     </PageLayout>
