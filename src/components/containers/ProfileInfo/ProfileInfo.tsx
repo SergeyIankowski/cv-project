@@ -5,16 +5,19 @@ import {AvatarProfileInput} from "@containers/AvatarProfileInput/AvatarProfileIn
 import {ProfileUserInfo} from "@view/ProfileUserInfo/ProfileUserInfo";
 import {useUserQuery} from "@/graphql/hooks/useUserQuery";
 import {ProfileForm} from "@containers/ProfileForm/ProfileForm";
+import {ProgressSpinner} from "@/components/view/ProgressSpinner/ProgressSpinner";
 
 export const ProfileInfo: FC = () => {
   const {id} = useParams();
-  const {loadUserInfo, userData} = useUserQuery();
+  const {loadUserInfo, called, userData} = useUserQuery();
 
   const loadProfileInfo = useCallback(() => loadUserInfo(id!), [id]);
 
   useEffect(() => {
     if (id) loadProfileInfo();
   }, [id, userData]);
+
+  if (!called || !userData) return <ProgressSpinner />;
 
   return (
     <Grid container direction="column" alignItems="center" sx={{p: "50px 0"}}>
