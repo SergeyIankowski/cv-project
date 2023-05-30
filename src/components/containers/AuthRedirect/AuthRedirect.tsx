@@ -12,7 +12,7 @@ export const AuthRedirect: FC<AuthRedirectProps> = ({children}) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (authToken) {
-      navigate(Pages.employees);
+      navigate(`${Pages.main.root}${Pages.main.employees}`);
     }
   });
   return <>{children}</>;
