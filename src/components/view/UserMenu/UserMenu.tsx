@@ -25,6 +25,12 @@ export const UserMenu: FC<UserMenuProps> = ({
 }) => {
   const {removeAuthToken} = useAuthToken();
   const navigate = useNavigate();
+
+  const profileClickHandler = () => {
+    const {id} = AuthInfoService.getAuthInfo();
+    const pathToProfilePage = `${id}/${Pages.info.profile}`;
+    navigate(pathToProfilePage);
+  };
   return (
     <Menu
       anchorEl={anchorElem}
@@ -39,12 +45,7 @@ export const UserMenu: FC<UserMenuProps> = ({
       transformOrigin={{horizontal: "right", vertical: "top"}}
       anchorOrigin={{horizontal: "right", vertical: "bottom"}}
     >
-      <MenuItem
-        onClick={() => {
-          const {id} = AuthInfoService.getAuthInfo();
-          navigate(`${id}/${Pages.info.profile}`);
-        }}
-      >
+      <MenuItem onClick={profileClickHandler}>
         <ListItemIcon>
           <AccountCircleIcon fontSize="medium" />
         </ListItemIcon>
