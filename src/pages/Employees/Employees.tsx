@@ -1,5 +1,4 @@
 import {FC, useCallback, useEffect, useState} from "react";
-import {PageLayout} from "@view/PageLayout/PageLayout";
 import {SearchInput} from "@view/SearchInput/SearchInput";
 import {TableEmployees} from "@containers/TableEmployees/TableEmployees";
 import {UserData} from "@/models/UserData.type";
@@ -26,9 +25,9 @@ export const Employees: FC = () => {
     [data]
   );
   return (
-    <PageLayout>
+    <>
       <SearchInput onSearch={handleSearchingUsers} />
       <TableEmployees usersData={searchedUsers} />
-    </PageLayout>
+    </>
   );
 };
