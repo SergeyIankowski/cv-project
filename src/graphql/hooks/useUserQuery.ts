@@ -1,8 +1,18 @@
 import {useLazyQuery} from "@apollo/client";
 import {USER} from "../queries";
+import {useCallback} from "react";
 
 export const useUserQuery = () => {
-  const [loadUserInfo, {called, loading, data}] = useLazyQuery(USER);
+  const [loadInfo, {called, loading, data}] = useLazyQuery(USER);
 
-  return {loadUserInfo, called, data, loading};
+  const loadUserInfo = useCallback((id: string | number) => {
+    return loadInfo({variables: {id}});
+  }, []);
+
+  return {
+    loadUserInfo,
+    userData: data,
+    loadingUserData: loading,
+    calledUserData: called,
+  };
 };
