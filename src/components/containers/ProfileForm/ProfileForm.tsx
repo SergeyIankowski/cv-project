@@ -1,17 +1,17 @@
 import {FC, useEffect} from "react";
 import {useParams} from "react-router-dom";
+import {useForm} from "react-hook-form";
 import MenuItem from "@mui/material/MenuItem";
 import {Box} from "@mui/material";
-import {InputsContainerStyle} from "./ProfileFormStyle";
 import {Input, InputFields} from "@containers/Input";
 import {Button} from "@containers/Button";
-import {useForm} from "react-hook-form";
 import {UploadedUser} from "@/models/UploadedUser.type";
 import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
 import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
 import {useUpdateUser} from "@/graphql/hooks/useUpdateUser";
 import {convertProfileFormDataToRequestData} from "@/utils/convertProfileFormDataToRequestData";
 import {useUserData} from "@/hooks/useUserData";
+import {InputsContainerStyle} from "./ProfileFormStyle";
 
 export const ProfileForm: FC = () => {
   const {departments} = useDepartmentsQuery();
@@ -28,21 +28,23 @@ export const ProfileForm: FC = () => {
     defaultValues: {
       first_name: userData.profile.first_name,
       last_name: userData.profile.last_name,
-      departmentId: userData.department?.name,
-      positionId: userData.position?.name,
+      departmentId: userData.department?.id,
+      positionId: userData.position?.id,
     },
+    resetOptions: {keepDirtyValues: true},
   });
+  const resetFields = () =>
+    reset({
+      first_name: userData.profile.first_name,
+      last_name: userData.profile.last_name,
+      departmentId: userData.department.id,
+      positionId: userData.position.id,
+    });
   useEffect(() => {
-    if (called && !loadingUserData) {
-      reset({
-        first_name: userData.profile.first_name,
-        last_name: userData.profile.last_name,
-        departmentId: userData.department?.name,
-        positionId: userData.position?.name,
-      });
-      console.log("is reseted");
+    if (called && !loadingUserData && userData) {
+      resetFields();
     }
-  }, [called, loadingUserData]);
+  }, [called, loadingUserData, userData, positions, departments]);
 
   const onSubmit = async (data: UploadedUser) => {
     try {
@@ -59,12 +61,7 @@ export const ProfileForm: FC = () => {
     } catch (e) {
       console.error(e);
     }
-    reset({
-      first_name: userData.profile.first_name,
-      last_name: userData.profile.last_name,
-      departmentId: userData.department?.name,
-      positionId: userData.position?.name,
-    });
+    resetFields();
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
