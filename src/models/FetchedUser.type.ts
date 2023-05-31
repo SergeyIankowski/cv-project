@@ -7,7 +7,13 @@ export interface FetchedUser {
     last_name: string;
   };
   email: string;
-  department_name: string;
-  position_name: string;
+  department: {
+    id: string;
+    name: string;
+  };
+  position: {
+    id: string;
+    name: string;
+  };
   role: "employee" | "admin";
 }
