@@ -1,4 +1,5 @@
-import {FC} from "react";
+import {ChangeEvent, FC} from "react";
+import {useParams} from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -7,8 +8,10 @@ import Grid from "@mui/material/Grid";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import {AvatarStyle, UploadHead} from "./AvatarProfileStyle";
 import Typography from "@mui/material/Typography";
+import {convertAvatarToRequestData} from "@/utils/convertAvatarToRequestData";
+import {useUploadAvatar} from "@/graphql/hooks/useUploadAvatar";
+import {AvatarData} from "@/models/AvatarData.type";
 import {useDeleteAvatar} from "@/graphql/hooks/useDeleteAvatar";
-import {useParams} from "react-router-dom";
 
 interface AvatarProfileInputProps {
   avatarPath: string;
@@ -20,11 +23,20 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
   onLoadUserInfo,
 }) => {
   const {id} = useParams();
+  const {uploadAvatar} = useUploadAvatar();
   const {deleteAvatar} = useDeleteAvatar();
 
+  const uploadAvatarData = async (avatarData: AvatarData) => {
+    await uploadAvatar(id!, avatarData);
+    onLoadUserInfo();
+  };
   const deleteAvatarHandler = async () => {
     await deleteAvatar(id!);
     onLoadUserInfo();
+  };
+  const changeHandler = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && id) convertAvatarToRequestData(file, uploadAvatarData);
   };
   return (
     <Grid container justifyContent="center" gap="40px">
@@ -58,7 +70,11 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
             <Typography variant="subtitle1" sx={{color: "grey"}}>
               png, jpg or gif no more than 0.5MB
             </Typography>
-            <input type="file" style={{visibility: "hidden"}} />
+            <input
+              type="file"
+              style={{visibility: "hidden"}}
+              onChange={changeHandler}
+            />
           </Grid>
         </label>
       </Box>
