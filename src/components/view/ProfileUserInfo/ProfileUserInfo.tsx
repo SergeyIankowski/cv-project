@@ -2,6 +2,7 @@ import {FC, useEffect, useState} from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import {useUserData} from "@/hooks/useUserData";
+import {useParams} from "react-router-dom";
 
 const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
   weekday: "long",
@@ -12,7 +13,8 @@ const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
 
 export const ProfileUserInfo: FC = () => {
   const [date, setDate] = useState<Date>(new Date());
-  const {userData} = useUserData();
+  const {id} = useParams();
+  const {userData} = useUserData(id!);
 
   useEffect(() => {
     const mountedDate = new Date(Number(userData.created_at));

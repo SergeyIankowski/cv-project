@@ -16,9 +16,9 @@ import {InputsContainerStyle} from "./ProfileFormStyle";
 export const ProfileForm: FC = () => {
   const {departments} = useDepartmentsQuery();
   const {positions} = usePositionsQuery();
-  const {loadProfileInfo, userData, called, loadingUserData} = useUserData();
-  const {updateUser} = useUpdateUser();
   const {id} = useParams();
+  const {loadProfileInfo, userData, called, loadingUserData} = useUserData(id!);
+  const {updateUser} = useUpdateUser();
   const {
     control,
     handleSubmit,

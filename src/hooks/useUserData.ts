@@ -23,8 +23,7 @@ const emptyUser: FetchedUser = {
   role: "employee",
 };
 
-export const useUserData = () => {
-  const {id} = useParams();
+export const useUserData = (id: string | number) => {
   const {loadUserInfo, called, userData, loadingUserData} = useUserQuery();
   const loadProfileInfo = useCallback(
     () => loadUserInfo(id!),

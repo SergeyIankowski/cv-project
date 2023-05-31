@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useParams} from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import {AvatarProfileInput} from "@containers/AvatarProfileInput/AvatarProfileInput";
 import {ProfileUserInfo} from "@view/ProfileUserInfo/ProfileUserInfo";
@@ -7,7 +8,8 @@ import {ProgressSpinner} from "@/components/view/ProgressSpinner/ProgressSpinner
 import {useUserData} from "@/hooks/useUserData";
 
 export const ProfileInfo: FC = () => {
-  const {loadProfileInfo, called, userData} = useUserData();
+  const {id} = useParams();
+  const {loadProfileInfo, called, userData} = useUserData(id!);
 
   if (!called || !userData) return <ProgressSpinner />;
 
