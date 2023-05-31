@@ -10,7 +10,7 @@ import {createBreadCrumb} from "@/utils/createBreadCrumb";
 const rootBreadCrumbs: BreadCrumbsData = [
   {
     text: "Home",
-    path: `${Pages.main.root}/${Pages.main.employees}`,
+    path: `${Pages.main.root}${Pages.main.employees}`,
     icon: <HomeIcon fontSize="small" />,
   },
 ];
