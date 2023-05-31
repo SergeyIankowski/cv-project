@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import {convertAvatarToRequestData} from "@/utils/convertAvatarToRequestData";
 import {useUploadAvatar} from "@/graphql/hooks/useUploadAvatar";
 import {AvatarData} from "@/models/AvatarData.type";
+import {useDeleteAvatar} from "@/graphql/hooks/useDeleteAvatar";
 
 interface AvatarProfileInputProps {
   avatarPath: string;
@@ -21,10 +22,16 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
   avatarPath,
   onLoadUserInfo,
 }) => {
-  const {uploadAvatar} = useUploadAvatar();
   const {id} = useParams();
+  const {uploadAvatar} = useUploadAvatar();
+  const {deleteAvatar} = useDeleteAvatar();
+
   const uploadAvatarData = async (avatarData: AvatarData) => {
     await uploadAvatar(id!, avatarData);
+    onLoadUserInfo();
+  };
+  const deleteAvatarHandler = async () => {
+    await deleteAvatar(id!);
     onLoadUserInfo();
   };
   const changeHandler = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,16 +42,19 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
     <Grid container justifyContent="center" gap="40px">
       <Box>
         <Box sx={{position: "relative", width: "130px"}}>
-          <IconButton
-            sx={{
-              position: "absolute",
-              top: 0,
-              right: 0,
-              transform: "translate(50%, -50%)",
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
+          {
+            <IconButton
+              sx={{
+                position: "absolute",
+                top: 0,
+                right: 0,
+                transform: "translate(50%, -50%)",
+              }}
+              onClick={deleteAvatarHandler}
+            >
+              <CloseIcon />
+            </IconButton>
+          }
           <Avatar src={avatarPath} sx={AvatarStyle} />
         </Box>
       </Box>
