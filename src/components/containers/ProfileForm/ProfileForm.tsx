@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
 import {Box} from "@mui/material";
@@ -11,24 +11,12 @@ import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
 import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
 import {useUpdateUser} from "@/graphql/hooks/useUpdateUser";
 import {convertProfileFormDataToRequestData} from "@/utils/convertProfileFormDataToRequestData";
+import {useUserData} from "@/hooks/useUserData";
 
-interface ProfileFormProps {
-  firstName: string;
-  lastName: string;
-  department: string;
-  position: string;
-  onLoadUserInfo: () => void;
-}
-
-export const ProfileForm: FC<ProfileFormProps> = ({
-  firstName,
-  lastName,
-  department,
-  position,
-  onLoadUserInfo,
-}) => {
+export const ProfileForm: FC = () => {
   const {departments} = useDepartmentsQuery();
   const {positions} = usePositionsQuery();
+  const {loadProfileInfo, userData, called, loadingUserData} = useUserData();
   const {updateUser} = useUpdateUser();
   const {id} = useParams();
   const {
@@ -38,16 +26,25 @@ export const ProfileForm: FC<ProfileFormProps> = ({
     reset,
   } = useForm<InputFields>({
     defaultValues: {
-      first_name: firstName,
-      last_name: lastName,
-      departmentId: department,
-      positionId: position,
+      first_name: userData.profile.first_name,
+      last_name: userData.profile.last_name,
+      departmentId: userData.department?.name,
+      positionId: userData.position?.name,
     },
-    resetOptions: {keepDirtyValues: true},
   });
+  useEffect(() => {
+    if (called && !loadingUserData) {
+      reset({
+        first_name: userData.profile.first_name,
+        last_name: userData.profile.last_name,
+        departmentId: userData.department?.name,
+        positionId: userData.position?.name,
+      });
+      console.log("is reseted");
+    }
+  }, [called, loadingUserData]);
 
   const onSubmit = async (data: UploadedUser) => {
-    console.log(data);
     try {
       const dataForSend = convertProfileFormDataToRequestData(data);
 
@@ -58,15 +55,15 @@ export const ProfileForm: FC<ProfileFormProps> = ({
         },
       });
 
-      onLoadUserInfo();
+      loadProfileInfo;
     } catch (e) {
       console.error(e);
     }
     reset({
-      first_name: firstName,
-      last_name: lastName,
-      departmentId: department,
-      positionId: position,
+      first_name: userData.profile.first_name,
+      last_name: userData.profile.last_name,
+      departmentId: userData.department?.name,
+      positionId: userData.position?.name,
     });
   };
   return (
