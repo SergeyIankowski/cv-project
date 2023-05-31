@@ -9,8 +9,8 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import {Pages} from "@/models/Pages";
-import {useAuthToken} from "@/hooks/useAuthToken";
 import {AuthInfoService} from "@/services/AuthInfoService";
+import {useAuthToken} from "@/hooks/useAuthToken";
 
 interface UserMenuProps {
   isOpened: boolean;
