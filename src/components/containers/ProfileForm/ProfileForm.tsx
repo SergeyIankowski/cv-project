@@ -37,8 +37,8 @@ export const ProfileForm: FC = () => {
     reset({
       first_name: userData.profile.first_name,
       last_name: userData.profile.last_name,
-      departmentId: userData.department.id,
-      positionId: userData.position.id,
+      departmentId: userData.department?.id,
+      positionId: userData.position?.id,
     });
   useEffect(() => {
     if (called && !loadingUserData && userData) {
