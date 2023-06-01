@@ -1,9 +1,11 @@
+const employeesPageName = "employees";
 export const Pages = {
-  main: "/",
-  employees: "/employees",
-  notFound: "/*",
+  main: {
+    root: "/",
+    employees: employeesPageName,
+  },
   info: {
-    root: `employees/:id`,
+    root: `/${employeesPageName}/:id`,
     profile: "profile",
     skills: "skills",
     languages: "languages",
@@ -14,4 +16,5 @@ export const Pages = {
     login: "login",
     signup: "signup",
   },
+  notFound: "/*",
 };

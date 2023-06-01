@@ -8,20 +8,25 @@ import {SignInForm} from "@containers/SignInForm/SignInForm";
 import {Authentication} from "@/pages/Authentication/Authentication";
 import {SignUpForm} from "@containers/SignUpForm/SignUpForm";
 import {AuthRedirect} from "@containers/AuthRedirect/AuthRedirect";
+import {Main} from "./pages/Main/Main";
 
 export const AppRouter = () => {
+  const pathToEmployees = `${Pages.main.root}${Pages.main.employees}`;
   return (
     <Routes>
-      <Route path={Pages.main} element={<Navigate to={Pages.employees} />} />
-      <Route path={Pages.employees} element={<Employees />} />
       <Route path={Pages.notFound} element={<Page404 />} />
+      <Route path={Pages.main.root} element={<Main />}>
+        <Route index element={<Navigate to={pathToEmployees} />} />
+        <Route path={Pages.main.employees} element={<Employees />} />
+      </Route>
       <Route path={Pages.info.root} element={<Profile />}>
-        <Route index element={<Navigate to={Pages.info.profile} />}></Route>
+        <Route index element={<Navigate to={Pages.info.profile} />} />
         <Route path={Pages.info.profile} element={<ProfileInfo />} />
         <Route path={Pages.info.skills} element={<></>} />
         <Route path={Pages.info.languages} element={<></>} />
         <Route path={Pages.info.cvs} element={<></>} />
       </Route>
+      <Route />
       <Route path={Pages.auth.root} element={<Authentication />}>
         <Route index element={<Navigate to={Pages.auth.login} />} />
         <Route
