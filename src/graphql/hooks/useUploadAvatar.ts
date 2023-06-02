@@ -5,7 +5,9 @@ import {AvatarData} from "@/models/AvatarData.type";
 import {getIdForAvatarChanging} from "@/utils/getIdForAvatarChanging";
 
 export const useUploadAvatar = () => {
-  const [uploadAvatar, {data, loading, error}] = useMutation(UPLOAD_AVATAR);
+  const [uploadAvatar, {data, loading, error}] = useMutation(UPLOAD_AVATAR, {
+    fetchPolicy: "network-only",
+  });
 
   useEffect(() => {
     if (error) console.error(`Error in useUploadAvatar ${error.message}`);

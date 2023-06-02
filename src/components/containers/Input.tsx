@@ -43,6 +43,7 @@ export const Input: FC<Props & UseControllerProps<InputFields>> = ({
       onChange={field.onChange}
       onBlur={field.onBlur}
       value={field.value}
+      defaultValue={field.value}
       name={field.name}
       ref={field.ref}
     >

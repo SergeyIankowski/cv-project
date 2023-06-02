@@ -13,9 +13,11 @@ export const USER = gql`
       email
       department {
         id
+        name
       }
       position {
         id
+        name
       }
       role
     }

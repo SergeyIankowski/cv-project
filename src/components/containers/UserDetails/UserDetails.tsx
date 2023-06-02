@@ -1,16 +1,18 @@
+import {FC, MouseEvent, useState} from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import {FC, MouseEvent, useState} from "react";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import {UserMenu} from "@view/UserMenu/UserMenu";
+import {avatarStyle} from "./UserDetailsStyle";
 
 interface UserDetailsProps {
   userName: string;
+  avatar: string;
 }
 
-export const UserDetails: FC<UserDetailsProps> = ({userName}) => {
+export const UserDetails: FC<UserDetailsProps> = ({userName, avatar}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -40,9 +42,11 @@ export const UserDetails: FC<UserDetailsProps> = ({userName}) => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{width: 42, height: 42}}>
-              {userName[0].toUpperCase()}
-            </Avatar>
+            {avatar ? (
+              <Avatar sx={avatarStyle} src={avatar} />
+            ) : (
+              <Avatar sx={avatarStyle}>{userName[0].toUpperCase()}</Avatar>
+            )}
           </IconButton>
         </Tooltip>
       </Box>
