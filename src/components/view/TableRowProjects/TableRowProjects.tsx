@@ -10,13 +10,13 @@ interface TableRowProjectsProps {
 export const TableRowProjects: FC<TableRowProjectsProps> = ({row}) => {
   return (
     <TableRow>
-      <TableCell align="right">{row.name}</TableCell>
-      <TableCell align="right">{row.internalName}</TableCell>
-      <TableCell align="right">{row.domain}</TableCell>
-      <TableCell align="right">{row.startDate}</TableCell>
-      <TableCell align="right">{row.endDate}</TableCell>
-      <TableCell align="right">{row.teamSize}</TableCell>
-      <TableCell align="right"></TableCell>
+      <TableCell align="left">{row.name}</TableCell>
+      <TableCell align="left">{row.internalName}</TableCell>
+      <TableCell align="left">{row.domain}</TableCell>
+      <TableCell align="left">{row.startDate}</TableCell>
+      <TableCell align="left">{row.endDate}</TableCell>
+      <TableCell align="left">{row.teamSize}</TableCell>
+      <TableCell align="left"></TableCell>
     </TableRow>
   );
 };
