@@ -8,7 +8,7 @@ export const colors = {
 export const PageStyle = {
   display: "flex",
   flexDirection: "column",
-  height: "100vh",
+  minHeight: "100vh",
   boxSizing: "border-box",
   background: "#e7e7e7",
   "@media(min-width: 320px)": {
@@ -25,12 +25,12 @@ export const HeaderStyle = {
   backgroundColor: "#3b3b4f",
   color: "#eeeef0",
   gap: "5px",
-  padding: "0 50px 0px",
 };
 export const MainHeaderStyle = {
-  ...HeaderStyle,
+  display: "flex",
   alignItems: "center",
-  justifyContent: "space-around",
+  justifyContent: "space-between",
+  padding: "0",
   [`@media(max-width: ${breakpoints.smallDesktop})`]: {
     justifyContent: "space-between",
   },

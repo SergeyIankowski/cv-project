@@ -12,7 +12,12 @@ export const PageLayout: FC<PageLayoutProps> = ({children}) => {
   return (
     <Container sx={PageStyle}>
       <MainHeader />
-      <Container component={"main"} sx={PageLayoutStyle} disableGutters={true}>
+      <Container
+        component={"main"}
+        sx={PageLayoutStyle}
+        disableGutters={true}
+        maxWidth="xl"
+      >
         <BreadCrumbs />
         {children}
       </Container>
