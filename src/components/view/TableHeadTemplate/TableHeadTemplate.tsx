@@ -1,4 +1,4 @@
-import {FC, MouseEvent} from "react";
+import {MouseEvent} from "react";
 import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
 import TableCell from "@mui/material/TableCell";
@@ -6,34 +6,32 @@ import TableSortLabel from "@mui/material/TableSortLabel";
 import Box from "@mui/material/Box";
 import {Order} from "@/models/Order.type";
 import {HeadCell} from "@/models/HeadCell.type";
-import {UserData} from "@/models/UserData.type";
 
-interface TableHeadTemplateProps {
-  headCells: HeadCell<UserData>[];
+interface TableHeadTemplateProps<T> {
+  headCells: HeadCell<T>[];
   order: Order;
   orderBy: string;
   hasControlsColumn: boolean;
-  onRequestSort: (event: MouseEvent, newOrderBy: keyof UserData) => void;
+  onRequestSort: (event: MouseEvent, newOrderBy: keyof T) => void;
 }
 
-export const TableHeadTemplate: FC<TableHeadTemplateProps> = ({
+export const TableHeadTemplate = <T,>({
   headCells,
   order,
   orderBy,
   hasControlsColumn,
   onRequestSort,
-}) => {
-  const createSortHandler =
-    (newOrderBy: keyof UserData) => (event: MouseEvent) => {
-      onRequestSort(event, newOrderBy);
-    };
+}: TableHeadTemplateProps<T>) => {
+  const createSortHandler = (newOrderBy: keyof T) => (event: MouseEvent) => {
+    onRequestSort(event, newOrderBy);
+  };
   return (
     <TableHead>
       <TableRow>
         {headCells.map(headCell =>
           headCell.isSortable ? (
             <TableCell
-              key={headCell.id}
+              key={headCell.id as string}
               padding={headCell.disablePadding ? "none" : "normal"}
               sortDirection={orderBy === headCell.id ? order : false}
               align="right"
@@ -48,7 +46,7 @@ export const TableHeadTemplate: FC<TableHeadTemplateProps> = ({
               </TableSortLabel>
             </TableCell>
           ) : (
-            <TableCell key={headCell.id}>
+            <TableCell key={headCell.id as string}>
               <Box sx={{width: "45px"}}>{headCell.content}</Box>
             </TableCell>
           )
