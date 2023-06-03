@@ -9,6 +9,7 @@ import {Authentication} from "@/pages/Authentication/Authentication";
 import {SignUpForm} from "@containers/SignUpForm/SignUpForm";
 import {AuthRedirect} from "@containers/AuthRedirect/AuthRedirect";
 import {Main} from "./pages/Main/Main";
+import {Projects} from "./pages/Projects/Projects";
 
 export const AppRouter = () => {
   const pathToEmployees = `${Pages.main.root}${Pages.main.employees}`;
@@ -18,6 +19,7 @@ export const AppRouter = () => {
       <Route path={Pages.main.root} element={<Main />}>
         <Route index element={<Navigate to={pathToEmployees} />} />
         <Route path={Pages.main.employees} element={<Employees />} />
+        <Route path={Pages.main.projects} element={<Projects />} />
       </Route>
       <Route path={Pages.info.root} element={<Profile />}>
         <Route index element={<Navigate to={Pages.info.profile} />} />
