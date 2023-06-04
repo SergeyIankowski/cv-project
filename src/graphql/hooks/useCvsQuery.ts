@@ -10,7 +10,7 @@ const convertQueryData: (data: any) => CvData[] = data => {
       id: cv.id,
       name: cv.name,
       description: cv.description,
-      userEmail: cv.user?.email && "",
+      userEmail: cv.user?.email || "",
       isTemplate: cv.is_template,
     };
   });

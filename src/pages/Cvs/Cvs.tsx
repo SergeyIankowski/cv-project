@@ -4,7 +4,6 @@ import {useCvsQuery} from "@/graphql/hooks/useCvsQuery";
 
 export const Cvs: FC = () => {
   const {data} = useCvsQuery();
-  console.log(data);
 
   return <TableCvs cvsData={data} />;
 };
