@@ -18,10 +18,10 @@ export const TableRowCvs: FC<TableRowCvsProps> = ({row}) => {
   );
   return (
     <TableRow>
-      <TableCell align="left">{checkIcon}</TableCell>
-      <TableCell align="left">{row.name}</TableCell>
-      <TableCell align="left">{row.description}</TableCell>
-      <TableCell align="left">{row.userEmail}</TableCell>
+      <TableCell align="right">{checkIcon}</TableCell>
+      <TableCell align="right">{row.name}</TableCell>
+      <TableCell align="right">{row.description}</TableCell>
+      <TableCell align="right">{row.userEmail}</TableCell>
       <TableCell align="right">
         <CvsRowControlMenu />
       </TableCell>
