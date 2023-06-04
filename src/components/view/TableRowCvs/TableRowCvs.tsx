@@ -22,7 +22,7 @@ export const TableRowCvs: FC<TableRowCvsProps> = ({row}) => {
       <TableCell align="left">{row.name}</TableCell>
       <TableCell align="left">{row.description}</TableCell>
       <TableCell align="left">{row.userEmail}</TableCell>
-      <TableCell align="left">
+      <TableCell align="right">
         <CvsRowControlMenu />
       </TableCell>
     </TableRow>
