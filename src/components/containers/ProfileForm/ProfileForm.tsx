@@ -12,6 +12,7 @@ import {useUpdateUser} from "@/graphql/hooks/useUpdateUser";
 import {convertProfileFormDataToRequestData} from "@/utils/convertProfileFormDataToRequestData";
 import {useUserData} from "@/hooks/useUserData";
 import {InputsContainerStyle} from "./ProfileFormStyle";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 export const ProfileForm: FC = () => {
   const {departments} = useDepartmentsQuery();
@@ -106,15 +107,19 @@ export const ProfileForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
-        <Button
-          variant="contained"
-          color="error"
-          size="small"
-          type="submit"
-          disabled={!isDirty}
-        >
-          Update
-        </Button>
+        {id === AuthInfoService.getAuthInfo().id ? (
+          <Button
+            variant="contained"
+            color="error"
+            size="small"
+            type="submit"
+            disabled={!isDirty}
+          >
+            Update
+          </Button>
+        ) : (
+          ""
+        )}
       </Box>
     </form>
   );
