@@ -34,7 +34,7 @@ export const TableHeadTemplate = <T,>({
               key={headCell.id as string}
               padding={headCell.disablePadding ? "none" : "normal"}
               sortDirection={orderBy === headCell.id ? order : false}
-              align="center"
+              align="right"
               variant="head"
               style={{fontWeight: "bold"}}
             >
