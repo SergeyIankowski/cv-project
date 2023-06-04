@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 const convertQueryData: (data: any) => UserData[] = data => {
   return data.map((user: any) => {
     return {
+      id: user.id,
       imgPath: user.profile.avatar,
       firstName: user.profile.first_name,
       lastName: user.profile.last_name,
