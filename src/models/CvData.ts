@@ -3,5 +3,5 @@ export interface CvData {
   name: string;
   description: string;
   userEmail: string;
-  isTemplate: string;
+  isTemplate: boolean;
 }
