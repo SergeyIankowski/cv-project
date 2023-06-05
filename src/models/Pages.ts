@@ -4,6 +4,7 @@ export const Pages = {
     root: "/",
     employees: employeesPageName,
     projects: "projects",
+    cvs: "cvs",
   },
   info: {
     root: `/${employeesPageName}/:id`,
