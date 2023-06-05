@@ -11,11 +11,9 @@ interface TableRowLanguagesProps {
 export const TableRowLanguages: FC<TableRowLanguagesProps> = ({row}) => {
   return (
     <TableRow>
-      <TableCell></TableCell>
       <TableCell align="right">{row.name}</TableCell>
       <TableCell align="right">{row.nativeName}</TableCell>
       <TableCell align="right">{row.iso2}</TableCell>
-
       <TableCell align="right">
         <LanguagesRowControlMenu id={row.id} />
       </TableCell>
