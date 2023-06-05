@@ -22,7 +22,7 @@ export const TableRowEmployees: FC<TableRowTemplateProps> = ({row}) => {
       <TableCell align="right">{row.department}</TableCell>
       <TableCell align="right">{row.position}</TableCell>
       <TableCell align="right">
-        <EmployeesRowControlMenu />
+        <EmployeesRowControlMenu id={row.id} />
       </TableCell>
     </TableRow>
   );
