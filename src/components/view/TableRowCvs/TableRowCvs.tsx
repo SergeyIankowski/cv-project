@@ -4,7 +4,7 @@ import TableCell from "@mui/material/TableCell";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import {CvData} from "@/models/CvData";
-import {CvsRowControlMenu} from "../CvsRowControlMenu/CvsRowControlMenu";
+import {CvsRowControlMenu} from "@view/CvsRowControlMenu/CvsRowControlMenu";
 
 interface TableRowCvsProps {
   row: CvData;
@@ -18,7 +18,7 @@ export const TableRowCvs: FC<TableRowCvsProps> = ({row}) => {
   );
   return (
     <TableRow>
-      <TableCell align="right">{checkIcon}</TableCell>
+      <TableCell align="left">{checkIcon}</TableCell>
       <TableCell align="right">{row.name}</TableCell>
       <TableCell align="right">{row.description}</TableCell>
       <TableCell align="right">{row.userEmail}</TableCell>
