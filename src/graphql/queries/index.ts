@@ -7,3 +7,4 @@ import {PROJECTS} from "./projects";
 import {CVS} from "./cvs";
 
 export {LOGIN_QUERY, USERS, USER, DEPARTMENTS, POSITIONS, PROJECTS, CVS};
+
