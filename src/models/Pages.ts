@@ -3,6 +3,7 @@ export const Pages = {
   main: {
     root: "/",
     employees: employeesPageName,
+    projects: "projects",
   },
   info: {
     root: `/${employeesPageName}/:id`,
