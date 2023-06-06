@@ -8,6 +8,7 @@ import {
   from,
 } from "@apollo/client";
 import {onError} from "@apollo/client/link/error";
+import toast, {Toaster} from "react-hot-toast";
 import {useAuthToken} from "@/hooks/useAuthToken";
 import {Pages} from "@/models/Pages";
 
@@ -17,6 +18,9 @@ interface ApolloAppProviderProps {
 
 export const ApolloAppProvider: FC<ApolloAppProviderProps> = ({children}) => {
   const {authToken, removeAuthToken} = useAuthToken();
+  const notify = (message: string) => {
+    toast.error(message);
+  };
 
   const httpLink = new HttpLink({
     uri: "https://cv-project-js.inno.ws/api/graphql",
@@ -38,7 +42,8 @@ export const ApolloAppProvider: FC<ApolloAppProviderProps> = ({children}) => {
 
   const errorLink = onError(({graphQLErrors, networkError}) => {
     if (graphQLErrors)
-      graphQLErrors.forEach(({extensions}) => {
+      graphQLErrors.forEach(({message, extensions}) => {
+        notify(message);
         if (extensions.code === "UNAUTHENTICATED" && authToken) {
           removeAuthToken();
         }
@@ -57,5 +62,10 @@ export const ApolloAppProvider: FC<ApolloAppProviderProps> = ({children}) => {
     cache,
   });
 
-  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+  return (
+    <ApolloProvider client={client}>
+      <Toaster position="top-left" />
+      {children}
+    </ApolloProvider>
+  );
 };
