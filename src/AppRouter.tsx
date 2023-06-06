@@ -33,24 +33,17 @@ export const AppRouter = () => {
         <Route path={Pages.info.cvs} element={<></>} />
       </Route>
       <Route />
-      <Route path={Pages.auth.root} element={<Authentication />}>
+      <Route
+        path={Pages.auth.root}
+        element={
+          <AuthRedirect>
+            <Authentication />
+          </AuthRedirect>
+        }
+      >
         <Route index element={<Navigate to={Pages.auth.login} />} />
-        <Route
-          path={Pages.auth.login}
-          element={
-            <AuthRedirect>
-              <SignInForm />
-            </AuthRedirect>
-          }
-        />
-        <Route
-          path={Pages.auth.signup}
-          element={
-            <AuthRedirect>
-              <SignUpForm />
-            </AuthRedirect>
-          }
-        />
+        <Route path={Pages.auth.login} element={<SignInForm />} />
+        <Route path={Pages.auth.signup} element={<SignUpForm />} />
       </Route>
     </Routes>
   );
