@@ -8,7 +8,7 @@ import {
   from,
 } from "@apollo/client";
 import {onError} from "@apollo/client/link/error";
-import toast, {Toaster} from "react-hot-toast";
+import toast from "react-hot-toast";
 import {useAuthToken} from "@/hooks/useAuthToken";
 import {Pages} from "@/models/Pages";
 
@@ -62,10 +62,5 @@ export const ApolloAppProvider: FC<ApolloAppProviderProps> = ({children}) => {
     cache,
   });
 
-  return (
-    <ApolloProvider client={client}>
-      <Toaster position="top-left" />
-      {children}
-    </ApolloProvider>
-  );
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
 };
