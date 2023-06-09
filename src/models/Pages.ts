@@ -5,6 +5,7 @@ export const Pages = {
     employees: employeesPageName,
     projects: "projects",
     cvs: "cvs",
+    languages: "languages",
   },
   info: {
     root: `/${employeesPageName}/:id`,
