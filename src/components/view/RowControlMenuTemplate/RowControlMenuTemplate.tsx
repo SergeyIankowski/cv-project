@@ -55,7 +55,7 @@ export const RowControlMenuTemplate: FC<RowControlMenuTemplateProps> = ({
               handleClose();
             }}
           >
-            <ListItemIcon>{control.icon}</ListItemIcon>
+            {control.icon ? <ListItemIcon>{control.icon}</ListItemIcon> : ""}
             {control.text}
           </MenuItem>
         ))}
