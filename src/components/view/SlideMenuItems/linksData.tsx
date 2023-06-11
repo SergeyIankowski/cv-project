@@ -25,6 +25,7 @@ export const linksData: LinksData[] = [
   {
     linkName: "Departments",
     iconNode: <AccountTreeIcon />,
+    pathToRouting: `${Pages.main.root}${Pages.main.departments}`,
   },
   {
     linkName: "Positions",
