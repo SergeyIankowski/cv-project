@@ -5,7 +5,9 @@ export const Pages = {
     employees: employeesPageName,
     projects: "projects",
     cvs: "cvs",
+    departments: "departments",
     positions: "positions",
+    skills: "skills",
     languages: "languages",
   },
   info: {

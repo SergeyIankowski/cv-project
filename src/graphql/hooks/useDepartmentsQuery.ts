@@ -12,5 +12,5 @@ export const useDepartmentsQuery = () => {
     setDepartments(data.departments);
   }, [loading, error]);
 
-  return {departments};
+  return {departments, loading};
 };

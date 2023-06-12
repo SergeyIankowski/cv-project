@@ -2,6 +2,9 @@ import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import GTranslateIcon from "@mui/icons-material/GTranslate";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
 import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import RememberMeIcon from "@mui/icons-material/RememberMe";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import {LinksData} from "@/models/LinksData.type";
 import {Pages} from "@/models/Pages";
 
@@ -18,12 +21,13 @@ export const linksData: LinksData[] = [
   },
   {
     linkName: "CV's",
-    iconNode: null,
+    iconNode: <RememberMeIcon />,
     pathToRouting: `${Pages.main.root}${Pages.main.cvs}`,
   },
   {
     linkName: "Departments",
-    iconNode: null,
+    iconNode: <AccountTreeIcon />,
+    pathToRouting: `${Pages.main.root}${Pages.main.departments}`,
   },
   {
     linkName: "Positions",
@@ -32,7 +36,8 @@ export const linksData: LinksData[] = [
   },
   {
     linkName: "Skills",
-    iconNode: null,
+    iconNode: <PsychologyIcon />,
+    pathToRouting: `${Pages.main.root}${Pages.main.skills}`,
   },
   {
     linkName: "Languages",
