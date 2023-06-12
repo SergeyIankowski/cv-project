@@ -1,6 +1,7 @@
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import GTranslateIcon from "@mui/icons-material/GTranslate";
 import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
+import PsychologyIcon from "@mui/icons-material/Psychology";
 import RememberMeIcon from "@mui/icons-material/RememberMe";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import {LinksData} from "@/models/LinksData.type";
@@ -33,7 +34,8 @@ export const linksData: LinksData[] = [
   },
   {
     linkName: "Skills",
-    iconNode: null,
+    iconNode: <PsychologyIcon />,
+    pathToRouting: `${Pages.main.root}${Pages.main.skills}`,
   },
   {
     linkName: "Languages",

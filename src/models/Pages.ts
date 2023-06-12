@@ -6,6 +6,7 @@ export const Pages = {
     projects: "projects",
     cvs: "cvs",
     departments: "departments",
+    skills: "skills",
     languages: "languages",
   },
   info: {

@@ -11,6 +11,7 @@ import {AuthRedirect} from "@containers/AuthRedirect/AuthRedirect";
 import {Main} from "@/pages/Main/Main";
 import {Projects} from "@/pages/Projects/Projects";
 import {Cvs} from "@/pages/Cvs/Cvs";
+import {Skills} from "./pages/Skills";
 import {Languages} from "@/pages/Languages/Languages";
 import {Departments} from "./pages/Departments";
 
@@ -25,6 +26,7 @@ export const AppRouter = () => {
         <Route path={Pages.main.projects} element={<Projects />} />
         <Route path={Pages.main.cvs} element={<Cvs />} />
         <Route path={Pages.main.departments} element={<Departments />} />
+        <Route path={Pages.main.skills} element={<Skills />} />
         <Route path={Pages.main.languages} element={<Languages />} />
       </Route>
       <Route path={Pages.info.root} element={<Profile />}>
