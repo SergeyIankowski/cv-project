@@ -35,5 +35,6 @@ export const linksData: LinksData[] = [
   {
     linkName: "Languages",
     iconNode: <GTranslateIcon />,
+    pathToRouting: `${Pages.main.root}${Pages.main.languages}`,
   },
 ];
