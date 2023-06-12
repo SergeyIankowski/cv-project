@@ -1,5 +1,6 @@
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import GTranslateIcon from "@mui/icons-material/GTranslate";
+import CoPresentIcon from "@mui/icons-material/CoPresent";
 import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import {LinksData} from "@/models/LinksData.type";
 import {Pages} from "@/models/Pages";
@@ -26,7 +27,8 @@ export const linksData: LinksData[] = [
   },
   {
     linkName: "Positions",
-    iconNode: null,
+    iconNode: <CoPresentIcon />,
+    pathToRouting: `${Pages.main.root}${Pages.main.positions}`,
   },
   {
     linkName: "Skills",

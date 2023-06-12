@@ -11,6 +11,7 @@ import {AuthRedirect} from "@containers/AuthRedirect/AuthRedirect";
 import {Main} from "@/pages/Main/Main";
 import {Projects} from "@/pages/Projects/Projects";
 import {Cvs} from "@/pages/Cvs/Cvs";
+import {Positions} from "./pages/Positions";
 import {Languages} from "@/pages/Languages/Languages";
 
 export const AppRouter = () => {
@@ -22,6 +23,7 @@ export const AppRouter = () => {
         <Route index element={<Navigate to={pathToEmployees} />} />
         <Route path={Pages.main.employees} element={<Employees />} />
         <Route path={Pages.main.projects} element={<Projects />} />
+        <Route path={Pages.main.positions} element={<Positions />} />
         <Route path={Pages.main.cvs} element={<Cvs />} />
         <Route path={Pages.main.languages} element={<Languages />} />
       </Route>
