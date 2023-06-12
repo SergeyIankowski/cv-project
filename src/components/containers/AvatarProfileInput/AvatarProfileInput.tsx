@@ -1,5 +1,6 @@
 import {ChangeEvent, FC} from "react";
 import {useParams} from "react-router-dom";
+import toast from "react-hot-toast";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -12,6 +13,7 @@ import {convertAvatarToRequestData} from "@/utils/convertAvatarToRequestData";
 import {useUploadAvatar} from "@/graphql/hooks/useUploadAvatar";
 import {AvatarData} from "@/models/AvatarData.type";
 import {useDeleteAvatar} from "@/graphql/hooks/useDeleteAvatar";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 interface AvatarProfileInputProps {
   avatarPath: string;
@@ -27,17 +29,32 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
   const {deleteAvatar} = useDeleteAvatar();
 
   const uploadAvatarData = async (avatarData: AvatarData) => {
-    await uploadAvatar(id!, avatarData);
-    onLoadUserInfo();
+    const authorizedId = AuthInfoService.getAuthInfo().id;
+    if (id === authorizedId) {
+      await uploadAvatar(id!, avatarData);
+      onLoadUserInfo();
+    }
+    if (id !== authorizedId) {
+      toast("cannot update photo of other profiles");
+    }
   };
+
   const deleteAvatarHandler = async () => {
-    await deleteAvatar(id!);
-    onLoadUserInfo();
+    const authorizedId = AuthInfoService.getAuthInfo().id;
+    if (id === authorizedId) {
+      await deleteAvatar(id!);
+      onLoadUserInfo();
+    }
+    if (id !== authorizedId) {
+      toast("cannot delete photo of other profiles");
+    }
   };
+
   const changeHandler = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file && id) convertAvatarToRequestData(file, uploadAvatarData);
   };
+
   return (
     <Grid container justifyContent="center" gap="40px">
       <Box>
