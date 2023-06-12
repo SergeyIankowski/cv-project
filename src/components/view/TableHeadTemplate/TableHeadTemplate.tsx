@@ -12,6 +12,7 @@ interface TableHeadTemplateProps<T> {
   order: Order;
   orderBy: string;
   hasControlsColumn: boolean;
+  titleAlign?: "left" | "right" | "center";
   onRequestSort: (event: MouseEvent, newOrderBy: keyof T) => void;
 }
 
@@ -20,6 +21,7 @@ export const TableHeadTemplate = <T,>({
   order,
   orderBy,
   hasControlsColumn,
+  titleAlign,
   onRequestSort,
 }: TableHeadTemplateProps<T>) => {
   const createSortHandler = (newOrderBy: keyof T) => (event: MouseEvent) => {
@@ -34,7 +36,7 @@ export const TableHeadTemplate = <T,>({
               key={headCell.id as string}
               padding={headCell.disablePadding ? "none" : "normal"}
               sortDirection={orderBy === headCell.id ? order : false}
-              align="right"
+              align={titleAlign || "right"}
               variant="head"
               style={{fontWeight: "bold"}}
             >
