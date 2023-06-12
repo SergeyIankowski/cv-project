@@ -4,7 +4,7 @@ import TableCell from "@mui/material/TableCell";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import {CvData} from "@/models/CvData";
-import {CvsRowControlMenu} from "@view/CvsRowControlMenu/CvsRowControlMenu";
+import {CvsRowControlMenu} from "@/pages/Cvs/CvsRowControlMenu/CvsRowControlMenu";
 
 interface TableRowCvsProps {
   row: CvData;

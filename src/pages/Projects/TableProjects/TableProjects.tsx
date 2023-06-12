@@ -2,7 +2,7 @@ import {FC} from "react";
 import TableBody from "@mui/material/TableBody";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
-import {TableRowProjects} from "@view/TableRowProjects/TableRowProjects";
+import {TableRowProjects} from "@/pages/Projects/TableRowProjects/TableRowProjects";
 import {projectsHeadCellsData} from "./projectsHeadCellsData";
 import {Order} from "@/models/Order.type";
 import {ProjectData} from "@/models/ProjectData.type";

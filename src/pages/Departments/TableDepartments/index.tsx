@@ -2,7 +2,7 @@ import {FC} from "react";
 import {Order} from "@/models/Order.type";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
-import {TableRowDepartments} from "@view/TableRowDepartments";
+import {TableRowDepartments} from "@/pages/Departments/TableRowDepartments";
 import {useSort} from "@/hooks/useSort";
 import {DepartmentsData} from "@/models/DepartmentsData.type";
 import {departmentsHeadCellsData} from "./departmentsHeadCellsData";

@@ -2,7 +2,7 @@ import {FC} from "react";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import {LanguagesData} from "@/models/LanguagesData";
-import {LanguagesRowControlMenu} from "@view/LanguagesRowControlMenu/LanguagesRowControlMenu";
+import {LanguagesRowControlMenu} from "@/pages/Languages/LanguagesRowControlMenu/LanguagesRowControlMenu";
 
 interface TableRowLanguagesProps {
   row: LanguagesData;

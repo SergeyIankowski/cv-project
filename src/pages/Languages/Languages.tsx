@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {SearchInput} from "@view/SearchInput/SearchInput";
-import {TableLanguages} from "@containers/TableLanguages/TableLanguages";
+import {TableLanguages} from "@/pages/Languages/TableLanguages/TableLanguages";
 import {LanguagesData} from "@/models/LanguagesData";
 import {useLanguagesQuery} from "@/graphql/hooks/useLanguagesQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
