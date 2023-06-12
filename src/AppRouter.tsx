@@ -13,6 +13,7 @@ import {Projects} from "@/pages/Projects/Projects";
 import {Cvs} from "@/pages/Cvs/Cvs";
 import {Skills} from "./pages/Skills";
 import {Languages} from "@/pages/Languages/Languages";
+import {Departments} from "./pages/Departments";
 
 export const AppRouter = () => {
   const pathToEmployees = `${Pages.main.root}${Pages.main.employees}`;
@@ -24,6 +25,7 @@ export const AppRouter = () => {
         <Route path={Pages.main.employees} element={<Employees />} />
         <Route path={Pages.main.projects} element={<Projects />} />
         <Route path={Pages.main.cvs} element={<Cvs />} />
+        <Route path={Pages.main.departments} element={<Departments />} />
         <Route path={Pages.main.skills} element={<Skills />} />
         <Route path={Pages.main.languages} element={<Languages />} />
       </Route>
@@ -35,24 +37,17 @@ export const AppRouter = () => {
         <Route path={Pages.info.cvs} element={<></>} />
       </Route>
       <Route />
-      <Route path={Pages.auth.root} element={<Authentication />}>
+      <Route
+        path={Pages.auth.root}
+        element={
+          <AuthRedirect>
+            <Authentication />
+          </AuthRedirect>
+        }
+      >
         <Route index element={<Navigate to={Pages.auth.login} />} />
-        <Route
-          path={Pages.auth.login}
-          element={
-            <AuthRedirect>
-              <SignInForm />
-            </AuthRedirect>
-          }
-        />
-        <Route
-          path={Pages.auth.signup}
-          element={
-            <AuthRedirect>
-              <SignUpForm />
-            </AuthRedirect>
-          }
-        />
+        <Route path={Pages.auth.login} element={<SignInForm />} />
+        <Route path={Pages.auth.signup} element={<SignUpForm />} />
       </Route>
     </Routes>
   );
