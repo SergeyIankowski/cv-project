@@ -12,5 +12,5 @@ export const usePositionsQuery = () => {
     setPositions(data.positions);
   }, [loading, error]);
 
-  return {positions};
+  return {positions, loading};
 };
