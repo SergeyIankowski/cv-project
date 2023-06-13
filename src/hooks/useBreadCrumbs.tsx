@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
-import {useLocation} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import {BreadCrumbsData} from "@/models/BreadCrumbsData.type";
 import HomeIcon from "@mui/icons-material/Home";
 import GroupIcon from "@mui/icons-material/Group";
 import {Pages} from "@/models/Pages";
-import {useUserQuery} from "@/graphql/hooks/useUserQuery";
 import {createBreadCrumb} from "@/utils/createBreadCrumb";
+import {useUserData} from "./useUserData";
 
 const rootBreadCrumbs: BreadCrumbsData = [
   {
@@ -16,8 +16,8 @@ const rootBreadCrumbs: BreadCrumbsData = [
 ];
 
 export const useBreadCrumbs: () => BreadCrumbsData = () => {
-  const {loadUserInfo, calledUserData, userData, loadingUserData} =
-    useUserQuery();
+  const {id} = useParams();
+  const {loadProfileInfo, called, userData, loadingUserData} = useUserData(id!);
   const {pathname} = useLocation();
   const [breadCrumbs, setBreadCrumbs] = useState<BreadCrumbsData>([]);
 
@@ -32,13 +32,13 @@ export const useBreadCrumbs: () => BreadCrumbsData = () => {
         const absolutePathForCrumb = array.slice(0, index + 1).join("");
         const isNumber = /^[0-9]+$/.test(textName);
 
-        if (isNumber && !calledUserData) {
-          loadUserInfo(Number(textName));
+        if (isNumber && !called) {
+          loadProfileInfo(Number(textName));
         }
 
-        if (isNumber && calledUserData && !loadingUserData) {
-          const firstName = userData.user.profile.first_name;
-          const lastName = userData.user.profile.last_name;
+        if (isNumber && called && !loadingUserData) {
+          const firstName = userData.profile.first_name;
+          const lastName = userData.profile.last_name;
           const initials = `${firstName} ${lastName}`;
           const crumb = createBreadCrumb(
             initials,
@@ -55,6 +55,6 @@ export const useBreadCrumbs: () => BreadCrumbsData = () => {
 
       setBreadCrumbs(crumbs);
     }
-  }, [calledUserData, loadingUserData, userData, pathname]);
+  }, [called, loadingUserData, userData, pathname]);
   return breadCrumbs;
 };

@@ -1,7 +1,8 @@
-import {useUserQuery} from "@/graphql/hooks/useUserQuery";
 import {useCallback, useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useUserQuery} from "@/graphql/hooks/useUserQuery";
 import {FetchedUser} from "@/models/FetchedUser.type";
+import {useParams} from "react-router-dom";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 const emptyUser: FetchedUser = {
   id: "",
@@ -23,17 +24,22 @@ const emptyUser: FetchedUser = {
   role: "employee",
 };
 
-export const useUserData = (id: string | number) => {
+export const useUserData = (idValue: string | number) => {
+  const {id} = useParams();
   const {loadUserInfo, called, userData, loadingUserData} = useUserQuery();
   const loadProfileInfo = useCallback(
-    () => loadUserInfo(id!),
-    [id, loadingUserData]
+    (idName?: string | number) =>
+      idName ? loadUserInfo(idName) : loadUserInfo(idValue!),
+    [idValue, loadingUserData]
   );
   const [userObj, setUserObj] = useState<FetchedUser>(emptyUser);
   useEffect(() => {
-    if (id && !called) loadProfileInfo();
+    if (idValue && !called) loadProfileInfo();
     if (called && !loadingUserData) setUserObj(userData.user);
-  }, [called, loadingUserData, id, userData]);
-
+  }, [called, loadingUserData, idValue, userData]);
+  useEffect(() => {
+    if (id && id === AuthInfoService.getAuthInfo().id) loadProfileInfo(id);
+    if (id && id !== AuthInfoService.getAuthInfo().id) loadProfileInfo(idValue);
+  }, [id]);
   return {loadProfileInfo, called, loadingUserData, userData: userObj};
 };
