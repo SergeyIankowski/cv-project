@@ -1,5 +1,5 @@
-import {TableSkills} from "@/components/containers/TableSkills";
-import {SearchInput} from "@/components/view/SearchInput/SearchInput";
+import {TableSkills} from "@/pages/Skills/TableSkills";
+import {SearchInput} from "@view/SearchInput/SearchInput";
 import {useSkillsQuery} from "@/graphql/hooks/useSkillsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {SkillsData} from "@/models/SkillsData.type";

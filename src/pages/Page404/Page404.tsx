@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
-import {PageStyle} from "@/components/view/MuiPagesStyles";
-import {PageContainer} from "@/components/view/PageContainer/PageContainer";
+import {PageStyle} from "@view/MuiPagesStyles";
+import {PageContainer} from "@view/PageContainer/PageContainer";
 
 export const Page404 = () => {
   return (

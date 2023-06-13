@@ -3,7 +3,7 @@ import {SearchInput} from "@view/SearchInput/SearchInput";
 import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {PositionsData} from "@/models/PositionsData.type";
-import {TablePositions} from "@/components/containers/TablePositions";
+import {TablePositions} from "@/pages/Positions/TablePositions";
 
 export const Positions: FC = () => {
   const {loading, positions} = usePositionsQuery();

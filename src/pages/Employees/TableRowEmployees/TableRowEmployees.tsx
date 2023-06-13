@@ -4,7 +4,7 @@ import TableCell from "@mui/material/TableCell";
 import {Avatar} from "@mui/material";
 import DefaultUser from "@/assets/defaultUser.png";
 import {UserData} from "@/models/UserData.type";
-import {EmployeesRowControlMenu} from "../EmployeesRowControlMenu/EmployeesRowControlMenu";
+import {EmployeesRowControlMenu} from "@/pages/Employees/EmployeesRowControlMenu/EmployeesRowControlMenu";
 
 interface TableRowTemplateProps {
   row: UserData;

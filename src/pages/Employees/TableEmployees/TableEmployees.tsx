@@ -1,7 +1,7 @@
 import {FC} from "react";
-import {TableHeadTemplate} from "@/components/view/TableHeadTemplate/TableHeadTemplate";
-import {TableRowEmployees} from "@/components/view/TableRowEmployees/TableRowEmployees";
-import {TableTemplate} from "@/components/view/TableTemplate/TableTemplate";
+import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
+import {TableRowEmployees} from "@/pages/Employees/TableRowEmployees/TableRowEmployees";
+import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {Order} from "@/models/Order.type";
 import {employeesHeadCellsData} from "./employeesHeadCellsData";
 

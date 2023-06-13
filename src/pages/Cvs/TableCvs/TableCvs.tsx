@@ -5,7 +5,7 @@ import {useSort} from "@/hooks/useSort";
 import {CvData} from "@/models/CvData";
 import {Order} from "@/models/Order.type";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
-import {TableRowCvs} from "@/components/view/TableRowCvs/TableRowCvs";
+import {TableRowCvs} from "@/pages/Cvs/TableRowCvs/TableRowCvs";
 import {cvsHeadCellsData} from "./cvsHeadCellsData";
 
 interface TableCvsProps {

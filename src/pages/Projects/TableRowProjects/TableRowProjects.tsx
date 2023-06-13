@@ -2,7 +2,7 @@ import {FC} from "react";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import {ProjectData} from "@/models/ProjectData.type";
-import {ProjectsRowControl} from "../ProjectsRowControlMenu/ProjectsRowControl";
+import {ProjectsRowControl} from "@/pages/Projects/ProjectsRowControlMenu/ProjectsRowControl";
 
 interface TableRowProjectsProps {
   row: ProjectData;

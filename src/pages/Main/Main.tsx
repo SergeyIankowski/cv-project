@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {Outlet} from "react-router-dom";
-import {PageLayout} from "@/components/view/PageLayout/PageLayout";
+import {PageLayout} from "@view/PageLayout/PageLayout";
 
 export const Main: FC = () => {
   return (

@@ -1,9 +1,9 @@
-import {TableDepartments} from "@/components/containers/TableDepartments";
+import {FC} from "react";
+import {TableDepartments} from "@/pages/Departments/TableDepartments";
 import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {DepartmentsData} from "@/models/DepartmentsData.type";
 import {SearchInput} from "@view/SearchInput/SearchInput";
-import {FC} from "react";
 
 export const Departments: FC = () => {
   const {loading, departments} = useDepartmentsQuery();

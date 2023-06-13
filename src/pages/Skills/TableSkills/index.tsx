@@ -5,7 +5,7 @@ import {SkillsData} from "@/models/SkillsData.type";
 import {Order} from "@/models/Order.type";
 import {skillsHeadCellsData} from "./skillsHeadCellsData";
 import {useSort} from "@/hooks/useSort";
-import {TableRowSkills} from "@/components/view/TableRowSkills";
+import {TableRowSkills} from "@/pages/Skills/TableRowSkills";
 
 interface TableSkillsProps {
   skillsData: SkillsData[];

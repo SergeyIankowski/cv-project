@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {SearchInput} from "@view/SearchInput/SearchInput";
-import {TableEmployees} from "@containers/TableEmployees/TableEmployees";
+import {TableEmployees} from "@/pages/Employees/TableEmployees/TableEmployees";
 import {UserData} from "@/models/UserData.type";
 import {useEmployeesQuery} from "@/graphql/hooks/useEmployeesQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
