@@ -3,6 +3,7 @@ import {useUserQuery} from "@/graphql/hooks/useUserQuery";
 import {FetchedUser} from "@/models/FetchedUser.type";
 import {useParams} from "react-router-dom";
 import {AuthInfoService} from "@/services/AuthInfoService";
+import {ROLES} from "@/models/Roles";
 
 const emptyUser: FetchedUser = {
   id: "",
@@ -21,7 +22,7 @@ const emptyUser: FetchedUser = {
     id: "",
     name: "",
   },
-  role: "employee",
+  role: ROLES.employee,
 };
 
 export const useUserData = (idValue: string | number) => {

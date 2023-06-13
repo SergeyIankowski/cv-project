@@ -1,3 +1,4 @@
+import {PROFILE_FORM_KEYS} from "@/models/ProfileFormKeys";
 import {ProfileRequestData} from "@/models/ProfileRequestData.type";
 import {UploadedUser} from "@/models/UploadedUser.type";
 
@@ -6,10 +7,10 @@ export const convertProfileFormDataToRequestData = (
 ): ProfileRequestData => {
   return {
     profile: {
-      first_name: data.first_name || "",
-      last_name: data.last_name || "",
+      [PROFILE_FORM_KEYS.firstName]: data.first_name || "",
+      [PROFILE_FORM_KEYS.lastName]: data.last_name || "",
     },
-    departmentId: data.departmentId || "",
-    positionId: data.positionId || "",
+    [PROFILE_FORM_KEYS.departmentId]: data.departmentId || "",
+    [PROFILE_FORM_KEYS.positionId]: data.positionId || "",
   };
 };
