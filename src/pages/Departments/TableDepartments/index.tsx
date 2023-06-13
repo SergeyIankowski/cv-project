@@ -26,6 +26,7 @@ export const TableDepartments: FC<TableDepartmentsProps> = ({
         order={order}
         orderBy={orderBy}
         hasControlsColumn={false}
+        titleAlign="left"
         onRequestSort={handleRequestSort}
       />
       {sortedRowsOnPage.map(department => (

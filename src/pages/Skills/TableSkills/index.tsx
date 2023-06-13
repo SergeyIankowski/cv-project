@@ -23,6 +23,7 @@ export const TableSkills: FC<TableSkillsProps> = ({skillsData}) => {
         order={order}
         orderBy={orderBy}
         hasControlsColumn={false}
+        titleAlign="left"
         onRequestSort={handleRequestSort}
       />
       {sortedRowsOnPage.map(skill => (

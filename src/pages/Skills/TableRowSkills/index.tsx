@@ -10,7 +10,7 @@ interface TableRowSkillsProps {
 export const TableRowSkills: FC<TableRowSkillsProps> = ({row}) => {
   return (
     <TableRow>
-      <TableCell align="right">{row.name}</TableCell>
+      <TableCell align="left">{row.name}</TableCell>
     </TableRow>
   );
 };
