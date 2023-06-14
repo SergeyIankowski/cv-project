@@ -9,6 +9,7 @@ import {Button} from "@containers/Button";
 import {useForm} from "react-hook-form";
 import {AuthValues} from "@/models/AuthValues.type";
 import {useLoginQuery} from "@/graphql/hooks/useLoginQuery";
+import {AUTH_FIEDS_KEYS} from "@/models/AuthFieldsKeys";
 
 export const SignInForm = () => {
   const [
@@ -23,8 +24,8 @@ export const SignInForm = () => {
     formState: {errors},
   } = useForm<InputFields>({
     defaultValues: {
-      email: "",
-      password: "",
+      [AUTH_FIEDS_KEYS.email]: "",
+      [AUTH_FIEDS_KEYS.password]: "",
     },
   });
   const {loadLoginData} = useLoginQuery();

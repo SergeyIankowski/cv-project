@@ -12,6 +12,7 @@ import {useNavigate} from "react-router-dom";
 import {Pages} from "@/models/Pages";
 import {AuthValues} from "@/models/AuthValues.type";
 import {useSignUpMutation} from "@/graphql/hooks/useSignUpMutation";
+import {AUTH_FIEDS_KEYS} from "@/models/AuthFieldsKeys";
 
 export const SignUpForm: FC = () => {
   const [
@@ -28,8 +29,8 @@ export const SignUpForm: FC = () => {
     reset,
   } = useForm<InputFields>({
     defaultValues: {
-      email: "",
-      password: "",
+      [AUTH_FIEDS_KEYS.email]: "",
+      [AUTH_FIEDS_KEYS.password]: "",
     },
   });
   const {signUp} = useSignUpMutation();
