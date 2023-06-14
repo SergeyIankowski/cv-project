@@ -3,10 +3,11 @@ import {UPLOAD_AVATAR} from "../mutations";
 import {useEffect} from "react";
 import {AvatarData} from "@/models/AvatarData.type";
 import {getIdForAvatarChanging} from "@/utils/getIdForAvatarChanging";
+import {MUTATION_FETCH_POLICY} from "../fetchPolicy";
 
 export const useUploadAvatar = () => {
   const [uploadAvatar, {data, loading, error}] = useMutation(UPLOAD_AVATAR, {
-    fetchPolicy: "network-only",
+    fetchPolicy: MUTATION_FETCH_POLICY.networkOnly,
   });
 
   useEffect(() => {
