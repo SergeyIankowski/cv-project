@@ -1,10 +1,11 @@
 import {useLazyQuery} from "@apollo/client";
 import {USER} from "../queries";
 import {useCallback} from "react";
+import {FETCH_POLICY} from "../fetchPolicy";
 
 export const useUserQuery = () => {
   const [loadInfo, {called, loading, data}] = useLazyQuery(USER, {
-    fetchPolicy: "cache-and-network",
+    fetchPolicy: FETCH_POLICY.cacheAndNetwork,
   });
 
   const loadUserInfo = useCallback((id: string | number) => {

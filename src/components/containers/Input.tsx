@@ -6,8 +6,11 @@ import {
 import {useController, UseControllerProps} from "react-hook-form";
 import {AuthValues} from "@/models/AuthValues.type";
 import {UploadedUser} from "@/models/UploadedUser.type";
+import {ROLES} from "@/models/Roles";
 
-export interface InputFields extends AuthValues, UploadedUser {}
+export interface InputFields extends AuthValues, UploadedUser {
+  role?: ROLES.admin | ROLES.employee;
+}
 
 export const Input: FC<Props & UseControllerProps<InputFields>> = ({
   children,

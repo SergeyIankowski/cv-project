@@ -24,4 +24,8 @@ export class AuthInfoService {
       localStorage.removeItem(authInfoName);
     }
   }
+  static isAdmin() {
+    const {role} = this.getAuthInfo();
+    return role === ROLES.admin;
+  }
 }
