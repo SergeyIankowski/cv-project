@@ -1,3 +1,5 @@
+import {ROLES} from "@/models/Roles";
+
 export interface FetchedUser {
   id: string;
   created_at: string;
@@ -15,5 +17,5 @@ export interface FetchedUser {
     id: string;
     name: string;
   };
-  role: "employee" | "admin";
+  role: ROLES.employee | ROLES.admin;
 }

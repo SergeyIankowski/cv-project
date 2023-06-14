@@ -1,6 +1,8 @@
+import {ROLES} from "@/models/Roles";
+
 interface UserAuthInfo {
   id: string;
-  role: "admin" | "employee";
+  role: ROLES.employee | ROLES.admin;
 }
 
 const authInfoName = "authInfo";

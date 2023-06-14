@@ -13,12 +13,13 @@ import {convertProfileFormDataToRequestData} from "@/utils/convertProfileFormDat
 import {useUserData} from "@/hooks/useUserData";
 import {InputsContainerStyle} from "./ProfileFormStyle";
 import {AuthInfoService} from "@/services/AuthInfoService";
+import {PROFILE_FORM_KEYS} from "@/models/ProfileFormKeys";
 
 export const ProfileForm: FC = () => {
   const {departments} = useDepartmentsQuery();
   const {positions} = usePositionsQuery();
   const {id} = useParams();
-  const {loadProfileInfo, userData, called, loadingUserData} = useUserData(id!);
+  const {userData, called, loadingUserData} = useUserData(id!);
   const {updateUser} = useUpdateUser();
   const {
     control,
@@ -27,41 +28,35 @@ export const ProfileForm: FC = () => {
     reset,
   } = useForm<InputFields>({
     defaultValues: {
-      first_name: userData.profile.first_name,
-      last_name: userData.profile.last_name,
-      departmentId: userData.department?.id,
-      positionId: userData.position?.id,
+      [PROFILE_FORM_KEYS.firstName]: userData.profile.first_name,
+      [PROFILE_FORM_KEYS.lastName]: userData.profile.last_name,
+      [PROFILE_FORM_KEYS.departmentId]: userData.department?.id,
+      [PROFILE_FORM_KEYS.positionId]: userData.position?.id,
     },
     resetOptions: {keepDirtyValues: true},
   });
   const resetFields = () =>
     reset({
-      first_name: userData.profile.first_name,
-      last_name: userData.profile.last_name,
-      departmentId: userData.department?.id,
-      positionId: userData.position?.id,
+      [PROFILE_FORM_KEYS.firstName]: userData.profile.first_name,
+      [PROFILE_FORM_KEYS.lastName]: userData.profile.last_name,
+      [PROFILE_FORM_KEYS.departmentId]: userData.department?.id,
+      [PROFILE_FORM_KEYS.positionId]: userData.position?.id,
     });
   useEffect(() => {
-    if (called && !loadingUserData && userData) {
-      resetFields();
-    }
+    const userIsUploaded = called && !loadingUserData && userData;
+    if (userIsUploaded) resetFields();
   }, [called, loadingUserData, userData, positions, departments]);
 
   const onSubmit = async (data: UploadedUser) => {
-    try {
-      const dataForSend = convertProfileFormDataToRequestData(data);
+    const dataForSend = convertProfileFormDataToRequestData(data);
 
-      await updateUser({
-        variables: {
-          id: id,
-          user: dataForSend,
-        },
-      });
+    await updateUser({
+      variables: {
+        id: id,
+        user: dataForSend,
+      },
+    });
 
-      loadProfileInfo;
-    } catch (e) {
-      console.error(e);
-    }
     resetFields();
   };
   return (
