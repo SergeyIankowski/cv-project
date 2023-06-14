@@ -10,7 +10,7 @@ interface TableRowPositionsProps {
 export const TableRowPositions: FC<TableRowPositionsProps> = ({row}) => {
   return (
     <TableRow>
-      <TableCell align="right">{row.name}</TableCell>
+      <TableCell align="left">{row.name}</TableCell>
     </TableRow>
   );
 };

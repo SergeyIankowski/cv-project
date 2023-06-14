@@ -10,7 +10,7 @@ interface TableRowDepartmentsProps {
 export const TableRowDepartments: FC<TableRowDepartmentsProps> = ({row}) => {
   return (
     <TableRow>
-      <TableCell align="right">{row.name}</TableCell>
+      <TableCell align="left">{row.name}</TableCell>
     </TableRow>
   );
 };
