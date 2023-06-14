@@ -1,6 +1,5 @@
-import {ChangeEvent, DragEventHandler, FC, useState} from "react";
+import {ChangeEvent, DragEventHandler, FC} from "react";
 import {useParams} from "react-router-dom";
-import toast from "react-hot-toast";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -14,6 +13,9 @@ import {useUploadAvatar} from "@/graphql/hooks/useUploadAvatar";
 import {AvatarData} from "@/models/AvatarData.type";
 import {useDeleteAvatar} from "@/graphql/hooks/useDeleteAvatar";
 import {AuthInfoService} from "@/services/AuthInfoService";
+import {showToast} from "@/hoc/ToastsProvider";
+import {TOAST_TYPES} from "@/models/ToastTypes";
+import {useBooleanState} from "@/hooks/useBooleanState";
 
 interface AvatarProfileInputProps {
   avatarPath: string;
@@ -27,7 +29,8 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
   const {id} = useParams();
   const {uploadAvatar} = useUploadAvatar();
   const {deleteAvatar} = useDeleteAvatar();
-  const [dragActive, setDragActive] = useState<boolean>(false);
+  const [dragActive, setDragActiveTrue, setDragActiveFalse] =
+    useBooleanState(false);
   const authorizedId = AuthInfoService.getAuthInfo().id;
 
   const uploadAvatarData = async (avatarData: AvatarData) => {
@@ -37,17 +40,17 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
       onLoadUserInfo();
     }
     if (id !== authorizedId) {
-      toast("Cannot update photo of other profiles");
+      showToast("Cannot update photo of other profiles", TOAST_TYPES.error);
     }
   };
 
   const validateFileAndUpload = (file: File | undefined) => {
     if (id !== authorizedId) {
-      toast("cannot update photo of other profiles");
+      showToast("cannot update photo of other profiles", TOAST_TYPES.error);
       return;
     }
     if (file && id && file.size > 4000000) {
-      toast("File more than 0.5MB");
+      showToast("File more than 0.5MB", TOAST_TYPES.error);
       return;
     }
     if (file && id && file.size <= 4000000) {
@@ -61,7 +64,7 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
       onLoadUserInfo();
     }
     if (id !== authorizedId) {
-      toast("Сannot delete photo of other profiles");
+      showToast("Сannot delete photo of other profiles", TOAST_TYPES.error);
     }
   };
 
@@ -75,25 +78,25 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
   const dragEnterHandler: DragEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
     e.stopPropagation();
-    setDragActive(true);
+    setDragActiveTrue();
   };
 
   const dragOverHandler: DragEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
     e.stopPropagation();
-    setDragActive(true);
+    setDragActiveTrue();
   };
 
   const dragLeaveHandler: DragEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
     e.stopPropagation();
-    setDragActive(false);
+    setDragActiveTrue();
   };
 
   const dropHandler: DragEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
     e.stopPropagation();
-    setDragActive(false);
+    setDragActiveFalse();
 
     const file = e.dataTransfer.files[0];
     validateFileAndUpload(file);
