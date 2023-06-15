@@ -17,12 +17,22 @@ export const MainHeader: FC<MainHeaderProps> = () => {
   const [isOpen, setTrue, setFalse] = useBooleanState(false);
   const {userData} = useUserData(id);
 
+  const constructUserName = () => {
+    const first_name = userData?.profile?.first_name;
+    const last_name = userData?.profile?.last_name;
+    const email = userData?.email;
+
+    if (first_name || last_name) return `${first_name} ${last_name}`;
+    if (email) return `${email}`;
+    return " ";
+  };
+
   return (
     <Box component={"header"} sx={HeaderStyle}>
       <Container sx={MainHeaderStyle} maxWidth="xl">
         <MenuIcon onClick={setTrue} />
         <UserDetails
-          userName={`${userData?.profile?.first_name} ${userData?.profile?.last_name}`}
+          userName={constructUserName()}
           avatar={userData?.profile?.avatar}
         />
         <SlideMenu isOpen={isOpen} onCloseVisibility={setFalse} />
