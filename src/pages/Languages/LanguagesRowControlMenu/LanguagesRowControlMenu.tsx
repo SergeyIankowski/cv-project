@@ -17,11 +17,13 @@ export const LanguagesRowControlMenu: FC<LanguagesRowControlMenuProps> = ({
       text: "Update Language",
       icon: "",
       clickCallback: useCallback(() => {}, []),
+      disabled: true,
     },
     {
       text: "Delete Language",
       icon: "",
       clickCallback: useCallback(() => {}, []),
+      disabled: true,
     },
   ];
   return <RowControlMenuTemplate controlsData={data} />;

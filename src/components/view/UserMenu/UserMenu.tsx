@@ -51,7 +51,7 @@ export const UserMenu: FC<UserMenuProps> = ({
         </ListItemIcon>
         Profile
       </MenuItem>
-      <MenuItem onClick={onCloseMenu}>
+      <MenuItem onClick={onCloseMenu} disabled>
         <ListItemIcon>
           <Settings fontSize="medium" />
         </ListItemIcon>
