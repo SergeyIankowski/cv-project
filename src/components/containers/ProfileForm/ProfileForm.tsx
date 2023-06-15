@@ -102,7 +102,7 @@ export const ProfileForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
-        {id === AuthInfoService.getAuthInfo().id ? (
+        {AuthInfoService.isAuthorizedUser(id!) || AuthInfoService.isAdmin() ? (
           <Button
             variant="contained"
             color="error"

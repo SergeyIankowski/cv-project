@@ -39,8 +39,8 @@ export const useUserData = (idValue: string | number) => {
     if (called && !loadingUserData) setUserObj(userData.user);
   }, [called, loadingUserData, idValue, userData]);
   useEffect(() => {
-    if (id && id === AuthInfoService.getAuthInfo().id) loadProfileInfo(id);
-    if (id && id !== AuthInfoService.getAuthInfo().id) loadProfileInfo(idValue);
+    if (id && AuthInfoService.isAuthorizedUser(id!)) loadProfileInfo(id);
+    if (id && AuthInfoService.isUnAuthorizedUser(id!)) loadProfileInfo(idValue);
   }, [id]);
   return {loadProfileInfo, called, loadingUserData, userData: userObj};
 };

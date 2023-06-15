@@ -7,6 +7,7 @@ import {
 } from "@view/RowControlMenuTemplate/RowControlMenuTemplate";
 import {useNavigate} from "react-router-dom";
 import {Pages} from "@/models/Pages";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 interface EmployeesRowControlMenuProps {
   id: string | number;
@@ -31,6 +32,12 @@ export const EmployeesRowControlMenu: FC<EmployeesRowControlMenuProps> = ({
       icon: <Settings fontSize="medium" />,
       clickCallback: useCallback(() => {}, []),
       disabled: true,
+    },
+    {
+      text: "Delete",
+      icon: <Settings fontSize="medium" />,
+      clickCallback: useCallback(() => {}, []),
+      disabled: !AuthInfoService.isAdmin(),
     },
   ];
 
