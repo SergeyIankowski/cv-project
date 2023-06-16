@@ -1,11 +1,12 @@
 import {FC, useCallback} from "react";
+import {useNavigate} from "react-router-dom";
 import Settings from "@mui/icons-material/Settings";
+import DeleteIcon from "@mui/icons-material/Delete";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
   RowControlMenuTemplate,
   TableRowControls,
 } from "@view/RowControlMenuTemplate/RowControlMenuTemplate";
-import {useNavigate} from "react-router-dom";
 import {Pages} from "@/models/Pages";
 import {AuthInfoService} from "@/services/AuthInfoService";
 
@@ -35,7 +36,7 @@ export const EmployeesRowControlMenu: FC<EmployeesRowControlMenuProps> = ({
     },
     {
       text: "Delete",
-      icon: <Settings fontSize="medium" />,
+      icon: <DeleteIcon fontSize="medium" />,
       clickCallback: useCallback(() => {}, []),
       disabled: !AuthInfoService.isAdmin(),
     },
