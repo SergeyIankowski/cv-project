@@ -9,6 +9,7 @@ import {
 } from "@view/RowControlMenuTemplate/RowControlMenuTemplate";
 import {Pages} from "@/models/Pages";
 import {AuthInfoService} from "@/services/AuthInfoService";
+import {useDeleteUser} from "@/graphql/hooks/useDeleteUser";
 
 interface EmployeesRowControlMenuProps {
   id: string | number;
@@ -18,6 +19,7 @@ export const EmployeesRowControlMenu: FC<EmployeesRowControlMenuProps> = ({
   id,
 }) => {
   const navigate = useNavigate();
+  const {deleteUser} = useDeleteUser();
   const data: TableRowControls = [
     {
       text: "Profile",
@@ -37,7 +39,9 @@ export const EmployeesRowControlMenu: FC<EmployeesRowControlMenuProps> = ({
     {
       text: "Delete",
       icon: <DeleteIcon fontSize="medium" />,
-      clickCallback: useCallback(() => {}, []),
+      clickCallback: useCallback(async () => {
+        deleteUser(id);
+      }, []),
       disabled: !AuthInfoService.isAdmin(),
     },
   ];
