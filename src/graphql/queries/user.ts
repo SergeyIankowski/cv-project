@@ -10,6 +10,10 @@ export const USER = gql`
         first_name
         last_name
       }
+      cvs {
+        id
+        name
+      }
       email
       department {
         id
