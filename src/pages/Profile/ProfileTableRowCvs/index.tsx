@@ -13,7 +13,7 @@ export const ProfileTableRowCvs: FC<ProfileTableRowCvsProps> = ({row}) => {
     <TableRow>
       <TableCell align="left">{row.name}</TableCell>
       <TableCell align="right">
-        <ProfileCvsRowControlMenu id={row.id} />
+        <ProfileCvsRowControlMenu cvId={row.id} />
       </TableCell>
     </TableRow>
   );
