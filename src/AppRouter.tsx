@@ -1,6 +1,6 @@
+import {Navigate, Route, Routes} from "react-router-dom";
 import {Pages} from "@/models/Pages";
 import {Page404} from "@/pages/Page404/Page404";
-import {Navigate, Route, Routes} from "react-router-dom";
 import {Employees} from "@/pages/Employees/Employees";
 import {Profile} from "@/pages/Profile/Profile";
 import {ProfileInfo} from "@containers/ProfileInfo/ProfileInfo";
@@ -15,6 +15,7 @@ import {Positions} from "./pages/Positions";
 import {Skills} from "./pages/Skills";
 import {Languages} from "@/pages/Languages/Languages";
 import {Departments} from "./pages/Departments";
+import {ProfileCvs} from "./pages/Profile/ProfileCvs";
 
 export const AppRouter = () => {
   const pathToEmployees = `${Pages.main.root}${Pages.main.employees}`;
@@ -36,7 +37,7 @@ export const AppRouter = () => {
         <Route path={Pages.info.profile} element={<ProfileInfo />} />
         <Route path={Pages.info.skills} element={<></>} />
         <Route path={Pages.info.languages} element={<></>} />
-        <Route path={Pages.info.cvs} element={<></>} />
+        <Route path={Pages.info.cvs} element={<ProfileCvs />} />
       </Route>
       <Route />
       <Route
