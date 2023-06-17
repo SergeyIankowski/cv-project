@@ -14,6 +14,7 @@ import {useUserData} from "@/hooks/useUserData";
 import {InputsContainerStyle} from "./ProfileFormStyle";
 import {AuthInfoService} from "@/services/AuthInfoService";
 import {PROFILE_FORM_KEYS} from "@/models/ProfileFormKeys";
+import {ProgressSpinner} from "@/components/view/ProgressSpinner/ProgressSpinner";
 
 export const ProfileForm: FC = () => {
   const {departments} = useDepartmentsQuery();
@@ -59,6 +60,7 @@ export const ProfileForm: FC = () => {
 
     resetFields();
   };
+  if (loadingUserData) return <ProgressSpinner />;
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={InputsContainerStyle}>
