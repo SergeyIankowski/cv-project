@@ -1,4 +1,7 @@
 import {ROLES} from "@/models/Roles";
+import {CvData} from "./CvData";
+import {DepartmentsData} from "./DepartmentsData.type";
+import {PositionsData} from "./PositionsData.type";
 
 export interface FetchedUser {
   id: string;
@@ -9,13 +12,8 @@ export interface FetchedUser {
     last_name: string;
   };
   email: string;
-  department: {
-    id: string;
-    name: string;
-  };
-  position: {
-    id: string;
-    name: string;
-  };
+  cvs: CvData[];
+  department: DepartmentsData;
+  position: PositionsData;
   role: ROLES.employee | ROLES.admin;
 }
