@@ -14,6 +14,15 @@ const emptyUser: FetchedUser = {
     last_name: "",
   },
   email: "",
+  cvs: [
+    {
+      id: "",
+      name: "",
+      description: "",
+      userEmail: "",
+      isTemplate: false,
+    },
+  ],
   department: {
     id: "",
     name: "",
