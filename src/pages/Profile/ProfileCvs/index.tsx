@@ -15,9 +15,19 @@ export const ProfileCvs: FC = () => {
   }, []);
 
   if (loadingUserData) return <ProgressSpinner />;
-  if (userData.cvs.length === 0) return <Typography>No Data</Typography>;
+  if (
+    userData.cvs.length === 0 &&
+    (AuthInfoService.isAuthorizedUser(id!) || AuthInfoService.isAdmin())
+  ) {
+    return <Typography>No Cvs</Typography>;
+  }
   if (AuthInfoService.isAdmin() || AuthInfoService.isAuthorizedUser(id!)) {
     return <ProfileTableCvs cvsData={userData.cvs} />;
+  }
+  if (AuthInfoService.isUnAuthorizedUser(id!)) {
+    return (
+      <Typography>This profile is not authorized and not admin</Typography>
+    );
   }
   return <></>;
 };
