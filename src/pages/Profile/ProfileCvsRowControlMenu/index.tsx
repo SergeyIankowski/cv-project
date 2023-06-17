@@ -21,16 +21,18 @@ export const ProfileCvsRowControlMenu: FC<ProfileCvsRowControlMenuProps> = ({
     {
       text: "Update CV",
       icon: "",
-      clickCallback: useCallback(() => unbindCv(cvId), []),
-      disabled:
-        AuthInfoService.isAdmin() || AuthInfoService.isAuthorizedUser(id!),
+      clickCallback: useCallback(() => {}, []),
+      disabled: !(
+        AuthInfoService.isAdmin() || AuthInfoService.isAuthorizedUser(id!)
+      ),
     },
     {
       text: "Unassign CV",
       icon: "",
-      clickCallback: useCallback(() => {}, []),
-      disabled:
-        AuthInfoService.isAdmin() || AuthInfoService.isAuthorizedUser(id!),
+      clickCallback: useCallback(() => unbindCv(cvId), []),
+      disabled: !(
+        AuthInfoService.isAdmin() || AuthInfoService.isAuthorizedUser(id!)
+      ),
     },
   ];
   return <RowControlMenuTemplate controlsData={data} />;
