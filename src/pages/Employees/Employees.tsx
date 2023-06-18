@@ -5,9 +5,8 @@ import {UserData} from "@/models/UserData.type";
 import {useEmployeesQuery} from "@/graphql/hooks/useEmployeesQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {PageLayoutRowContainer} from "@view/PageLayoutRowContainer";
-import {ModalTemplate} from "@view/ModalTemplate";
-import {EmployeeAddingForm} from "./EmployeeAddingForm";
 import {AuthInfoService} from "@/services/AuthInfoService";
+import {NewEmployeeModal} from "./NewEmployeeModal";
 
 export const Employees: FC = () => {
   const {loading, data} = useEmployeesQuery();
@@ -20,11 +19,7 @@ export const Employees: FC = () => {
     <>
       <PageLayoutRowContainer>
         <SearchInput onSearch={handleSearchingData} />
-        {AuthInfoService.isAdmin() && (
-          <ModalTemplate buttonName="Create Employee">
-            <EmployeeAddingForm />
-          </ModalTemplate>
-        )}
+        {AuthInfoService.isAdmin() && <NewEmployeeModal />}
       </PageLayoutRowContainer>
 
       <TableEmployees usersData={searchedData} />
