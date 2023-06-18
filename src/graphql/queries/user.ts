@@ -13,6 +13,8 @@ export const USER = gql`
       cvs {
         id
         name
+        description
+        is_template
       }
       email
       department {
