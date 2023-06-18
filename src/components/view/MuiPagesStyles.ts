@@ -105,3 +105,9 @@ export const HeaderLinksStyle = {
     color: colors.authLinksColor,
   },
 };
+
+export const ModalLayout = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+};
