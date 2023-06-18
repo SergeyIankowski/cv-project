@@ -15,7 +15,7 @@ import {Positions} from "./pages/Positions";
 import {Skills} from "./pages/Skills";
 import {Languages} from "@/pages/Languages/Languages";
 import {Departments} from "./pages/Departments";
-import {ProfileCvs} from "./pages/Profile/ProfileCvs";
+import {CvsAccordion} from "./pages/Profile/CvsAccordion";
 
 export const AppRouter = () => {
   const pathToEmployees = `${Pages.main.root}${Pages.main.employees}`;
@@ -37,7 +37,7 @@ export const AppRouter = () => {
         <Route path={Pages.info.profile} element={<ProfileInfo />} />
         <Route path={Pages.info.skills} element={<></>} />
         <Route path={Pages.info.languages} element={<></>} />
-        <Route path={Pages.info.cvs} element={<ProfileCvs />} />
+        <Route path={Pages.info.cvs} element={<CvsAccordion />} />
       </Route>
       <Route />
       <Route
