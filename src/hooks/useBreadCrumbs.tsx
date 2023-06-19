@@ -39,7 +39,9 @@ export const useBreadCrumbs: () => BreadCrumbsData = () => {
         if (isNumber && called && !loadingUserData) {
           const firstName = userData.profile.first_name;
           const lastName = userData.profile.last_name;
-          const initials = `${firstName} ${lastName}`;
+          const email = userData.email;
+          const initials =
+            firstName || lastName ? `${firstName} ${lastName}` : email;
           const crumb = createBreadCrumb(
             initials,
             absolutePathForCrumb,

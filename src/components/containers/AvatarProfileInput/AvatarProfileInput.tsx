@@ -31,21 +31,19 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
   const {deleteAvatar} = useDeleteAvatar();
   const [dragActive, setDragActiveTrue, setDragActiveFalse] =
     useBooleanState(false);
-  const authorizedId = AuthInfoService.getAuthInfo().id;
 
   const uploadAvatarData = async (avatarData: AvatarData) => {
-    const authorizedId = AuthInfoService.getAuthInfo().id;
-    if (id === authorizedId) {
+    if (AuthInfoService.isAuthorizedUser(id!)) {
       await uploadAvatar(id!, avatarData);
       onLoadUserInfo();
     }
-    if (id !== authorizedId) {
+    if (AuthInfoService.isUnAuthorizedUser(id!)) {
       showToast("Cannot update photo of other profiles", TOAST_TYPES.error);
     }
   };
 
   const validateFileAndUpload = (file: File | undefined) => {
-    if (id !== authorizedId) {
+    if (AuthInfoService.isUnAuthorizedUser(id!)) {
       showToast("cannot update photo of other profiles", TOAST_TYPES.error);
       return;
     }
@@ -59,11 +57,11 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
   };
 
   const deleteAvatarHandler = async () => {
-    if (id === authorizedId) {
+    if (AuthInfoService.isAuthorizedUser(id!)) {
       await deleteAvatar(id!);
       onLoadUserInfo();
     }
-    if (id !== authorizedId) {
+    if (AuthInfoService.isUnAuthorizedUser(id!)) {
       showToast("Сannot delete photo of other profiles", TOAST_TYPES.error);
     }
   };

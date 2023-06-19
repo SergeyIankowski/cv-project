@@ -28,4 +28,12 @@ export class AuthInfoService {
     const {role} = this.getAuthInfo();
     return role === ROLES.admin;
   }
+  static isAuthorizedUser(checkabledId: string | number) {
+    const {id} = this.getAuthInfo();
+    return checkabledId === id;
+  }
+  static isUnAuthorizedUser(checkabledId: string | number) {
+    const {id} = this.getAuthInfo();
+    return checkabledId !== id;
+  }
 }
