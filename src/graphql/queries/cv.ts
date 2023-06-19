@@ -5,6 +5,7 @@ export const CV = gql`
     cv(id: $id) {
       name
       description
+      is_template
     }
   }
 `;
