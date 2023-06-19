@@ -5,6 +5,7 @@ import {DELETE_AVATAR} from "./deleteAvatar";
 import {CREATE_USER} from "./createUser";
 import {DELETE_USER} from "./deleteUser";
 import {UNBIND_CV} from "./unbindCv";
+import {UPDATE_CV} from "./updateCv";
 
 export {
   SIGN_UP,
@@ -14,4 +15,5 @@ export {
   CREATE_USER,
   DELETE_USER,
   UNBIND_CV,
+  UPDATE_CV,
 };
