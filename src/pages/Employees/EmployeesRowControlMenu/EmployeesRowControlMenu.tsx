@@ -24,11 +24,13 @@ export const EmployeesRowControlMenu: FC<EmployeesRowControlMenuProps> = ({
         const pathToUserProfile = `${Pages.main.root}${Pages.main.employees}/${id}/${Pages.info.profile}`;
         navigate(pathToUserProfile);
       }, []),
+      disabled: false,
     },
     {
       text: "Settings",
       icon: <Settings fontSize="medium" />,
       clickCallback: useCallback(() => {}, []),
+      disabled: true,
     },
   ];
 

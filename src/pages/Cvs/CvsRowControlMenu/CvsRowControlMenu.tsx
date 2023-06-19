@@ -10,11 +10,13 @@ export const CvsRowControlMenu: FC = () => {
       text: "CV",
       icon: "",
       clickCallback: useCallback(() => {}, []),
+      disabled: true,
     },
     {
       text: "Delete CV",
       icon: "",
       clickCallback: useCallback(() => {}, []),
+      disabled: true,
     },
   ];
   return <RowControlMenuTemplate controlsData={data} />;

@@ -10,11 +10,13 @@ export const ProjectsRowControl: FC = () => {
       text: "Project",
       icon: "",
       clickCallback: useCallback(() => {}, []),
+      disabled: true,
     },
     {
       text: "Delete Project",
       icon: "",
       clickCallback: useCallback(() => {}, []),
+      disabled: true,
     },
   ];
   return <RowControlMenuTemplate controlsData={data} />;

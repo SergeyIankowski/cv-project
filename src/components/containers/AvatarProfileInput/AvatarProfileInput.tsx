@@ -90,7 +90,7 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
   const dragLeaveHandler: DragEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
     e.stopPropagation();
-    setDragActiveTrue();
+    setDragActiveFalse();
   };
 
   const dropHandler: DragEventHandler<HTMLFormElement> = e => {

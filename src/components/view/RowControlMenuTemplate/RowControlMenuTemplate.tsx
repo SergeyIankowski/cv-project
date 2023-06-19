@@ -10,6 +10,7 @@ interface TableRowControlData {
   text: string;
   icon: ReactNode | "";
   clickCallback: () => void;
+  disabled: boolean;
 }
 export type TableRowControls = TableRowControlData[];
 interface RowControlMenuTemplateProps {
@@ -47,18 +48,22 @@ export const RowControlMenuTemplate: FC<RowControlMenuTemplateProps> = ({
         transformOrigin={{horizontal: "right", vertical: "top"}}
         anchorOrigin={{horizontal: "right", vertical: "bottom"}}
       >
-        {controlsData.map(control => (
-          <MenuItem
-            key={control.text}
-            onClick={() => {
-              control.clickCallback();
-              handleClose();
-            }}
-          >
-            {control.icon ? <ListItemIcon>{control.icon}</ListItemIcon> : ""}
-            {control.text}
-          </MenuItem>
-        ))}
+        {controlsData.map(control => {
+          const clickHandler = () => {
+            control.clickCallback();
+            handleClose();
+          };
+          return (
+            <MenuItem
+              key={control.text}
+              onClick={clickHandler}
+              disabled={control.disabled}
+            >
+              {control.icon ? <ListItemIcon>{control.icon}</ListItemIcon> : ""}
+              {control.text}
+            </MenuItem>
+          );
+        })}
       </Menu>
     </>
   );
