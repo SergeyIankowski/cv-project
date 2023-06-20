@@ -9,9 +9,9 @@ import {useController, UseControllerProps} from "react-hook-form";
 import {AuthValues} from "@/models/AuthValues.type";
 import {UploadedUser} from "@/models/UploadedUser.type";
 import {ROLES} from "@/models/Roles";
-import {UpdatedCv} from "@/models/UpdatedCv.type";
+import {Cv} from "@/models/Cv.type";
 
-export interface InputFields extends AuthValues, UploadedUser, UpdatedCv {
+export interface InputFields extends AuthValues, UploadedUser, Cv {
   role?: ROLES.admin | ROLES.employee;
 }
 
