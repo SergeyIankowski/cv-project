@@ -5,13 +5,13 @@ import Typography from "@mui/material/Typography";
 import {ModalLayout} from "@view/MuiPagesStyles";
 import {Input, InputFields} from "@containers/Input";
 import {Button} from "@containers/Button";
-import {Cv} from "@/models/Cv.type";
+import {UpdatedCv} from "@/models/UpdatedCv.type";
 import {useUpdateCvMutation} from "@/graphql/hooks/useUpdateCvMutation";
 import {convertUpdateCvFormDataToRequestData} from "@/utils/convertUpdateCvFormDataToRequestData";
 import {useParams} from "react-router-dom";
 
 interface UpdateCvFormProps {
-  data: Cv;
+  data: UpdatedCv;
 }
 
 export const UpdateCvForm: FC<UpdateCvFormProps> = ({data}) => {
@@ -24,7 +24,7 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({data}) => {
       is_template: data.is_template,
     },
   });
-  const onSubmit = (cv: Cv) => {
+  const onSubmit = (cv: UpdatedCv) => {
     const userId = id || "";
     const dataToRequest = convertUpdateCvFormDataToRequestData(userId, cv);
     updateCv(data.id, dataToRequest);

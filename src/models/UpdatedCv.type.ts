@@ -2,7 +2,7 @@ import {CvData} from "./CvData";
 import {LanguagesProficiencyInput} from "./LanguageProficiencyInput";
 import {SkillMasteryInput} from "./SkillMasteryInput";
 
-export interface Cv {
+export interface UpdatedCv {
   id: CvData["id"];
   name: CvData["name"];
   userId?: string | number;

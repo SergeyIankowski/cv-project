@@ -1,10 +1,10 @@
 import {FC} from "react";
 import {ModalTemplate} from "@view/ModalTemplate";
 import {UpdateCvForm} from "@/pages/Profile/UpdateCvForm";
-import {Cv} from "@/models/Cv.type";
+import {UpdatedCv} from "@/models/UpdatedCv.type";
 
 interface UpdateCvModalProps {
-  cvData: Cv;
+  cvData: UpdatedCv;
 }
 
 export const UpdateCvModal: FC<UpdateCvModalProps> = ({cvData}) => {

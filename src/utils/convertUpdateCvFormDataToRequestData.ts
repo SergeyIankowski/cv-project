@@ -1,11 +1,11 @@
 import {SkillsMastery} from "@/models/SkillsMastery";
 import {LanguagesProficiency} from "@/models/LanguagesProficiency";
-import {Cv} from "@/models/Cv.type";
+import {UpdatedCv} from "@/models/UpdatedCv.type";
 
 export const convertUpdateCvFormDataToRequestData = (
   userId: number | string,
-  data: Cv
-): Required<Cv> => {
+  data: UpdatedCv
+): Required<UpdatedCv> => {
   return {
     id: data.id,
     name: data.name,
