@@ -4,7 +4,7 @@ import {useCallback} from "react";
 import {FETCH_POLICY} from "../fetchPolicy";
 
 export const useUserQuery = () => {
-  const [loadInfo, {called, loading, data}] = useLazyQuery(USER, {
+  const [loadInfo, {called, loading, data, error}] = useLazyQuery(USER, {
     fetchPolicy: FETCH_POLICY.cacheAndNetwork,
   });
 
@@ -19,5 +19,6 @@ export const useUserQuery = () => {
     userData: data,
     loadingUserData: loading,
     calledUserData: called,
+    error,
   };
 };

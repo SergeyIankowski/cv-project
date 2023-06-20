@@ -3,6 +3,9 @@ const breakpoints = {
 };
 export const colors = {
   authLinksColor: "#ef9d10",
+  mainBgColor: "#e7e7e7",
+  headerBgColor: "#3b3b4f",
+  titleHeaderColor: "#eeeef0",
 };
 
 export const PageStyle = {
@@ -10,7 +13,7 @@ export const PageStyle = {
   flexDirection: "column",
   minHeight: "100vh",
   boxSizing: "border-box",
-  background: "#e7e7e7",
+  background: colors.mainBgColor,
   "@media(min-width: 320px)": {
     maxWidth: "none",
     padding: "0px",
@@ -22,8 +25,8 @@ export const HeaderStyle = {
   alignItems: "flex-end",
   height: "60px",
   width: "100%",
-  backgroundColor: "#3b3b4f",
-  color: "#eeeef0",
+  backgroundColor: colors.headerBgColor,
+  color: colors.titleHeaderColor,
   gap: "5px",
 };
 export const MainHeaderStyle = {
@@ -104,4 +107,10 @@ export const HeaderLinksStyle = {
   "& button.Mui-selected": {
     color: colors.authLinksColor,
   },
+};
+
+export const ModalLayout = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
 };

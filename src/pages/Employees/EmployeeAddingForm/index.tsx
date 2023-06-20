@@ -1,7 +1,6 @@
 import {FC} from "react";
 import {useForm} from "react-hook-form";
 import MenuItem from "@mui/material/MenuItem";
-import Grid from "@mui/material/Grid";
 import {Input, InputFields} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
@@ -9,6 +8,8 @@ import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
 import {useCreateUser} from "@/graphql/hooks/useCreateUser";
 import {convertCreatedUserDataToRequestData} from "@/utils/convertCreatedUserDataToRequestData";
 import {ROLES} from "@/models/Roles";
+import {Box} from "@mui/material";
+import {ModalLayout} from "@view/MuiPagesStyles";
 
 const validationMessages = {
   incorrectEmail: "email is not correct",
@@ -33,7 +34,7 @@ export const EmployeeAddingForm: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Grid container direction="column" gap="10px">
+      <Box sx={ModalLayout}>
         <Input
           control={control}
           type="text"
@@ -126,7 +127,7 @@ export const EmployeeAddingForm: FC = () => {
         <Button variant="contained" color="error" size="small" type="submit">
           Create Employee
         </Button>
-      </Grid>
+      </Box>
     </form>
   );
 };

@@ -7,6 +7,7 @@ import {PROJECTS} from "./projects";
 import {CVS} from "./cvs";
 import {LANGUAGES} from "./languages";
 import {SKILLS} from "./skills";
+import {CV} from "./cv";
 
 export {
   LOGIN_QUERY,
@@ -18,4 +19,5 @@ export {
   CVS,
   LANGUAGES,
   SKILLS,
+  CV,
 };

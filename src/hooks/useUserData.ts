@@ -14,6 +14,7 @@ const emptyUser: FetchedUser = {
     last_name: "",
   },
   email: "",
+  cvs: [],
   department: {
     id: "",
     name: "",
@@ -27,7 +28,8 @@ const emptyUser: FetchedUser = {
 
 export const useUserData = (idValue: string | number) => {
   const {id} = useParams();
-  const {loadUserInfo, called, userData, loadingUserData} = useUserQuery();
+  const {loadUserInfo, called, userData, loadingUserData, error} =
+    useUserQuery();
   const loadProfileInfo = useCallback(
     (idName?: string | number) =>
       idName ? loadUserInfo(idName) : loadUserInfo(idValue!),
@@ -35,8 +37,11 @@ export const useUserData = (idValue: string | number) => {
   );
   const [userObj, setUserObj] = useState<FetchedUser>(emptyUser);
   useEffect(() => {
-    if (idValue && !called) loadProfileInfo();
-    if (called && !loadingUserData) setUserObj(userData.user);
+    const userDataIsNotCalled = idValue && !called;
+    const userDataReceived = called && !loadingUserData && !error;
+
+    if (userDataIsNotCalled) loadProfileInfo();
+    if (userDataReceived) setUserObj(userData.user);
   }, [called, loadingUserData, idValue, userData]);
   useEffect(() => {
     if (id && AuthInfoService.isAuthorizedUser(id!)) loadProfileInfo(id);
