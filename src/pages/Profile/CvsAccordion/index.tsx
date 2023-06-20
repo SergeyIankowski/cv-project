@@ -29,11 +29,11 @@ export const CvsAccordion: FC = () => {
             </Typography>
             <Grid container direction="row" gap="2px" alignItems="center">
               <Typography fontSize="18px">Has Template: </Typography>
-              {cv.isTemplate ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
+              {cv.is_template ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
             </Grid>
             <Grid container direction="row" gap="5px" alignItems="center">
               <UnbindCvButton id={cv.id} />
-              <UpdateCvModal />
+              <UpdateCvModal cvData={cv} />
             </Grid>
           </Grid>
         </AccordionTemplate>
