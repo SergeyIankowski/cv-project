@@ -3,7 +3,7 @@ import {Pages} from "@/models/Pages";
 import {Page404} from "@/pages/Page404/Page404";
 import {Employees} from "@/pages/Employees/Employees";
 import {Profile} from "@/pages/Profile/Profile";
-import {ProfileInfo} from "@containers/ProfileInfo/ProfileInfo";
+import {ProfileInfo} from "@/pages/Profile/ProfileInfo/ProfileInfo";
 import {SignInForm} from "@containers/SignInForm/SignInForm";
 import {Authentication} from "@/pages/Authentication/Authentication";
 import {SignUpForm} from "@containers/SignUpForm/SignUpForm";
