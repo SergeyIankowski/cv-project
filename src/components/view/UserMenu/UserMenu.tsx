@@ -28,7 +28,7 @@ export const UserMenu: FC<UserMenuProps> = ({
 
   const profileClickHandler = () => {
     const {id} = AuthInfoService.getAuthInfo();
-    const pathToProfilePage = `${Pages.main.root}${Pages.main.employees}/${id}/${Pages.info.profile}`;
+    const pathToProfilePage = `${Pages.main.root}${Pages.main.employees}/${id}/${Pages.main.profile}`;
     navigate(pathToProfilePage);
   };
   return (

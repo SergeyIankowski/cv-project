@@ -1,4 +1,4 @@
-import {Navigate, Route, Routes} from "react-router-dom";
+import {Navigate, Outlet, Route, Routes} from "react-router-dom";
 import {Pages} from "@/models/Pages";
 import {Page404} from "@/pages/Page404/Page404";
 import {Employees} from "@/pages/Employees/Employees";
@@ -24,7 +24,16 @@ export const AppRouter = () => {
       <Route path={Pages.notFound} element={<Page404 />} />
       <Route path={Pages.main.root} element={<Main />}>
         <Route index element={<Navigate to={pathToEmployees} />} />
-        <Route path={Pages.main.employees} element={<Employees />} />
+        <Route path={Pages.main.employees} element={<Outlet />}>
+          <Route index element={<Employees />} />
+          <Route path={Pages.main.id} element={<Profile />}>
+            <Route index element={<Navigate to={Pages.main.profile} />} />
+            <Route path={Pages.main.profile} element={<ProfileInfo />} />
+            <Route path={Pages.main.skills} element={<></>} />
+            <Route path={Pages.main.languages} element={<></>} />
+            <Route path={Pages.main.cvs} element={<CvsAccordion />} />
+          </Route>
+        </Route>
         <Route path={Pages.main.projects} element={<Projects />} />
         <Route path={Pages.main.positions} element={<Positions />} />
         <Route path={Pages.main.cvs} element={<Cvs />} />
@@ -32,14 +41,7 @@ export const AppRouter = () => {
         <Route path={Pages.main.skills} element={<Skills />} />
         <Route path={Pages.main.languages} element={<Languages />} />
       </Route>
-      <Route path={Pages.info.root} element={<Profile />}>
-        <Route index element={<Navigate to={Pages.info.profile} />} />
-        <Route path={Pages.info.profile} element={<ProfileInfo />} />
-        <Route path={Pages.info.skills} element={<></>} />
-        <Route path={Pages.info.languages} element={<></>} />
-        <Route path={Pages.info.cvs} element={<CvsAccordion />} />
-      </Route>
-      <Route />
+
       <Route
         path={Pages.auth.root}
         element={
