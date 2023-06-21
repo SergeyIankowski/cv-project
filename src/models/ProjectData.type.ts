@@ -1,4 +1,5 @@
 export interface ProjectData {
+  id: string;
   name: string;
   internalName: string;
   domain: string;

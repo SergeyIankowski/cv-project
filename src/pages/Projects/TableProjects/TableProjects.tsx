@@ -29,7 +29,7 @@ export const TableProjects: FC<TableProjectsProps> = ({projectsData}) => {
       />
       <TableBody>
         {sortedRowsOnPage.map(project => (
-          <TableRowProjects key={project.domain} row={project} />
+          <TableRowProjects key={project.id} row={project} />
         ))}
       </TableBody>
     </TableTemplate>
