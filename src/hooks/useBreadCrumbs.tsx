@@ -64,6 +64,6 @@ export const useBreadCrumbs: () => BreadCrumbsData = () => {
     });
 
     setBreadCrumbs(crumbs);
-  }, [userData, projectData]);
+  }, [userData, projectData, pathname]);
   return breadCrumbs;
 };
