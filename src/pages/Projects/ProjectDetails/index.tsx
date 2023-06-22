@@ -5,6 +5,7 @@ import {useProjectQuery} from "@/graphql/hooks/useProjectQuery";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 import {FetchedProject} from "@/models/FetchedProject";
 import {TypographyProjectDetails} from "@/components/view/Typographics/Typographics";
+import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
 
 const initialProject: FetchedProject = {
   id: "",
@@ -50,7 +51,10 @@ export const ProjectDetails: FC = () => {
         fieldName="Start Date"
         text={project.start_date}
       />
-      <TypographyProjectDetails fieldName="End Date" text={project.end_date} />
+      <TypographyProjectDetails
+        fieldName="End Date"
+        text={project.end_date || EmptyFieldStrings.tillNow}
+      />
       <TypographyProjectDetails
         fieldName="Team Size"
         text={project.team_size}

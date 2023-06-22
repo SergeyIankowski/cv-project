@@ -5,6 +5,8 @@ import {
 } from "@view/RowControlMenuTemplate/RowControlMenuTemplate";
 import {useNavigate} from "react-router-dom";
 import {FetchedProject} from "@/models/FetchedProject";
+import {AuthInfoService} from "@/services/AuthInfoService";
+import {useDeleteProjectMutation} from "@/graphql/hooks/useDeleteProjectMutation";
 
 interface ProjectsRowControlProps {
   id: FetchedProject["id"];
@@ -12,6 +14,7 @@ interface ProjectsRowControlProps {
 
 export const ProjectsRowControl: FC<ProjectsRowControlProps> = ({id}) => {
   const navigate = useNavigate();
+  const {deleteProject} = useDeleteProjectMutation();
   const data: TableRowControls = [
     {
       text: "Project",
@@ -24,8 +27,10 @@ export const ProjectsRowControl: FC<ProjectsRowControlProps> = ({id}) => {
     {
       text: "Delete Project",
       icon: "",
-      clickCallback: useCallback(() => {}, []),
-      disabled: true,
+      clickCallback: useCallback(() => {
+        deleteProject(id);
+      }, []),
+      disabled: !AuthInfoService.isAdmin(),
     },
   ];
   return <RowControlMenuTemplate controlsData={data} />;
