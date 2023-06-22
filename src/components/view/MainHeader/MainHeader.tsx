@@ -18,12 +18,11 @@ export const MainHeader: FC<MainHeaderProps> = () => {
   const {userData} = useUserData(id);
 
   const constructUserName = () => {
-    const first_name = userData?.profile?.first_name;
-    const last_name = userData?.profile?.last_name;
+    const full_name = userData?.profile?.full_name;
     const email = userData?.email;
 
-    if (first_name || last_name) return `${first_name} ${last_name}`;
-    if (email) return `${email}`;
+    if (full_name) return full_name;
+    if (email) return email;
     return " ";
   };
 
