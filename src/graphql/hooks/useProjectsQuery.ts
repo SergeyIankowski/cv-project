@@ -7,6 +7,7 @@ import {PROJECTS} from "../queries";
 const convertQueryData: (data: any) => ProjectData[] = data => {
   return data.projects.map((project: any) => {
     return {
+      id: project.id,
       name: project.name,
       internalName: project.internal_name,
       domain: project.domain,
