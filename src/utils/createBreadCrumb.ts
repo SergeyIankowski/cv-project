@@ -1,6 +1,6 @@
 import {BreadCrumb} from "@/models/BreadCrumb.type";
-import {capitalize} from "@mui/material";
 import {ReactNode} from "react";
+import {capitalize} from "./capitalize";
 
 export const createBreadCrumb: (
   text: string,

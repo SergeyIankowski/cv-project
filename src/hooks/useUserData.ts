@@ -12,6 +12,7 @@ const emptyUser: FetchedUser = {
     avatar: "",
     first_name: "",
     last_name: "",
+    full_name: "",
   },
   email: "",
   cvs: [],
@@ -28,24 +29,25 @@ const emptyUser: FetchedUser = {
 
 export const useUserData = (idValue: string | number) => {
   const {id} = useParams();
-  const {loadUserInfo, called, userData, loadingUserData, error} =
+  const {loadUserInfo, calledUserData, userData, loadingUserData, error} =
     useUserQuery();
   const loadProfileInfo = useCallback(
-    (idName?: string | number) =>
-      idName ? loadUserInfo(idName) : loadUserInfo(idValue!),
+    (idName?: string | number) => {
+      idName ? loadUserInfo(idName) : loadUserInfo(idValue!);
+    },
     [idValue, loadingUserData]
   );
   const [userObj, setUserObj] = useState<FetchedUser>(emptyUser);
   useEffect(() => {
-    const userDataIsNotCalled = idValue && !called;
-    const userDataReceived = called && !loadingUserData && !error;
+    const userDataIsNotCalled = idValue && !calledUserData;
+    const userDataReceived = calledUserData && !loadingUserData && !error;
 
     if (userDataIsNotCalled) loadProfileInfo();
     if (userDataReceived) setUserObj(userData.user);
-  }, [called, loadingUserData, idValue, userData]);
+  }, [calledUserData, loadingUserData, idValue, userData]);
   useEffect(() => {
     if (id && AuthInfoService.isAuthorizedUser(id!)) loadProfileInfo(id);
     if (id && AuthInfoService.isUnAuthorizedUser(id!)) loadProfileInfo(idValue);
   }, [id]);
-  return {loadProfileInfo, called, loadingUserData, userData: userObj};
+  return {loadProfileInfo, calledUserData, loadingUserData, userData: userObj};
 };

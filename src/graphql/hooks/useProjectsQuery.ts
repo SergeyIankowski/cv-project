@@ -3,9 +3,10 @@ import {useEffect, useState} from "react";
 import {ProjectData} from "@/models/ProjectData.type";
 import {useQuery} from "@apollo/client";
 import {PROJECTS} from "../queries";
+import {FetchedProject} from "@/models/FetchedProject";
 
 const convertQueryData: (data: any) => ProjectData[] = data => {
-  return data.projects.map((project: any) => {
+  return data.projects.map((project: FetchedProject) => {
     return {
       id: project.id,
       name: project.name,

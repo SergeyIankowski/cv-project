@@ -9,6 +9,7 @@ export const USER = gql`
         avatar
         first_name
         last_name
+        full_name
       }
       cvs {
         id

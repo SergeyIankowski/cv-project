@@ -15,7 +15,6 @@ export const useUserQuery = () => {
 
   return {
     loadUserInfo,
-    called,
     userData: data,
     loadingUserData: loading,
     calledUserData: called,
