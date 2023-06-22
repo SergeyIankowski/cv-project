@@ -1,7 +1,7 @@
 import {useLazyQuery} from "@apollo/client";
 import {PROJECT} from "../queries";
 import {FETCH_POLICY} from "../fetchPolicy";
-import {useCallback, useEffect} from "react";
+import {useCallback} from "react";
 
 export const useProjectQuery = () => {
   const [loadInfo, {called, loading, data, error}] = useLazyQuery(PROJECT, {
@@ -12,11 +12,6 @@ export const useProjectQuery = () => {
     const idAsString = String(id);
     return loadInfo({variables: {id: idAsString}});
   }, []);
-
-  useEffect(() => {
-    if (error) console.log(error);
-    if (data) console.log(data);
-  }, [error, data]);
 
   return {
     loadProjectInfo,
