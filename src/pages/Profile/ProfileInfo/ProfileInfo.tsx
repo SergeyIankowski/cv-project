@@ -9,9 +9,9 @@ import {useUserData} from "@/hooks/useUserData";
 
 export const ProfileInfo: FC = () => {
   const {id} = useParams();
-  const {loadProfileInfo, called, userData} = useUserData(id!);
+  const {loadProfileInfo, calledUserData, userData} = useUserData(id!);
 
-  if (!called || !userData) return <ProgressSpinner />;
+  if (!calledUserData || !userData) return <ProgressSpinner />;
 
   return (
     <Grid container direction="column" alignItems="center" sx={{p: "50px 0"}}>

@@ -20,7 +20,7 @@ export const ProfileForm: FC = () => {
   const {departments} = useDepartmentsQuery();
   const {positions} = usePositionsQuery();
   const {id} = useParams();
-  const {userData, called, loadingUserData} = useUserData(id!);
+  const {userData, calledUserData, loadingUserData} = useUserData(id!);
   const {updateUser} = useUpdateUser();
   const {
     control,
@@ -44,9 +44,9 @@ export const ProfileForm: FC = () => {
       [PROFILE_FORM_KEYS.positionId]: userData.position?.id,
     });
   useEffect(() => {
-    const userIsUploaded = called && !loadingUserData && userData;
+    const userIsUploaded = calledUserData && !loadingUserData && userData;
     if (userIsUploaded) resetFields();
-  }, [called, loadingUserData, userData, positions, departments]);
+  }, [calledUserData, loadingUserData, userData, positions, departments]);
 
   const onSubmit = async (data: UploadedUser) => {
     const dataForSend = convertProfileFormDataToRequestData(data);
