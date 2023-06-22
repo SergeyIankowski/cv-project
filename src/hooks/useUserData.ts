@@ -1,11 +1,9 @@
 import {useCallback, useEffect, useState} from "react";
 import {useUserQuery} from "@/graphql/hooks/useUserQuery";
 import {FetchedUser} from "@/models/FetchedUser.type";
-import {useLocation, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {AuthInfoService} from "@/services/AuthInfoService";
 import {ROLES} from "@/models/Roles";
-import {splitUrl} from "@/utils/splitUrl";
-import {Pages} from "@/models/Pages";
 
 const emptyUser: FetchedUser = {
   id: "",
