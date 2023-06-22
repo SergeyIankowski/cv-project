@@ -3,6 +3,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import {ProjectData} from "@/models/ProjectData.type";
 import {ProjectsRowControl} from "@/pages/Projects/ProjectsRowControlMenu/ProjectsRowControl";
+import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
 
 interface TableRowProjectsProps {
   row: ProjectData;
@@ -15,7 +16,9 @@ export const TableRowProjects: FC<TableRowProjectsProps> = ({row}) => {
       <TableCell align="right">{row.internalName}</TableCell>
       <TableCell align="right">{row.domain}</TableCell>
       <TableCell align="right">{row.startDate}</TableCell>
-      <TableCell align="right">{row.endDate}</TableCell>
+      <TableCell align="right">
+        {row.endDate || EmptyFieldStrings.tillNow}
+      </TableCell>
       <TableCell align="right">{row.teamSize}</TableCell>
       <TableCell align="right">
         <ProjectsRowControl id={row.id} />
