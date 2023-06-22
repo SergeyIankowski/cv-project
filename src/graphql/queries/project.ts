@@ -10,6 +10,7 @@ export const PROJECT = gql`
       domain
       start_date
       end_date
+      team_size
     }
   }
 `;
