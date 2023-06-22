@@ -25,7 +25,7 @@ export const EmployeesRowControlMenu: FC<EmployeesRowControlMenuProps> = ({
       text: "Profile",
       icon: <AccountCircleIcon fontSize="medium" />,
       clickCallback: useCallback(() => {
-        const pathToUserProfile = `${Pages.main.root}${Pages.main.employees}/${id}/${Pages.info.profile}`;
+        const pathToUserProfile = `${Pages.main.root}${Pages.main.employees}/${id}/${Pages.main.profile}`;
         navigate(pathToUserProfile);
       }, []),
       disabled: false,

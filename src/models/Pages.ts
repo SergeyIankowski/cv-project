@@ -1,21 +1,15 @@
-const employeesPageName = "employees";
 export const Pages = {
   main: {
     root: "/",
-    employees: employeesPageName,
+    employees: "employees",
     projects: "projects",
     cvs: "cvs",
     departments: "departments",
     positions: "positions",
     skills: "skills",
     languages: "languages",
-  },
-  info: {
-    root: `/${employeesPageName}/:id`,
+    id: `:id`,
     profile: "profile",
-    skills: "skills",
-    languages: "languages",
-    cvs: "cvs",
   },
   auth: {
     root: "/auth",

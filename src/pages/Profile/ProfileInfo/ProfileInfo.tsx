@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import {AvatarProfileInput} from "@containers/AvatarProfileInput/AvatarProfileInput";
 import {ProfileUserInfo} from "@view/ProfileUserInfo/ProfileUserInfo";
-import {ProfileForm} from "@containers/ProfileForm/ProfileForm";
+import {ProfileForm} from "@/pages/Profile/ProfileForm/ProfileForm";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 import {useUserData} from "@/hooks/useUserData";
 

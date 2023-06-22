@@ -8,35 +8,35 @@ import {TabStyle} from "./ProfileTabsStyle";
 import {useTabsLinksHighlighting} from "@/hooks/useTabsLinksHighlighting";
 
 export const ProfileTabs: FC = () => {
-  const [value, handleChange] = useTabsLinksHighlighting(Pages.info.profile);
+  const [value, handleChange] = useTabsLinksHighlighting(Pages.main.profile);
   const navigate = useNavigate();
   return (
     <Box sx={{width: "100%"}}>
       <Box sx={{borderBottom: 1, borderColor: "divider", color: "green"}}>
         <Tabs value={value} onChange={handleChange} indicatorColor="primary">
           <Tab
-            value={Pages.info.profile}
+            value={Pages.main.profile}
             label="PROFILE"
             sx={TabStyle}
-            onClick={() => navigate(Pages.info.profile)}
+            onClick={() => navigate(Pages.main.profile)}
           />
           <Tab
-            value={Pages.info.skills}
+            value={Pages.main.skills}
             label="SKILLS"
             sx={TabStyle}
-            onClick={() => navigate(Pages.info.skills)}
+            onClick={() => navigate(Pages.main.skills)}
           />
           <Tab
-            value={Pages.info.languages}
+            value={Pages.main.languages}
             label="LANGUAGES"
             sx={TabStyle}
-            onClick={() => navigate(Pages.info.languages)}
+            onClick={() => navigate(Pages.main.languages)}
           />
           <Tab
-            value={Pages.info.cvs}
+            value={Pages.main.cvs}
             label="CVS"
             sx={TabStyle}
-            onClick={() => navigate(Pages.info.cvs)}
+            onClick={() => navigate(Pages.main.cvs)}
           />
         </Tabs>
       </Box>
