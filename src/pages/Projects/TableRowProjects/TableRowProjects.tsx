@@ -18,7 +18,7 @@ export const TableRowProjects: FC<TableRowProjectsProps> = ({row}) => {
       <TableCell align="right">{row.endDate}</TableCell>
       <TableCell align="right">{row.teamSize}</TableCell>
       <TableCell align="right">
-        <ProjectsRowControl />
+        <ProjectsRowControl id={row.id} />
       </TableCell>
     </TableRow>
   );

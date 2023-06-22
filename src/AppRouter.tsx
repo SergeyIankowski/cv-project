@@ -16,14 +16,14 @@ import {Skills} from "./pages/Skills";
 import {Languages} from "@/pages/Languages/Languages";
 import {Departments} from "./pages/Departments";
 import {CvsAccordion} from "./pages/Profile/CvsAccordion";
+import {ProjectDetails} from "./pages/Projects/ProjectDetails";
 
 export const AppRouter = () => {
-  const pathToEmployees = `${Pages.main.root}${Pages.main.employees}`;
   return (
     <Routes>
       <Route path={Pages.notFound} element={<Page404 />} />
       <Route path={Pages.main.root} element={<Main />}>
-        <Route index element={<Navigate to={pathToEmployees} />} />
+        <Route index element={<Navigate to={Pages.main.employees} />} />
         <Route path={Pages.main.employees} element={<Outlet />}>
           <Route index element={<Employees />} />
           <Route path={Pages.main.id} element={<Profile />}>
@@ -34,7 +34,10 @@ export const AppRouter = () => {
             <Route path={Pages.main.cvs} element={<CvsAccordion />} />
           </Route>
         </Route>
-        <Route path={Pages.main.projects} element={<Projects />} />
+        <Route path={Pages.main.projects} element={<Outlet />}>
+          <Route index element={<Projects />} />
+          <Route path={Pages.main.id} element={<ProjectDetails />} />
+        </Route>
         <Route path={Pages.main.positions} element={<Positions />} />
         <Route path={Pages.main.cvs} element={<Cvs />} />
         <Route path={Pages.main.departments} element={<Departments />} />
