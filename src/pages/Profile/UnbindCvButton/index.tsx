@@ -1,10 +1,10 @@
 import {FC} from "react";
 import {Button} from "@/components/containers/Button";
 import {useUnbindCvMutation} from "@/graphql/hooks/useUnbindCvMutation";
-import {CvData} from "@/models/CvData";
+import {UpdatedCv} from "@/models/UpdatedCv.type";
 
 interface UnbindCvButtonProps {
-  id: CvData["id"];
+  id: UpdatedCv["id"];
 }
 
 export const UnbindCvButton: FC<UnbindCvButtonProps> = ({id}) => {
