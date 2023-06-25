@@ -1,5 +1,5 @@
 export interface CvData {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   userEmail: string;
