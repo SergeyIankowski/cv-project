@@ -9,7 +9,7 @@ interface UpdateCvModalProps {
 
 export const UpdateCvModal: FC<UpdateCvModalProps> = ({cvData}) => {
   return (
-    <ModalTemplate buttonName="UpdateCv">
+    <ModalTemplate buttonName="Update Cv">
       <UpdateCvForm data={cvData} />
     </ModalTemplate>
   );
