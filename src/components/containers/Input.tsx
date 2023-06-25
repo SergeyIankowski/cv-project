@@ -10,13 +10,25 @@ import {AuthValues} from "@/models/AuthValues.type";
 import {UploadedUser} from "@/models/UploadedUser.type";
 import {ROLES} from "@/models/Roles";
 import {UpdatedCv} from "@/models/UpdatedCv.type";
+import {UpdatedProject} from "@/models/UpdatedProject.type";
+import {DateField, DateFieldProps} from "@mui/x-date-pickers/DateField";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
+import dayjs, {Dayjs} from "dayjs";
 
-export interface InputFields extends AuthValues, UploadedUser, UpdatedCv {
+export interface InputFields
+  extends AuthValues,
+    UploadedUser,
+    UpdatedCv,
+    UpdatedProject {
   role?: ROLES.admin | ROLES.employee;
 }
 
 export const Input: FC<
-  Props & CheckboxProps & UseControllerProps<InputFields>
+  Props &
+    CheckboxProps &
+    DateFieldProps<"YYYY-MM-DD"> &
+    UseControllerProps<InputFields>
 > = ({
   children,
   sx,
@@ -35,6 +47,21 @@ export const Input: FC<
   rules,
 }) => {
   const {field} = useController({name, control, rules: rules});
+  if (type === "date")
+    return (
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DateField
+          required={required}
+          id={id}
+          onChange={field.onChange}
+          onBlur={field.onBlur}
+          value={dayjs(field.value as Dayjs)}
+          defaultValue={dayjs(field.value as Dayjs)}
+          name={field.name}
+          ref={field.ref}
+        />
+      </LocalizationProvider>
+    );
   if (type === "checkbox")
     return (
       <MuiCheckbox
