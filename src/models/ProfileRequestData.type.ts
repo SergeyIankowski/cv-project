@@ -1,11 +1,9 @@
-import {DepartmentsData} from "./DepartmentsData.type";
-import {PositionsData} from "./PositionsData.type";
+import {ProfileInput} from "@/graphql/interfaces/ProfileInput.interface";
+import {Department} from "@/graphql/interfaces/Department.interface";
+import {Position} from "@/graphql/interfaces/Position.interface";
 
 export interface ProfileRequestData {
-  profile: {
-    first_name: string;
-    last_name: string;
-  };
-  departmentId: DepartmentsData["id"];
-  positionId: PositionsData["id"];
+  profile: Pick<ProfileInput, "first_name" | "last_name">;
+  departmentId?: Department["id"];
+  positionId: Position["id"];
 }

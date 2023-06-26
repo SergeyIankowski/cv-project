@@ -1,5 +1,3 @@
-export interface AvatarData {
-  base64: string;
-  type: string;
-  size: number;
-}
+import {AvatarInput} from "@/graphql/interfaces/AvatarInput.interface";
+
+export type AvatarData = AvatarInput;

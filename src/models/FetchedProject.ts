@@ -1,7 +1,8 @@
+import {Project} from "@/graphql/interfaces/Project.interface";
 import {Dayjs} from "dayjs";
 
 export interface FetchedProject {
-  id: string;
+  id: Project["id"];
   name: string;
   internal_name: string;
   description: string;
