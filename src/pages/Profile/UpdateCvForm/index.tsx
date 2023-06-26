@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import {ModalLayout} from "@view/MuiPagesStyles";
-import {Input, InputFields} from "@containers/Input";
+import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {UpdateCvFormFields} from "@/models/UpdateCvFormFields.type";
 import {useUpdateCvMutation} from "@/graphql/hooks/useUpdateCvMutation";
@@ -19,7 +19,7 @@ interface UpdateCvFormProps {
 export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId}) => {
   const {id} = useParams();
   const {updateCv} = useUpdateCvMutation();
-  const {control, handleSubmit} = useForm<InputFields>({
+  const {control, handleSubmit} = useForm<UpdateCvFormFields>({
     defaultValues: {
       name: cv.name,
       description: cv.description,
@@ -34,14 +34,14 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId}) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={ModalLayout}>
-        <Input
+        <Input<UpdateCvFormFields>
           control={control}
           type="text"
           id="name"
           label="Name"
           name="name"
         />
-        <Input
+        <Input<UpdateCvFormFields>
           control={control}
           type="text"
           id="description"
@@ -50,7 +50,7 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId}) => {
         />
         <Typography>
           {"Template: "}
-          <Input
+          <Input<UpdateCvFormFields>
             control={control}
             type="checkbox"
             id="is_template"

@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import {useBooleanState} from "@/hooks/useBooleanState";
 import {TypographyH3, TypographyH6} from "@view/Typographics/Typographics";
 import {ContentStyle, PasswordIconStyle} from "@view/MuiPagesStyles";
-import {Input, InputFields} from "@containers/Input";
+import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {useNavigate} from "react-router-dom";
 import {Pages} from "@/models/Pages";
@@ -27,7 +27,7 @@ export const SignUpForm: FC = () => {
     handleSubmit,
     formState: {errors},
     reset,
-  } = useForm<InputFields>({
+  } = useForm<AuthFormFields>({
     defaultValues: {
       [AUTH_FIEDS_KEYS.email]: "",
       [AUTH_FIEDS_KEYS.password]: "",
@@ -49,7 +49,7 @@ export const SignUpForm: FC = () => {
       <Box sx={ContentStyle}>
         <TypographyH3 text="Register now" />
         <TypographyH6 text="Welcome! Sign up to continue." />
-        <Input
+        <Input<AuthFormFields>
           margin="dense"
           id="email"
           label="Email"
@@ -60,7 +60,7 @@ export const SignUpForm: FC = () => {
           control={control}
         />
         <Box sx={{position: "relative"}}>
-          <Input
+          <Input<AuthFormFields>
             sx={{width: "100%"}}
             margin="dense"
             id="password"

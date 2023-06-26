@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import MenuItem from "@mui/material/MenuItem";
 import {Box} from "@mui/material";
-import {Input, InputFields} from "@containers/Input";
+import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {UpdateUserFormFields} from "@/models/UpdateUserFormFields.type";
 import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
@@ -27,7 +27,7 @@ export const ProfileForm: FC = () => {
     handleSubmit,
     formState: {isDirty},
     reset,
-  } = useForm<InputFields>({
+  } = useForm<UpdateUserFormFields>({
     defaultValues: {
       [PROFILE_FORM_KEYS.firstName]: userData.profile.first_name,
       [PROFILE_FORM_KEYS.lastName]: userData.profile.last_name,
@@ -64,21 +64,21 @@ export const ProfileForm: FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={InputsContainerStyle}>
-        <Input
+        <Input<UpdateUserFormFields>
           control={control}
           type="text"
           id="first_name"
           label="First Name"
           name="first_name"
         />
-        <Input
+        <Input<UpdateUserFormFields>
           control={control}
           type="text"
           id="lastName"
           label="Last Name"
           name="last_name"
         />
-        <Input
+        <Input<UpdateUserFormFields>
           control={control}
           select
           id="department"
@@ -91,7 +91,7 @@ export const ProfileForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
-        <Input
+        <Input<UpdateUserFormFields>
           control={control}
           select
           id="position"

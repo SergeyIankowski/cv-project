@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import {ModalLayout} from "@view/MuiPagesStyles";
 import {UpdateProjectFormFields} from "@/models/UpdateProjectFormFields.type";
 import {useUpdateProject} from "@/graphql/hooks/useUpdateProject";
-import {Input, InputFields} from "@containers/Input";
+import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {convertProjectDataForSend} from "@/utils/convertProjectDataForSend";
 import {ProjectFormKeys} from "@/models/projectFormKeys";
@@ -17,7 +17,7 @@ interface UpdateProjectFormProps {
 export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
   const {id} = useParams();
   const {updateProject} = useUpdateProject();
-  const {control, handleSubmit} = useForm<InputFields>({
+  const {control, handleSubmit} = useForm<UpdateProjectFormFields>({
     defaultValues: {
       [ProjectFormKeys.name]: data.name,
       [ProjectFormKeys.internal_name]: data.internal_name,
@@ -35,49 +35,49 @@ export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={ModalLayout}>
-        <Input
+        <Input<UpdateProjectFormFields>
           control={control}
           type="text"
           id="name"
           label="Name"
           name="name"
         />
-        <Input
+        <Input<UpdateProjectFormFields>
           control={control}
           type="text"
           id="internal_name"
           label="Internal Name"
           name="internal_name"
         />
-        <Input
+        <Input<UpdateProjectFormFields>
           control={control}
           type="text"
           id="description"
           label="Description"
           name="description"
         />
-        <Input
+        <Input<UpdateProjectFormFields>
           control={control}
           type="text"
           id="domain"
           label="Domain"
           name="domain"
         />
-        <Input
+        <Input<UpdateProjectFormFields>
           control={control}
           type="date"
           id="start_date"
           label="Start Date"
           name="start_date"
         />
-        <Input
+        <Input<UpdateProjectFormFields>
           control={control}
           type="date"
           id="end_date"
           label="End Date"
           name="end_date"
         />
-        <Input
+        <Input<UpdateProjectFormFields>
           control={control}
           type="text"
           id="team_size"
