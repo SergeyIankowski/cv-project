@@ -1,8 +1,8 @@
 import {FC, useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import {useUserData} from "@/hooks/useUserData";
-import {useParams} from "react-router-dom";
 
 const DATE_OPTIONS: Intl.DateTimeFormatOptions = {
   weekday: "long",
