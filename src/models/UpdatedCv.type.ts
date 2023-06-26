@@ -1,14 +1,13 @@
-import {CvData} from "./CvData";
 import {LanguagesProficiencyInput} from "./LanguageProficiencyInput";
 import {SkillMasteryInput} from "./SkillMasteryInput";
 
 export interface UpdatedCv {
-  id: CvData["id"];
-  name: CvData["name"];
+  id: string;
+  name: string;
   userId?: string | number;
-  description: CvData["description"];
+  description: string;
   projectsIds?: number[] | number;
   skills?: SkillMasteryInput[];
   languages?: LanguagesProficiencyInput[];
-  is_template: CvData["isTemplate"];
+  is_template: boolean;
 }

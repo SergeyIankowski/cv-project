@@ -6,6 +6,7 @@ import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 import {FetchedProject} from "@/models/FetchedProject";
 import {TypographyProjectDetails} from "@/components/view/Typographics/Typographics";
 import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
+import {UpdateProjectModal} from "../UpdateProjectModal";
 
 const initialProject: FetchedProject = {
   id: "",
@@ -34,9 +35,9 @@ export const ProjectDetails: FC = () => {
   }, [calledProjectData, loadingProjectData, projectData]);
 
   if (loadingProjectData) return <ProgressSpinner />;
-  console.log(project);
+
   return (
-    <Grid container direction="column" gap="10px">
+    <Grid container direction="column" alignItems="flex-start" gap="10px">
       <TypographyProjectDetails fieldName="Name" text={project.name} />
       <TypographyProjectDetails
         fieldName="Internal Name"
@@ -49,16 +50,17 @@ export const ProjectDetails: FC = () => {
       <TypographyProjectDetails fieldName="Domain" text={project.domain} />
       <TypographyProjectDetails
         fieldName="Start Date"
-        text={project.start_date}
+        text={project.start_date as string}
       />
       <TypographyProjectDetails
         fieldName="End Date"
-        text={project.end_date || EmptyFieldStrings.tillNow}
+        text={(project.end_date || EmptyFieldStrings.tillNow) as string}
       />
       <TypographyProjectDetails
         fieldName="Team Size"
         text={project.team_size}
       />
+      <UpdateProjectModal projectData={project} />
     </Grid>
   );
 };
