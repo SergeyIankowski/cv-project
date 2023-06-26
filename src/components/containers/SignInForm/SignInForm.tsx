@@ -7,9 +7,9 @@ import {Input} from "@containers/Input";
 import {ContentStyle, PasswordIconStyle} from "@view/MuiPagesStyles";
 import {Button} from "@containers/Button";
 import {useForm} from "react-hook-form";
-import {AuthFormFields} from "@/models/FormFieldsTypes/AuthFormFields.type";
+import {AuthFormFields} from "@/models/FormFieldsTypes/";
 import {useLoginQuery} from "@/graphql/hooks/useLoginQuery";
-import {AUTH_FIEDS_KEYS} from "@/models/FormKeysNames/AuthFieldsKeys";
+import {AUTH_FIEDS_KEYS} from "@/models/FormKeysNames";
 
 export const SignInForm = () => {
   const [

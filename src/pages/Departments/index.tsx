@@ -2,7 +2,7 @@ import {FC} from "react";
 import {TableDepartments} from "@/pages/Departments/TableDepartments";
 import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
-import {DepartmentsTableData} from "@/models/TableDataTypes/DepartmentsTableData.interface";
+import {DepartmentsTableData} from "@/models/TableDataTypes";
 import {SearchInput} from "@view/SearchInput/SearchInput";
 
 export const Departments: FC = () => {

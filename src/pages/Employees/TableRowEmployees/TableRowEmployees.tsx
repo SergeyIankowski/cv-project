@@ -3,7 +3,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import {Avatar} from "@mui/material";
 import DefaultUser from "@/assets/defaultUser.png";
-import {UserTableData} from "@/models/TableDataTypes/UserTableData.interface";
+import {UserTableData} from "@/models/TableDataTypes";
 import {EmployeesRowControlMenu} from "@/pages/Employees/EmployeesRowControlMenu/EmployeesRowControlMenu";
 
 interface TableRowTemplateProps {

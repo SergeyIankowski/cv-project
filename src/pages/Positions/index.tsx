@@ -2,7 +2,7 @@ import {FC} from "react";
 import {SearchInput} from "@view/SearchInput/SearchInput";
 import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
-import {PositionsTableData} from "@/models/TableDataTypes/PositionsTableData.interface";
+import {PositionsTableData} from "@/models/TableDataTypes";
 import {TablePositions} from "@/pages/Positions/TablePositions";
 
 export const Positions: FC = () => {

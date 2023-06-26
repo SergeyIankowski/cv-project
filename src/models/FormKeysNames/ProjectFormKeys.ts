@@ -1,4 +1,4 @@
-export enum ProjectFormKeys {
+export enum PROJECT_FORM_KEYS {
   name = "name",
   internal_name = "internal_name",
   description = "description",

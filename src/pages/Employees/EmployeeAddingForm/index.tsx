@@ -10,7 +10,7 @@ import {convertCreatedUserDataToRequestData} from "@/utils/convertCreatedUserDat
 import {ROLES} from "@/models/Roles";
 import {Box} from "@mui/material";
 import {ModalLayout} from "@view/MuiPagesStyles";
-import {CreateUserFormFields} from "@/models/FormFieldsTypes/CreateUserFormFields.interface";
+import {CreateUserFormFields} from "@/models/FormFieldsTypes";
 
 const validationMessages = {
   incorrectEmail: "email is not correct",

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
 import {USERS} from "../queries";
-import {UserTableData} from "@/models/TableDataTypes/UserTableData.interface";
-import {useEffect, useState} from "react";
+import {UserTableData} from "@/models/TableDataTypes";
 import {FETCH_POLICY} from "../fetchPolicy";
 
 const convertQueryData: (data: any) => UserTableData[] = data => {

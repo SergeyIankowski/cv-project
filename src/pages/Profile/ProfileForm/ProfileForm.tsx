@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import {Box} from "@mui/material";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
-import {UpdateUserFormFields} from "@/models/FormFieldsTypes/UpdateUserFormFields.type";
+import {UpdateUserFormFields} from "@/models/FormFieldsTypes";
 import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
 import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
 import {useUpdateUser} from "@/graphql/hooks/useUpdateUser";
@@ -13,7 +13,7 @@ import {convertProfileFormDataToRequestData} from "@/utils/convertProfileFormDat
 import {useUserData} from "@/hooks/useUserData";
 import {InputsContainerStyle} from "./ProfileFormStyle";
 import {AuthInfoService} from "@/services/AuthInfoService";
-import {PROFILE_FORM_KEYS} from "@/models/FormKeysNames/ProfileFormKeys";
+import {PROFILE_FORM_KEYS} from "@/models/FormKeysNames";
 import {ProgressSpinner} from "@/components/view/ProgressSpinner/ProgressSpinner";
 
 export const ProfileForm: FC = () => {

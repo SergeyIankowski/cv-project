@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {CvTableData} from "@/models/TableDataTypes/CvTableData.interface";
+import {CvTableData} from "@/models/TableDataTypes";
 import {CVS} from "../queries";
 import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";

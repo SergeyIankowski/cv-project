@@ -1,5 +1,5 @@
 import {HeadCell} from "@/models/HeadCell.type";
-import {LanguagesTableData} from "@/models/TableDataTypes/LanguagesTableData.interface";
+import {LanguagesTableData} from "@/models/TableDataTypes";
 
 export const LanguagesHeadCellsData: HeadCell<LanguagesTableData>[] = [
   {

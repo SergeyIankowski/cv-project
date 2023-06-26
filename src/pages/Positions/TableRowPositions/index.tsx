@@ -1,7 +1,7 @@
 import {FC} from "react";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import {PositionsTableData} from "@/models/TableDataTypes/PositionsTableData.interface";
+import {PositionsTableData} from "@/models/TableDataTypes";
 
 interface TableRowPositionsProps {
   row: PositionsTableData;

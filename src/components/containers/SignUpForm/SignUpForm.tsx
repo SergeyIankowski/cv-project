@@ -10,9 +10,9 @@ import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {useNavigate} from "react-router-dom";
 import {Pages} from "@/models/Pages";
-import {AuthFormFields} from "@/models/FormFieldsTypes/AuthFormFields.type";
+import {AuthFormFields} from "@/models/FormFieldsTypes/";
 import {useSignUpMutation} from "@/graphql/hooks/useSignUpMutation";
-import {AUTH_FIEDS_KEYS} from "@/models/FormKeysNames/AuthFieldsKeys";
+import {AUTH_FIEDS_KEYS} from "@/models/FormKeysNames";
 
 export const SignUpForm: FC = () => {
   const [

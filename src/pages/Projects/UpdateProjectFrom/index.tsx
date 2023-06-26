@@ -8,7 +8,7 @@ import {useUpdateProject} from "@/graphql/hooks/useUpdateProject";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {convertProjectDataForSend} from "@/utils/convertProjectDataForSend";
-import {ProjectFormKeys} from "@/models/FormKeysNames/ProjectFormKeys";
+import {PROJECT_FORM_KEYS} from "@/models/FormKeysNames";
 
 interface UpdateProjectFormProps {
   data: UpdateProjectFormFields;
@@ -19,13 +19,13 @@ export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
   const {updateProject} = useUpdateProject();
   const {control, handleSubmit} = useForm<UpdateProjectFormFields>({
     defaultValues: {
-      [ProjectFormKeys.name]: data.name,
-      [ProjectFormKeys.internal_name]: data.internal_name,
-      [ProjectFormKeys.description]: data.description,
-      [ProjectFormKeys.domain]: data.domain,
-      [ProjectFormKeys.start_date]: data.start_date,
-      [ProjectFormKeys.end_date]: data.end_date,
-      [ProjectFormKeys.team_size]: data.team_size,
+      [PROJECT_FORM_KEYS.name]: data.name,
+      [PROJECT_FORM_KEYS.internal_name]: data.internal_name,
+      [PROJECT_FORM_KEYS.description]: data.description,
+      [PROJECT_FORM_KEYS.domain]: data.domain,
+      [PROJECT_FORM_KEYS.start_date]: data.start_date,
+      [PROJECT_FORM_KEYS.end_date]: data.end_date,
+      [PROJECT_FORM_KEYS.team_size]: data.team_size,
     },
   });
   const onSubmit = (project: UpdateProjectFormFields) => {

@@ -3,7 +3,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import {ProjectsRowControl} from "@/pages/Projects/ProjectsRowControlMenu/ProjectsRowControl";
 import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
-import {ProjectTableData} from "@/models/TableDataTypes/ProjectTableData.interface";
+import {ProjectTableData} from "@/models/TableDataTypes";
 
 interface TableRowProjectsProps {
   row: ProjectTableData;

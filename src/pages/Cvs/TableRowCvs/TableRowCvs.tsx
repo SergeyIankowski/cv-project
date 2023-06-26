@@ -3,7 +3,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import {CvTableData} from "@/models/TableDataTypes/CvTableData.interface";
+import {CvTableData} from "@/models/TableDataTypes";
 import {CvsRowControlMenu} from "@/pages/Cvs/CvsRowControlMenu/CvsRowControlMenu";
 
 interface TableRowCvsProps {
