@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import {Box} from "@mui/material";
 import {Input, InputFields} from "@containers/Input";
 import {Button} from "@containers/Button";
-import {UploadedUser} from "@/models/UploadedUser.type";
+import {UpdateUserFormFields} from "@/models/UpdateUserFormFields.type";
 import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
 import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
 import {useUpdateUser} from "@/graphql/hooks/useUpdateUser";
@@ -48,7 +48,7 @@ export const ProfileForm: FC = () => {
     if (userIsUploaded) resetFields();
   }, [calledUserData, loadingUserData, userData, positions, departments]);
 
-  const onSubmit = async (data: UploadedUser) => {
+  const onSubmit = async (data: UpdateUserFormFields) => {
     const dataForSend = convertProfileFormDataToRequestData(data);
 
     await updateUser({

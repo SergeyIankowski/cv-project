@@ -3,11 +3,11 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import {CvData} from "@/models/CvData";
+import {CvTableData} from "@/models/CvTableData.interface";
 import {CvsRowControlMenu} from "@/pages/Cvs/CvsRowControlMenu/CvsRowControlMenu";
 
 interface TableRowCvsProps {
-  row: CvData;
+  row: CvTableData;
 }
 
 export const TableRowCvs: FC<TableRowCvsProps> = ({row}) => {

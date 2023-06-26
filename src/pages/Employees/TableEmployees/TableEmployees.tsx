@@ -5,19 +5,19 @@ import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {Order} from "@/models/Order.type";
 import {employeesHeadCellsData} from "./employeesHeadCellsData";
 
-import {UserData} from "@/models/UserData.type";
+import {UserTableData} from "@/models/UserTableData.interface";
 import {useSort} from "@/hooks/useSort";
 
 interface TableEmployeesProps {
-  usersData: UserData[];
+  usersData: UserTableData[];
 }
 
 const DEFAULT_ORDER: Order = "asc";
-const DEFAULT_ORDER_BY: keyof UserData = "firstName";
+const DEFAULT_ORDER_BY: keyof UserTableData = "firstName";
 
 export const TableEmployees: FC<TableEmployeesProps> = ({usersData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
-    useSort<UserData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, usersData);
+    useSort<UserTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, usersData);
 
   return (
     <TableTemplate>

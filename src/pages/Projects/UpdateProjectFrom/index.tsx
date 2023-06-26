@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
 import {ModalLayout} from "@view/MuiPagesStyles";
-import {UpdatedProject} from "@/models/UpdatedProject.type";
+import {UpdateProjectFormFields} from "@/models/UpdateProjectFormFields.type";
 import {useUpdateProject} from "@/graphql/hooks/useUpdateProject";
 import {Input, InputFields} from "@containers/Input";
 import {Button} from "@containers/Button";
@@ -11,7 +11,7 @@ import {convertProjectDataForSend} from "@/utils/convertProjectDataForSend";
 import {ProjectFormKeys} from "@/models/projectFormKeys";
 
 interface UpdateProjectFormProps {
-  data: UpdatedProject;
+  data: UpdateProjectFormFields;
 }
 
 export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
@@ -28,7 +28,7 @@ export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
       [ProjectFormKeys.team_size]: data.team_size,
     },
   });
-  const onSubmit = (project: UpdatedProject) => {
+  const onSubmit = (project: UpdateProjectFormFields) => {
     const dataForSend = convertProjectDataForSend(project);
     updateProject(id!, dataForSend);
   };

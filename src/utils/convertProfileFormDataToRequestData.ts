@@ -1,9 +1,9 @@
 import {PROFILE_FORM_KEYS} from "@/models/ProfileFormKeys";
 import {ProfileRequestData} from "@/models/ProfileRequestData.type";
-import {UploadedUser} from "@/models/UploadedUser.type";
+import {UpdateUserFormFields} from "@/models/UpdateUserFormFields.type";
 
 export const convertProfileFormDataToRequestData = (
-  data: UploadedUser
+  data: UpdateUserFormFields
 ): ProfileRequestData => {
   return {
     profile: {

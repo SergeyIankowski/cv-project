@@ -1,9 +1,9 @@
-import {UpdatedProject} from "@/models/UpdatedProject.type";
+import {UpdateProjectFormFields} from "@/models/UpdateProjectFormFields.type";
 import {ProjectFormKeys} from "@/models/projectFormKeys";
 
 export const convertProjectDataForSend = (
-  data: UpdatedProject
-): Required<UpdatedProject> => {
+  data: UpdateProjectFormFields
+): Required<UpdateProjectFormFields> => {
   return {
     [ProjectFormKeys.name]: data.name,
     [ProjectFormKeys.internal_name]: data.internal_name,

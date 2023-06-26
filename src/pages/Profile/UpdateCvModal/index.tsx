@@ -1,16 +1,19 @@
 import {FC} from "react";
 import {ModalTemplate} from "@view/ModalTemplate";
 import {UpdateCvForm} from "@/pages/Profile/UpdateCvForm";
-import {UpdatedCv} from "@/models/UpdatedCv.type";
+import {Cv} from "@/graphql/interfaces/Cv.interface";
+import {useCvQuery} from "@/graphql/hooks/useCvQuery";
 
 interface UpdateCvModalProps {
-  cvData: UpdatedCv;
+  cvId: Cv["id"];
 }
 
-export const UpdateCvModal: FC<UpdateCvModalProps> = ({cvData}) => {
+export const UpdateCvModal: FC<UpdateCvModalProps> = ({cvId}) => {
+  const {cv} = useCvQuery(cvId);
+
   return (
     <ModalTemplate buttonName="Update Cv">
-      <UpdateCvForm data={cvData} />
+      <UpdateCvForm cvId={cvId} cv={cv} />
     </ModalTemplate>
   );
 };

@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {useQuery} from "@apollo/client";
 import {USERS} from "../queries";
-import {UserData} from "@/models/UserData.type";
+import {UserTableData} from "@/models/UserTableData.interface";
 import {useEffect, useState} from "react";
 import {FETCH_POLICY} from "../fetchPolicy";
 
-const convertQueryData: (data: any) => UserData[] = data => {
+const convertQueryData: (data: any) => UserTableData[] = data => {
   return data.map((user: any) => {
     return {
       id: user.id,
@@ -19,7 +19,7 @@ const convertQueryData: (data: any) => UserData[] = data => {
   });
 };
 export const useEmployeesQuery = () => {
-  const [responseData, setResponceData] = useState<UserData[]>([]);
+  const [responseData, setResponceData] = useState<UserTableData[]>([]);
   const {loading, data, error} = useQuery(USERS, {
     fetchPolicy: FETCH_POLICY.cacheAndNetwork,
   });

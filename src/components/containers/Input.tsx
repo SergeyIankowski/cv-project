@@ -6,23 +6,23 @@ import {
   TextFieldProps as Props,
 } from "@mui/material";
 import {useController, UseControllerProps} from "react-hook-form";
-import {AuthValues} from "@/models/AuthValues.type";
-import {UploadedUser} from "@/models/UploadedUser.type";
-import {ROLES} from "@/models/Roles";
-import {UpdatedCv} from "@/models/UpdatedCv.type";
-import {UpdatedProject} from "@/models/UpdatedProject.type";
 import {DateField, DateFieldProps} from "@mui/x-date-pickers/DateField";
+import {AuthFormFields} from "@/models/AuthFormFields.type";
+import {UpdateUserFormFields} from "@/models/UpdateUserFormFields.type";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs, {Dayjs} from "dayjs";
 
+import {UpdateCvFormFields} from "@/models/UpdateCvFormFields.type";
+import {UpdateProjectFormFields} from "@/models/UpdateProjectFormFields.type";
+import {CreateUserFormFields} from "@/models/CreateUserFormFields.interface";
+
 export interface InputFields
-  extends AuthValues,
-    UploadedUser,
-    UpdatedCv,
-    UpdatedProject {
-  role?: ROLES.admin | ROLES.employee;
-}
+  extends AuthFormFields,
+    UpdateUserFormFields,
+    UpdateCvFormFields,
+    UpdateProjectFormFields,
+    CreateUserFormFields {}
 
 export const Input: FC<
   Props &
@@ -73,7 +73,7 @@ export const Input: FC<
         onChange={field.onChange}
         onBlur={field.onBlur}
         value={field.value}
-        defaultChecked={field.value as boolean}
+        defaultChecked={field.value as unknown as boolean}
         name={field.name}
         ref={field.ref}
       />

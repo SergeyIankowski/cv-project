@@ -1,11 +1,11 @@
 import {FC} from "react";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import {LanguagesData} from "@/models/LanguagesData";
+import {LanguagesTableData} from "@/models/LanguagesTableData.interface";
 import {LanguagesRowControlMenu} from "@/pages/Languages/LanguagesRowControlMenu/LanguagesRowControlMenu";
 
 interface TableRowLanguagesProps {
-  row: LanguagesData;
+  row: LanguagesTableData;
 }
 
 export const TableRowLanguages: FC<TableRowLanguagesProps> = ({row}) => {

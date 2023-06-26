@@ -7,7 +7,7 @@ import {Input, InputFields} from "@containers/Input";
 import {ContentStyle, PasswordIconStyle} from "@view/MuiPagesStyles";
 import {Button} from "@containers/Button";
 import {useForm} from "react-hook-form";
-import {AuthValues} from "@/models/AuthValues.type";
+import {AuthFormFields} from "@/models/AuthFormFields.type";
 import {useLoginQuery} from "@/graphql/hooks/useLoginQuery";
 import {AUTH_FIEDS_KEYS} from "@/models/AuthFieldsKeys";
 
@@ -30,7 +30,7 @@ export const SignInForm = () => {
   });
   const {loadLoginData} = useLoginQuery();
 
-  const onSubmit = (data: AuthValues) => {
+  const onSubmit = (data: AuthFormFields) => {
     loadLoginData({variables: {auth: data}});
   };
   return (

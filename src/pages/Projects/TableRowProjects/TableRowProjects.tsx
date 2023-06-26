@@ -1,12 +1,12 @@
 import {FC} from "react";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import {ProjectData} from "@/models/ProjectData.type";
+import {ProjectTableData} from "@/models/ProjectTableData.interface";
 import {ProjectsRowControl} from "@/pages/Projects/ProjectsRowControlMenu/ProjectsRowControl";
 import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
 
 interface TableRowProjectsProps {
-  row: ProjectData;
+  row: ProjectTableData;
 }
 
 export const TableRowProjects: FC<TableRowProjectsProps> = ({row}) => {

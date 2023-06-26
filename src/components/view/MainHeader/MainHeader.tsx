@@ -32,7 +32,7 @@ export const MainHeader: FC<MainHeaderProps> = () => {
         <MenuIcon onClick={setTrue} />
         <UserDetails
           userName={constructUserName()}
-          avatar={userData?.profile?.avatar}
+          avatar={userData.profile.avatar!}
         />
         <SlideMenu isOpen={isOpen} onCloseVisibility={setFalse} />
       </Container>

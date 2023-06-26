@@ -1,10 +1,10 @@
 import {FC} from "react";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import {SkillsData} from "@/models/SkillsData.type";
+import {SkillsTableData} from "@/models/SkillsTableData.interface";
 
 interface TableRowSkillsProps {
-  row: SkillsData;
+  row: SkillsTableData;
 }
 
 export const TableRowSkills: FC<TableRowSkillsProps> = ({row}) => {

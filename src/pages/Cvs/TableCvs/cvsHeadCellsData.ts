@@ -1,7 +1,7 @@
-import {CvData} from "@/models/CvData";
+import {CvTableData} from "@/models/CvTableData.interface";
 import {HeadCell} from "@/models/HeadCell.type";
 
-export const cvsHeadCellsData: HeadCell<CvData>[] = [
+export const cvsHeadCellsData: HeadCell<CvTableData>[] = [
   {
     id: "isTemplate",
     content: "Template",

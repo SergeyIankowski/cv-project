@@ -5,22 +5,22 @@ import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableRowProjects} from "@/pages/Projects/TableRowProjects/TableRowProjects";
 import {projectsHeadCellsData} from "./projectsHeadCellsData";
 import {Order} from "@/models/Order.type";
-import {ProjectData} from "@/models/ProjectData.type";
+import {ProjectTableData} from "@/models/ProjectTableData.interface";
 import {useSort} from "@/hooks/useSort";
 
 interface TableProjectsProps {
-  projectsData: ProjectData[];
+  projectsData: ProjectTableData[];
 }
 
 const DEFAULT_ORDER: Order = "asc";
-const DEFAULT_ORDER_BY: keyof ProjectData = "name";
+const DEFAULT_ORDER_BY: keyof ProjectTableData = "name";
 
 export const TableProjects: FC<TableProjectsProps> = ({projectsData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
-    useSort<ProjectData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, projectsData);
+    useSort<ProjectTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, projectsData);
   return (
     <TableTemplate>
-      <TableHeadTemplate<ProjectData>
+      <TableHeadTemplate<ProjectTableData>
         headCells={projectsHeadCellsData}
         order={order}
         orderBy={orderBy}

@@ -10,7 +10,7 @@ import {Input, InputFields} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {useNavigate} from "react-router-dom";
 import {Pages} from "@/models/Pages";
-import {AuthValues} from "@/models/AuthValues.type";
+import {AuthFormFields} from "@/models/AuthFormFields.type";
 import {useSignUpMutation} from "@/graphql/hooks/useSignUpMutation";
 import {AUTH_FIEDS_KEYS} from "@/models/AuthFieldsKeys";
 
@@ -35,7 +35,7 @@ export const SignUpForm: FC = () => {
   });
   const {signUp} = useSignUpMutation();
 
-  const onSubmit = async (data: AuthValues) => {
+  const onSubmit = async (data: AuthFormFields) => {
     try {
       await signUp({variables: {auth: data}});
     } catch (e) {

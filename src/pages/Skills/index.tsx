@@ -2,12 +2,12 @@ import {TableSkills} from "@/pages/Skills/TableSkills";
 import {SearchInput} from "@view/SearchInput/SearchInput";
 import {useSkillsQuery} from "@/graphql/hooks/useSkillsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
-import {SkillsData} from "@/models/SkillsData.type";
+import {SkillsTableData} from "@/models/SkillsTableData.interface";
 import {FC} from "react";
 
 export const Skills: FC = () => {
   const {skills, loading} = useSkillsQuery();
-  const {searchedData, handleSearchingData} = useTableSearch<SkillsData>(
+  const {searchedData, handleSearchingData} = useTableSearch<SkillsTableData>(
     skills,
     loading
   );
