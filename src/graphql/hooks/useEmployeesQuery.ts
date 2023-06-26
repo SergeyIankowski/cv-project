@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {useQuery} from "@apollo/client";
 import {USERS} from "../queries";
-import {UserTableData} from "@/models/UserTableData.interface";
+import {UserTableData} from "@/models/TableDataTypes/UserTableData.interface";
 import {useEffect, useState} from "react";
 import {FETCH_POLICY} from "../fetchPolicy";
 

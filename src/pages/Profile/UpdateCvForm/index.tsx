@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import {ModalLayout} from "@view/MuiPagesStyles";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
-import {UpdateCvFormFields} from "@/models/UpdateCvFormFields.type";
+import {UpdateCvFormFields} from "@/models/FormFieldsTypes/UpdateCvFormFields.type";
 import {useUpdateCvMutation} from "@/graphql/hooks/useUpdateCvMutation";
 import {convertUpdateCvFormDataToRequestData} from "@/utils/convertUpdateCvFormDataToRequestData";
 import {useParams} from "react-router-dom";

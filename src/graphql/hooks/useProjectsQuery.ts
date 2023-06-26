@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {useEffect, useState} from "react";
-import {ProjectTableData} from "@/models/ProjectTableData.interface";
 import {useQuery} from "@apollo/client";
 import {PROJECTS} from "../queries";
 import {FetchedProject} from "@/models/FetchedProject";
+import {ProjectTableData} from "@/models/TableDataTypes/ProjectTableData.interface";
 
 const convertQueryData: (data: any) => ProjectTableData[] = data => {
   return data.projects.map((project: FetchedProject) => {

@@ -1,5 +1,5 @@
 import {HeadCell} from "@/models/HeadCell.type";
-import {ProjectTableData} from "@/models/ProjectTableData.interface";
+import {ProjectTableData} from "@/models/TableDataTypes/ProjectTableData.interface";
 
 export const projectsHeadCellsData: HeadCell<ProjectTableData>[] = [
   {

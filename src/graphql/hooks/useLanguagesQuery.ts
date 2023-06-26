@@ -2,7 +2,7 @@
 import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
 import {LANGUAGES} from "../queries";
-import {LanguagesTableData} from "@/models/LanguagesTableData.interface";
+import {LanguagesTableData} from "@/models/TableDataTypes/LanguagesTableData.interface";
 
 const convertQueryData: (data: any) => LanguagesTableData[] = data => {
   return data.languages.map((language: any) => {

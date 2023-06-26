@@ -2,7 +2,7 @@ import {FC} from "react";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {TableRowPositions} from "@/pages/Positions/TableRowPositions";
-import {PositionsTableData} from "@/models/PositionsTableData.interface";
+import {PositionsTableData} from "@/models/TableDataTypes/PositionsTableData.interface";
 import {Order} from "@/models/Order.type";
 import {useSort} from "@/hooks/useSort";
 import {positionsHeadCellsData} from "./positionsHeadCellsData";

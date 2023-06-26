@@ -1,6 +1,6 @@
 import {useMutation} from "@apollo/client";
 import {UPDATE_PROJECT} from "../mutations";
-import {UpdateProjectFormFields} from "@/models/UpdateProjectFormFields.type";
+import {UpdateProjectFormFields} from "@/models/FormFieldsTypes/UpdateProjectFormFields.type";
 import {useCallback} from "react";
 
 export const useUpdateProject = () => {

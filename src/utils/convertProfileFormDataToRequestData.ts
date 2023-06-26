@@ -1,6 +1,6 @@
-import {PROFILE_FORM_KEYS} from "@/models/ProfileFormKeys";
+import {PROFILE_FORM_KEYS} from "@/models/FormKeysNames/ProfileFormKeys";
 import {ProfileRequestData} from "@/models/ProfileRequestData.type";
-import {UpdateUserFormFields} from "@/models/UpdateUserFormFields.type";
+import {UpdateUserFormFields} from "@/models/FormFieldsTypes/UpdateUserFormFields.type";
 
 export const convertProfileFormDataToRequestData = (
   data: UpdateUserFormFields

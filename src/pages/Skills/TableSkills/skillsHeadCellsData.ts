@@ -1,5 +1,5 @@
 import {HeadCell} from "@/models/HeadCell.type";
-import {SkillsTableData} from "@/models/SkillsTableData.interface";
+import {SkillsTableData} from "@/models/TableDataTypes/SkillsTableData.interface";
 
 export const skillsHeadCellsData: HeadCell<SkillsTableData>[] = [
   {

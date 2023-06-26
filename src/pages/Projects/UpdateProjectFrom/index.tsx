@@ -3,12 +3,12 @@ import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
 import {ModalLayout} from "@view/MuiPagesStyles";
-import {UpdateProjectFormFields} from "@/models/UpdateProjectFormFields.type";
+import {UpdateProjectFormFields} from "@/models/FormFieldsTypes/UpdateProjectFormFields.type";
 import {useUpdateProject} from "@/graphql/hooks/useUpdateProject";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {convertProjectDataForSend} from "@/utils/convertProjectDataForSend";
-import {ProjectFormKeys} from "@/models/projectFormKeys";
+import {ProjectFormKeys} from "@/models/FormKeysNames/ProjectFormKeys";
 
 interface UpdateProjectFormProps {
   data: UpdateProjectFormFields;

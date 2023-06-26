@@ -1,4 +1,4 @@
-import {CreateUserFormFields} from "@/models/CreateUserFormFields.interface";
+import {CreateUserFormFields} from "@/models/FormFieldsTypes/CreateUserFormFields.interface";
 import {CreatedUser} from "@/models/CreatedUser.type";
 
 export const convertCreatedUserDataToRequestData = (

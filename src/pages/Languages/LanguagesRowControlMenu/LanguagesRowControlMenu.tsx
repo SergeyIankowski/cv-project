@@ -3,7 +3,7 @@ import {
   RowControlMenuTemplate,
   TableRowControls,
 } from "@view/RowControlMenuTemplate/RowControlMenuTemplate";
-import {LanguagesTableData} from "@/models/LanguagesTableData.interface";
+import {LanguagesTableData} from "@/models/TableDataTypes/LanguagesTableData.interface";
 
 interface LanguagesRowControlMenuProps {
   id: LanguagesTableData["id"];

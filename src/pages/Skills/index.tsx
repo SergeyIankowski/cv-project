@@ -2,7 +2,7 @@ import {TableSkills} from "@/pages/Skills/TableSkills";
 import {SearchInput} from "@view/SearchInput/SearchInput";
 import {useSkillsQuery} from "@/graphql/hooks/useSkillsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
-import {SkillsTableData} from "@/models/SkillsTableData.interface";
+import {SkillsTableData} from "@/models/TableDataTypes/SkillsTableData.interface";
 import {FC} from "react";
 
 export const Skills: FC = () => {

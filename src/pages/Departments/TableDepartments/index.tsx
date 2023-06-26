@@ -4,7 +4,7 @@ import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableRowDepartments} from "@/pages/Departments/TableRowDepartments";
 import {useSort} from "@/hooks/useSort";
-import {DepartmentsTableData} from "@/models/DepartmentsTableData.interface";
+import {DepartmentsTableData} from "@/models/TableDataTypes/DepartmentsTableData.interface";
 import {departmentsHeadCellsData} from "./departmentsHeadCellsData";
 
 interface TableDepartmentsProps {

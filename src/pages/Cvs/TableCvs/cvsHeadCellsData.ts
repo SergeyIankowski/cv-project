@@ -1,4 +1,4 @@
-import {CvTableData} from "@/models/CvTableData.interface";
+import {CvTableData} from "@/models/TableDataTypes/CvTableData.interface";
 import {HeadCell} from "@/models/HeadCell.type";
 
 export const cvsHeadCellsData: HeadCell<CvTableData>[] = [

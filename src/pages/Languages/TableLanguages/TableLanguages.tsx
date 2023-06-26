@@ -3,7 +3,7 @@ import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableRowLanguages} from "@/pages/Languages/TableRowLanguages/TableRowLanguages";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {Order} from "@/models/Order.type";
-import {LanguagesTableData} from "@/models/LanguagesTableData.interface";
+import {LanguagesTableData} from "@/models/TableDataTypes/LanguagesTableData.interface";
 import {LanguagesHeadCellsData} from "./LanguagesHeadCellsData";
 import {useSort} from "@/hooks/useSort";
 

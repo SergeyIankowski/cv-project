@@ -2,7 +2,7 @@ import {FC} from "react";
 import TableBody from "@mui/material/TableBody";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {useSort} from "@/hooks/useSort";
-import {CvTableData} from "@/models/CvTableData.interface";
+import {CvTableData} from "@/models/TableDataTypes/CvTableData.interface";
 import {Order} from "@/models/Order.type";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableRowCvs} from "@/pages/Cvs/TableRowCvs/TableRowCvs";

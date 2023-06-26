@@ -5,7 +5,7 @@ import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableRowProjects} from "@/pages/Projects/TableRowProjects/TableRowProjects";
 import {projectsHeadCellsData} from "./projectsHeadCellsData";
 import {Order} from "@/models/Order.type";
-import {ProjectTableData} from "@/models/ProjectTableData.interface";
+import {ProjectTableData} from "@/models/TableDataTypes/ProjectTableData.interface";
 import {useSort} from "@/hooks/useSort";
 
 interface TableProjectsProps {

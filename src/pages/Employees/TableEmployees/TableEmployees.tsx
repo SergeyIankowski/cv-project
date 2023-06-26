@@ -5,7 +5,7 @@ import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {Order} from "@/models/Order.type";
 import {employeesHeadCellsData} from "./employeesHeadCellsData";
 
-import {UserTableData} from "@/models/UserTableData.interface";
+import {UserTableData} from "@/models/TableDataTypes/UserTableData.interface";
 import {useSort} from "@/hooks/useSort";
 
 interface TableEmployeesProps {

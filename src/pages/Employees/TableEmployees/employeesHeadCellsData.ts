@@ -1,5 +1,5 @@
 import {HeadCell} from "@/models/HeadCell.type";
-import {UserTableData} from "@/models/UserTableData.interface";
+import {UserTableData} from "@/models/TableDataTypes/UserTableData.interface";
 
 export const employeesHeadCellsData: HeadCell<UserTableData>[] = [
   {

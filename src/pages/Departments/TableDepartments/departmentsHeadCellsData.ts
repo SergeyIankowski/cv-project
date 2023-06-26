@@ -1,4 +1,4 @@
-import {DepartmentsTableData} from "@/models/DepartmentsTableData.interface";
+import {DepartmentsTableData} from "@/models/TableDataTypes/DepartmentsTableData.interface";
 import {HeadCell} from "@/models/HeadCell.type";
 
 export const departmentsHeadCellsData: HeadCell<DepartmentsTableData>[] = [

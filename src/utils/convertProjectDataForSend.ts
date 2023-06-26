@@ -1,5 +1,5 @@
-import {UpdateProjectFormFields} from "@/models/UpdateProjectFormFields.type";
-import {ProjectFormKeys} from "@/models/projectFormKeys";
+import {UpdateProjectFormFields} from "@/models/FormFieldsTypes/UpdateProjectFormFields.type";
+import {ProjectFormKeys} from "@/models/FormKeysNames/ProjectFormKeys";
 
 export const convertProjectDataForSend = (
   data: UpdateProjectFormFields
