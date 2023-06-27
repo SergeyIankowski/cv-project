@@ -5,6 +5,7 @@ import {ApolloAppProvider} from "@/hoc/ApolloAppProvider";
 import {ToastsProvider} from "@/hoc/ToastsProvider";
 import {AppRouter} from "./AppRouter";
 import "./scss/main.scss";
+import {ModalContextTemplateProvider} from "@view/ModalTemplate/ModalTemplateContext";
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
 root.render(
@@ -12,7 +13,9 @@ root.render(
     <ToastsProvider>
       <ApolloAppProvider>
         <BrowserRouter>
-          <AppRouter />
+          <ModalContextTemplateProvider>
+            <AppRouter />
+          </ModalContextTemplateProvider>
         </BrowserRouter>
       </ApolloAppProvider>
     </ToastsProvider>
