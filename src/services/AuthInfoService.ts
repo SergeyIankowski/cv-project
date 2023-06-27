@@ -28,6 +28,10 @@ export class AuthInfoService {
     const {role} = this.getAuthInfo();
     return role === ROLES.admin;
   }
+  static isNotAdmin() {
+    const {role} = this.getAuthInfo();
+    return role !== ROLES.admin;
+  }
   static isAuthorizedUser(checkabledId: string | number) {
     const {id} = this.getAuthInfo();
     return checkabledId === id;

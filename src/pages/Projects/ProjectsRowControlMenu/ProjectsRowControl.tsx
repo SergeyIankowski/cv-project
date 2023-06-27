@@ -30,7 +30,7 @@ export const ProjectsRowControl: FC<ProjectsRowControlProps> = ({id}) => {
       clickCallback: useCallback(() => {
         deleteProject(id);
       }, []),
-      disabled: !AuthInfoService.isAdmin(),
+      disabled: AuthInfoService.isNotAdmin(),
     },
   ];
   return <RowControlMenuTemplate controlsData={data} />;

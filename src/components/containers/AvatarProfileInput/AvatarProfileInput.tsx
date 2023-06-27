@@ -16,6 +16,7 @@ import {AuthInfoService} from "@/services/AuthInfoService";
 import {showToast} from "@/hoc/ToastsProvider";
 import {TOAST_TYPES} from "@/models/ToastTypes";
 import {useBooleanState} from "@/hooks/useBooleanState";
+import {TOASTS_MESSAGES} from "@/models/ToastsMessages";
 
 interface AvatarProfileInputProps {
   avatarPath: string;
@@ -33,22 +34,26 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
     useBooleanState(false);
 
   const uploadAvatarData = async (avatarData: AvatarData) => {
-    if (AuthInfoService.isAuthorizedUser(id!)) {
+    if (AuthInfoService.isAuthorizedUser(id!) || AuthInfoService.isAdmin()) {
       await uploadAvatar(id!, avatarData);
       onLoadUserInfo();
+      return;
     }
     if (AuthInfoService.isUnAuthorizedUser(id!)) {
-      showToast("Cannot update photo of other profiles", TOAST_TYPES.error);
+      showToast(TOASTS_MESSAGES.cannotUpdatePhotoOfOthers, TOAST_TYPES.error);
     }
   };
 
   const validateFileAndUpload = (file: File | undefined) => {
-    if (AuthInfoService.isUnAuthorizedUser(id!)) {
-      showToast("cannot update photo of other profiles", TOAST_TYPES.error);
+    if (
+      AuthInfoService.isUnAuthorizedUser(id!) &&
+      AuthInfoService.isNotAdmin()
+    ) {
+      showToast(TOASTS_MESSAGES.cannotUpdatePhotoOfOthers, TOAST_TYPES.error);
       return;
     }
     if (file && id && file.size > 4000000) {
-      showToast("File more than 0.5MB", TOAST_TYPES.error);
+      showToast(TOASTS_MESSAGES.fileMoreMB, TOAST_TYPES.error);
       return;
     }
     if (file && id && file.size <= 4000000) {
@@ -57,12 +62,13 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
   };
 
   const deleteAvatarHandler = async () => {
-    if (AuthInfoService.isAuthorizedUser(id!)) {
+    if (AuthInfoService.isAuthorizedUser(id!) || AuthInfoService.isAdmin()) {
       await deleteAvatar(id!);
       onLoadUserInfo();
+      return;
     }
     if (AuthInfoService.isUnAuthorizedUser(id!)) {
-      showToast("Сannot delete photo of other profiles", TOAST_TYPES.error);
+      showToast(TOASTS_MESSAGES.cannotUpdatePhotoOfOthers, TOAST_TYPES.error);
     }
   };
 

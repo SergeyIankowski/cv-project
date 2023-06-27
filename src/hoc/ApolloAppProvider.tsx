@@ -8,9 +8,10 @@ import {
   from,
 } from "@apollo/client";
 import {onError} from "@apollo/client/link/error";
-import toast from "react-hot-toast";
 import {useAuthToken} from "@/hooks/useAuthToken";
 import {Pages} from "@/models/Pages";
+import {showToast} from "./ToastsProvider";
+import {TOAST_TYPES} from "@/models/ToastTypes";
 
 interface ApolloAppProviderProps {
   children: ReactNode;
@@ -19,7 +20,7 @@ interface ApolloAppProviderProps {
 export const ApolloAppProvider: FC<ApolloAppProviderProps> = ({children}) => {
   const {authToken, removeAuthToken} = useAuthToken();
   const notify = (message: string) => {
-    toast.error(message);
+    showToast(message, TOAST_TYPES.error);
   };
 
   const httpLink = new HttpLink({
