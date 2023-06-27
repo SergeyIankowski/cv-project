@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useContext} from "react";
 import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
@@ -9,6 +9,7 @@ import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {convertProjectDataForSend} from "@/utils/convertProjectDataForSend";
 import {PROJECT_FORM_KEYS} from "@/models/FormKeysNames";
+import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
 
 interface UpdateProjectFormProps {
   data: UpdateProjectFormFields;
@@ -17,6 +18,7 @@ interface UpdateProjectFormProps {
 export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
   const {id} = useParams();
   const {updateProject} = useUpdateProject();
+  const {closeModal} = useContext(ModalTemplateContext);
   const {control, handleSubmit} = useForm<UpdateProjectFormFields>({
     defaultValues: {
       [PROJECT_FORM_KEYS.name]: data.name,
@@ -31,6 +33,7 @@ export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
   const onSubmit = (project: UpdateProjectFormFields) => {
     const dataForSend = convertProjectDataForSend(project);
     updateProject(id!, dataForSend);
+    closeModal();
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
