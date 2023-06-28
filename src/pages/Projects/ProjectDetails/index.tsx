@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import {useProjectQuery} from "@/graphql/hooks/useProjectQuery";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
-import {FetchedProject} from "@/models/FetchedProject";
+import {FetchedProject} from "@/models/FetchedProject.interface";
 import {TypographyProjectDetails} from "@/components/view/Typographics/Typographics";
 import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
 import {UpdateProjectModal} from "../UpdateProjectModal";
@@ -16,7 +16,7 @@ const initialProject: FetchedProject = {
   domain: "",
   start_date: "",
   end_date: "",
-  team_size: "",
+  team_size: 0,
 };
 
 export const ProjectDetails: FC = () => {
@@ -41,7 +41,7 @@ export const ProjectDetails: FC = () => {
       <TypographyProjectDetails fieldName="Name" text={project.name} />
       <TypographyProjectDetails
         fieldName="Internal Name"
-        text={project.internal_name}
+        text={project.internal_name!}
       />
       <TypographyProjectDetails
         fieldName="Description"
@@ -58,7 +58,7 @@ export const ProjectDetails: FC = () => {
       />
       <TypographyProjectDetails
         fieldName="Team Size"
-        text={project.team_size}
+        text={String(project.team_size)}
       />
       <UpdateProjectModal projectData={project} />
     </Grid>

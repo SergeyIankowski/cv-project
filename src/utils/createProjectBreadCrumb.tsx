@@ -1,5 +1,5 @@
 import FolderCopyIcon from "@mui/icons-material/FolderCopy";
-import {FetchedProject} from "@/models/FetchedProject";
+import {FetchedProject} from "@/models/FetchedProject.interface";
 import {createBreadCrumb} from "./createBreadCrumb";
 
 export const createProjectBreadCrumb = (

@@ -4,7 +4,7 @@ import {
   TableRowControls,
 } from "@view/RowControlMenuTemplate/RowControlMenuTemplate";
 import {useNavigate} from "react-router-dom";
-import {FetchedProject} from "@/models/FetchedProject";
+import {FetchedProject} from "@/models/FetchedProject.interface";
 import {AuthInfoService} from "@/services/AuthInfoService";
 import {useDeleteProjectMutation} from "@/graphql/hooks/useDeleteProjectMutation";
 
@@ -30,7 +30,7 @@ export const ProjectsRowControl: FC<ProjectsRowControlProps> = ({id}) => {
       clickCallback: useCallback(() => {
         deleteProject(id);
       }, []),
-      disabled: !AuthInfoService.isAdmin(),
+      disabled: AuthInfoService.isNotAdmin(),
     },
   ];
   return <RowControlMenuTemplate controlsData={data} />;

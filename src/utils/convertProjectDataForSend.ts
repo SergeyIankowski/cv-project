@@ -11,7 +11,7 @@ export const convertProjectDataForSend = (
     [PROJECT_FORM_KEYS.domain]: data.domain,
     [PROJECT_FORM_KEYS.start_date]: data.start_date,
     [PROJECT_FORM_KEYS.end_date]: data.end_date,
-    [PROJECT_FORM_KEYS.team_size]: data.team_size,
+    [PROJECT_FORM_KEYS.team_size]: Number(data.team_size),
     [PROJECT_FORM_KEYS.skillsIds]: [],
   };
 };

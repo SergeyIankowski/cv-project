@@ -42,7 +42,8 @@ export const EmployeesRowControlMenu: FC<EmployeesRowControlMenuProps> = ({
       clickCallback: useCallback(async () => {
         deleteUser(id);
       }, []),
-      disabled: !AuthInfoService.isAdmin(),
+      disabled:
+        AuthInfoService.isNotAdmin() || AuthInfoService.isAuthorizedUser(id),
     },
   ];
 

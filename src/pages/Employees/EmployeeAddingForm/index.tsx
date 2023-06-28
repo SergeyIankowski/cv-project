@@ -30,7 +30,6 @@ export const EmployeeAddingForm: FC = () => {
   const onSubmit = async (data: CreateUserFormFields) => {
     const dataToload = convertCreatedUserDataToRequestData(data);
     await createUser(dataToload);
-    console.log(dataToload);
   };
 
   return (
