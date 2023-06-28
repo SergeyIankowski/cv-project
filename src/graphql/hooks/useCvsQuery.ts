@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {CvData} from "@/models/CvData";
+import {CvTableData} from "@/models/TableDataTypes";
 import {CVS} from "../queries";
 import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
 
-const convertQueryData: (data: any) => CvData[] = data => {
+const convertQueryData: (data: any) => CvTableData[] = data => {
   return data.cvs.map((cv: any) => {
     return {
       id: cv.id,
@@ -17,7 +17,7 @@ const convertQueryData: (data: any) => CvData[] = data => {
 };
 
 export const useCvsQuery = () => {
-  const [responseData, setResponceData] = useState<CvData[]>([]);
+  const [responseData, setResponceData] = useState<CvTableData[]>([]);
   const {loading, data, error} = useQuery(CVS);
 
   useEffect(() => {

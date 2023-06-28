@@ -1,6 +1,6 @@
-import {LanguagesProficiency} from "./LanguagesProficiency";
+import {LanguagesProficiency} from "@/models/LanguagesProficiency";
 
-export interface LanguagesProficiencyInput {
+export interface LanguageProficiency {
   language_name: string;
   proficiency:
     | LanguagesProficiency.a1

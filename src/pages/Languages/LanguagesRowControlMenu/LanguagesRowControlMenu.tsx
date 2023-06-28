@@ -3,10 +3,10 @@ import {
   RowControlMenuTemplate,
   TableRowControls,
 } from "@view/RowControlMenuTemplate/RowControlMenuTemplate";
-import {LanguagesData} from "@/models/LanguagesData";
+import {LanguagesTableData} from "@/models/TableDataTypes";
 
 interface LanguagesRowControlMenuProps {
-  id: LanguagesData["id"];
+  id: LanguagesTableData["id"];
 }
 
 export const LanguagesRowControlMenu: FC<LanguagesRowControlMenuProps> = ({

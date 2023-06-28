@@ -1,7 +1,7 @@
 import {HeadCell} from "@/models/HeadCell.type";
-import {SkillsData} from "@/models/SkillsData.type";
+import {SkillsTableData} from "@/models/TableDataTypes";
 
-export const skillsHeadCellsData: HeadCell<SkillsData>[] = [
+export const skillsHeadCellsData: HeadCell<SkillsTableData>[] = [
   {
     id: "name",
     content: "Name",

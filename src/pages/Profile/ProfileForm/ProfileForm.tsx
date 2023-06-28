@@ -3,9 +3,9 @@ import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import MenuItem from "@mui/material/MenuItem";
 import {Box} from "@mui/material";
-import {Input, InputFields} from "@containers/Input";
+import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
-import {UploadedUser} from "@/models/UploadedUser.type";
+import {UpdateUserFormFields} from "@/models/FormFieldsTypes";
 import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
 import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
 import {useUpdateUser} from "@/graphql/hooks/useUpdateUser";
@@ -13,7 +13,7 @@ import {convertProfileFormDataToRequestData} from "@/utils/convertProfileFormDat
 import {useUserData} from "@/hooks/useUserData";
 import {InputsContainerStyle} from "./ProfileFormStyle";
 import {AuthInfoService} from "@/services/AuthInfoService";
-import {PROFILE_FORM_KEYS} from "@/models/ProfileFormKeys";
+import {PROFILE_FORM_KEYS} from "@/models/FormKeysNames";
 import {ProgressSpinner} from "@/components/view/ProgressSpinner/ProgressSpinner";
 
 export const ProfileForm: FC = () => {
@@ -27,7 +27,7 @@ export const ProfileForm: FC = () => {
     handleSubmit,
     formState: {isDirty},
     reset,
-  } = useForm<InputFields>({
+  } = useForm<UpdateUserFormFields>({
     defaultValues: {
       [PROFILE_FORM_KEYS.firstName]: userData.profile.first_name,
       [PROFILE_FORM_KEYS.lastName]: userData.profile.last_name,
@@ -48,7 +48,7 @@ export const ProfileForm: FC = () => {
     if (userIsUploaded) resetFields();
   }, [calledUserData, loadingUserData, userData, positions, departments]);
 
-  const onSubmit = async (data: UploadedUser) => {
+  const onSubmit = async (data: UpdateUserFormFields) => {
     const dataForSend = convertProfileFormDataToRequestData(data);
 
     await updateUser({
@@ -64,21 +64,21 @@ export const ProfileForm: FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={InputsContainerStyle}>
-        <Input
+        <Input<UpdateUserFormFields>
           control={control}
           type="text"
           id="first_name"
           label="First Name"
           name="first_name"
         />
-        <Input
+        <Input<UpdateUserFormFields>
           control={control}
           type="text"
           id="lastName"
           label="Last Name"
           name="last_name"
         />
-        <Input
+        <Input<UpdateUserFormFields>
           control={control}
           select
           id="department"
@@ -91,7 +91,7 @@ export const ProfileForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
-        <Input
+        <Input<UpdateUserFormFields>
           control={control}
           select
           id="position"

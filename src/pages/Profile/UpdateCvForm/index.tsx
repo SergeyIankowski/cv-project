@@ -3,43 +3,45 @@ import {useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import {ModalLayout} from "@view/MuiPagesStyles";
-import {Input, InputFields} from "@containers/Input";
+import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
-import {UpdatedCv} from "@/models/UpdatedCv.type";
+import {UpdateCvFormFields} from "@/models/FormFieldsTypes";
 import {useUpdateCvMutation} from "@/graphql/hooks/useUpdateCvMutation";
 import {convertUpdateCvFormDataToRequestData} from "@/utils/convertUpdateCvFormDataToRequestData";
 import {useParams} from "react-router-dom";
+import {Cv} from "@/graphql/interfaces/Cv.interface";
 
 interface UpdateCvFormProps {
-  data: UpdatedCv;
+  cvId: Cv["id"];
+  cv: Pick<Cv, "name" | "description" | "is_template">;
 }
 
-export const UpdateCvForm: FC<UpdateCvFormProps> = ({data}) => {
+export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId}) => {
   const {id} = useParams();
   const {updateCv} = useUpdateCvMutation();
-  const {control, handleSubmit} = useForm<InputFields>({
+  const {control, handleSubmit} = useForm<UpdateCvFormFields>({
     defaultValues: {
-      name: data.name,
-      description: data.description,
-      is_template: data.is_template,
+      name: cv.name,
+      description: cv.description,
+      is_template: cv.is_template,
     },
   });
-  const onSubmit = (cv: UpdatedCv) => {
+  const onSubmit = async (cv: UpdateCvFormFields) => {
     const userId = id || "";
     const dataToRequest = convertUpdateCvFormDataToRequestData(userId, cv);
-    updateCv(data.id, dataToRequest);
+    await updateCv(cvId, dataToRequest);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={ModalLayout}>
-        <Input
+        <Input<UpdateCvFormFields>
           control={control}
           type="text"
           id="name"
           label="Name"
           name="name"
         />
-        <Input
+        <Input<UpdateCvFormFields>
           control={control}
           type="text"
           id="description"
@@ -48,7 +50,7 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({data}) => {
         />
         <Typography>
           {"Template: "}
-          <Input
+          <Input<UpdateCvFormFields>
             control={control}
             type="checkbox"
             id="is_template"

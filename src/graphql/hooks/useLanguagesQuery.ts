@@ -2,9 +2,9 @@
 import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
 import {LANGUAGES} from "../queries";
-import {LanguagesData} from "@/models/LanguagesData";
+import {LanguagesTableData} from "@/models/TableDataTypes";
 
-const convertQueryData: (data: any) => LanguagesData[] = data => {
+const convertQueryData: (data: any) => LanguagesTableData[] = data => {
   return data.languages.map((language: any) => {
     return {
       id: language.id,
@@ -16,7 +16,7 @@ const convertQueryData: (data: any) => LanguagesData[] = data => {
 };
 
 export const useLanguagesQuery = () => {
-  const [responseData, setResponceData] = useState<LanguagesData[]>([]);
+  const [responseData, setResponceData] = useState<LanguagesTableData[]>([]);
   const {loading, data, error} = useQuery(LANGUAGES);
 
   useEffect(() => {

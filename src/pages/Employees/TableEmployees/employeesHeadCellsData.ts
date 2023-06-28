@@ -1,7 +1,7 @@
 import {HeadCell} from "@/models/HeadCell.type";
-import {UserData} from "@/models/UserData.type";
+import {UserTableData} from "@/models/TableDataTypes";
 
-export const employeesHeadCellsData: HeadCell<UserData>[] = [
+export const employeesHeadCellsData: HeadCell<UserTableData>[] = [
   {
     id: "imgPath",
     content: "",

@@ -1,10 +1,10 @@
 import {FC} from "react";
 import {ModalTemplate} from "@view/ModalTemplate";
 import {UpdateProjectForm} from "../UpdateProjectFrom";
-import {UpdatedProject} from "@/models/UpdatedProject.type";
+import {UpdateProjectFormFields} from "@/models/FormFieldsTypes/UpdateProjectFormFields.type";
 
 interface UpdateProjectModal {
-  projectData: UpdatedProject;
+  projectData: UpdateProjectFormFields;
 }
 
 export const UpdateProjectModal: FC<UpdateProjectModal> = ({projectData}) => {

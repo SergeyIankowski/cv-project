@@ -1,17 +1,17 @@
-import {UpdatedProject} from "@/models/UpdatedProject.type";
-import {ProjectFormKeys} from "@/models/projectFormKeys";
+import {UpdateProjectFormFields} from "@/models/FormFieldsTypes/UpdateProjectFormFields.type";
+import {PROJECT_FORM_KEYS} from "@/models/FormKeysNames";
 
 export const convertProjectDataForSend = (
-  data: UpdatedProject
-): Required<UpdatedProject> => {
+  data: UpdateProjectFormFields
+): Required<UpdateProjectFormFields> => {
   return {
-    [ProjectFormKeys.name]: data.name,
-    [ProjectFormKeys.internal_name]: data.internal_name,
-    [ProjectFormKeys.description]: data.description,
-    [ProjectFormKeys.domain]: data.domain,
-    [ProjectFormKeys.start_date]: data.start_date,
-    [ProjectFormKeys.end_date]: data.end_date,
-    [ProjectFormKeys.team_size]: data.team_size,
-    [ProjectFormKeys.skillsIds]: [],
+    [PROJECT_FORM_KEYS.name]: data.name,
+    [PROJECT_FORM_KEYS.internal_name]: data.internal_name,
+    [PROJECT_FORM_KEYS.description]: data.description,
+    [PROJECT_FORM_KEYS.domain]: data.domain,
+    [PROJECT_FORM_KEYS.start_date]: data.start_date,
+    [PROJECT_FORM_KEYS.end_date]: data.end_date,
+    [PROJECT_FORM_KEYS.team_size]: data.team_size,
+    [PROJECT_FORM_KEYS.skillsIds]: [],
   };
 };

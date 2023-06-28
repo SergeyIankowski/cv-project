@@ -21,7 +21,7 @@ export const CvsAccordion: FC = () => {
   if (loadingUserData) return <ProgressSpinner />;
   return (
     <Grid container direction="column" gap="2px">
-      {userData.cvs.map(cv => (
+      {userData.cvs!.map(cv => (
         <AccordionTemplate key={cv.name} title={cv.name}>
           <Grid container direction="column" gap="5px">
             <Typography fontSize="20px">
@@ -33,7 +33,7 @@ export const CvsAccordion: FC = () => {
             </Grid>
             <Grid container direction="row" gap="5px" alignItems="center">
               <UnbindCvButton id={cv.id} />
-              <UpdateCvModal cvData={cv} />
+              <UpdateCvModal cvId={cv.id} />
             </Grid>
           </Grid>
         </AccordionTemplate>

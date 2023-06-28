@@ -3,11 +3,11 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import {Avatar} from "@mui/material";
 import DefaultUser from "@/assets/defaultUser.png";
-import {UserData} from "@/models/UserData.type";
+import {UserTableData} from "@/models/TableDataTypes";
 import {EmployeesRowControlMenu} from "@/pages/Employees/EmployeesRowControlMenu/EmployeesRowControlMenu";
 
 interface TableRowTemplateProps {
-  row: UserData;
+  row: UserTableData;
 }
 
 export const TableRowEmployees: FC<TableRowTemplateProps> = ({row}) => {

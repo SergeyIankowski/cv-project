@@ -1,17 +1,17 @@
 import {SkillsMastery} from "@/models/SkillsMastery";
 import {LanguagesProficiency} from "@/models/LanguagesProficiency";
-import {UpdatedCv} from "@/models/UpdatedCv.type";
+import {CvInput} from "@/graphql/interfaces/CvInput.interface";
+import {User} from "@/graphql/interfaces/User.interface";
 
 export const convertUpdateCvFormDataToRequestData = (
-  userId: number | string,
-  data: UpdatedCv
-): Required<UpdatedCv> => {
+  userId: User["id"],
+  data: CvInput
+): CvInput => {
   return {
-    id: data.id,
     name: data.name,
-    userId,
     description: data.description,
-    projectsIds: 245,
+    userId,
+    projectsIds: [245],
     skills: [
       {
         skill_name: "some",

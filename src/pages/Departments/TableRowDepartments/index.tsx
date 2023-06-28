@@ -1,10 +1,10 @@
 import {FC} from "react";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import {DepartmentsData} from "@/models/DepartmentsData.type";
+import {DepartmentsTableData} from "@/models/TableDataTypes";
 
 interface TableRowDepartmentsProps {
-  row: DepartmentsData;
+  row: DepartmentsTableData;
 }
 
 export const TableRowDepartments: FC<TableRowDepartmentsProps> = ({row}) => {

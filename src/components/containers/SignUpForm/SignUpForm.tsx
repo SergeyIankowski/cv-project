@@ -6,13 +6,13 @@ import Box from "@mui/material/Box";
 import {useBooleanState} from "@/hooks/useBooleanState";
 import {TypographyH3, TypographyH6} from "@view/Typographics/Typographics";
 import {ContentStyle, PasswordIconStyle} from "@view/MuiPagesStyles";
-import {Input, InputFields} from "@containers/Input";
+import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {useNavigate} from "react-router-dom";
 import {Pages} from "@/models/Pages";
-import {AuthValues} from "@/models/AuthValues.type";
+import {AuthFormFields} from "@/models/FormFieldsTypes/";
 import {useSignUpMutation} from "@/graphql/hooks/useSignUpMutation";
-import {AUTH_FIEDS_KEYS} from "@/models/AuthFieldsKeys";
+import {AUTH_FIEDS_KEYS} from "@/models/FormKeysNames";
 
 export const SignUpForm: FC = () => {
   const [
@@ -27,7 +27,7 @@ export const SignUpForm: FC = () => {
     handleSubmit,
     formState: {errors},
     reset,
-  } = useForm<InputFields>({
+  } = useForm<AuthFormFields>({
     defaultValues: {
       [AUTH_FIEDS_KEYS.email]: "",
       [AUTH_FIEDS_KEYS.password]: "",
@@ -35,7 +35,7 @@ export const SignUpForm: FC = () => {
   });
   const {signUp} = useSignUpMutation();
 
-  const onSubmit = async (data: AuthValues) => {
+  const onSubmit = async (data: AuthFormFields) => {
     try {
       await signUp({variables: {auth: data}});
     } catch (e) {
@@ -49,7 +49,7 @@ export const SignUpForm: FC = () => {
       <Box sx={ContentStyle}>
         <TypographyH3 text="Register now" />
         <TypographyH6 text="Welcome! Sign up to continue." />
-        <Input
+        <Input<AuthFormFields>
           margin="dense"
           id="email"
           label="Email"
@@ -60,7 +60,7 @@ export const SignUpForm: FC = () => {
           control={control}
         />
         <Box sx={{position: "relative"}}>
-          <Input
+          <Input<AuthFormFields>
             sx={{width: "100%"}}
             margin="dense"
             id="password"

@@ -1,20 +1,15 @@
-import {ROLES} from "@/models/Roles";
-import {DepartmentsData} from "./DepartmentsData.type";
-import {PositionsData} from "./PositionsData.type";
-import {UpdatedCv} from "./UpdatedCv.type";
+import {Department} from "@/graphql/interfaces/Department.interface";
+import {Position} from "@/graphql/interfaces/Position.interface";
+import {Profile} from "@/graphql/interfaces/Profile.interface";
+import {User} from "@/graphql/interfaces/User.interface";
 
 export interface FetchedUser {
-  id: string;
-  created_at: string;
-  profile: {
-    avatar: string;
-    first_name: string;
-    last_name: string;
-    full_name: string;
-  };
-  email: string;
-  cvs: UpdatedCv[];
-  department: DepartmentsData;
-  position: PositionsData;
-  role: ROLES.employee | ROLES.admin;
+  id: User["id"];
+  created_at: User["created_at"];
+  profile: Partial<Profile>;
+  email: User["email"];
+  cvs: User["cvs"];
+  department: Pick<Department, "id" | "name">;
+  position: Pick<Position, "id" | "name">;
+  role: User["role"];
 }

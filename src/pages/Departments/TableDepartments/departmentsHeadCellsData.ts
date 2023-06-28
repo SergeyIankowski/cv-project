@@ -1,7 +1,7 @@
-import {DepartmentsData} from "@/models/DepartmentsData.type";
+import {DepartmentsTableData} from "@/models/TableDataTypes";
 import {HeadCell} from "@/models/HeadCell.type";
 
-export const departmentsHeadCellsData: HeadCell<DepartmentsData>[] = [
+export const departmentsHeadCellsData: HeadCell<DepartmentsTableData>[] = [
   {
     id: "name",
     content: "Name",

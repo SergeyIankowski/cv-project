@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {useForm} from "react-hook-form";
 import MenuItem from "@mui/material/MenuItem";
-import {Input, InputFields} from "@containers/Input";
+import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
 import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
@@ -10,6 +10,7 @@ import {convertCreatedUserDataToRequestData} from "@/utils/convertCreatedUserDat
 import {ROLES} from "@/models/Roles";
 import {Box} from "@mui/material";
 import {ModalLayout} from "@view/MuiPagesStyles";
+import {CreateUserFormFields} from "@/models/FormFieldsTypes";
 
 const validationMessages = {
   incorrectEmail: "email is not correct",
@@ -24,9 +25,9 @@ export const EmployeeAddingForm: FC = () => {
     control,
     handleSubmit,
     formState: {errors},
-  } = useForm<InputFields>();
+  } = useForm<CreateUserFormFields>();
 
-  const onSubmit = async (data: InputFields) => {
+  const onSubmit = async (data: CreateUserFormFields) => {
     const dataToload = convertCreatedUserDataToRequestData(data);
     await createUser(dataToload);
     console.log(dataToload);
@@ -35,7 +36,7 @@ export const EmployeeAddingForm: FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={ModalLayout}>
-        <Input
+        <Input<CreateUserFormFields>
           control={control}
           type="text"
           id="email"
@@ -45,7 +46,7 @@ export const EmployeeAddingForm: FC = () => {
           error={Boolean(errors.email)}
           helperText={errors.email && validationMessages.incorrectEmail}
         />
-        <Input
+        <Input<CreateUserFormFields>
           control={control}
           type="text"
           id="password"
@@ -55,7 +56,7 @@ export const EmployeeAddingForm: FC = () => {
           helperText={errors.password && validationMessages.emptyField}
           rules={{required: true}}
         />
-        <Input
+        <Input<CreateUserFormFields>
           control={control}
           type="text"
           id="first_name"
@@ -75,7 +76,7 @@ export const EmployeeAddingForm: FC = () => {
           helperText={errors.last_name && validationMessages.emptyField}
           rules={{required: true}}
         />
-        <Input
+        <Input<CreateUserFormFields>
           control={control}
           select
           id="department"
@@ -91,7 +92,7 @@ export const EmployeeAddingForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
-        <Input
+        <Input<CreateUserFormFields>
           control={control}
           select
           id="position"
@@ -107,7 +108,7 @@ export const EmployeeAddingForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
-        <Input
+        <Input<CreateUserFormFields>
           control={control}
           select
           id="role"

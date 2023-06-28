@@ -1,7 +1,7 @@
 import {HeadCell} from "@/models/HeadCell.type";
-import {PositionsData} from "@/models/PositionsData.type";
+import {PositionsTableData} from "@/models/TableDataTypes";
 
-export const positionsHeadCellsData: HeadCell<PositionsData>[] = [
+export const positionsHeadCellsData: HeadCell<PositionsTableData>[] = [
   {
     id: "name",
     content: "Name",

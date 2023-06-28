@@ -1,7 +1,7 @@
 import {HeadCell} from "@/models/HeadCell.type";
-import {ProjectData} from "@/models/ProjectData.type";
+import {ProjectTableData} from "@/models/TableDataTypes";
 
-export const projectsHeadCellsData: HeadCell<ProjectData>[] = [
+export const projectsHeadCellsData: HeadCell<ProjectTableData>[] = [
   {
     id: "name",
     content: "Name",

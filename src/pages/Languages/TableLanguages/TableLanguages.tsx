@@ -3,20 +3,20 @@ import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableRowLanguages} from "@/pages/Languages/TableRowLanguages/TableRowLanguages";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {Order} from "@/models/Order.type";
-import {LanguagesData} from "@/models/LanguagesData";
+import {LanguagesTableData} from "@/models/TableDataTypes";
 import {LanguagesHeadCellsData} from "./LanguagesHeadCellsData";
 import {useSort} from "@/hooks/useSort";
 
 interface TableLanguagesProps {
-  languagesData: LanguagesData[];
+  languagesData: LanguagesTableData[];
 }
 
 const DEFAULT_ORDER: Order = "asc";
-const DEFAULT_ORDER_BY: keyof LanguagesData = "name";
+const DEFAULT_ORDER_BY: keyof LanguagesTableData = "name";
 
 export const TableLanguages: FC<TableLanguagesProps> = ({languagesData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
-    useSort<LanguagesData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, languagesData);
+    useSort<LanguagesTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, languagesData);
   return (
     <TableTemplate>
       <TableHeadTemplate

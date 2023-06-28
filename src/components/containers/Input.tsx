@@ -1,35 +1,21 @@
-import {FC} from "react";
 import {
   Checkbox as MuiCheckbox,
   CheckboxProps,
   TextField as MuiTextField,
   TextFieldProps as Props,
 } from "@mui/material";
-import {useController, UseControllerProps} from "react-hook-form";
-import {AuthValues} from "@/models/AuthValues.type";
-import {UploadedUser} from "@/models/UploadedUser.type";
-import {ROLES} from "@/models/Roles";
-import {UpdatedCv} from "@/models/UpdatedCv.type";
-import {UpdatedProject} from "@/models/UpdatedProject.type";
+import {FieldValues, useController, UseControllerProps} from "react-hook-form";
 import {DateField, DateFieldProps} from "@mui/x-date-pickers/DateField";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs, {Dayjs} from "dayjs";
 
-export interface InputFields
-  extends AuthValues,
-    UploadedUser,
-    UpdatedCv,
-    UpdatedProject {
-  role?: ROLES.admin | ROLES.employee;
-}
+type InputProps<T extends FieldValues> = Props &
+  CheckboxProps &
+  DateFieldProps<"YYYY-MM-DD"> &
+  UseControllerProps<T>;
 
-export const Input: FC<
-  Props &
-    CheckboxProps &
-    DateFieldProps<"YYYY-MM-DD"> &
-    UseControllerProps<InputFields>
-> = ({
+export const Input = <T extends FieldValues>({
   children,
   sx,
   margin,
@@ -45,7 +31,7 @@ export const Input: FC<
   name,
   control,
   rules,
-}) => {
+}: InputProps<T>) => {
   const {field} = useController({name, control, rules: rules});
   if (type === "date")
     return (
@@ -73,7 +59,7 @@ export const Input: FC<
         onChange={field.onChange}
         onBlur={field.onBlur}
         value={field.value}
-        defaultChecked={field.value as boolean}
+        defaultChecked={field.value as unknown as boolean}
         name={field.name}
         ref={field.ref}
       />

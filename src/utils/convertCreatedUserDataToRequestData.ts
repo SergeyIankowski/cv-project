@@ -1,7 +1,9 @@
-import {InputFields} from "@/components/containers/Input";
+import {CreateUserFormFields} from "@/models/FormFieldsTypes";
 import {CreatedUser} from "@/models/CreatedUser.type";
 
-export const convertCreatedUserDataToRequestData = (data: InputFields) => {
+export const convertCreatedUserDataToRequestData = (
+  data: CreateUserFormFields
+) => {
   const requestData: CreatedUser = {
     auth: {
       email: data.email,
@@ -13,7 +15,7 @@ export const convertCreatedUserDataToRequestData = (data: InputFields) => {
     },
     departmentId: data.departmentId,
     positionId: data.positionId,
-    cvsIds: "",
+    cvsIds: [],
     role: data.role!,
   };
 

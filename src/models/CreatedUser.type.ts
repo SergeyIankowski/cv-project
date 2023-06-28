@@ -1,12 +1,3 @@
-import {AuthValues} from "./AuthValues.type";
-import {ROLES} from "./Roles";
-import {UploadedUser} from "./UploadedUser.type";
+import {CreateUserInput} from "@/graphql/interfaces/CreateUserInput.interface";
 
-export interface CreatedUser {
-  auth: AuthValues;
-  profile: Pick<UploadedUser, "first_name" | "last_name">;
-  departmentId: UploadedUser["departmentId"];
-  positionId: UploadedUser["positionId"];
-  cvsIds: string;
-  role: ROLES.admin | ROLES.employee;
-}
+export type CreatedUser = CreateUserInput;

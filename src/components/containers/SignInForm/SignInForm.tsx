@@ -3,13 +3,13 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {TypographyH3, TypographyH6} from "@view/Typographics/Typographics";
 import Box from "@mui/material/Box";
-import {Input, InputFields} from "@containers/Input";
+import {Input} from "@containers/Input";
 import {ContentStyle, PasswordIconStyle} from "@view/MuiPagesStyles";
 import {Button} from "@containers/Button";
 import {useForm} from "react-hook-form";
-import {AuthValues} from "@/models/AuthValues.type";
+import {AuthFormFields} from "@/models/FormFieldsTypes/";
 import {useLoginQuery} from "@/graphql/hooks/useLoginQuery";
-import {AUTH_FIEDS_KEYS} from "@/models/AuthFieldsKeys";
+import {AUTH_FIEDS_KEYS} from "@/models/FormKeysNames";
 
 export const SignInForm = () => {
   const [
@@ -22,7 +22,7 @@ export const SignInForm = () => {
     control,
     handleSubmit,
     formState: {errors},
-  } = useForm<InputFields>({
+  } = useForm<AuthFormFields>({
     defaultValues: {
       [AUTH_FIEDS_KEYS.email]: "",
       [AUTH_FIEDS_KEYS.password]: "",
@@ -30,7 +30,7 @@ export const SignInForm = () => {
   });
   const {loadLoginData} = useLoginQuery();
 
-  const onSubmit = (data: AuthValues) => {
+  const onSubmit = (data: AuthFormFields) => {
     loadLoginData({variables: {auth: data}});
   };
   return (
@@ -38,7 +38,7 @@ export const SignInForm = () => {
       <Box sx={ContentStyle}>
         <TypographyH3 text="Welcome Back" />
         <TypographyH6 text="Hello Again! Sign up to continue!" />
-        <Input
+        <Input<AuthFormFields>
           margin="dense"
           id="email"
           label="Email"
@@ -49,7 +49,7 @@ export const SignInForm = () => {
           control={control}
         />
         <Box sx={{position: "relative"}}>
-          <Input
+          <Input<AuthFormFields>
             sx={{width: "100%"}}
             margin="dense"
             id="password"
