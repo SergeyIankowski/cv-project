@@ -1,9 +1,9 @@
-import {FC, ReactNode} from "react";
+import {FC, ReactNode, useContext} from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import {Button} from "@containers/Button";
-import {useBooleanState} from "@/hooks/useBooleanState";
 import {modalStyle} from "./modalStyles";
+import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
 
 interface ModalTemplateProps {
   buttonName: string;
@@ -14,9 +14,7 @@ export const ModalTemplate: FC<ModalTemplateProps> = ({
   buttonName,
   children,
 }) => {
-  const [open, setTrue, setFalse] = useBooleanState(false);
-  const handleOpen = () => setTrue();
-  const handleClose = () => setFalse();
+  const {isOpen, openModal, closeModal} = useContext(ModalTemplateContext);
 
   return (
     <>
@@ -25,13 +23,13 @@ export const ModalTemplate: FC<ModalTemplateProps> = ({
         color="error"
         size="small"
         type="submit"
-        onClick={handleOpen}
+        onClick={openModal}
       >
         {buttonName}
       </Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={isOpen}
+        onClose={closeModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

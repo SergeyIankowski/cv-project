@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
 import MenuItem from "@mui/material/MenuItem";
 import {Input} from "@containers/Input";
@@ -11,6 +11,7 @@ import {ROLES} from "@/models/Roles";
 import {Box} from "@mui/material";
 import {ModalLayout} from "@view/MuiPagesStyles";
 import {CreateUserFormFields} from "@/models/FormFieldsTypes";
+import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
 
 const validationMessages = {
   incorrectEmail: "email is not correct",
@@ -20,6 +21,7 @@ const validationMessages = {
 export const EmployeeAddingForm: FC = () => {
   const {departments} = useDepartmentsQuery();
   const {positions} = usePositionsQuery();
+  const {closeModal} = useContext(ModalTemplateContext);
   const {createUser} = useCreateUser();
   const {
     control,
@@ -30,6 +32,7 @@ export const EmployeeAddingForm: FC = () => {
   const onSubmit = async (data: CreateUserFormFields) => {
     const dataToload = convertCreatedUserDataToRequestData(data);
     await createUser(dataToload);
+    closeModal();
   };
 
   return (

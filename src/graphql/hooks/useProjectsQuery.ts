@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
 import {PROJECTS} from "../queries";
 import {FetchedProject} from "@/models/FetchedProject.interface";
-
 import {ProjectTableData} from "@/models/TableDataTypes";
 
 const convertQueryData: (data: any) => ProjectTableData[] = data => {

@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -10,6 +10,7 @@ import {useUpdateCvMutation} from "@/graphql/hooks/useUpdateCvMutation";
 import {convertUpdateCvFormDataToRequestData} from "@/utils/convertUpdateCvFormDataToRequestData";
 import {useParams} from "react-router-dom";
 import {Cv} from "@/graphql/interfaces/Cv.interface";
+import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
 
 interface UpdateCvFormProps {
   cvId: Cv["id"];
@@ -19,6 +20,7 @@ interface UpdateCvFormProps {
 export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId}) => {
   const {id} = useParams();
   const {updateCv} = useUpdateCvMutation();
+  const {closeModal} = useContext(ModalTemplateContext);
   const {control, handleSubmit} = useForm<UpdateCvFormFields>({
     defaultValues: {
       name: cv.name,
@@ -30,6 +32,7 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId}) => {
     const userId = id || "";
     const dataToRequest = convertUpdateCvFormDataToRequestData(userId, cv);
     await updateCv(cvId, dataToRequest);
+    closeModal();
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
