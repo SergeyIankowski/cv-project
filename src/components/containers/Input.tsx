@@ -3,6 +3,7 @@ import {
   CheckboxProps,
   TextField as MuiTextField,
   TextFieldProps as Props,
+  Typography,
 } from "@mui/material";
 import {FieldValues, useController, UseControllerProps} from "react-hook-form";
 import {DateField, DateFieldProps} from "@mui/x-date-pickers/DateField";
@@ -50,19 +51,22 @@ export const Input = <T extends FieldValues>({
     );
   if (type === "checkbox")
     return (
-      <MuiCheckbox
-        size="small"
-        required={required}
-        sx={sx}
-        id={id}
-        placeholder={placeholder}
-        onChange={field.onChange}
-        onBlur={field.onBlur}
-        value={field.value}
-        defaultChecked={field.value as unknown as boolean}
-        name={field.name}
-        ref={field.ref}
-      />
+      <Typography>
+        {`${label}: `}
+        <MuiCheckbox
+          size="small"
+          required={required}
+          sx={sx}
+          id={id}
+          placeholder={placeholder}
+          onChange={field.onChange}
+          onBlur={field.onBlur}
+          value={field.value}
+          defaultChecked={field.value as unknown as boolean}
+          name={field.name}
+          ref={field.ref}
+        />
+      </Typography>
     );
   return (
     <MuiTextField
