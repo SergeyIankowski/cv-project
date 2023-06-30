@@ -7,7 +7,7 @@ export interface CreateCvFormFields {
   description: CvInput["description"];
   userId?: CvInput["userId"];
   projectsIds?: CvInput["projectsIds"];
-  skills: SkillMastery["skill_name"][];
-  languages: LanguageProficiency["language_name"][];
+  skills: SkillMastery[];
+  languages: LanguageProficiency[];
   is_template: CvInput["is_template"];
 }
