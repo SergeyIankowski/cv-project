@@ -5,3 +5,5 @@ export enum SkillsMastery {
   proficient = "proficient",
   expert = "expert",
 }
+
+export const skillMasteryValues = Object.values(SkillsMastery);
