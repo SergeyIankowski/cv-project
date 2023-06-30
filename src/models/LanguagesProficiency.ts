@@ -7,3 +7,5 @@ export enum LanguagesProficiency {
   c2 = "c2",
   native = "native",
 }
+
+export const languagesProficiencyValues = Object.values(LanguagesProficiency);
