@@ -1,27 +1,53 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import {FC, useContext} from "react";
-import {useForm} from "react-hook-form";
+import {useFieldArray, useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
+
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
+import {SkillsInputsGroup} from "@containers/SkillsInputsGroup";
+import {LanguagesInputsGroup} from "@containers/LanguagesInputsGroup";
 import {ModalLayout} from "@view/MuiPagesStyles";
 import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
-import {CreateCvFormFields} from "@/models/FormFieldsTypes/CreateCvFormFields";
+import {CreateCvFormFields} from "@/models/FormFieldsTypes";
 import {FIELDS_VALIDATION_MESSAGES} from "@/models/fieldsValidationMessages";
+import {LanguagesProficiency} from "@/models/LanguagesProficiency";
+import {SkillsMastery} from "@/models/SkillsMastery";
 import {useEmployeesQuery} from "@/graphql/hooks/useEmployeesQuery";
 import {User} from "@/graphql/interfaces/User.interface";
-import {useSkillsQuery} from "@/graphql/hooks/useSkillsQuery";
-import {SelectWithControl} from "@containers/SelectWithControl";
 
 export const CreateCvForm: FC = () => {
   const {closeModal} = useContext(ModalTemplateContext);
-  const {skills} = useSkillsQuery();
   const {users} = useEmployeesQuery();
   const {
     control,
+    register,
     handleSubmit,
     formState: {errors},
-  } = useForm<CreateCvFormFields>({defaultValues: {is_template: false}});
+  } = useForm<CreateCvFormFields>({
+    defaultValues: {
+      userId: "",
+      is_template: false,
+    },
+  });
+
+  const {
+    fields: fieldsSkills,
+    append: appendSkill,
+    remove: removeSkill,
+  } = useFieldArray({
+    control,
+    name: "skills" as never,
+  });
+  const {
+    fields: fieldsLanguages,
+    append: appendLanguage,
+    remove: removeLanguage,
+  } = useFieldArray({
+    control,
+    name: "languages" as never,
+  });
 
   const onSubmit = async (data: CreateCvFormFields) => {
     console.log(data);
@@ -36,7 +62,7 @@ export const CreateCvForm: FC = () => {
           id="name"
           label="Name *"
           name="name"
-          rules={{required: false}}
+          rules={{required: true}}
           error={Boolean(errors.name)}
           helperText={errors.name && FIELDS_VALIDATION_MESSAGES.emptyField}
         />
@@ -46,7 +72,7 @@ export const CreateCvForm: FC = () => {
           id="description"
           label="Description *"
           name="description"
-          rules={{required: false}}
+          rules={{required: true}}
           error={Boolean(errors.description)}
           helperText={errors.name && FIELDS_VALIDATION_MESSAGES.emptyField}
         />
@@ -63,11 +89,28 @@ export const CreateCvForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
-        <SelectWithControl<CreateCvFormFields>
-          name="skills"
-          control={control}
-          defaultValue={[]}
-          fields={skills}
+        <SkillsInputsGroup<CreateCvFormFields>
+          fieldName="skills"
+          fields={fieldsSkills}
+          register={register}
+          append={appendSkill}
+          remove={removeSkill}
+          clearSkill={{skill_name: "", mastery: SkillsMastery.advanced}}
+          removeButtonTitle="Remove Skill"
+          addButtonTitle="Add Skill"
+        />
+        <LanguagesInputsGroup<CreateCvFormFields>
+          name="languages"
+          fields={fieldsLanguages}
+          register={register}
+          append={appendLanguage}
+          remove={removeLanguage}
+          clearLanguage={{
+            language_name: "",
+            proficiency: LanguagesProficiency.a1,
+          }}
+          removeButtonTitle="Remove Language"
+          addButtonTitle="Add Language"
         />
         <Input<CreateCvFormFields>
           control={control}
