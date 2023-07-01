@@ -16,10 +16,15 @@ import {LanguagesProficiency} from "@/models/LanguagesProficiency";
 import {SkillsMastery} from "@/models/SkillsMastery";
 import {useEmployeesQuery} from "@/graphql/hooks/useEmployeesQuery";
 import {User} from "@/graphql/interfaces/User.interface";
+import {useCreateCv} from "@/graphql/hooks/useCreateCv";
+import {SelectWithControl} from "@/components/containers/SelectWithControl";
+import {useProjectsQuery} from "@/graphql/hooks/useProjectsQuery";
 
 export const CreateCvForm: FC = () => {
   const {closeModal} = useContext(ModalTemplateContext);
   const {users} = useEmployeesQuery();
+  const {projects} = useProjectsQuery();
+  const {createCv} = useCreateCv();
   const {
     control,
     register,
@@ -50,7 +55,7 @@ export const CreateCvForm: FC = () => {
   });
 
   const onSubmit = async (data: CreateCvFormFields) => {
-    console.log(data);
+    await createCv(data);
     closeModal();
   };
   return (
@@ -74,7 +79,9 @@ export const CreateCvForm: FC = () => {
           name="description"
           rules={{required: true}}
           error={Boolean(errors.description)}
-          helperText={errors.name && FIELDS_VALIDATION_MESSAGES.emptyField}
+          helperText={
+            errors.description && FIELDS_VALIDATION_MESSAGES.emptyField
+          }
         />
         <Input<CreateCvFormFields>
           control={control}
@@ -82,6 +89,9 @@ export const CreateCvForm: FC = () => {
           id="userId"
           label="User"
           name="userId"
+          rules={{required: true}}
+          error={Boolean(errors.userId)}
+          helperText={errors.userId && FIELDS_VALIDATION_MESSAGES.emptyField}
         >
           {users.map((user: User) => (
             <MenuItem key={user.email} value={user.id}>
@@ -89,6 +99,13 @@ export const CreateCvForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
+        <SelectWithControl<CreateCvFormFields>
+          name="projectsIds"
+          control={control}
+          fields={projects}
+          defaultValue={[]}
+          required
+        />
         <SkillsInputsGroup<CreateCvFormFields>
           fieldName="skills"
           fields={fieldsSkills}
