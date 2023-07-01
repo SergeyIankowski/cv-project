@@ -3,9 +3,10 @@ import {CvTableData} from "@/models/TableDataTypes";
 import {CVS} from "../queries";
 import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
+import {Cv} from "../interfaces/Cv.interface";
 
-const convertQueryData: (data: any) => CvTableData[] = data => {
-  return data.cvs.map((cv: any) => {
+const convertQueryData: (data: Cv[]) => CvTableData[] = data => {
+  return data.map((cv: Cv) => {
     return {
       id: cv.id,
       name: cv.name,
@@ -17,14 +18,16 @@ const convertQueryData: (data: any) => CvTableData[] = data => {
 };
 
 export const useCvsQuery = () => {
-  const [responseData, setResponceData] = useState<CvTableData[]>([]);
+  const [tableData, setTableData] = useState<CvTableData[]>([]);
+  const [cvs, setCvs] = useState<Cv[]>([]);
   const {loading, data, error} = useQuery(CVS);
 
   useEffect(() => {
     if (loading) return;
     if (error) return;
-    setResponceData(convertQueryData(data));
+    setTableData(convertQueryData(data.cvs));
+    setCvs(data.cvs);
   }, [loading]);
 
-  return {loading, data: responseData};
+  return {loading, tableCvs: tableData, cvs};
 };
