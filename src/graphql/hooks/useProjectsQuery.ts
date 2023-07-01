@@ -2,11 +2,11 @@
 import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
 import {PROJECTS} from "../queries";
-import {FetchedProject} from "@/models/FetchedProject.interface";
 import {ProjectTableData} from "@/models/TableDataTypes";
+import {Project} from "../interfaces/Project.interface";
 
-const convertQueryData: (data: any) => ProjectTableData[] = data => {
-  return data.projects.map((project: FetchedProject) => {
+const convertQueryData: (data: Project[]) => ProjectTableData[] = data => {
+  return data.map((project: Project) => {
     return {
       id: project.id,
       name: project.name,
@@ -19,14 +19,18 @@ const convertQueryData: (data: any) => ProjectTableData[] = data => {
   });
 };
 export const useProjectsQuery = () => {
-  const [responseData, setResponceData] = useState<ProjectTableData[]>([]);
+  const [tableProjects, setTableProjects] = useState<ProjectTableData[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   const {loading, data, error} = useQuery(PROJECTS);
 
   useEffect(() => {
     if (loading) return;
     if (error) return;
-    setResponceData(convertQueryData(data));
-  }, [loading]);
+    if (data) {
+      setTableProjects(convertQueryData(data.projects));
+      setProjects(data.projects);
+    }
+  }, [loading, data]);
 
-  return {loading, data: responseData};
+  return {loading, projects, tableProjects};
 };
