@@ -4,6 +4,7 @@ import {useSkillsQuery} from "@/graphql/hooks/useSkillsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {SkillsTableData} from "@/models/TableDataTypes";
 import {FC} from "react";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 export const Skills: FC = () => {
   const {skills, loading} = useSkillsQuery();
@@ -14,7 +15,11 @@ export const Skills: FC = () => {
   return (
     <>
       <SearchInput onSearch={handleSearchingData} />
-      <TableSkills skillsData={searchedData} />
+      {loading ? (
+        <ProgressSpinner />
+      ) : (
+        <TableSkills skillsData={searchedData} />
+      )}
     </>
   );
 };

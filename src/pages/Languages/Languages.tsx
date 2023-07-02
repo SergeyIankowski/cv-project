@@ -4,6 +4,7 @@ import {TableLanguages} from "@/pages/Languages/TableLanguages/TableLanguages";
 import {LanguagesTableData} from "@/models/TableDataTypes";
 import {useLanguagesQuery} from "@/graphql/hooks/useLanguagesQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 export const Languages: FC = () => {
   const {loading, tableLanguages} = useLanguagesQuery();
@@ -13,7 +14,11 @@ export const Languages: FC = () => {
   return (
     <>
       <SearchInput onSearch={handleSearchingData} />
-      <TableLanguages languagesData={searchedData} />
+      {loading ? (
+        <ProgressSpinner />
+      ) : (
+        <TableLanguages languagesData={searchedData} />
+      )}
     </>
   );
 };

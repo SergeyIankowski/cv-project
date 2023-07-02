@@ -7,6 +7,7 @@ import {useTableSearch} from "@/hooks/useTableSearch";
 import {PageLayoutRowContainer} from "@view/PageLayoutRowContainer";
 import {AuthInfoService} from "@/services/AuthInfoService";
 import {NewEmployeeModal} from "./NewEmployeeModal";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 export const Employees: FC = () => {
   const {loading, usersForTable} = useEmployeesQuery();
@@ -22,7 +23,11 @@ export const Employees: FC = () => {
         {AuthInfoService.isAdmin() && <NewEmployeeModal />}
       </PageLayoutRowContainer>
 
-      <TableEmployees usersData={searchedData} />
+      {loading ? (
+        <ProgressSpinner />
+      ) : (
+        <TableEmployees usersData={searchedData} />
+      )}
     </>
   );
 };
