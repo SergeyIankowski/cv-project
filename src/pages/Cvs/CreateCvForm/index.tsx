@@ -32,7 +32,6 @@ export const CreateCvForm: FC = () => {
     formState: {errors},
   } = useForm<CreateCvFormFields>({
     defaultValues: {
-      userId: "",
       is_template: false,
     },
   });
