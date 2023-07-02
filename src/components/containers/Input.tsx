@@ -6,14 +6,9 @@ import {
   Typography,
 } from "@mui/material";
 import {FieldValues, useController, UseControllerProps} from "react-hook-form";
-import {DateField, DateFieldProps} from "@mui/x-date-pickers/DateField";
-import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
-import dayjs, {Dayjs} from "dayjs";
 
 type InputProps<T extends FieldValues> = Props &
   CheckboxProps &
-  DateFieldProps<"YYYY-MM-DD"> &
   UseControllerProps<T>;
 
 export const Input = <T extends FieldValues>({
@@ -24,6 +19,7 @@ export const Input = <T extends FieldValues>({
   label,
   type,
   placeholder,
+  multiline,
   select,
   error,
   helperText,
@@ -36,18 +32,28 @@ export const Input = <T extends FieldValues>({
   const {field} = useController({name, control, rules: rules});
   if (type === "date")
     return (
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DateField
-          required={required}
-          id={id}
-          onChange={field.onChange}
-          onBlur={field.onBlur}
-          value={dayjs(field.value as Dayjs)}
-          defaultValue={dayjs(field.value as Dayjs)}
-          name={field.name}
-          ref={field.ref}
-        />
-      </LocalizationProvider>
+      <MuiTextField
+        size="small"
+        type="date"
+        inputProps={{format: "dd-mm-yyyy"}}
+        required={required}
+        sx={sx}
+        margin={margin}
+        id={id}
+        label={label}
+        placeholder={placeholder}
+        select={select}
+        error={error}
+        helperText={helperText}
+        onChange={field.onChange}
+        onBlur={field.onBlur}
+        value={field.value}
+        defaultValue={field.value}
+        name={field.name}
+        ref={field.ref}
+      >
+        {children}
+      </MuiTextField>
     );
   if (type === "checkbox")
     return (
@@ -78,6 +84,7 @@ export const Input = <T extends FieldValues>({
       label={label}
       type={type}
       placeholder={placeholder}
+      multiline={multiline}
       select={select}
       error={error}
       helperText={helperText}
