@@ -103,6 +103,7 @@ export const CreateCvForm: FC = () => {
           control={control}
           fields={projects}
           defaultValue={[]}
+          label="Projects"
           required
         />
         <SkillsInputsGroup<CreateCvFormFields>
