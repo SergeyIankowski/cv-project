@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
 import {ModalLayout} from "@view/MuiPagesStyles";
-import {UpdateProjectFormFields} from "@/models/FormFieldsTypes/UpdateProjectFormFields.type";
+import {ProjectFormFields} from "@/models/FormFieldsTypes";
 import {useUpdateProject} from "@/graphql/hooks/useUpdateProject";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
@@ -12,14 +12,14 @@ import {PROJECT_FORM_KEYS} from "@/models/FormKeysNames";
 import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
 
 interface UpdateProjectFormProps {
-  data: UpdateProjectFormFields;
+  data: ProjectFormFields;
 }
 
 export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
   const {id} = useParams();
   const {updateProject} = useUpdateProject();
   const {closeModal} = useContext(ModalTemplateContext);
-  const {control, handleSubmit} = useForm<UpdateProjectFormFields>({
+  const {control, handleSubmit} = useForm<ProjectFormFields>({
     defaultValues: {
       [PROJECT_FORM_KEYS.name]: data.name,
       [PROJECT_FORM_KEYS.internal_name]: data.internal_name,
@@ -30,7 +30,7 @@ export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
       [PROJECT_FORM_KEYS.team_size]: data.team_size,
     },
   });
-  const onSubmit = (project: UpdateProjectFormFields) => {
+  const onSubmit = (project: ProjectFormFields) => {
     const dataForSend = convertProjectDataForSend(project);
     updateProject(id!, dataForSend);
     closeModal();
@@ -38,51 +38,52 @@ export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={ModalLayout}>
-        <Input<UpdateProjectFormFields>
+        <Input<ProjectFormFields>
           control={control}
           type="text"
           id="name"
           label="Name"
           name="name"
         />
-        <Input<UpdateProjectFormFields>
+        <Input<ProjectFormFields>
           control={control}
           type="text"
           id="internal_name"
           label="Internal Name"
           name="internal_name"
         />
-        <Input<UpdateProjectFormFields>
+        <Input<ProjectFormFields>
           control={control}
           type="text"
           id="description"
+          multiline
           label="Description"
           name="description"
         />
-        <Input<UpdateProjectFormFields>
+        <Input<ProjectFormFields>
           control={control}
           type="text"
           id="domain"
           label="Domain"
           name="domain"
         />
-        <Input<UpdateProjectFormFields>
+        <Input<ProjectFormFields>
           control={control}
           type="date"
           id="start_date"
           label="Start Date"
           name="start_date"
         />
-        <Input<UpdateProjectFormFields>
+        <Input<ProjectFormFields>
           control={control}
           type="date"
           id="end_date"
           label="End Date"
           name="end_date"
         />
-        <Input<UpdateProjectFormFields>
+        <Input<ProjectFormFields>
           control={control}
-          type="text"
+          type="number"
           id="team_size"
           label="Team Size"
           name="team_size"
