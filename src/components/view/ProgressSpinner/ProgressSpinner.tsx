@@ -8,7 +8,7 @@ export const ProgressSpinner: FC = () => {
       sx={{
         display: "flex",
         width: "100%",
-        height: "100%",
+        height: "50vh",
         alignItems: "center",
         justifyContent: "center",
       }}
