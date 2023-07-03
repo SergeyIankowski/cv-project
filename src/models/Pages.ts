@@ -10,6 +10,8 @@ export const Pages = {
     languages: "languages",
     id: `:id`,
     profile: "profile",
+    details: "details",
+    preview: "preview",
   },
   auth: {
     root: "/auth",
