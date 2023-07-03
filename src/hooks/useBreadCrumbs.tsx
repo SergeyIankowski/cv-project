@@ -6,9 +6,11 @@ import {Pages} from "@/models/Pages";
 import {createBreadCrumb} from "@/utils/createBreadCrumb";
 import {createUserBreadCrumb} from "@/utils/createUserBreadCrumb";
 import {createProjectBreadCrumb} from "@/utils/createProjectBreadCrumb";
+import {createCvBreadCrumb} from "@/utils/createCvBreadCrumb";
 import {useProjectQuery} from "@/graphql/hooks/useProjectQuery";
 import {splitUrl} from "@/utils/splitUrl";
 import {useUserQuery} from "@/graphql/hooks/useUserQuery";
+import {useCvQuery} from "@/graphql/hooks/useCvQuery";
 
 const rootBreadCrumbs: BreadCrumbsData = [
   {
@@ -23,6 +25,7 @@ export const useBreadCrumbs: () => BreadCrumbsData = () => {
   const {pathname} = useLocation();
   const {loadUserInfo, userData} = useUserQuery();
   const {loadProjectInfo, projectData} = useProjectQuery();
+  const {loadCv, cvData} = useCvQuery();
   const [breadCrumbs, setBreadCrumbs] = useState<BreadCrumbsData>([]);
 
   useEffect(() => {
@@ -32,6 +35,9 @@ export const useBreadCrumbs: () => BreadCrumbsData = () => {
     }
     if (pageName === Pages.main.projects && id) {
       loadProjectInfo(id!);
+    }
+    if (pageName === Pages.main.cvs && id) {
+      loadCv(id!);
     }
   }, [pathname]);
 
@@ -58,12 +64,17 @@ export const useBreadCrumbs: () => BreadCrumbsData = () => {
         crumbs.push(crumb);
         return;
       }
+      if (pageName === Pages.main.cvs && isNumber && cvData) {
+        const crumb = createCvBreadCrumb(cvData, absolutePathForCrumb);
+        crumbs.push(crumb);
+        return;
+      }
 
       const crumb = createBreadCrumb(textName, absolutePathForCrumb);
       crumbs.push(crumb);
     });
 
     setBreadCrumbs(crumbs);
-  }, [userData, projectData, pathname]);
+  }, [userData, projectData, cvData, pathname]);
   return breadCrumbs;
 };
