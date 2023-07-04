@@ -2,7 +2,7 @@ import {FC} from "react";
 import {ModalTemplate} from "@view/ModalTemplate";
 import {UpdateProjectForm} from "@/pages/Projects/UpdateProjectForm";
 import {ProjectFormFields} from "@/models/FormFieldsTypes";
-import {ModalContextTemplateProvider} from "@/components/view/ModalTemplate/ModalTemplateContext";
+import {ModalContextTemplateProvider} from "@view/ModalTemplate/ModalTemplateContext";
 
 interface UpdateProjectModal {
   projectData: ProjectFormFields;

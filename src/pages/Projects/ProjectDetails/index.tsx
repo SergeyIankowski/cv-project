@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import {useProjectQuery} from "@/graphql/hooks/useProjectQuery";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 import {FetchedProject} from "@/models/FetchedProject.interface";
-import {TypographyProjectDetails} from "@/components/view/Typographics/Typographics";
+import {TypographyProjectDetails} from "@view/Typographics/Typographics";
 import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
 import {UpdateProjectModal} from "../UpdateProjectModal";
 

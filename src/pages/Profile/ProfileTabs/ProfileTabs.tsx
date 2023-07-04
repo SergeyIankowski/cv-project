@@ -2,7 +2,7 @@ import {FC} from "react";
 import {useNavigate} from "react-router-dom";
 import {Pages} from "@/models/Pages";
 import {TabData} from "@/models/TabData.type";
-import {TabsTemplate} from "@/components/view/TabsTemplate";
+import {TabsTemplate} from "@view/TabsTemplate";
 
 export const ProfileTabs: FC = () => {
   const navigate = useNavigate();

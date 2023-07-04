@@ -10,7 +10,7 @@ import {LanguageProficiencyInput} from "@/graphql/interfaces/LanguageProficiency
 import {useLanguagesQuery} from "@/graphql/hooks/useLanguagesQuery";
 import {useEffect, useState} from "react";
 import {Language} from "@/graphql/interfaces/Language.interface";
-import {InputsGroup} from "@/components/view/InputsGroup";
+import {InputsGroup} from "@view/InputsGroup";
 
 type LanguagesInputsGroupProps<T extends FieldValues> = {
   name: string;
