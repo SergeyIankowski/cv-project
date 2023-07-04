@@ -10,6 +10,7 @@ import {DELETE_PROJECT} from "./deleteProject";
 import {UPDATE_PROJECT} from "./updateProject";
 import {CREATE_CV} from "./createCv";
 import {CREATE_PROJECT} from "./createProject";
+import {CREATE_SKILL} from "./createSkill";
 
 export {
   SIGN_UP,
@@ -24,4 +25,5 @@ export {
   UPDATE_PROJECT,
   CREATE_CV,
   CREATE_PROJECT,
+  CREATE_SKILL,
 };
