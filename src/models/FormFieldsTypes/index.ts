@@ -4,6 +4,7 @@ import {UpdateCvFormFields} from "./UpdateCvFormFields.type";
 import {ProjectFormFields} from "./ProjectFormFields.type";
 import {UpdateUserFormFields} from "./UpdateUserFormFields.type";
 import {CreateCvFormFields} from "./CreateCvFormFields.interface";
+import {CreateSkillFields} from "./CreateSkillFields.type";
 
 export {
   AuthFormFields,
@@ -12,4 +13,5 @@ export {
   ProjectFormFields,
   UpdateUserFormFields,
   CreateCvFormFields,
+  CreateSkillFields,
 };
