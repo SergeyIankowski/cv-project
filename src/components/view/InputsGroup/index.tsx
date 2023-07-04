@@ -74,7 +74,7 @@ export const InputsGroup = <T extends FieldValues>({
       );
     })}
     <Button
-      type="submit"
+      type="button"
       variant="contained"
       color="warning"
       onClick={() => append(defaultObject as never)}

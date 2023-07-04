@@ -6,6 +6,7 @@ import {CreateCvModal} from "./CreateCvModal";
 import {SearchInput} from "@/components/view/SearchInput/SearchInput";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {CvTableData} from "@/models/TableDataTypes";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 export const Cvs: FC = () => {
   const {tableCvs, loading} = useCvsQuery();
@@ -20,7 +21,7 @@ export const Cvs: FC = () => {
         <SearchInput onSearch={handleSearchingData} />
         <CreateCvModal />
       </PageLayoutRowContainer>
-      <TableCvs cvsData={searchedData} />;
+      {loading ? <ProgressSpinner /> : <TableCvs cvsData={searchedData} />}
     </>
   );
 };

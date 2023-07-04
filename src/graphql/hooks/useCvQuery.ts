@@ -1,4 +1,4 @@
-import {useQuery} from "@apollo/client";
+import {useLazyQuery} from "@apollo/client";
 import {CV} from "../queries";
 import {useEffect, useState} from "react";
 import {Cv} from "../interfaces/Cv.interface";
@@ -11,18 +11,23 @@ const initial: Pick<Cv, "id" | "name" | "description" | "is_template"> = {
   is_template: false,
 };
 
-export const useCvQuery = (id: Cv["id"]) => {
-  const {data, loading, error} = useQuery(CV, {
-    variables: {id},
+export const useCvQuery = () => {
+  const [loadInfo, {data, loading, error}] = useLazyQuery(CV, {
     fetchPolicy: FETCH_POLICY.cacheAndNetwork,
   });
-  const [responseData, setResponceData] = useState(initial);
+  const [cv, setCv] = useState(initial);
+
+  const loadCv = (id: Cv["id"]) => {
+    return loadInfo({variables: {id}});
+  };
 
   useEffect(() => {
     if (loading) return;
     if (error) return;
-    setResponceData(data.cv);
+    if (data) {
+      setCv(data.cv);
+    }
   }, [loading, data]);
 
-  return {cv: responseData};
+  return {loadCv, cvData: cv};
 };

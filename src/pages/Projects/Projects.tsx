@@ -6,6 +6,7 @@ import {SearchInput} from "@view/SearchInput/SearchInput";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {ProjectTableData} from "@/models/TableDataTypes";
 import {CreateProjectModal} from "./CreateProjectModal";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 export const Projects: FC = () => {
   const {tableProjects, loading} = useProjectsQuery();
@@ -20,7 +21,11 @@ export const Projects: FC = () => {
         <SearchInput onSearch={handleSearchingData} />
         <CreateProjectModal />
       </PageLayoutRowContainer>
-      <TableProjects projectsData={searchedData} />;
+      {loading ? (
+        <ProgressSpinner />
+      ) : (
+        <TableProjects projectsData={searchedData} />
+      )}
     </>
   );
 };

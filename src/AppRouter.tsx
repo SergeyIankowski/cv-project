@@ -11,12 +11,13 @@ import {AuthRedirect} from "@containers/AuthRedirect/AuthRedirect";
 import {Main} from "@/pages/Main/Main";
 import {Projects} from "@/pages/Projects/Projects";
 import {Cvs} from "@/pages/Cvs/Cvs";
-import {Positions} from "./pages/Positions";
-import {Skills} from "./pages/Skills";
+import {Positions} from "@/pages/Positions";
+import {Skills} from "@/pages/Skills";
 import {Languages} from "@/pages/Languages/Languages";
-import {Departments} from "./pages/Departments";
-import {CvsAccordion} from "./pages/Profile/CvsAccordion";
-import {ProjectDetails} from "./pages/Projects/ProjectDetails";
+import {Departments} from "@/pages/Departments";
+import {CvsAccordion} from "@/pages/Profile/CvsAccordion";
+import {ProjectDetails} from "@/pages/Projects/ProjectDetails";
+import {CvProfile} from "@/pages/Cvs/CvProfile";
 
 export const AppRouter = () => {
   return (
@@ -39,7 +40,15 @@ export const AppRouter = () => {
           <Route path={Pages.main.id} element={<ProjectDetails />} />
         </Route>
         <Route path={Pages.main.positions} element={<Positions />} />
-        <Route path={Pages.main.cvs} element={<Cvs />} />
+        <Route path={Pages.main.cvs} element={<Outlet />}>
+          <Route index element={<Cvs />} />
+          <Route path={Pages.main.id} element={<CvProfile />}>
+            <Route index element={<Navigate to={Pages.main.details} />} />
+            <Route path={Pages.main.details} element={<></>} />
+            <Route path={Pages.main.projects} element={<></>} />
+            <Route path={Pages.main.preview} element={<></>} />
+          </Route>
+        </Route>
         <Route path={Pages.main.departments} element={<Departments />} />
         <Route path={Pages.main.skills} element={<Skills />} />
         <Route path={Pages.main.languages} element={<Languages />} />

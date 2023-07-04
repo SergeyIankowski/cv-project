@@ -4,6 +4,7 @@ import {useDepartmentsQuery} from "@/graphql/hooks/useDepartmentsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {DepartmentsTableData} from "@/models/TableDataTypes";
 import {SearchInput} from "@view/SearchInput/SearchInput";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 export const Departments: FC = () => {
   const {loading, departments} = useDepartmentsQuery();
@@ -12,7 +13,11 @@ export const Departments: FC = () => {
   return (
     <>
       <SearchInput onSearch={handleSearchingData} />
-      <TableDepartments departmentsData={searchedData} />
+      {loading ? (
+        <ProgressSpinner />
+      ) : (
+        <TableDepartments departmentsData={searchedData} />
+      )}
     </>
   );
 };

@@ -17,11 +17,13 @@ export function useSort<Type>(
   const [sortedArray, setSortedArray] = useState<Type[]>([]);
 
   useEffect(() => {
-    const arrayOnMount = data.sort(getComparator(defaultOrder, defaultOrderBy));
+    const copy = [...data];
+    const arrayOnMount = copy.sort(getComparator(defaultOrder, defaultOrderBy));
     setSortedArray(arrayOnMount);
   }, []);
   useEffect(() => {
-    const arrayOnMount = data.sort(getComparator(order, orderBy));
+    const copy = [...data];
+    const arrayOnMount = copy.sort(getComparator(order, orderBy));
     setSortedArray(arrayOnMount);
   }, [data]);
 
