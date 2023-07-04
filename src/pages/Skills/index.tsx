@@ -1,10 +1,13 @@
+import {FC} from "react";
 import {TableSkills} from "@/pages/Skills/TableSkills";
+import {CreateSkillModal} from "@/pages/Skills/CreateSkillModal";
 import {SearchInput} from "@view/SearchInput/SearchInput";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
+import {PageLayoutRowContainer} from "@view/PageLayoutRowContainer";
 import {useSkillsQuery} from "@/graphql/hooks/useSkillsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {SkillsTableData} from "@/models/TableDataTypes";
-import {FC} from "react";
-import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 export const Skills: FC = () => {
   const {skills, loading} = useSkillsQuery();
@@ -14,7 +17,10 @@ export const Skills: FC = () => {
   );
   return (
     <>
-      <SearchInput onSearch={handleSearchingData} />
+      <PageLayoutRowContainer>
+        <SearchInput onSearch={handleSearchingData} />
+        {AuthInfoService.isAdmin() && <CreateSkillModal />}
+      </PageLayoutRowContainer>
       {loading ? (
         <ProgressSpinner />
       ) : (

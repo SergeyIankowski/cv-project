@@ -14,7 +14,7 @@ import {useUserData} from "@/hooks/useUserData";
 import {InputsContainerStyle} from "./ProfileFormStyle";
 import {AuthInfoService} from "@/services/AuthInfoService";
 import {PROFILE_FORM_KEYS} from "@/models/FormKeysNames";
-import {ProgressSpinner} from "@/components/view/ProgressSpinner/ProgressSpinner";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 export const ProfileForm: FC = () => {
   const {departments} = useDepartmentsQuery();
