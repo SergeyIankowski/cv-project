@@ -1,4 +1,4 @@
 export enum FIELDS_VALIDATION_MESSAGES {
-  emptyField = "field is empty",
+  emptyField = "Field must be not empty",
   incorrectEmail = "email is not correct",
 }

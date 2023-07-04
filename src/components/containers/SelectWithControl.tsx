@@ -16,6 +16,7 @@ export const SelectWithControl = <T extends FieldValues>({
   name,
   control,
   defaultValue,
+  label,
   fields,
   required,
 }: Pick<UseControllerProps<T>, "name" | "control" | "defaultValue"> &
@@ -25,7 +26,7 @@ export const SelectWithControl = <T extends FieldValues>({
 
   return (
     <FormControl>
-      <InputLabel>{name}</InputLabel>
+      <InputLabel>{label}</InputLabel>
       <Select
         name={field.name}
         multiple
