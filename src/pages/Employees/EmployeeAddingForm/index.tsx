@@ -12,11 +12,7 @@ import {Box} from "@mui/material";
 import {ModalLayout} from "@view/MuiPagesStyles";
 import {CreateUserFormFields} from "@/models/FormFieldsTypes";
 import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
-
-const validationMessages = {
-  incorrectEmail: "email is not correct",
-  emptyField: "field is empty",
-};
+import {FIELDS_VALIDATION_MESSAGES} from "@/models/fieldsValidationMessages";
 
 export const EmployeeAddingForm: FC = () => {
   const {departments} = useDepartmentsQuery();
@@ -46,7 +42,7 @@ export const EmployeeAddingForm: FC = () => {
           name="email"
           rules={{required: true, pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/i}}
           error={Boolean(errors.email)}
-          helperText={errors.email && validationMessages.incorrectEmail}
+          helperText={errors.email && FIELDS_VALIDATION_MESSAGES.incorrectEmail}
         />
         <Input<CreateUserFormFields>
           control={control}
@@ -55,7 +51,7 @@ export const EmployeeAddingForm: FC = () => {
           label="Password"
           name="password"
           error={Boolean(errors.password)}
-          helperText={errors.password && validationMessages.emptyField}
+          helperText={errors.password && FIELDS_VALIDATION_MESSAGES.emptyField}
           rules={{required: true}}
         />
         <Input<CreateUserFormFields>
@@ -65,7 +61,9 @@ export const EmployeeAddingForm: FC = () => {
           label="First Name"
           name="first_name"
           error={Boolean(errors.first_name)}
-          helperText={errors.first_name && validationMessages.emptyField}
+          helperText={
+            errors.first_name && FIELDS_VALIDATION_MESSAGES.emptyField
+          }
           rules={{required: true}}
         />
         <Input
@@ -75,7 +73,7 @@ export const EmployeeAddingForm: FC = () => {
           label="Last Name"
           name="last_name"
           error={Boolean(errors.last_name)}
-          helperText={errors.last_name && validationMessages.emptyField}
+          helperText={errors.last_name && FIELDS_VALIDATION_MESSAGES.emptyField}
           rules={{required: true}}
         />
         <Input<CreateUserFormFields>
@@ -85,7 +83,9 @@ export const EmployeeAddingForm: FC = () => {
           label="Departments"
           name="departmentId"
           error={Boolean(errors.departmentId)}
-          helperText={errors.departmentId && validationMessages.emptyField}
+          helperText={
+            errors.departmentId && FIELDS_VALIDATION_MESSAGES.emptyField
+          }
           rules={{required: true}}
         >
           {departments.map((department: {name: string; id: number}) => (
@@ -101,7 +101,9 @@ export const EmployeeAddingForm: FC = () => {
           label="Position"
           name="positionId"
           error={Boolean(errors.positionId)}
-          helperText={errors.positionId && validationMessages.emptyField}
+          helperText={
+            errors.positionId && FIELDS_VALIDATION_MESSAGES.emptyField
+          }
           rules={{required: true}}
         >
           {positions.map((position: {name: string; id: number}) => (
@@ -117,7 +119,7 @@ export const EmployeeAddingForm: FC = () => {
           label="Role"
           name="role"
           error={Boolean(errors.role)}
-          helperText={errors.role && validationMessages.emptyField}
+          helperText={errors.role && FIELDS_VALIDATION_MESSAGES.emptyField}
           rules={{required: true}}
         >
           <MenuItem key={ROLES.admin} value={ROLES.admin}>

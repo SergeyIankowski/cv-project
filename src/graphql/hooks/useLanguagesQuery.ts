@@ -3,9 +3,10 @@ import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
 import {LANGUAGES} from "../queries";
 import {LanguagesTableData} from "@/models/TableDataTypes";
+import {Language} from "../interfaces/Language.interface";
 
-const convertQueryData: (data: any) => LanguagesTableData[] = data => {
-  return data.languages.map((language: any) => {
+const convertQueryData: (data: Language[]) => LanguagesTableData[] = data => {
+  return data.map((language: any) => {
     return {
       id: language.id,
       name: language.name,
@@ -16,14 +17,18 @@ const convertQueryData: (data: any) => LanguagesTableData[] = data => {
 };
 
 export const useLanguagesQuery = () => {
-  const [responseData, setResponceData] = useState<LanguagesTableData[]>([]);
+  const [tableData, setTableData] = useState<LanguagesTableData[]>([]);
+  const [languages, setLanguages] = useState<Language[]>([]);
   const {loading, data, error} = useQuery(LANGUAGES);
 
   useEffect(() => {
     if (loading) return;
     if (error) return;
-    setResponceData(convertQueryData(data));
-  }, [loading]);
+    if (data) {
+      setTableData(convertQueryData(data.languages));
+      setLanguages(data.languages);
+    }
+  }, [loading, data]);
 
-  return {loading, data: responseData};
+  return {loading, languages, tableLanguages: tableData};
 };

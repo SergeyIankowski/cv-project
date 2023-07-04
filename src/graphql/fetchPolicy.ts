@@ -7,6 +7,7 @@ interface FetchPolicy {
 
 export const FETCH_POLICY: FetchPolicy = {
   cacheAndNetwork: "cache-and-network",
+  networkOnly: "network-only",
 };
 
 interface MutationFetchPolicyType {

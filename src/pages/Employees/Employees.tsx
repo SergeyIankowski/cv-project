@@ -9,9 +9,9 @@ import {AuthInfoService} from "@/services/AuthInfoService";
 import {NewEmployeeModal} from "./NewEmployeeModal";
 
 export const Employees: FC = () => {
-  const {loading, data} = useEmployeesQuery();
+  const {loading, usersForTable} = useEmployeesQuery();
   const {searchedData, handleSearchingData} = useTableSearch<UserTableData>(
-    data,
+    usersForTable,
     loading
   );
 

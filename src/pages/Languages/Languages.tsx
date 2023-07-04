@@ -6,9 +6,9 @@ import {useLanguagesQuery} from "@/graphql/hooks/useLanguagesQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
 
 export const Languages: FC = () => {
-  const {loading, data} = useLanguagesQuery();
+  const {loading, tableLanguages} = useLanguagesQuery();
   const {searchedData, handleSearchingData} =
-    useTableSearch<LanguagesTableData>(data, loading);
+    useTableSearch<LanguagesTableData>(tableLanguages, loading);
 
   return (
     <>

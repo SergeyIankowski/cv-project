@@ -1,7 +1,6 @@
 import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import {ModalLayout} from "@view/MuiPagesStyles";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
@@ -51,15 +50,13 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId}) => {
           label="Description"
           name="description"
         />
-        <Typography>
-          {"Template: "}
-          <Input<UpdateCvFormFields>
-            control={control}
-            type="checkbox"
-            id="is_template"
-            name="is_template"
-          />
-        </Typography>
+        <Input<UpdateCvFormFields>
+          control={control}
+          type="checkbox"
+          label="Template"
+          id="is_template"
+          name="is_template"
+        />
         <Button
           sx={{alignSelf: "center"}}
           variant="contained"

@@ -3,7 +3,7 @@ import {TableProjects} from "@/pages/Projects/TableProjects/TableProjects";
 import {useProjectsQuery} from "@/graphql/hooks/useProjectsQuery";
 
 export const Projects: FC = () => {
-  const {data} = useProjectsQuery();
+  const {tableProjects} = useProjectsQuery();
 
-  return <TableProjects projectsData={data} />;
+  return <TableProjects projectsData={tableProjects} />;
 };

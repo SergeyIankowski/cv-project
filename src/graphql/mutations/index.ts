@@ -8,6 +8,7 @@ import {UNBIND_CV} from "./unbindCv";
 import {UPDATE_CV} from "./updateCv";
 import {DELETE_PROJECT} from "./deleteProject";
 import {UPDATE_PROJECT} from "./updateProject";
+import {CREATE_CV} from "./createCv";
 
 export {
   SIGN_UP,
@@ -20,4 +21,5 @@ export {
   UPDATE_CV,
   DELETE_PROJECT,
   UPDATE_PROJECT,
+  CREATE_CV,
 };
