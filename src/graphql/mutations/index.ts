@@ -11,6 +11,7 @@ import {UPDATE_PROJECT} from "./updateProject";
 import {CREATE_CV} from "./createCv";
 import {CREATE_PROJECT} from "./createProject";
 import {CREATE_SKILL} from "./createSkill";
+import {CREATE_LANGUAGE} from "./CreateLanguage";
 
 export {
   SIGN_UP,
@@ -26,4 +27,5 @@ export {
   CREATE_CV,
   CREATE_PROJECT,
   CREATE_SKILL,
+  CREATE_LANGUAGE,
 };
