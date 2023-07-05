@@ -22,7 +22,7 @@ export const TableSkills: FC<TableSkillsProps> = ({skillsData}) => {
         headCells={skillsHeadCellsData}
         order={order}
         orderBy={orderBy}
-        hasControlsColumn={false}
+        hasControlsColumn
         titleAlign="left"
         onRequestSort={handleRequestSort}
       />
