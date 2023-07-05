@@ -6,7 +6,7 @@ import {modalStyle} from "./modalStyles";
 import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
 
 interface ModalTemplateProps {
-  buttonName: string;
+  buttonName?: string;
   children: ReactNode;
 }
 
@@ -18,15 +18,17 @@ export const ModalTemplate: FC<ModalTemplateProps> = ({
 
   return (
     <>
-      <Button
-        variant="contained"
-        color="error"
-        size="small"
-        type="submit"
-        onClick={openModal}
-      >
-        {buttonName}
-      </Button>
+      {buttonName && (
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          type="submit"
+          onClick={openModal}
+        >
+          {buttonName}
+        </Button>
+      )}
       <Modal
         open={isOpen}
         onClose={closeModal}
