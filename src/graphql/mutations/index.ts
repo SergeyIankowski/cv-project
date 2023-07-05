@@ -12,6 +12,7 @@ import {CREATE_CV} from "./createCv";
 import {CREATE_PROJECT} from "./createProject";
 import {CREATE_SKILL} from "./createSkill";
 import {UPDATE_SKILL} from "./updateSkill";
+import {DELETE_SKILL} from "./deleteSkill";
 
 export {
   SIGN_UP,
@@ -28,4 +29,5 @@ export {
   CREATE_PROJECT,
   CREATE_SKILL,
   UPDATE_SKILL,
+  DELETE_SKILL,
 };
