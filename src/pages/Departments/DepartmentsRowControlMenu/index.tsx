@@ -1,4 +1,4 @@
-import {FC, useCallback} from "react";
+import {FC, useCallback, useContext} from "react";
 import {
   RowControlMenuTemplate,
   TableRowControls,
@@ -6,6 +6,7 @@ import {
 import {Department} from "@/graphql/interfaces/Department.interface";
 import {useDeleteDepartment} from "@/graphql/hooks/useDeleteDepartment";
 import {AuthInfoService} from "@/services/AuthInfoService";
+import {ModalTemplateContext} from "@/components/view/ModalTemplate/ModalTemplateContext";
 
 interface DepartmentsRowControlProps {
   id: Department["id"];
@@ -13,7 +14,16 @@ interface DepartmentsRowControlProps {
 
 export const DepartmentsRowControl: FC<DepartmentsRowControlProps> = ({id}) => {
   const {deleteDepartment} = useDeleteDepartment();
+  const {openModal} = useContext(ModalTemplateContext);
   const data: TableRowControls = [
+    {
+      text: "Update",
+      icon: "",
+      clickCallback: useCallback(() => {
+        openModal();
+      }, []),
+      disabled: AuthInfoService.isNotAdmin(),
+    },
     {
       text: "Delete",
       icon: "",
