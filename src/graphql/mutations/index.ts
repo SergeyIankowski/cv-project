@@ -12,6 +12,8 @@ import {CREATE_CV} from "./createCv";
 import {CREATE_PROJECT} from "./createProject";
 import {CREATE_SKILL} from "./createSkill";
 import {CREATE_POSITION} from "./createPosition";
+import {DELETE_POSITION} from "./deletePosition";
+import {UPDATE_POSITION} from "./updatePosition";
 
 export {
   SIGN_UP,
@@ -28,4 +30,6 @@ export {
   CREATE_PROJECT,
   CREATE_SKILL,
   CREATE_POSITION,
+  UPDATE_POSITION,
+  DELETE_POSITION,
 };
