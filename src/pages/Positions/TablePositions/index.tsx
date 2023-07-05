@@ -24,7 +24,7 @@ export const TablePositions: FC<TablePositionsProps> = ({positionsData}) => {
         headCells={positionsHeadCellsData}
         order={order}
         orderBy={orderBy}
-        hasControlsColumn={false}
+        hasControlsColumn
         titleAlign="left"
         onRequestSort={handleRequestSort}
       />
