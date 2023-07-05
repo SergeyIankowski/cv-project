@@ -13,6 +13,7 @@ import {CREATE_PROJECT} from "./createProject";
 import {CREATE_SKILL} from "./createSkill";
 import {CREATE_DEPARTMENT} from "./createDepartment";
 import {DELETE_DEPARTMENT} from "./deleteDepartment";
+import {UPDATE_DEPARTMENT} from "./updateDepartment";
 
 export {
   SIGN_UP,
@@ -29,5 +30,6 @@ export {
   CREATE_PROJECT,
   CREATE_SKILL,
   CREATE_DEPARTMENT,
+  UPDATE_DEPARTMENT,
   DELETE_DEPARTMENT,
 };
