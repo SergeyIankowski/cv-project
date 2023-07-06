@@ -14,6 +14,12 @@ import {CREATE_SKILL} from "./createSkill";
 import {CREATE_POSITION} from "./createPosition";
 import {DELETE_POSITION} from "./deletePosition";
 import {UPDATE_POSITION} from "./updatePosition";
+import {UPDATE_SKILL} from "./updateSkill";
+import {DELETE_SKILL} from "./deleteSkill";
+import {CREATE_DEPARTMENT} from "./createDepartment";
+import {DELETE_DEPARTMENT} from "./deleteDepartment";
+import {UPDATE_DEPARTMENT} from "./updateDepartment";
+import {CREATE_LANGUAGE} from "./CreateLanguage";
 
 export {
   SIGN_UP,
@@ -32,4 +38,10 @@ export {
   CREATE_POSITION,
   UPDATE_POSITION,
   DELETE_POSITION,
+  UPDATE_SKILL,
+  DELETE_SKILL,
+  CREATE_DEPARTMENT,
+  UPDATE_DEPARTMENT,
+  DELETE_DEPARTMENT,
+  CREATE_LANGUAGE,
 };

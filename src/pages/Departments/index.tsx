@@ -5,6 +5,9 @@ import {useTableSearch} from "@/hooks/useTableSearch";
 import {DepartmentsTableData} from "@/models/TableDataTypes";
 import {SearchInput} from "@view/SearchInput/SearchInput";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
+import {PageLayoutRowContainer} from "@/components/view/PageLayoutRowContainer";
+import {CreateDepartmentModal} from "@/pages/Departments/CreateDepartmentModal";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 export const Departments: FC = () => {
   const {loading, departments} = useDepartmentsQuery();
@@ -12,7 +15,10 @@ export const Departments: FC = () => {
     useTableSearch<DepartmentsTableData>(departments, loading);
   return (
     <>
-      <SearchInput onSearch={handleSearchingData} />
+      <PageLayoutRowContainer>
+        <SearchInput onSearch={handleSearchingData} />
+        {AuthInfoService.isAdmin() && <CreateDepartmentModal />}
+      </PageLayoutRowContainer>
       {loading ? (
         <ProgressSpinner />
       ) : (
