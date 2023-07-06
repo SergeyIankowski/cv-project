@@ -5,6 +5,9 @@ import {LanguagesTableData} from "@/models/TableDataTypes";
 import {useLanguagesQuery} from "@/graphql/hooks/useLanguagesQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
+import {PageLayoutRowContainer} from "@view/PageLayoutRowContainer";
+import {CreateLanguageModal} from "./CreateLanguageModal";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 export const Languages: FC = () => {
   const {loading, tableLanguages} = useLanguagesQuery();
@@ -13,7 +16,10 @@ export const Languages: FC = () => {
 
   return (
     <>
-      <SearchInput onSearch={handleSearchingData} />
+      <PageLayoutRowContainer>
+        <SearchInput onSearch={handleSearchingData} />
+        {AuthInfoService.isAdmin() && <CreateLanguageModal />}
+      </PageLayoutRowContainer>
       {loading ? (
         <ProgressSpinner />
       ) : (
