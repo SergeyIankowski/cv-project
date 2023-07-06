@@ -14,6 +14,7 @@ import {CREATE_SKILL} from "./createSkill";
 import {CREATE_DEPARTMENT} from "./createDepartment";
 import {DELETE_DEPARTMENT} from "./deleteDepartment";
 import {UPDATE_DEPARTMENT} from "./updateDepartment";
+import {CREATE_LANGUAGE} from "./CreateLanguage";
 
 export {
   SIGN_UP,
@@ -32,4 +33,5 @@ export {
   CREATE_DEPARTMENT,
   UPDATE_DEPARTMENT,
   DELETE_DEPARTMENT,
+  CREATE_LANGUAGE,
 };
