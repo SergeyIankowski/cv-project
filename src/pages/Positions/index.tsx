@@ -4,6 +4,9 @@ import {usePositionsQuery} from "@/graphql/hooks/usePositionsQuery";
 import {useTableSearch} from "@/hooks/useTableSearch";
 import {PositionsTableData} from "@/models/TableDataTypes";
 import {TablePositions} from "@/pages/Positions/TablePositions";
+import {PageLayoutRowContainer} from "@/components/view/PageLayoutRowContainer";
+import {CreatePositionModal} from "./CreatePositionModal";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 export const Positions: FC = () => {
   const {loading, positions} = usePositionsQuery();
@@ -12,7 +15,10 @@ export const Positions: FC = () => {
 
   return (
     <>
-      <SearchInput onSearch={handleSearchingData} />
+      <PageLayoutRowContainer>
+        <SearchInput onSearch={handleSearchingData} />
+        {AuthInfoService.isAdmin() && <CreatePositionModal />}
+      </PageLayoutRowContainer>
       <TablePositions positionsData={searchedData} />
     </>
   );

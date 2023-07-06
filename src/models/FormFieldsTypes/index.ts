@@ -5,6 +5,7 @@ import {ProjectFormFields} from "./ProjectFormFields.type";
 import {UpdateUserFormFields} from "./UpdateUserFormFields.type";
 import {CreateCvFormFields} from "./CreateCvFormFields.interface";
 import {CreateSkillFields} from "./CreateSkillFields.type";
+import {CreatePositionFormFields} from "./CreatePositionFormFields";
 import {UpdateSkillFormFields} from "./UpdateSkillFormFields";
 import {CreateDepartmentFormFields} from "./CreateDepartmentFormFields.type";
 import {UpdateDepartmentFormFields} from "./UpdateDepartmentFormFields.type";
@@ -18,6 +19,7 @@ export {
   UpdateUserFormFields,
   CreateCvFormFields,
   CreateSkillFields,
+  CreatePositionFormFields,
   UpdateSkillFormFields,
   CreateDepartmentFormFields,
   UpdateDepartmentFormFields,
