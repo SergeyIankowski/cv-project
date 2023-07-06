@@ -29,7 +29,7 @@ export const TableDepartments: FC<TableDepartmentsProps> = ({
         headCells={departmentsHeadCellsData}
         order={order}
         orderBy={orderBy}
-        hasControlsColumn={false}
+        hasControlsColumn
         titleAlign="left"
         onRequestSort={handleRequestSort}
       />
