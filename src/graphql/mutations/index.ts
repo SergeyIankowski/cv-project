@@ -11,6 +11,8 @@ import {UPDATE_PROJECT} from "./updateProject";
 import {CREATE_CV} from "./createCv";
 import {CREATE_PROJECT} from "./createProject";
 import {CREATE_SKILL} from "./createSkill";
+import {UPDATE_SKILL} from "./updateSkill";
+import {DELETE_SKILL} from "./deleteSkill";
 import {CREATE_DEPARTMENT} from "./createDepartment";
 import {DELETE_DEPARTMENT} from "./deleteDepartment";
 import {UPDATE_DEPARTMENT} from "./updateDepartment";
@@ -30,6 +32,8 @@ export {
   CREATE_CV,
   CREATE_PROJECT,
   CREATE_SKILL,
+  UPDATE_SKILL,
+  DELETE_SKILL,
   CREATE_DEPARTMENT,
   UPDATE_DEPARTMENT,
   DELETE_DEPARTMENT,
