@@ -6,12 +6,14 @@ export const CV = gql`
       name
       description
       user {
+        id
         profile {
           full_name
         }
         position_name
       }
       projects {
+        id
         name
       }
 
