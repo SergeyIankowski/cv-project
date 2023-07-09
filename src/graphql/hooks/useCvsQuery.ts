@@ -12,6 +12,7 @@ const convertQueryData: (data: Cv[]) => CvTableData[] = data => {
       name: cv.name,
       description: cv.description,
       userEmail: cv.user?.email || "",
+      projects: cv?.projects.map(project => project.name) || [],
       isTemplate: cv.is_template,
     };
   });
@@ -25,8 +26,10 @@ export const useCvsQuery = () => {
   useEffect(() => {
     if (loading) return;
     if (error) return;
-    setTableData(convertQueryData(data.cvs));
-    setCvs(data.cvs);
+    if (data) {
+      setTableData(convertQueryData(data.cvs));
+      setCvs(data.cvs);
+    }
   }, [loading]);
 
   return {loading, tableCvs: tableData, cvs};
