@@ -8,6 +8,8 @@ import Grid from "@mui/material/Grid";
 import {UpdateCvModal} from "@/pages/Profile/UpdateCvModal";
 import Box from "@mui/material/Box";
 
+const emptyField = "-";
+
 export const CvDetails: FC = () => {
   const {id} = useParams();
   const {loadCv, cvData} = useCvQuery();
@@ -20,30 +22,32 @@ export const CvDetails: FC = () => {
     <Card>
       <CardContent>
         <Grid container direction="column" gap="10px">
-          <TypographyDetails fieldName="Name" content={cvData.name} />
+          <TypographyDetails
+            fieldName="Name"
+            content={cvData.name || emptyField}
+          />
           <TypographyDetails
             fieldName="Description"
-            content={cvData.description}
+            content={cvData.description || emptyField}
           />
           <TypographyDetails
             fieldName="User"
-            content={cvData.user?.profile?.full_name}
+            content={cvData.user?.profile?.full_name || emptyField}
           />
           <TypographyDetails
             fieldName="position"
-            content={cvData.user?.position_name}
-          />
-          <TypographyDetails
-            fieldName="Projects"
-            content={cvData.projects.map(project => project.name)}
+            content={cvData.user?.position_name || emptyField}
           />
           <TypographyDetails
             fieldName="Skills"
-            content={cvData.skills.map(skill => skill.skill_name)}
+            content={cvData.skills.map(skill => skill.skill_name) || emptyField}
           />
           <TypographyDetails
             fieldName="Languages"
-            content={cvData.languages.map(language => language.language_name)}
+            content={
+              cvData.languages.map(language => language.language_name) ||
+              emptyField
+            }
           />
           <Box>
             <UpdateCvModal cvId={id!} userId={cvData?.user?.id} />
