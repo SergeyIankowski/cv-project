@@ -6,7 +6,7 @@ import {CardContent} from "@mui/material";
 import {useProjectQuery} from "@/graphql/hooks/useProjectQuery";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 import {FetchedProject} from "@/models/FetchedProject.interface";
-import {TypographyProjectDetails} from "@view/Typographics/Typographics";
+import {TypographyDetails} from "@view/TypographyDetails";
 import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
 import {UpdateProjectModal} from "../UpdateProjectModal";
 
@@ -42,27 +42,27 @@ export const ProjectDetails: FC = () => {
     <Card>
       <CardContent>
         <Grid container direction="column" alignItems="flex-start" gap="10px">
-          <TypographyProjectDetails fieldName="Name" text={project.name} />
-          <TypographyProjectDetails
+          <TypographyDetails fieldName="Name" content={project.name} />
+          <TypographyDetails
             fieldName="Internal Name"
-            text={project.internal_name!}
+            content={project.internal_name!}
           />
-          <TypographyProjectDetails
+          <TypographyDetails
             fieldName="Description"
-            text={project.description}
+            content={project.description}
           />
-          <TypographyProjectDetails fieldName="Domain" text={project.domain} />
-          <TypographyProjectDetails
+          <TypographyDetails fieldName="Domain" content={project.domain} />
+          <TypographyDetails
             fieldName="Start Date"
-            text={project.start_date as string}
+            content={project.start_date as string}
           />
-          <TypographyProjectDetails
+          <TypographyDetails
             fieldName="End Date"
-            text={(project.end_date || EmptyFieldStrings.tillNow) as string}
+            content={(project.end_date || EmptyFieldStrings.tillNow) as string}
           />
-          <TypographyProjectDetails
+          <TypographyDetails
             fieldName="Team Size"
-            text={String(project.team_size)}
+            content={String(project.team_size)}
           />
           <UpdateProjectModal projectData={project} />
         </Grid>
