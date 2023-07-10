@@ -10,6 +10,7 @@ import {UpdateSkillFormFields} from "./UpdateSkillFormFields";
 import {CreateDepartmentFormFields} from "./CreateDepartmentFormFields.type";
 import {UpdateDepartmentFormFields} from "./UpdateDepartmentFormFields.type";
 import {CreateLanguageFormFields} from "./CreateLanguageFormFields.type";
+import {UpdateCvProjectsFormFields} from "./UpdateCvProjectsFormFields";
 
 export {
   AuthFormFields,
@@ -24,4 +25,5 @@ export {
   CreateDepartmentFormFields,
   UpdateDepartmentFormFields,
   CreateLanguageFormFields,
+  UpdateCvProjectsFormFields,
 };
