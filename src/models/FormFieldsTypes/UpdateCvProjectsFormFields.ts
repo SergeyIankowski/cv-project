@@ -1,3 +1,3 @@
-import {Project} from "@/graphql/interfaces/Project.interface";
+import {CvInput} from "@/graphql/interfaces/CvInput.interface";
 
-export type UpdateCvProjectsFormFields = {projects: Project["id"][]};
+export type UpdateCvProjectsFormFields = Pick<CvInput, "projectsIds">;
