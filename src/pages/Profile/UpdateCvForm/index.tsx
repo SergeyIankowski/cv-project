@@ -12,6 +12,7 @@ import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
 import {User} from "@/graphql/interfaces/User.interface";
 import {useCvQuery} from "@/graphql/hooks/useCvQuery";
 import {FIELDS_VALIDATION_MESSAGES} from "@/models/fieldsValidationMessages";
+import {UPDATE_CV_FORM_KEYS} from "@/models/FormKeysNames";
 
 interface UpdateCvFormProps {
   cvId: Cv["id"];
@@ -29,9 +30,9 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId, userId}) => {
     formState: {errors},
   } = useForm<UpdateCvFormFields>({
     defaultValues: {
-      name: cv.name,
-      description: cv.description,
-      is_template: cv.is_template,
+      [UPDATE_CV_FORM_KEYS.name]: cv.name,
+      [UPDATE_CV_FORM_KEYS.description]: cv.description,
+      [UPDATE_CV_FORM_KEYS.is_template]: cv.is_template,
     },
   });
   const onSubmit = async (formData: UpdateCvFormFields) => {
