@@ -7,14 +7,18 @@ export const CV = gql`
       description
       user {
         id
+        email
         profile {
+          avatar
           full_name
         }
         position_name
+        department_name
       }
       projects {
         id
         name
+        description
         internal_name
         domain
         start_date
