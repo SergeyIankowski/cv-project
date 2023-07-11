@@ -1,22 +1,24 @@
 import {FC} from "react";
-import Typography from "@mui/material/Typography";
+import Typography, {TypographyProps} from "@mui/material/Typography";
 import {colors} from "@view/MuiPagesStyles";
 import Grid from "@mui/material/Grid";
 import Chip from "@mui/material/Chip";
-// import Divider from "@mui/material/Divider";
 
 interface TypographyDetailsProps {
   fieldName: string;
   content: string | undefined | string[];
 }
-export const TypographyDetails: FC<TypographyDetailsProps> = ({
+
+type GeneralProps = TypographyDetailsProps & Pick<TypographyProps, "variant">;
+export const TypographyDetails: FC<GeneralProps> = ({
   fieldName,
   content,
+  variant,
 }) => {
   return (
-    <Grid container gap="10px" alignItems="baseline">
+    <Grid container gap="10px" alignItems="center">
       <Typography
-        variant="h6"
+        variant={variant}
         sx={{
           color: colors.authLinksColor,
         }}
