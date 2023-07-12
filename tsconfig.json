@@ -1,5 +1,5 @@
 {
-  "include": ["./src/**/*", "module.d.ts"],
+  "include": ["./src/**/*", "module.d.ts", "webpack.config.js", "webpack.dev.js", "webpack.prod.js"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "./dist/",

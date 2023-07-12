@@ -1,30 +1,12 @@
+/* eslint-disable node/no-unpublished-require */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {TsconfigPathsPlugin} = require("tsconfig-paths-webpack-plugin");
 const {NetlifyPlugin} = require("netlify-webpack-plugin");
 
-const isDev = process.env.NODE_ENV === "development";
-
-const stylesHandler = isDev ? "style-loader" : MiniCssExtractPlugin.loader;
-
-const config = {
-  devtool: isDev ? "inline-source-map" : "source-map",
+module.exports = {
   entry: "./src/index.tsx",
-  output: {
-    filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
-    clean: true,
-  },
-  resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
-    plugins: [new TsconfigPathsPlugin()],
-  },
-  devServer: {
-    open: true,
-    host: "localhost",
-    historyApiFallback: true,
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "src/index.html",
@@ -44,22 +26,30 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/i,
-        loader: "ts-loader",
-        exclude: ["/node_modules/"],
+        test: /\.tsx?$/,
+        loader: "esbuild-loader",
+        include: [path.resolve(__dirname, "src")],
+        exclude: /node_modules/,
+        options: {
+          loader: "tsx",
+          target: "es2015",
+        },
       },
       {
         test: /\.s|[ac]ss$/i,
         use: [
-          stylesHandler,
+          this.mode === "development"
+            ? "style-loader"
+            : MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {
               modules: {
                 auto: resPath => resPath.includes(".module."),
-                localIdentName: isDev
-                  ? "[path][name]__[local]--[hash:base64:5]"
-                  : "[hash:base64:8]",
+                localIdentName:
+                  this.mode === "development"
+                    ? "[path][name]__[local]--[hash:base64:5]"
+                    : "[hash:base64:8]",
               },
             },
           },
@@ -72,17 +62,12 @@ const config = {
       },
     ],
   },
-  performance: {
-    maxAssetSize: 2000000,
-    maxEntrypointSize: 2000000,
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
+    plugins: [new TsconfigPathsPlugin()],
   },
-};
-
-module.exports = () => {
-  if (isDev) {
-    config.mode = "development";
-  } else {
-    config.mode = "production";
-  }
-  return config;
+  performance: {
+    maxAssetSize: 5000000,
+    maxEntrypointSize: 5000000,
+  },
 };

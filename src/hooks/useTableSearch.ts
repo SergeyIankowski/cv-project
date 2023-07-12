@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
 
-export const useTableSearch = <T>(data: T[], loading: boolean) => {
+export function useTableSearch<T>(data: T[], loading: boolean) {
   const [searchedData, setSearchedData] = useState<T[]>([]);
   useEffect(() => {
     if (loading) return;
@@ -20,4 +20,4 @@ export const useTableSearch = <T>(data: T[], loading: boolean) => {
     [data]
   );
   return {searchedData, handleSearchingData};
-};
+}
