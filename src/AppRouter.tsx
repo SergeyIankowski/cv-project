@@ -48,6 +48,7 @@ export const AppRouter = () => {
             <Route index element={<Navigate to={Pages.main.details} />} />
             <Route path={Pages.main.details} element={<CvDetails />} />
             <Route path={Pages.main.projects} element={<CvProjects />} />
+            <Route path={Pages.main.projects} element={<></>} />
             <Route path={Pages.main.preview} element={<></>} />
           </Route>
         </Route>
