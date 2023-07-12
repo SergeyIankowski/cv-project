@@ -7,8 +7,7 @@ import {TypographyDetails} from "@view/TypographyDetails";
 import Grid from "@mui/material/Grid";
 import {UpdateCvModal} from "@/pages/Profile/UpdateCvModal";
 import Box from "@mui/material/Box";
-
-const emptyField = "-";
+import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
 
 export const CvDetails: FC = () => {
   const {id} = useParams();
@@ -23,30 +22,39 @@ export const CvDetails: FC = () => {
       <CardContent>
         <Grid container direction="column" gap="10px">
           <TypographyDetails
+            variant="h6"
             fieldName="Name"
-            content={cvData.name || emptyField}
+            content={cvData.name || EmptyFieldStrings.empty}
           />
           <TypographyDetails
+            variant="h6"
             fieldName="Description"
-            content={cvData.description || emptyField}
+            content={cvData.description || EmptyFieldStrings.empty}
           />
           <TypographyDetails
+            variant="h6"
             fieldName="User"
-            content={cvData.user?.profile?.full_name || emptyField}
+            content={cvData.user?.profile?.full_name || EmptyFieldStrings.empty}
           />
           <TypographyDetails
+            variant="h6"
             fieldName="position"
-            content={cvData.user?.position_name || emptyField}
+            content={cvData.user?.position_name || EmptyFieldStrings.empty}
           />
           <TypographyDetails
+            variant="h6"
             fieldName="Skills"
-            content={cvData.skills.map(skill => skill.skill_name) || emptyField}
+            content={
+              cvData.skills.map(skill => skill.skill_name) ||
+              EmptyFieldStrings.empty
+            }
           />
           <TypographyDetails
+            variant="h6"
             fieldName="Languages"
             content={
               cvData.languages.map(language => language.language_name) ||
-              emptyField
+              EmptyFieldStrings.empty
             }
           />
           <Box>

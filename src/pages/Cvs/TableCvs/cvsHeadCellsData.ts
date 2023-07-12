@@ -30,6 +30,6 @@ export const cvsHeadCellsData: HeadCell<CvTableData>[] = [
     id: "projects",
     content: "Projects",
     disablePadding: false,
-    isSortable: true,
+    isSortable: false,
   },
 ];
