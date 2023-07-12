@@ -20,6 +20,8 @@ import {CREATE_DEPARTMENT} from "./createDepartment";
 import {DELETE_DEPARTMENT} from "./deleteDepartment";
 import {UPDATE_DEPARTMENT} from "./updateDepartment";
 import {CREATE_LANGUAGE} from "./CreateLanguage";
+import {DELETE_LANGUAGE} from "./deleteLanguage";
+import {UPDATE_LANGUAGE} from "./updateLanguage";
 
 export {
   SIGN_UP,
@@ -44,4 +46,6 @@ export {
   UPDATE_DEPARTMENT,
   DELETE_DEPARTMENT,
   CREATE_LANGUAGE,
+  UPDATE_LANGUAGE,
+  DELETE_LANGUAGE,
 };
