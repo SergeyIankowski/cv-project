@@ -5,6 +5,7 @@ import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import {CvTableData} from "@/models/TableDataTypes";
 import {CvsRowControlMenu} from "@/pages/Cvs/CvsRowControlMenu/CvsRowControlMenu";
+import Chip from "@mui/material/Chip";
 
 interface TableRowCvsProps {
   row: CvTableData;
@@ -22,8 +23,19 @@ export const TableRowCvs: FC<TableRowCvsProps> = ({row}) => {
       <TableCell align="right">{row.name}</TableCell>
       <TableCell align="right">{row.description}</TableCell>
       <TableCell align="right">{row.userEmail}</TableCell>
+      <TableCell align="center">
+        {row.projects.map(item => (
+          <Chip
+            color="error"
+            variant="outlined"
+            sx={{m: "2px"}}
+            key={item}
+            label={item}
+          />
+        ))}
+      </TableCell>
       <TableCell align="right">
-        <CvsRowControlMenu />
+        <CvsRowControlMenu id={row.id} />
       </TableCell>
     </TableRow>
   );

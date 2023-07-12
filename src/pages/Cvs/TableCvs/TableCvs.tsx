@@ -29,7 +29,7 @@ export const TableCvs: FC<TableCvsProps> = ({cvsData}) => {
       />
       <TableBody>
         {sortedRowsOnPage.map(cv => (
-          <TableRowCvs key={cv.name} row={cv} />
+          <TableRowCvs key={cv.id} row={cv} />
         ))}
       </TableBody>
     </TableTemplate>

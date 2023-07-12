@@ -5,6 +5,17 @@ export const CV = gql`
     cv(id: $id) {
       name
       description
+      user {
+        id
+        profile {
+          full_name
+        }
+        position_name
+      }
+      projects {
+        id
+        name
+      }
 
       skills {
         skill_name

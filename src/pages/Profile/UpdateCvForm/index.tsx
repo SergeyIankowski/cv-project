@@ -6,31 +6,38 @@ import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
 import {UpdateCvFormFields} from "@/models/FormFieldsTypes";
 import {useUpdateCvMutation} from "@/graphql/hooks/useUpdateCvMutation";
-import {convertUpdateCvFormDataToRequestData} from "@/utils/convertUpdateCvFormDataToRequestData";
-import {useParams} from "react-router-dom";
+import {addMissingCvFieldsToRequest} from "@/utils/addMissingCvFieldsToRequest";
 import {Cv} from "@/graphql/interfaces/Cv.interface";
 import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
+import {User} from "@/graphql/interfaces/User.interface";
+import {useCvQuery} from "@/graphql/hooks/useCvQuery";
+import {FIELDS_VALIDATION_MESSAGES} from "@/models/fieldsValidationMessages";
 
 interface UpdateCvFormProps {
   cvId: Cv["id"];
-  cv: Pick<Cv, "name" | "description" | "is_template">;
+  cv: Cv;
+  userId: User["id"] | undefined;
 }
 
-export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId}) => {
-  const {id} = useParams();
+export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId, userId}) => {
   const {updateCv} = useUpdateCvMutation();
+  const {loadCv} = useCvQuery();
   const {closeModal} = useContext(ModalTemplateContext);
-  const {control, handleSubmit} = useForm<UpdateCvFormFields>({
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+  } = useForm<UpdateCvFormFields>({
     defaultValues: {
       name: cv.name,
       description: cv.description,
       is_template: cv.is_template,
     },
   });
-  const onSubmit = async (cv: UpdateCvFormFields) => {
-    const userId = id || "";
-    const dataToRequest = convertUpdateCvFormDataToRequestData(userId, cv);
+  const onSubmit = async (formData: UpdateCvFormFields) => {
+    const dataToRequest = addMissingCvFieldsToRequest(userId, formData, cv);
     await updateCv(cvId, dataToRequest);
+    await loadCv(cvId);
     closeModal();
   };
   return (
@@ -42,6 +49,9 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId}) => {
           id="name"
           label="Name"
           name="name"
+          rules={{required: true}}
+          error={Boolean(errors.name)}
+          helperText={errors.name && FIELDS_VALIDATION_MESSAGES.emptyField}
         />
         <Input<UpdateCvFormFields>
           control={control}
@@ -49,6 +59,11 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId}) => {
           id="description"
           label="Description"
           name="description"
+          rules={{required: true}}
+          error={Boolean(errors.description)}
+          helperText={
+            errors.description && FIELDS_VALIDATION_MESSAGES.emptyField
+          }
         />
         <Input<UpdateCvFormFields>
           control={control}

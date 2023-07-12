@@ -33,7 +33,7 @@ export const CvsAccordion: FC = () => {
             </Grid>
             <Grid container direction="row" gap="5px" alignItems="center">
               <UnbindCvButton id={cv.id} />
-              <UpdateCvModal cvId={cv.id} />
+              <UpdateCvModal cvId={cv.id} userId={id} />
             </Grid>
           </Grid>
         </AccordionTemplate>

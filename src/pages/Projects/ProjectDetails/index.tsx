@@ -1,10 +1,12 @@
 import {FC, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import {CardContent} from "@mui/material";
 import {useProjectQuery} from "@/graphql/hooks/useProjectQuery";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 import {FetchedProject} from "@/models/FetchedProject.interface";
-import {TypographyProjectDetails} from "@view/Typographics/Typographics";
+import {TypographyDetails} from "@view/TypographyDetails";
 import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
 import {UpdateProjectModal} from "../UpdateProjectModal";
 
@@ -37,30 +39,34 @@ export const ProjectDetails: FC = () => {
   if (loadingProjectData) return <ProgressSpinner />;
 
   return (
-    <Grid container direction="column" alignItems="flex-start" gap="10px">
-      <TypographyProjectDetails fieldName="Name" text={project.name} />
-      <TypographyProjectDetails
-        fieldName="Internal Name"
-        text={project.internal_name!}
-      />
-      <TypographyProjectDetails
-        fieldName="Description"
-        text={project.description}
-      />
-      <TypographyProjectDetails fieldName="Domain" text={project.domain} />
-      <TypographyProjectDetails
-        fieldName="Start Date"
-        text={project.start_date as string}
-      />
-      <TypographyProjectDetails
-        fieldName="End Date"
-        text={(project.end_date || EmptyFieldStrings.tillNow) as string}
-      />
-      <TypographyProjectDetails
-        fieldName="Team Size"
-        text={String(project.team_size)}
-      />
-      <UpdateProjectModal projectData={project} />
-    </Grid>
+    <Card>
+      <CardContent>
+        <Grid container direction="column" alignItems="flex-start" gap="10px">
+          <TypographyDetails fieldName="Name" content={project.name} />
+          <TypographyDetails
+            fieldName="Internal Name"
+            content={project.internal_name!}
+          />
+          <TypographyDetails
+            fieldName="Description"
+            content={project.description}
+          />
+          <TypographyDetails fieldName="Domain" content={project.domain} />
+          <TypographyDetails
+            fieldName="Start Date"
+            content={project.start_date as string}
+          />
+          <TypographyDetails
+            fieldName="End Date"
+            content={(project.end_date || EmptyFieldStrings.tillNow) as string}
+          />
+          <TypographyDetails
+            fieldName="Team Size"
+            content={String(project.team_size)}
+          />
+          <UpdateProjectModal projectData={project} />
+        </Grid>
+      </CardContent>
+    </Card>
   );
 };

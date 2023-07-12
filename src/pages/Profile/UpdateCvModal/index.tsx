@@ -4,12 +4,14 @@ import {UpdateCvForm} from "@/pages/Profile/UpdateCvForm";
 import {Cv} from "@/graphql/interfaces/Cv.interface";
 import {useCvQuery} from "@/graphql/hooks/useCvQuery";
 import {ModalContextTemplateProvider} from "@view/ModalTemplate/ModalTemplateContext";
+import {User} from "@/graphql/interfaces/User.interface";
 
 interface UpdateCvModalProps {
   cvId: Cv["id"];
+  userId: User["id"] | undefined;
 }
 
-export const UpdateCvModal: FC<UpdateCvModalProps> = ({cvId}) => {
+export const UpdateCvModal: FC<UpdateCvModalProps> = ({cvId, userId}) => {
   const {loadCv, cvData} = useCvQuery();
   useEffect(() => {
     if (cvId) loadCv(cvId);
@@ -17,7 +19,7 @@ export const UpdateCvModal: FC<UpdateCvModalProps> = ({cvId}) => {
   return (
     <ModalContextTemplateProvider>
       <ModalTemplate buttonName="Update Cv">
-        <UpdateCvForm cvId={cvId} cv={cvData} />
+        <UpdateCvForm userId={userId} cvId={cvId} cv={cvData} />
       </ModalTemplate>
     </ModalContextTemplateProvider>
   );

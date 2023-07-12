@@ -4,10 +4,14 @@ import {useEffect, useState} from "react";
 import {Cv} from "../interfaces/Cv.interface";
 import {FETCH_POLICY} from "../fetchPolicy";
 
-const initial: Pick<Cv, "id" | "name" | "description" | "is_template"> = {
+const initial: Cv = {
   id: "",
+  created_at: "",
   name: "",
   description: "",
+  projects: [],
+  skills: [],
+  languages: [],
   is_template: false,
 };
 

@@ -9,6 +9,9 @@ export const CVS = gql`
       user {
         email
       }
+      projects {
+        name
+      }
       is_template
     }
   }
