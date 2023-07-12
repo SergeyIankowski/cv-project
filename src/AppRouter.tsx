@@ -19,6 +19,7 @@ import {CvsAccordion} from "@/pages/Profile/CvsAccordion";
 import {ProjectDetails} from "@/pages/Projects/ProjectDetails";
 import {CvProfile} from "@/pages/CvProfile";
 import {CvDetails} from "./pages/CvProfile/CvDetails";
+import {CvProjects} from "./pages/CvProfile/CvProjects";
 
 export const AppRouter = () => {
   return (
@@ -46,6 +47,7 @@ export const AppRouter = () => {
           <Route path={Pages.main.id} element={<CvProfile />}>
             <Route index element={<Navigate to={Pages.main.details} />} />
             <Route path={Pages.main.details} element={<CvDetails />} />
+            <Route path={Pages.main.projects} element={<CvProjects />} />
             <Route path={Pages.main.projects} element={<></>} />
             <Route path={Pages.main.preview} element={<></>} />
           </Route>

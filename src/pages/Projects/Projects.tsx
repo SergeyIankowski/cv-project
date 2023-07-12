@@ -14,18 +14,14 @@ export const Projects: FC = () => {
     tableProjects,
     loading
   );
-
+  if (loading) return <ProgressSpinner />;
   return (
     <>
       <PageLayoutRowContainer>
         <SearchInput onSearch={handleSearchingData} />
         <CreateProjectModal />
       </PageLayoutRowContainer>
-      {loading ? (
-        <ProgressSpinner />
-      ) : (
-        <TableProjects projectsData={searchedData} />
-      )}
+      <TableProjects projectsData={searchedData} />
     </>
   );
 };
