@@ -10,6 +10,12 @@ export const USER = gql`
         first_name
         last_name
         full_name
+        skills {
+          skill_name
+        }
+        languages {
+          language_name
+        }
       }
       cvs {
         id
