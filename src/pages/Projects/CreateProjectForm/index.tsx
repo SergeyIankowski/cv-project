@@ -1,6 +1,8 @@
 import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
+import MenuItem from "@mui/material/MenuItem";
 import dayjs from "dayjs";
 
 import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
@@ -14,6 +16,8 @@ import {ProjectFormFields} from "@/models/FormFieldsTypes";
 import {PROJECT_FORM_KEYS} from "@/models/FormKeysNames";
 import {FIELDS_VALIDATION_MESSAGES} from "@/models/fieldsValidationMessages";
 import {convertProjectDataForSend} from "@/utils/convertProjectDataForSend";
+import {findNameByID} from "@/utils/findNameByID";
+import {Skill} from "@/graphql/interfaces/Skill.interface";
 
 export const CreateProjectForm: FC = () => {
   const {createProject} = useCreateProjectMutation();
@@ -108,14 +112,26 @@ export const CreateProjectForm: FC = () => {
           error={Boolean(errors.name)}
           helperText={errors.team_size && FIELDS_VALIDATION_MESSAGES.emptyField}
         />
-        <SelectWithControl<ProjectFormFields>
+        <SelectWithControl<ProjectFormFields, Skill["id"][]>
           name="skillsIds"
           label="Skills"
           control={control}
-          fields={skills}
           defaultValue={[]}
+          renderValue={selected => (
+            <Box sx={{display: "flex", flexWrap: "wrap", gap: 0.5}}>
+              {selected.map(value => (
+                <Chip key={value} label={findNameByID(skills, value)} />
+              ))}
+            </Box>
+          )}
           required
-        ></SelectWithControl>
+        >
+          {skills.map(skill => (
+            <MenuItem key={skill.id} value={skill.id}>
+              {skill.name}
+            </MenuItem>
+          ))}
+        </SelectWithControl>
         <Button variant="contained" color="error" size="small" type="submit">
           Create
         </Button>
