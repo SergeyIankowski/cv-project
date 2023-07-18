@@ -6,7 +6,7 @@ import {Skill} from "@/graphql/interfaces/Skill.interface";
 
 export const useUserQuery = () => {
   const [loadInfo, {called, loading, data, error}] = useLazyQuery(USER, {
-    fetchPolicy: FETCH_POLICY.cacheAndNetwork,
+    fetchPolicy: FETCH_POLICY.cacheFirst,
   });
 
   const loadUserInfo = useCallback((id: Skill["id"]) => {
