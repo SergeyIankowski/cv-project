@@ -6,6 +6,8 @@ interface FetchPolicy {
 }
 
 export const FETCH_POLICY: FetchPolicy = {
+  cacheOnly: "cache-only",
+  cacheFirst: "cache-first",
   cacheAndNetwork: "cache-and-network",
   networkOnly: "network-only",
 };
