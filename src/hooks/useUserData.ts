@@ -6,7 +6,7 @@ import {AuthInfoService} from "@/services/AuthInfoService";
 import {ROLES} from "@/models/Roles";
 import {ID} from "@/graphql/interfaces/ID.type";
 
-const emptyUser: Required<FetchedUser> = {
+const emptyUser: FetchedUser = {
   id: "",
   created_at: "",
   profile: {
