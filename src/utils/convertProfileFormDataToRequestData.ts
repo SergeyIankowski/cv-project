@@ -1,10 +1,10 @@
 import {PROFILE_FORM_KEYS} from "@/models/FormKeysNames";
-import {ProfileRequestData} from "@/models/ProfileRequestData.type";
 import {UpdateUserFormFields} from "@/models/FormFieldsTypes";
+import {UpdateUserInput} from "@/graphql/interfaces/UpdateUserInput.interface";
 
 export const convertProfileFormDataToRequestData = (
   data: UpdateUserFormFields
-): ProfileRequestData => {
+): UpdateUserInput => {
   return {
     profile: {
       [PROFILE_FORM_KEYS.firstName]: data.first_name || "",
