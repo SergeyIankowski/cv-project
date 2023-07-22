@@ -11,9 +11,17 @@ export const prepareUserForUpdatingSkills = (
     first_name: oldUser.profile.first_name,
     last_name: oldUser.profile.last_name,
     skills: skills.map(skill => {
-      return {skill_name: skill.skill_name, mastery: skill.mastery};
+      return {
+        skill_name: skill.skill_name,
+        mastery: skill.mastery,
+      };
     }),
-    languages: oldUser.profile.languages,
+    languages: oldUser.profile.languages?.map(language => {
+      return {
+        language_name: language.language_name,
+        proficiency: language.proficiency,
+      };
+    }),
   };
   return {
     profile,
