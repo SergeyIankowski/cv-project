@@ -8,24 +8,6 @@ import {SignUpForm} from "@containers/SignUpForm/SignUpForm";
 import {AuthRedirect} from "@containers/AuthRedirect/AuthRedirect";
 import {Main} from "@/pages/Main/Main";
 
-// import {Profile} from "./pages/Profile/Profile";
-// import {Employees} from "./pages/Employees/Employees";
-// import {ProfileInfo} from "@/pages/Profile/ProfileInfo/ProfileInfo";
-// import {Projects} from "@/pages/Projects/Projects";
-// import {Cvs} from "@/pages/Cvs/Cvs";
-// import {Positions} from "@/pages/Positions/Positions";
-// import {Skills} from "@/pages/Skills/Skills";
-// import {Languages} from "@/pages/Languages/Languages";
-// import {Departments} from "@/pages/Departments/Departments";
-// import {CvsAccordion} from "@/pages/Profile/CvsAccordion/CvsAccordion";
-// import {ProjectDetails} from "@/pages/Projects/ProjectDetails/ProjectDetails";
-// import {CvProfile} from "@/pages/CvProfile/CvProfile";
-// import {CvDetails} from "@/pages/CvProfile/CvDetails/CvDetails";
-// import {CvProjects} from "@/pages/CvProfile/CvProjects/CvProjects";
-// import {CvPreview} from "@/pages/CvProfile/CvPreview/CvPreview";
-// import {ProfileSkills} from "@/pages/Profile/ProfileSkills/ProfileSkills";
-// import {ProfileLanguages} from "@/pages/Profile/ProfileLanguages/ProfileLanguages";
-
 const Employees = lazy(() => import("@/pages/Employees"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const ProfileInfo = lazy(() => import("@/pages/Profile/ProfileInfo"));
