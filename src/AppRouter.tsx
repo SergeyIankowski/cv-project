@@ -1,28 +1,48 @@
+import {lazy} from "react";
 import {Navigate, Outlet, Route, Routes} from "react-router-dom";
 import {Pages} from "@/models/Pages";
 import {Page404} from "@/pages/Page404/Page404";
-import {Employees} from "@/pages/Employees/Employees";
-import {Profile} from "@/pages/Profile/Profile";
-import {ProfileInfo} from "@/pages/Profile/ProfileInfo/ProfileInfo";
 import {SignInForm} from "@containers/SignInForm/SignInForm";
 import {Authentication} from "@/pages/Authentication/Authentication";
 import {SignUpForm} from "@containers/SignUpForm/SignUpForm";
 import {AuthRedirect} from "@containers/AuthRedirect/AuthRedirect";
 import {Main} from "@/pages/Main/Main";
-import {Projects} from "@/pages/Projects/Projects";
-import {Cvs} from "@/pages/Cvs/Cvs";
-import {Positions} from "@/pages/Positions";
-import {Skills} from "@/pages/Skills";
-import {Languages} from "@/pages/Languages/Languages";
-import {Departments} from "@/pages/Departments";
-import {CvsAccordion} from "@/pages/Profile/CvsAccordion";
-import {ProjectDetails} from "@/pages/Projects/ProjectDetails";
-import {CvProfile} from "@/pages/CvProfile";
-import {CvDetails} from "@/pages/CvProfile/CvDetails";
-import {CvProjects} from "@/pages/CvProfile/CvProjects";
-import {CvPreview} from "@/pages/CvProfile/CvPreview";
-import {ProfileSkills} from "@/pages/Profile/ProfileSkills";
-import {ProfileLanguages} from "@/pages/Profile/ProfileLanguages";
+
+// import {Profile} from "./pages/Profile/Profile";
+// import {Employees} from "./pages/Employees/Employees";
+// import {ProfileInfo} from "@/pages/Profile/ProfileInfo/ProfileInfo";
+// import {Projects} from "@/pages/Projects/Projects";
+// import {Cvs} from "@/pages/Cvs/Cvs";
+// import {Positions} from "@/pages/Positions/Positions";
+// import {Skills} from "@/pages/Skills/Skills";
+// import {Languages} from "@/pages/Languages/Languages";
+// import {Departments} from "@/pages/Departments/Departments";
+// import {CvsAccordion} from "@/pages/Profile/CvsAccordion/CvsAccordion";
+// import {ProjectDetails} from "@/pages/Projects/ProjectDetails/ProjectDetails";
+// import {CvProfile} from "@/pages/CvProfile/CvProfile";
+// import {CvDetails} from "@/pages/CvProfile/CvDetails/CvDetails";
+// import {CvProjects} from "@/pages/CvProfile/CvProjects/CvProjects";
+// import {CvPreview} from "@/pages/CvProfile/CvPreview/CvPreview";
+// import {ProfileSkills} from "@/pages/Profile/ProfileSkills/ProfileSkills";
+// import {ProfileLanguages} from "@/pages/Profile/ProfileLanguages/ProfileLanguages";
+
+const Employees = lazy(() => import("@/pages/Employees"));
+const Profile = lazy(() => import("@/pages/Profile"));
+const ProfileInfo = lazy(() => import("@/pages/Profile/ProfileInfo"));
+const ProfileSkills = lazy(() => import("@/pages/Profile/ProfileSkills"));
+const ProfileLanguages = lazy(() => import("@/pages/Profile/ProfileLanguages"));
+const CvsAccordion = lazy(() => import("@/pages/Profile/CvsAccordion"));
+const Projects = lazy(() => import("@/pages/Projects"));
+const ProjectDetails = lazy(() => import("@/pages/Projects/ProjectDetails"));
+const Positions = lazy(() => import("@/pages/Positions"));
+const Cvs = lazy(() => import("@/pages/Cvs"));
+const CvProfile = lazy(() => import("@/pages/CvProfile"));
+const CvDetails = lazy(() => import("@/pages/CvProfile/CvDetails"));
+const CvProjects = lazy(() => import("@/pages/CvProfile/CvProjects"));
+const CvPreview = lazy(() => import("@/pages/CvProfile/CvPreview"));
+const Departments = lazy(() => import("@/pages/Departments"));
+const Skills = lazy(() => import("@/pages/Skills"));
+const Languages = lazy(() => import("@/pages/Languages"));
 
 export const AppRouter = () => {
   return (
