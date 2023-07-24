@@ -9,21 +9,28 @@ import {AuthRedirect} from "@containers/AuthRedirect/AuthRedirect";
 import {Main} from "@/pages/Main/Main";
 
 const Employees = lazy(() => import("@/pages/Employees"));
+
 const Profile = lazy(() => import("@/pages/Profile"));
 const ProfileInfo = lazy(() => import("@/pages/Profile/ProfileInfo"));
 const ProfileSkills = lazy(() => import("@/pages/Profile/ProfileSkills"));
 const ProfileLanguages = lazy(() => import("@/pages/Profile/ProfileLanguages"));
 const CvsAccordion = lazy(() => import("@/pages/Profile/CvsAccordion"));
+
 const Projects = lazy(() => import("@/pages/Projects"));
 const ProjectDetails = lazy(() => import("@/pages/Projects/ProjectDetails"));
+
 const Positions = lazy(() => import("@/pages/Positions"));
+
 const Cvs = lazy(() => import("@/pages/Cvs"));
 const CvProfile = lazy(() => import("@/pages/CvProfile"));
 const CvDetails = lazy(() => import("@/pages/CvProfile/CvDetails"));
 const CvProjects = lazy(() => import("@/pages/CvProfile/CvProjects"));
 const CvPreview = lazy(() => import("@/pages/CvProfile/CvPreview"));
+
 const Departments = lazy(() => import("@/pages/Departments"));
+
 const Skills = lazy(() => import("@/pages/Skills"));
+
 const Languages = lazy(() => import("@/pages/Languages"));
 
 export const AppRouter = () => {
