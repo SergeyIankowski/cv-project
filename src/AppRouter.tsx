@@ -10,28 +10,76 @@ import {Main} from "@/pages/Main/Main";
 
 const Employees = lazy(() => import("@/pages/Employees"));
 
-const Profile = lazy(() => import("@/pages/Profile"));
-const ProfileInfo = lazy(() => import("@/pages/Profile/ProfileInfo"));
-const ProfileSkills = lazy(() => import("@/pages/Profile/ProfileSkills"));
-const ProfileLanguages = lazy(() => import("@/pages/Profile/ProfileLanguages"));
-const CvsAccordion = lazy(() => import("@/pages/Profile/CvsAccordion"));
+const Profile = lazy(() =>
+  import("@/pages/Profile").then(module => ({default: module.Profile}))
+);
+const ProfileInfo = lazy(() =>
+  import("@/pages/Profile/ProfileInfo").then(module => ({
+    default: module.ProfileInfo,
+  }))
+);
+const ProfileSkills = lazy(() =>
+  import("@/pages/Profile/ProfileSkills").then(module => ({
+    default: module.ProfileSkills,
+  }))
+);
+const ProfileLanguages = lazy(() =>
+  import("@/pages/Profile/ProfileLanguages").then(module => ({
+    default: module.ProfileLanguages,
+  }))
+);
+const CvsAccordion = lazy(() =>
+  import("@/pages/Profile/CvsAccordion").then(module => ({
+    default: module.CvsAccordion,
+  }))
+);
 
-const Projects = lazy(() => import("@/pages/Projects"));
-const ProjectDetails = lazy(() => import("@/pages/Projects/ProjectDetails"));
+const Projects = lazy(() =>
+  import("@/pages/Projects").then(module => ({default: module.Projects}))
+);
+const ProjectDetails = lazy(() =>
+  import("@/pages/Projects/ProjectDetails").then(module => ({
+    default: module.ProjectDetails,
+  }))
+);
 
-const Positions = lazy(() => import("@/pages/Positions"));
+const Positions = lazy(() =>
+  import("@/pages/Positions/").then(module => ({default: module.Positions}))
+);
 
-const Cvs = lazy(() => import("@/pages/Cvs"));
-const CvProfile = lazy(() => import("@/pages/CvProfile"));
-const CvDetails = lazy(() => import("@/pages/CvProfile/CvDetails"));
-const CvProjects = lazy(() => import("@/pages/CvProfile/CvProjects"));
-const CvPreview = lazy(() => import("@/pages/CvProfile/CvPreview"));
+const Cvs = lazy(() =>
+  import("@/pages/Cvs").then(module => ({default: module.Cvs}))
+);
+const CvProfile = lazy(() =>
+  import("@/pages/CvProfile").then(module => ({default: module.CvProfile}))
+);
+const CvDetails = lazy(() =>
+  import("@/pages/CvProfile/CvDetails").then(module => ({
+    default: module.CvDetails,
+  }))
+);
+const CvProjects = lazy(() =>
+  import("@/pages/CvProfile/CvProjects").then(module => ({
+    default: module.CvProjects,
+  }))
+);
+const CvPreview = lazy(() =>
+  import("@/pages/CvProfile/CvPreview").then(module => ({
+    default: module.CvPreview,
+  }))
+);
 
-const Departments = lazy(() => import("@/pages/Departments"));
+const Departments = lazy(() =>
+  import("@/pages/Departments").then(module => ({default: module.Departments}))
+);
 
-const Skills = lazy(() => import("@/pages/Skills"));
+const Skills = lazy(() =>
+  import("@/pages/Skills").then(module => ({default: module.Skills}))
+);
 
-const Languages = lazy(() => import("@/pages/Languages"));
+const Languages = lazy(() =>
+  import("@/pages/Languages").then(module => ({default: module.Languages}))
+);
 
 export const AppRouter = () => {
   return (

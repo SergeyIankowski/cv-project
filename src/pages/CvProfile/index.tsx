@@ -1,3 +1,12 @@
-import {CvProfile} from "./CvProfile";
+import {FC} from "react";
+import {Outlet} from "react-router-dom";
+import {CvsTabs} from "@/pages/Cvs/CvsTabs";
 
-export default CvProfile;
+export const CvProfile: FC = () => {
+  return (
+    <>
+      <CvsTabs />
+      <Outlet />
+    </>
+  );
+};
