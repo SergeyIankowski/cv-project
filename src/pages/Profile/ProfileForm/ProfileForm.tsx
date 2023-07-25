@@ -51,13 +51,7 @@ export const ProfileForm: FC = () => {
   const onSubmit = async (data: UpdateUserFormFields) => {
     const dataForSend = convertProfileFormDataToRequestData(data);
 
-    await updateUser({
-      variables: {
-        id: id,
-        user: dataForSend,
-      },
-    });
-
+    await updateUser(id!, dataForSend);
     resetFields();
   };
   if (loadingUserData) return <ProgressSpinner />;

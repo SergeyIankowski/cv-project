@@ -3,6 +3,7 @@ import {FC, useContext} from "react";
 import {useFieldArray, useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
+import Chip from "@mui/material/Chip";
 
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
@@ -19,6 +20,8 @@ import {User} from "@/graphql/interfaces/User.interface";
 import {useCreateCv} from "@/graphql/hooks/useCreateCv";
 import {SelectWithControl} from "@/components/containers/SelectWithControl";
 import {useProjectsQuery} from "@/graphql/hooks/useProjectsQuery";
+import {Project} from "@/graphql/interfaces/Project.interface";
+import {findNameByID} from "@/utils/findNameByID";
 
 export const CreateCvForm: FC = () => {
   const {closeModal} = useContext(ModalTemplateContext);
@@ -98,14 +101,26 @@ export const CreateCvForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
-        <SelectWithControl<CreateCvFormFields>
+        <SelectWithControl<CreateCvFormFields, Project["id"][]>
           name="projectsIds"
           control={control}
-          fields={projects}
           defaultValue={[]}
           label="Projects"
+          renderValue={selected => (
+            <Box sx={{display: "flex", flexWrap: "wrap", gap: 0.5}}>
+              {selected.map(value => (
+                <Chip key={value} label={findNameByID(projects, value)} />
+              ))}
+            </Box>
+          )}
           required
-        />
+        >
+          {projects.map(project => (
+            <MenuItem key={project.id} value={project.id}>
+              {project.name}
+            </MenuItem>
+          ))}
+        </SelectWithControl>
         <SkillsInputsGroup<CreateCvFormFields>
           fieldName="skills"
           fields={fieldsSkills}

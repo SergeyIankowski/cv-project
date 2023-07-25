@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {TsconfigPathsPlugin} = require("tsconfig-paths-webpack-plugin");
 const {NetlifyPlugin} = require("netlify-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const {EnvironmentPlugin} = require("webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -22,6 +25,14 @@ module.exports = {
         },
       ],
     }),
+    new ESLintPlugin({
+      emitError: true,
+      emitWarning: true,
+      failOnError: true,
+      extensions: [".ts", ".tsx", ".js"],
+    }),
+    new ForkTsCheckerWebpackPlugin(),
+    new EnvironmentPlugin([]),
   ],
   module: {
     rules: [
@@ -63,11 +74,13 @@ module.exports = {
     ],
   },
   resolve: {
+    symlinks: false,
     extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
     plugins: [new TsconfigPathsPlugin()],
   },
   performance: {
     maxAssetSize: 5000000,
     maxEntrypointSize: 5000000,
+    hints: false,
   },
 };

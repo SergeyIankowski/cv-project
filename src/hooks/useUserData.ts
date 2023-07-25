@@ -4,6 +4,7 @@ import {FetchedUser} from "@/models/FetchedUser.type";
 import {useParams} from "react-router-dom";
 import {AuthInfoService} from "@/services/AuthInfoService";
 import {ROLES} from "@/models/Roles";
+import {ID} from "@/graphql/interfaces/ID.type";
 
 const emptyUser: FetchedUser = {
   id: "",
@@ -13,6 +14,8 @@ const emptyUser: FetchedUser = {
     first_name: "",
     last_name: "",
     full_name: "",
+    skills: [],
+    languages: [],
   },
   email: "",
   cvs: [],
@@ -27,12 +30,12 @@ const emptyUser: FetchedUser = {
   role: ROLES.employee,
 };
 
-export const useUserData = (idValue: string | number) => {
+export const useUserData = (idValue: ID) => {
   const {id} = useParams();
   const {loadUserInfo, calledUserData, userData, loadingUserData, error} =
     useUserQuery();
   const loadProfileInfo = useCallback(
-    (idName?: string | number) => {
+    (idName?: ID) => {
       idName ? loadUserInfo(idName) : loadUserInfo(idValue!);
     },
     [idValue, loadingUserData]
