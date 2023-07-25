@@ -34,7 +34,7 @@ interface SkillCardProps {
 
 export const SkillCard: FC<SkillCardProps> = ({skill, onDelete}) => {
   return (
-    <Paper key={skill.skill_name} sx={{p: 1}}>
+    <Paper sx={{p: 1}}>
       <Grid container gap="20px" alignItems="center">
         <Chip
           color="default"

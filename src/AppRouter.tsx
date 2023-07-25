@@ -22,6 +22,7 @@ import {CvDetails} from "@/pages/CvProfile/CvDetails";
 import {CvProjects} from "@/pages/CvProfile/CvProjects";
 import {CvPreview} from "@/pages/CvProfile/CvPreview";
 import {ProfileSkills} from "@/pages/Profile/ProfileSkills";
+import {ProfileLanguages} from "@/pages/Profile/ProfileLanguages";
 
 export const AppRouter = () => {
   return (
@@ -35,7 +36,7 @@ export const AppRouter = () => {
             <Route index element={<Navigate to={Pages.main.profile} />} />
             <Route path={Pages.main.profile} element={<ProfileInfo />} />
             <Route path={Pages.main.skills} element={<ProfileSkills />} />
-            <Route path={Pages.main.languages} element={<></>} />
+            <Route path={Pages.main.languages} element={<ProfileLanguages />} />
             <Route path={Pages.main.cvs} element={<CvsAccordion />} />
           </Route>
         </Route>

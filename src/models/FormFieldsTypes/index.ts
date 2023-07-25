@@ -13,6 +13,7 @@ import {CreateLanguageFormFields} from "./CreateLanguageFormFields.type";
 import {UpdateCvProjectsFormFields} from "./UpdateCvProjectsFormFields";
 import {UpdateLanguageFormFields} from "./UpdateLanguageFormFields.type";
 import {UpdateProfileSkillsFormFields} from "./UpdateProfileSkillsFormFields.interface";
+import {AddLanguageFormFields} from "./AddLanguageFormFields";
 
 export {
   AuthFormFields,
@@ -30,4 +31,5 @@ export {
   UpdateLanguageFormFields,
   UpdateCvProjectsFormFields,
   UpdateProfileSkillsFormFields,
+  AddLanguageFormFields,
 };
