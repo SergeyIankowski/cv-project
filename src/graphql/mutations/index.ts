@@ -6,14 +6,15 @@ import {CREATE_USER} from "./createUser";
 import {DELETE_USER} from "./deleteUser";
 import {UNBIND_CV} from "./unbindCv";
 import {UPDATE_CV} from "./updateCv";
+import {CREATE_CV} from "./createCv";
+import {DELETE_CV} from "./deleteCv";
 import {DELETE_PROJECT} from "./deleteProject";
 import {UPDATE_PROJECT} from "./updateProject";
-import {CREATE_CV} from "./createCv";
 import {CREATE_PROJECT} from "./createProject";
-import {CREATE_SKILL} from "./createSkill";
 import {CREATE_POSITION} from "./createPosition";
 import {DELETE_POSITION} from "./deletePosition";
 import {UPDATE_POSITION} from "./updatePosition";
+import {CREATE_SKILL} from "./createSkill";
 import {UPDATE_SKILL} from "./updateSkill";
 import {DELETE_SKILL} from "./deleteSkill";
 import {CREATE_DEPARTMENT} from "./createDepartment";
@@ -32,9 +33,10 @@ export {
   DELETE_USER,
   UNBIND_CV,
   UPDATE_CV,
+  CREATE_CV,
+  DELETE_CV,
   DELETE_PROJECT,
   UPDATE_PROJECT,
-  CREATE_CV,
   CREATE_PROJECT,
   CREATE_SKILL,
   CREATE_POSITION,

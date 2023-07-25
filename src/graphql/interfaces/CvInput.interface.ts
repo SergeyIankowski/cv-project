@@ -8,7 +8,7 @@ export interface CvInput {
   name: Cv["name"];
   description: Cv["description"];
   userId?: User["id"];
-  projectsIds?: Project["id"][];
+  projectsIds: Project["id"][];
   skills: SkillMasteryInput[];
   languages: LanguageProficiencyInput[];
   is_template: Cv["is_template"];

@@ -1,7 +1,7 @@
 import {useMutation} from "@apollo/client";
 import {DELETE_DEPARTMENT} from "@/graphql/mutations";
 import {DEPARTMENTS} from "@/graphql/queries";
-import {Department} from "../interfaces/Department.interface";
+import {Department} from "@/graphql/interfaces/Department.interface";
 
 export const useDeleteDepartment = () => {
   const [loadData] = useMutation(DELETE_DEPARTMENT, {
