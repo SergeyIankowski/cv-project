@@ -78,9 +78,4 @@ module.exports = {
     extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
     plugins: [new TsconfigPathsPlugin()],
   },
-  performance: {
-    maxAssetSize: 5000000,
-    maxEntrypointSize: 5000000,
-    hints: false,
-  },
 };
