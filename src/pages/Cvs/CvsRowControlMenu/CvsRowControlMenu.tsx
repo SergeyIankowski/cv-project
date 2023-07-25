@@ -6,6 +6,8 @@ import {
 } from "@view/RowControlMenuTemplate/RowControlMenuTemplate";
 import {Cv} from "@/graphql/interfaces/Cv.interface";
 import {Pages} from "@/models/Pages";
+import {useDeleteCvMutation} from "@/graphql/hooks/useDeleteCvMutation";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 interface CvsRowControlMenuProps {
   id: Cv["id"];
@@ -13,6 +15,7 @@ interface CvsRowControlMenuProps {
 
 export const CvsRowControlMenu: FC<CvsRowControlMenuProps> = ({id}) => {
   const navigate = useNavigate();
+  const {deleteCv} = useDeleteCvMutation();
   const data: TableRowControls = [
     {
       text: "CV",
@@ -25,8 +28,10 @@ export const CvsRowControlMenu: FC<CvsRowControlMenuProps> = ({id}) => {
     {
       text: "Delete CV",
       icon: "",
-      clickCallback: useCallback(() => {}, []),
-      disabled: true,
+      clickCallback: useCallback(() => {
+        deleteCv(id);
+      }, []),
+      disabled: AuthInfoService.isNotAdmin(),
     },
   ];
   return <RowControlMenuTemplate controlsData={data} />;

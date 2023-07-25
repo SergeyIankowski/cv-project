@@ -24,13 +24,13 @@ export const TableRowCvs: FC<TableRowCvsProps> = ({row}) => {
       <TableCell align="right">{row.description}</TableCell>
       <TableCell align="right">{row.userEmail}</TableCell>
       <TableCell align="center">
-        {row.projects.map(item => (
+        {row.projects.map((projectName, index) => (
           <Chip
             color="error"
             variant="outlined"
             sx={{m: "2px"}}
-            key={item}
-            label={item}
+            key={row.id + projectName + index}
+            label={projectName}
           />
         ))}
       </TableCell>
