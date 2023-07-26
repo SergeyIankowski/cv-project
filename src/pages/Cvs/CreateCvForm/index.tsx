@@ -2,7 +2,6 @@ import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
-import Chip from "@mui/material/Chip";
 
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
