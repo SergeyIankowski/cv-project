@@ -8,7 +8,11 @@ import {SignUpForm} from "@containers/SignUpForm/SignUpForm";
 import {AuthRedirect} from "@containers/AuthRedirect/AuthRedirect";
 import {Main} from "@/pages/Main/Main";
 
-const Employees = lazy(() => import("@/pages/Employees"));
+const Employees = lazy(() =>
+  import("@/pages/Employees/Employees").then(module => ({
+    default: module.Employees,
+  }))
+);
 
 const Profile = lazy(() =>
   import("@/pages/Profile").then(module => ({default: module.Profile}))
