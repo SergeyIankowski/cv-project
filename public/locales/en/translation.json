@@ -1,0 +1,20 @@
+{
+  "home": "Home",
+  "employees": "Employees",
+  "projects": "Projects",
+  "cvs": "Cv's",
+  "departments": "Departments",
+  "positions": "Positions",
+  "skills": "Skills",
+  "languages": "Languages",
+  "createEmployee": "Create Employee",
+  "search": "Search",
+  "profile": "Profile",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "email": "Email",
+  "department": "Department",
+  "position": "Position",
+  "password": "Password",
+  "role": "Role"
+}
