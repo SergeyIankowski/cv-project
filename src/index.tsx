@@ -6,6 +6,8 @@ import {ToastsProvider} from "@/hoc/ToastsProvider";
 import {AppRouter} from "./AppRouter";
 import "./scss/main.scss";
 
+import "@/services/i18n";
+
 const root = createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <CookiesProvider>
