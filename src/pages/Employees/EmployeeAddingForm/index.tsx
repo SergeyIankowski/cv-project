@@ -1,5 +1,6 @@
 import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 import MenuItem from "@mui/material/MenuItem";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
@@ -24,6 +25,7 @@ export const EmployeeAddingForm: FC = () => {
     handleSubmit,
     formState: {errors},
   } = useForm<CreateUserFormFields>();
+  const {t} = useTranslation();
 
   const onSubmit = async (data: CreateUserFormFields) => {
     const dataToload = convertCreatedUserDataToRequestData(data);
@@ -38,7 +40,7 @@ export const EmployeeAddingForm: FC = () => {
           control={control}
           type="text"
           id="email"
-          label="Email"
+          label={t("email")}
           name="email"
           rules={{required: true, pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/i}}
           error={Boolean(errors.email)}
@@ -48,7 +50,7 @@ export const EmployeeAddingForm: FC = () => {
           control={control}
           type="text"
           id="password"
-          label="Password"
+          label={t("password")}
           name="password"
           error={Boolean(errors.password)}
           helperText={errors.password && FIELDS_VALIDATION_MESSAGES.emptyField}
@@ -58,7 +60,7 @@ export const EmployeeAddingForm: FC = () => {
           control={control}
           type="text"
           id="first_name"
-          label="First Name"
+          label={t("firstName")}
           name="first_name"
           error={Boolean(errors.first_name)}
           helperText={
@@ -70,7 +72,7 @@ export const EmployeeAddingForm: FC = () => {
           control={control}
           type="text"
           id="lastName"
-          label="Last Name"
+          label={t("lastName")}
           name="last_name"
           error={Boolean(errors.last_name)}
           helperText={errors.last_name && FIELDS_VALIDATION_MESSAGES.emptyField}
@@ -80,7 +82,7 @@ export const EmployeeAddingForm: FC = () => {
           control={control}
           select
           id="department"
-          label="Departments"
+          label={t("department")}
           name="departmentId"
           error={Boolean(errors.departmentId)}
           helperText={
@@ -98,7 +100,7 @@ export const EmployeeAddingForm: FC = () => {
           control={control}
           select
           id="position"
-          label="Position"
+          label={t("position")}
           name="positionId"
           error={Boolean(errors.positionId)}
           helperText={
@@ -116,7 +118,7 @@ export const EmployeeAddingForm: FC = () => {
           control={control}
           select
           id="role"
-          label="Role"
+          label={t("role")}
           name="role"
           error={Boolean(errors.role)}
           helperText={errors.role && FIELDS_VALIDATION_MESSAGES.emptyField}
@@ -130,7 +132,7 @@ export const EmployeeAddingForm: FC = () => {
           </MenuItem>
         </Input>
         <Button variant="contained" color="error" size="small" type="submit">
-          Create Employee
+          {t("createEmployee")}
         </Button>
       </Box>
     </form>

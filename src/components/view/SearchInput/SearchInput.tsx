@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useTranslation} from "react-i18next";
 import SearchIcon from "@mui/icons-material/Search";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
@@ -9,6 +10,7 @@ interface SearchInputProps {
 }
 
 export const SearchInput: FC<SearchInputProps> = ({onSearch}) => {
+  const {t} = useTranslation();
   return (
     <Paper
       variant="outlined"
@@ -23,7 +25,7 @@ export const SearchInput: FC<SearchInputProps> = ({onSearch}) => {
         <SearchIcon />
       </IconButton>
       <InputBase
-        placeholder="Search..."
+        placeholder={`${t("search")}...`}
         type="search"
         onChange={e => onSearch(e.target.value)}
       />

@@ -1,5 +1,7 @@
 {
   "home": "Home",
+  "settings": "Settings",
+  "logout": "Logout",
   "employees": "Employees",
   "projects": "Projects",
   "cvs": "Cv's",

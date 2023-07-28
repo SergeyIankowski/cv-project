@@ -7,6 +7,7 @@ import {employeesHeadCellsData} from "./employeesHeadCellsData";
 
 import {UserTableData} from "@/models/TableDataTypes";
 import {useSort} from "@/hooks/useSort";
+import {useTranslation} from "react-i18next";
 
 interface TableEmployeesProps {
   usersData: UserTableData[];
@@ -18,11 +19,18 @@ const DEFAULT_ORDER_BY: keyof UserTableData = "firstName";
 export const TableEmployees: FC<TableEmployeesProps> = ({usersData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<UserTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, usersData);
+  const {t} = useTranslation();
 
   return (
     <TableTemplate>
       <TableHeadTemplate
-        headCells={employeesHeadCellsData}
+        headCells={employeesHeadCellsData(
+          t("firstName"),
+          t("lastName"),
+          t("email"),
+          t("department"),
+          t("position")
+        )}
         order={order}
         orderBy={orderBy}
         hasControlsColumn
