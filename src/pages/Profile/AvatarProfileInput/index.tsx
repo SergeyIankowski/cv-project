@@ -1,13 +1,14 @@
 import {ChangeEvent, DragEventHandler, FC} from "react";
 import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Grid from "@mui/material/Grid";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
-import {AvatarStyle, UploadHead} from "./AvatarProfileStyle";
 import Typography from "@mui/material/Typography";
+import {AvatarStyle, UploadHead} from "./AvatarProfileStyle";
 import {convertAvatarToRequestData} from "@/utils/convertAvatarToRequestData";
 import {useUploadAvatar} from "@/graphql/hooks/useUploadAvatar";
 import {AvatarData} from "@/models/AvatarData.type";
@@ -32,6 +33,7 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
   const {deleteAvatar} = useDeleteAvatar();
   const [dragActive, setDragActiveTrue, setDragActiveFalse] =
     useBooleanState(false);
+  const {t} = useTranslation();
 
   const uploadAvatarData = async (avatarData: AvatarData) => {
     if (AuthInfoService.isAuthorizedUser(id!) || AuthInfoService.isAdmin()) {
@@ -137,18 +139,18 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
             <Grid container direction="column" alignItems="center">
               {dragActive ? (
                 <Typography variant="h6" sx={UploadHead}>
-                  "PUT THE FILE"
+                  {t("putTheFile")}
                 </Typography>
               ) : (
                 <>
                   <Grid container alignItems="flex-end">
                     <UploadFileIcon sx={{width: "50px", height: "50px"}} />
                     <Typography variant="h6" sx={UploadHead}>
-                      "UPLOAD AVATAR IMAGE"
+                      {t("uploadAvatarImage")}
                     </Typography>
                   </Grid>
                   <Typography variant="subtitle1" sx={{color: "grey"}}>
-                    png, jpg or gif no more than 0.5MB
+                    {t("moreThanFifty")}
                   </Typography>
                 </>
               )}

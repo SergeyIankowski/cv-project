@@ -1,5 +1,7 @@
 {
   "home": "Home",
+  "name": "Name",
+  "description": "Description",
   "settings": "Settings",
   "logout": "Logout",
   "employees": "Employees",
@@ -18,5 +20,19 @@
   "department": "Department",
   "position": "Position",
   "password": "Password",
-  "role": "Role"
+  "role": "Role",
+  "update": "Update",
+  "putTheFile": "Put the file",
+  "uploadAvatarImage": "Upload Avatar Image",
+  "moreThanFifty": "png, jpg or gif no more than 0.5MB",
+  "addSkill": "Add Skill",
+  "skillName": "Skill Name",
+  "mastery": "Mastery",
+  "addLanguage": "Add Language",
+  "languageName": "Language Name",
+  "proficiency": "Proficiency",
+  "updateCV": "Update Cv",
+  "unbindCv": "Unbind CV",
+  "template": "Template",
+  "hasTemplate": "Has Template"
 }

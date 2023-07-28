@@ -1,4 +1,5 @@
 import {FC, useEffect} from "react";
+import {useTranslation} from "react-i18next";
 import {ModalTemplate} from "@view/ModalTemplate";
 import {UpdateCvForm} from "@/pages/Profile/UpdateCvForm";
 import {Cv} from "@/graphql/interfaces/Cv.interface";
@@ -13,12 +14,13 @@ interface UpdateCvModalProps {
 
 export const UpdateCvModal: FC<UpdateCvModalProps> = ({cvId, userId}) => {
   const {loadCv, cvData} = useCvQuery();
+  const {t} = useTranslation();
   useEffect(() => {
     if (cvId) loadCv(cvId);
   }, []);
   return (
     <ModalContextTemplateProvider>
-      <ModalTemplate buttonName="Update Cv">
+      <ModalTemplate buttonName={t("updateCV")}>
         <UpdateCvForm userId={userId} cvId={cvId} cv={cvData} />
       </ModalTemplate>
     </ModalContextTemplateProvider>

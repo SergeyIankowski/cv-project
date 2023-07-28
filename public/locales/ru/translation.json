@@ -1,5 +1,7 @@
 {
   "home": "Главная",
+  "name": "Имя",
+  "description": "Описание",
   "settings": "Настройки",
   "logout": "Выйти",
   "employees": "Сотрудники",
@@ -18,5 +20,19 @@
   "department": "Департамент",
   "position": "Позиция",
   "password": "Пароль",
-  "role": "Роль"
+  "role": "Роль",
+  "update": "Обновить",
+  "putTheFile": "Перетащить сюда файл",
+  "uploadAvatarImage": "Загрузить аватар",
+  "moreThanFifty": "png, jpg или gif не более чем 0.5MB",
+  "addSkill": "Добавить Навык",
+  "skillName": "Название Навыка",
+  "mastery": "Мастерство владения",
+  "addLanguage": "Добавить Язык",
+  "languageName": "Язык",
+  "proficiency": "Языковой уровень",
+  "updateCV": "Обновить Резюме",
+  "unbindCv": "Открепить Резюме",
+  "template": "Шаблон",
+  "hasTemplate": "Имеется Шаблон"
 }
