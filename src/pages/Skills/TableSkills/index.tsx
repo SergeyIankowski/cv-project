@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useTranslation} from "react-i18next";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {SkillsTableData} from "@/models/TableDataTypes";
@@ -16,10 +17,11 @@ const DEFAULT_ORDER_BY: keyof SkillsTableData = "name";
 export const TableSkills: FC<TableSkillsProps> = ({skillsData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<SkillsTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, skillsData);
+  const {t} = useTranslation();
   return (
     <TableTemplate>
       <TableHeadTemplate
-        headCells={skillsHeadCellsData}
+        headCells={skillsHeadCellsData(t("name"))}
         order={order}
         orderBy={orderBy}
         hasControlsColumn

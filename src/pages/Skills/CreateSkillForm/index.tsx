@@ -1,5 +1,6 @@
 import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 import Box from "@mui/material/Box";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
@@ -13,6 +14,7 @@ export const CreateSkillForm: FC = () => {
   const {control, handleSubmit} = useForm<CreateSkillFields>();
   const {closeModal} = useContext(ModalTemplateContext);
   const {createSkill} = useCreateSkillMutation();
+  const {t} = useTranslation();
 
   const onSubmit = async (data: SkillInput) => {
     await createSkill(data);
@@ -24,11 +26,11 @@ export const CreateSkillForm: FC = () => {
         <Input<CreateSkillFields>
           control={control}
           id="name"
-          label="Name"
+          label={t("name")}
           name="name"
         />
         <Button variant="contained" color="error" size="small" type="submit">
-          Create
+          {t("create").toUpperCase()}
         </Button>
       </Box>
     </form>
