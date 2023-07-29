@@ -1,5 +1,6 @@
 import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 import Box from "@mui/material/Box";
 
 import {Input} from "@containers/Input";
@@ -14,6 +15,7 @@ export const CreateDepartmentForm: FC = () => {
   const {control, handleSubmit} = useForm<CreateDepartmentFormFields>();
   const {closeModal} = useContext(ModalTemplateContext);
   const {createDepartment} = useCreateDepartmentMutation();
+  const {t} = useTranslation();
 
   const onSubmit = async (data: DepartmentInput) => {
     await createDepartment(data);
@@ -25,11 +27,11 @@ export const CreateDepartmentForm: FC = () => {
         <Input<CreateDepartmentFormFields>
           control={control}
           id="name"
-          label="Name"
+          label={t("name")}
           name="name"
         />
         <Button variant="contained" color="error" size="small" type="submit">
-          Create
+          {t("create").toUpperCase()}
         </Button>
       </Box>
     </form>

@@ -25,6 +25,7 @@
   "preview": "Превью",
   "createEmployee": "Создать Сотрудника",
   "createProject": "Создать Проект",
+  "createDepartment": "Создать Департамент",
   "updateProject": "Обновить проект",
   "search": "Поиск",
   "profile": "Профиль",

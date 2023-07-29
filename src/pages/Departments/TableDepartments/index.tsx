@@ -6,6 +6,7 @@ import {TableRowDepartments} from "@/pages/Departments/TableRowDepartments";
 import {useSort} from "@/hooks/useSort";
 import {DepartmentsTableData} from "@/models/TableDataTypes";
 import {departmentsHeadCellsData} from "./departmentsHeadCellsData";
+import {useTranslation} from "react-i18next";
 
 interface TableDepartmentsProps {
   departmentsData: DepartmentsTableData[];
@@ -23,10 +24,11 @@ export const TableDepartments: FC<TableDepartmentsProps> = ({
       DEFAULT_ORDER_BY,
       departmentsData
     );
+  const {t} = useTranslation();
   return (
     <TableTemplate>
       <TableHeadTemplate
-        headCells={departmentsHeadCellsData}
+        headCells={departmentsHeadCellsData(t("name"))}
         order={order}
         orderBy={orderBy}
         hasControlsColumn

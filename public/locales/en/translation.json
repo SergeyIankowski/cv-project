@@ -25,6 +25,7 @@
   "preview": "Preview",
   "createEmployee": "Create Employee",
   "createProject": "Create Project",
+  "createDepartment": "Create Department",
   "updateProject": "Update Project",
   "search": "Search",
   "profile": "Profile",
