@@ -1,16 +1,19 @@
 import {HeadCell} from "@/models/HeadCell.type";
 import {LanguagesTableData} from "@/models/TableDataTypes";
 
-export const LanguagesHeadCellsData: HeadCell<LanguagesTableData>[] = [
+export const LanguagesHeadCellsData: (
+  name: string,
+  nativeName: string
+) => HeadCell<LanguagesTableData>[] = (name, nativeName) => [
   {
     id: "name",
-    content: "Name",
+    content: name,
     disablePadding: false,
     isSortable: true,
   },
   {
     id: "nativeName",
-    content: "Native Name",
+    content: nativeName,
     disablePadding: false,
     isSortable: true,
   },

@@ -1,5 +1,6 @@
 import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 import Box from "@mui/material/Box";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
@@ -28,6 +29,7 @@ export const UpdateLanguageForm: FC<UpdateLanguageFormProps> = ({
   });
   const {closeModal} = useContext(ModalTemplateContext);
   const {updateLanguage} = useUpdateLanguageMutation();
+  const {t} = useTranslation();
   const onSubmit = async (data: LanguageInput) => {
     await updateLanguage(id, data);
     closeModal();
@@ -38,13 +40,13 @@ export const UpdateLanguageForm: FC<UpdateLanguageFormProps> = ({
         <Input<UpdateLanguageFormFields>
           control={control}
           id="name"
-          label="Name"
+          label={t("name")}
           name="name"
         />
         <Input<UpdateLanguageFormFields>
           control={control}
           id="native_name"
-          label="Native Name"
+          label={t("nativeName")}
           name="native_name"
         />
         <Input<UpdateLanguageFormFields>
@@ -54,7 +56,7 @@ export const UpdateLanguageForm: FC<UpdateLanguageFormProps> = ({
           name="iso2"
         />
         <Button variant="contained" color="error" size="small" type="submit">
-          Update
+          {t("update")}
         </Button>
       </Box>
     </form>
