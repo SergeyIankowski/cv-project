@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
-import {PROJECTS} from "../queries";
+import {PROJECTS} from "@/graphql/queries";
 import {ProjectTableData} from "@/models/TableDataTypes";
-import {Project} from "../interfaces/Project.interface";
+import {Project} from "@/graphql/interfaces/Project.interface";
+import {FETCH_POLICY} from "@/graphql/fetchPolicy";
 
 const convertQueryData: (data: Project[]) => ProjectTableData[] = data => {
   return data.map((project: Project) => {
@@ -21,7 +22,9 @@ const convertQueryData: (data: Project[]) => ProjectTableData[] = data => {
 export const useProjectsQuery = () => {
   const [tableProjects, setTableProjects] = useState<ProjectTableData[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
-  const {loading, data, error} = useQuery(PROJECTS);
+  const {loading, data, error} = useQuery(PROJECTS, {
+    fetchPolicy: FETCH_POLICY.cacheAndNetwork,
+  });
 
   useEffect(() => {
     if (loading) return;

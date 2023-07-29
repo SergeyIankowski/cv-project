@@ -1,5 +1,6 @@
 import {FC, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import {CardContent} from "@mui/material";
@@ -26,6 +27,7 @@ export const ProjectDetails: FC = () => {
   const {loadProjectInfo, calledProjectData, loadingProjectData, projectData} =
     useProjectQuery();
   const [project, setProject] = useState<FetchedProject>(initialProject);
+  const {t} = useTranslation();
 
   useEffect(() => {
     if (!calledProjectData) {
@@ -42,26 +44,26 @@ export const ProjectDetails: FC = () => {
     <Card>
       <CardContent>
         <Grid container direction="column" alignItems="flex-start" gap="10px">
-          <TypographyDetails fieldName="Name" content={project.name} />
+          <TypographyDetails fieldName={t("name")} content={project.name} />
           <TypographyDetails
-            fieldName="Internal Name"
+            fieldName={t("internalName")}
             content={project.internal_name!}
           />
           <TypographyDetails
-            fieldName="Description"
+            fieldName={t("description")}
             content={project.description}
           />
           <TypographyDetails fieldName="Domain" content={project.domain} />
           <TypographyDetails
-            fieldName="Start Date"
+            fieldName={t("startDate")}
             content={project.start_date as string}
           />
           <TypographyDetails
-            fieldName="End Date"
+            fieldName={t("endDate")}
             content={(project.end_date || EmptyFieldStrings.tillNow) as string}
           />
           <TypographyDetails
-            fieldName="Team Size"
+            fieldName={t("teamSize")}
             content={String(project.team_size)}
           />
           <UpdateProjectModal projectData={project} />

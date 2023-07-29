@@ -1,6 +1,7 @@
 import {FC, useContext} from "react";
 import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 import Box from "@mui/material/Box";
 import {ModalLayout} from "@view/MuiPagesStyles";
 import {ProjectFormFields} from "@/models/FormFieldsTypes";
@@ -19,6 +20,7 @@ export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
   const {id} = useParams();
   const {updateProject} = useUpdateProject();
   const {closeModal} = useContext(ModalTemplateContext);
+  const {t} = useTranslation();
   const {control, handleSubmit} = useForm<ProjectFormFields>({
     defaultValues: {
       [PROJECT_FORM_KEYS.name]: data.name,
@@ -42,14 +44,14 @@ export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
           control={control}
           type="text"
           id="name"
-          label="Name"
+          label={t("name")}
           name="name"
         />
         <Input<ProjectFormFields>
           control={control}
           type="text"
           id="internal_name"
-          label="Internal Name"
+          label={t("internalName")}
           name="internal_name"
         />
         <Input<ProjectFormFields>
@@ -57,35 +59,35 @@ export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
           type="text"
           id="description"
           multiline
-          label="Description"
+          label={t("description")}
           name="description"
         />
         <Input<ProjectFormFields>
           control={control}
           type="text"
           id="domain"
-          label="Domain"
+          label={t("domain")}
           name="domain"
         />
         <Input<ProjectFormFields>
           control={control}
           type="date"
           id="start_date"
-          label="Start Date"
+          label={t("startDate")}
           name="start_date"
         />
         <Input<ProjectFormFields>
           control={control}
           type="date"
           id="end_date"
-          label="End Date"
+          label={t("endDate")}
           name="end_date"
         />
         <Input<ProjectFormFields>
           control={control}
           type="number"
           id="team_size"
-          label="Team Size"
+          label={t("teamSize")}
           name="team_size"
         />
         <Button variant="contained" color="error" size="small" type="submit">
