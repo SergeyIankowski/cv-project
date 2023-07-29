@@ -26,6 +26,7 @@
   "createEmployee": "Создать Сотрудника",
   "createProject": "Создать Проект",
   "createDepartment": "Создать Департамент",
+  "createPosition": "Создать Позицию",
   "updateProject": "Обновить проект",
   "search": "Поиск",
   "profile": "Профиль",

@@ -1,5 +1,6 @@
 import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 import Box from "@mui/material/Box";
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
@@ -23,6 +24,7 @@ export const UpdatePositionForm: FC<UpdatePositionFormProps> = ({id, name}) => {
   });
   const {updatePosition} = useUpdatePositionMutation();
   const {closeModal} = useContext(ModalTemplateContext);
+  const {t} = useTranslation();
 
   const onSubmit = async (data: PositionInput) => {
     await updatePosition(id, data);
@@ -34,11 +36,11 @@ export const UpdatePositionForm: FC<UpdatePositionFormProps> = ({id, name}) => {
         <Input<UpdatePositionFormFileds>
           control={control}
           id="name"
-          label="Name"
+          label={t("name")}
           name="name"
         />
         <Button variant="contained" color="error" size="small" type="submit">
-          Create
+          {t("create").toUpperCase()}
         </Button>
       </Box>
     </form>

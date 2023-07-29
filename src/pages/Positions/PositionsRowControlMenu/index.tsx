@@ -1,4 +1,5 @@
 import {FC, useCallback, useContext} from "react";
+import {useTranslation} from "react-i18next";
 import {
   RowControlMenuTemplate,
   TableRowControls,
@@ -15,9 +16,10 @@ interface PositionsRowControlProps {
 export const PositionsRowControl: FC<PositionsRowControlProps> = ({id}) => {
   const {openModal} = useContext(ModalTemplateContext);
   const {deletePosition} = useDeletePositionMutation();
+  const {t} = useTranslation();
   const data: TableRowControls = [
     {
-      text: "Update",
+      text: t("update"),
       icon: "",
       clickCallback: useCallback(() => {
         openModal();
@@ -25,7 +27,7 @@ export const PositionsRowControl: FC<PositionsRowControlProps> = ({id}) => {
       disabled: AuthInfoService.isNotAdmin(),
     },
     {
-      text: "Delete",
+      text: t("delete"),
       icon: "",
       clickCallback: useCallback(async () => {
         deletePosition(id);
