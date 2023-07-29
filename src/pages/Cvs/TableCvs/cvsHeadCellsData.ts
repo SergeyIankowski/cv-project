@@ -1,34 +1,46 @@
 import {CvTableData} from "@/models/TableDataTypes";
 import {HeadCell} from "@/models/HeadCell.type";
 
-export const cvsHeadCellsData: HeadCell<CvTableData>[] = [
+export const cvsHeadCellsData: (
+  isTemplate: string,
+  name: string,
+  description: string,
+  employee: string,
+  projects: string
+) => HeadCell<CvTableData>[] = (
+  template,
+  name,
+  description,
+  employee,
+  projects
+) => [
   {
     id: "isTemplate",
-    content: "Template",
+    content: template,
     disablePadding: false,
     isSortable: false,
   },
   {
     id: "name",
-    content: "Name",
+    content: name,
     disablePadding: false,
     isSortable: true,
   },
   {
     id: "description",
-    content: "Description",
+    content: description,
     disablePadding: false,
     isSortable: true,
   },
   {
     id: "userEmail",
-    content: "Employee",
+    content: employee,
     disablePadding: false,
     isSortable: true,
   },
   {
     id: "projects",
-    content: "Projects",
+    content: projects,
     disablePadding: false,
     isSortable: false,
   },

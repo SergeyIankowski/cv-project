@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useTranslation} from "react-i18next";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -23,6 +24,7 @@ export const CvPreviewProject: FC<CvPreviewProjectProps> = ({
   domain,
   description,
 }) => {
+  const {t} = useTranslation();
   return (
     <Paper elevation={5} sx={{m: "10px"}}>
       <Grid container>
@@ -38,25 +40,25 @@ export const CvPreviewProject: FC<CvPreviewProjectProps> = ({
         >
           <TypographyDetails
             variant="h5"
-            fieldName="Project Name"
+            fieldName={t("projectName")}
             content={projectName || EmptyFieldStrings.empty}
           />
           <Divider flexItem />
           <TypographyDetails
             variant="h5"
-            fieldName="Start Date"
+            fieldName={t("startDate")}
             content={startDate || EmptyFieldStrings.empty}
           />
           <Divider flexItem />
           <TypographyDetails
             variant="h5"
-            fieldName="End Date"
+            fieldName={t("endDate")}
             content={endDate || EmptyFieldStrings.tillNow}
           />
           <Divider flexItem />
           <TypographyDetails
             variant="h5"
-            fieldName="Domain"
+            fieldName={t("domain")}
             content={domain || EmptyFieldStrings.empty}
           />
         </Box>
@@ -64,7 +66,7 @@ export const CvPreviewProject: FC<CvPreviewProjectProps> = ({
         <Box sx={{p: "10px"}}>
           <TypographyDetails
             variant="h5"
-            fieldName="Description"
+            fieldName={t("description")}
             content={description || EmptyFieldStrings.empty}
           />
         </Box>

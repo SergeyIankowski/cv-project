@@ -20,7 +20,7 @@ export const UpdateCvModal: FC<UpdateCvModalProps> = ({cvId, userId}) => {
   }, []);
   return (
     <ModalContextTemplateProvider>
-      <ModalTemplate buttonName={t("updateCV")}>
+      <ModalTemplate buttonName={t("updateCv")}>
         <UpdateCvForm userId={userId} cvId={cvId} cv={cvData} />
       </ModalTemplate>
     </ModalContextTemplateProvider>

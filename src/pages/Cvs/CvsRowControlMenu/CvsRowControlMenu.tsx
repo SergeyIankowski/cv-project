@@ -1,5 +1,6 @@
 import {FC, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import {
   RowControlMenuTemplate,
   TableRowControls,
@@ -16,9 +17,10 @@ interface CvsRowControlMenuProps {
 export const CvsRowControlMenu: FC<CvsRowControlMenuProps> = ({id}) => {
   const navigate = useNavigate();
   const {deleteCv} = useDeleteCvMutation();
+  const {t} = useTranslation();
   const data: TableRowControls = [
     {
-      text: "CV",
+      text: t("cv"),
       icon: "",
       clickCallback: useCallback(() => {
         navigate(`${id}/${Pages.main.details}`);
@@ -26,7 +28,7 @@ export const CvsRowControlMenu: FC<CvsRowControlMenuProps> = ({id}) => {
       disabled: false,
     },
     {
-      text: "Delete CV",
+      text: t("delete"),
       icon: "",
       clickCallback: useCallback(() => {
         deleteCv(id);

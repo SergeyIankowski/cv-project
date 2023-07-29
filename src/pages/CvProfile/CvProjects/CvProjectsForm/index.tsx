@@ -1,6 +1,7 @@
 import {FC, useContext, useEffect} from "react";
 import {useForm} from "react-hook-form";
 import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import MenuItem from "@mui/material/MenuItem";
@@ -26,6 +27,7 @@ export const CvProjectsForm: FC = () => {
   const {projects} = useProjectsQuery();
   const {updateCv} = useUpdateCvMutation();
   const {closeModal} = useContext(ModalTemplateContext);
+  const {t} = useTranslation();
   const {control, handleSubmit, reset} = useForm<UpdateCvProjectsFormFields>();
 
   useEffect(() => {
@@ -55,7 +57,7 @@ export const CvProjectsForm: FC = () => {
       <Box sx={ModalLayout}>
         <SelectWithControl<UpdateCvProjectsFormFields, Project["id"][]>
           name="projectsIds"
-          label="Projects"
+          label={t("projects")}
           control={control}
           defaultValue={[]}
           renderValue={selected => (
@@ -73,7 +75,7 @@ export const CvProjectsForm: FC = () => {
           ))}
         </SelectWithControl>
         <Button variant="contained" color="error" size="small" type="submit">
-          Save
+          {t("save").toUpperCase()}
         </Button>
       </Box>
     </form>

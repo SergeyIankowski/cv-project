@@ -1,5 +1,6 @@
 import {FC, useEffect} from "react";
 import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import Card from "@mui/material/Card";
 import {CardContent} from "@mui/material";
 import {useCvQuery} from "@/graphql/hooks/useCvQuery";
@@ -12,6 +13,7 @@ import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
 export const CvDetails: FC = () => {
   const {id} = useParams();
   const {loadCv, cvData} = useCvQuery();
+  const {t} = useTranslation();
 
   useEffect(() => {
     loadCv(id!);
@@ -23,27 +25,27 @@ export const CvDetails: FC = () => {
         <Grid container direction="column" gap="10px">
           <TypographyDetails
             variant="h6"
-            fieldName="Name"
+            fieldName={t("name")}
             content={cvData.name || EmptyFieldStrings.empty}
           />
           <TypographyDetails
             variant="h6"
-            fieldName="Description"
+            fieldName={t("description")}
             content={cvData.description || EmptyFieldStrings.empty}
           />
           <TypographyDetails
             variant="h6"
-            fieldName="User"
+            fieldName={t("user")}
             content={cvData.user?.profile?.full_name || EmptyFieldStrings.empty}
           />
           <TypographyDetails
             variant="h6"
-            fieldName="position"
+            fieldName={t("position")}
             content={cvData.user?.position_name || EmptyFieldStrings.empty}
           />
           <TypographyDetails
             variant="h6"
-            fieldName="Skills"
+            fieldName={t("skills")}
             content={
               cvData.skills.map(skill => skill.skill_name) ||
               EmptyFieldStrings.empty
@@ -51,7 +53,7 @@ export const CvDetails: FC = () => {
           />
           <TypographyDetails
             variant="h6"
-            fieldName="Languages"
+            fieldName={t("languages")}
             content={
               cvData.languages.map(language => language.language_name) ||
               EmptyFieldStrings.empty
