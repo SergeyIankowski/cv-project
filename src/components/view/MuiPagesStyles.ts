@@ -2,7 +2,7 @@ const breakpoints = {
   smallDesktop: "1199px",
 };
 export const colors = {
-  authLinksColor: "#ef9d10",
+  headerItemsColor: "#ef9d10",
   mainBgColor: "#e7e7e7",
   headerBgColor: "#3b3b4f",
   titleHeaderColor: "#eeeef0",
@@ -105,7 +105,7 @@ export const HeaderLinksStyle = {
     color: "white",
   },
   "& button.Mui-selected": {
-    color: colors.authLinksColor,
+    color: colors.headerItemsColor,
   },
 };
 

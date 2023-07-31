@@ -25,7 +25,7 @@ export const AuthPageLayout: FC<AuthPageLayoutProps> = ({children}) => {
           onChange={handleChange}
           TabIndicatorProps={{
             style: {
-              backgroundColor: colors.authLinksColor,
+              backgroundColor: colors.headerItemsColor,
             },
           }}
           sx={HeaderLinksStyle}

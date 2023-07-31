@@ -8,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import {LanguageMenuStyle} from "./LanguageMenuStyle";
 import {LANGUAGES} from "@/models/Languages";
+import {colors} from "@view/MuiPagesStyles";
 
 export const LanguageMenu: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -36,7 +37,7 @@ export const LanguageMenu: FC = () => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <TranslateIcon sx={{color: "white"}} />
+          <TranslateIcon sx={{color: colors.headerItemsColor}} />
         </IconButton>
       </Tooltip>
       <Menu

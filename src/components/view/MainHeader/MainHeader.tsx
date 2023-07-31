@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import MenuIcon from "@mui/icons-material/Menu";
 import {BoxProps} from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import {HeaderStyle, MainHeaderStyle} from "@view/MuiPagesStyles";
+import {HeaderStyle, MainHeaderStyle, colors} from "@view/MuiPagesStyles";
 import {UserDetails} from "@containers/UserDetails/UserDetails";
 import {SlideMenu} from "@containers/SlideMenu/SlideMenu";
 import {LanguageMenu} from "@containers/LanguageMenu";
@@ -31,7 +31,10 @@ export const MainHeader: FC<MainHeaderProps> = () => {
   return (
     <Box component={"header"} sx={HeaderStyle}>
       <Container sx={MainHeaderStyle} maxWidth="xl">
-        <MenuIcon onClick={setTrue} sx={{"&:hover": {cursor: "pointer"}}} />
+        <MenuIcon
+          onClick={setTrue}
+          sx={{"&:hover": {cursor: "pointer"}, color: colors.headerItemsColor}}
+        />
         <Grid container gap="10px" sx={{width: "fit-content"}}>
           <LanguageMenu />
           <UserDetails

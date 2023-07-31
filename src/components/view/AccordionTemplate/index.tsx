@@ -18,14 +18,14 @@ export const AccordionTemplate: FC<AccordionTemplateProps> = ({
   return (
     <Accordion>
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon style={{color: colors.authLinksColor}} />}
+        expandIcon={<ExpandMoreIcon style={{color: colors.headerItemsColor}} />}
         aria-controls="panel1a-content"
         id={String(title)}
         sx={{backgroundColor: colors.headerBgColor}}
       >
         <Typography
           variant="h5"
-          sx={{color: colors.authLinksColor, borderColor: "white"}}
+          sx={{color: colors.headerItemsColor, borderColor: "white"}}
         >
           {title}
         </Typography>
