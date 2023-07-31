@@ -8,6 +8,7 @@ import {useUserData} from "@/hooks/useUserData";
 import {SkillCard} from "@/components/view/SkillCard";
 import {useUpdateUser} from "@/graphql/hooks/useUpdateUser";
 import {prepareUserForUpdatingSkills} from "@/utils/prepareUserForUpdatingSkills";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 export const ProfileSkills: FC = () => {
   const {id} = useParams();
@@ -42,7 +43,11 @@ export const ProfileSkills: FC = () => {
   return (
     <>
       <Grid container justifyContent="flex-end">
-        <AddSkillsModal />
+        {AuthInfoService.isAdmin() || AuthInfoService.isAuthorizedUser(id!) ? (
+          <AddSkillsModal />
+        ) : (
+          ""
+        )}
       </Grid>
       <Grid container gap="10px">
         {skills.map(skill => (

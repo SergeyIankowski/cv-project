@@ -118,7 +118,8 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
       <Grid container justifyContent="space-between" gap="40px">
         <Box>
           <Box sx={{position: "relative", width: "130px"}}>
-            {
+            {AuthInfoService.isAdmin() ||
+            AuthInfoService.isAuthorizedUser(id!) ? (
               <IconButton
                 sx={{
                   position: "absolute",
@@ -130,7 +131,9 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
               >
                 <CloseIcon />
               </IconButton>
-            }
+            ) : (
+              ""
+            )}
             <Avatar src={avatarPath} sx={AvatarStyle} />
           </Box>
         </Box>

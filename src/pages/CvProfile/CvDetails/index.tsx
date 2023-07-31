@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import {UpdateCvModal} from "@/pages/Profile/UpdateCvModal";
 import Box from "@mui/material/Box";
 import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 export const CvDetails: FC = () => {
   const {id} = useParams();
@@ -60,7 +61,12 @@ export const CvDetails: FC = () => {
             }
           />
           <Box>
-            <UpdateCvModal cvId={id!} userId={cvData?.user?.id} />
+            {AuthInfoService.isAdmin() ||
+            AuthInfoService.isAuthorizedUser(cvData?.user?.id || "") ? (
+              <UpdateCvModal cvId={id!} userId={cvData?.user?.id} />
+            ) : (
+              ""
+            )}
           </Box>
         </Grid>
       </CardContent>

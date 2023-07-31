@@ -91,7 +91,7 @@ export const UpdateProjectForm: FC<UpdateProjectFormProps> = ({data}) => {
           name="team_size"
         />
         <Button variant="contained" color="error" size="small" type="submit">
-          Update
+          {t("update")}
         </Button>
       </Box>
     </form>

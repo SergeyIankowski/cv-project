@@ -8,6 +8,7 @@ import {AddLanguageModal} from "./AddLanguageModal";
 import {LanguageCard} from "@view/LanguageCard";
 import {prepareUserForUpdatingLanguages} from "@/utils/prepareUserForUpdatingLanguages";
 import {ProgressSpinner} from "@/components/view/ProgressSpinner/ProgressSpinner";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 export const ProfileLanguages: FC = () => {
   const {id} = useParams();
@@ -47,7 +48,11 @@ export const ProfileLanguages: FC = () => {
   return (
     <>
       <Grid container justifyContent="flex-end">
-        <AddLanguageModal />
+        {AuthInfoService.isAdmin() || AuthInfoService.isAuthorizedUser(id!) ? (
+          <AddLanguageModal />
+        ) : (
+          ""
+        )}
       </Grid>
       <Grid container gap="10px">
         {languages?.map(language => (

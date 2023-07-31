@@ -35,7 +35,7 @@ export const TableRowCvs: FC<TableRowCvsProps> = ({row}) => {
         ))}
       </TableCell>
       <TableCell align="right">
-        <CvsRowControlMenu id={row.id} />
+        <CvsRowControlMenu row={row} />
       </TableCell>
     </TableRow>
   );

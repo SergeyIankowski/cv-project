@@ -10,6 +10,7 @@ import {FetchedProject} from "@/models/FetchedProject.interface";
 import {TypographyDetails} from "@view/TypographyDetails";
 import {EmptyFieldStrings} from "@/models/emptyFieldsStrings";
 import {UpdateProjectModal} from "../UpdateProjectModal";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 const initialProject: FetchedProject = {
   id: "",
@@ -66,7 +67,9 @@ export const ProjectDetails: FC = () => {
             fieldName={t("teamSize")}
             content={String(project.team_size)}
           />
-          <UpdateProjectModal projectData={project} />
+          {AuthInfoService.isAdmin() && (
+            <UpdateProjectModal projectData={project} />
+          )}
         </Grid>
       </CardContent>
     </Card>

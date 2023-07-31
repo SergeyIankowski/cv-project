@@ -1,7 +1,9 @@
+import {ID} from "@/graphql/interfaces/ID.type";
 import {ROLES} from "@/models/Roles";
 
 interface UserAuthInfo {
   id: string;
+  email: string;
   role: ROLES.employee | ROLES.admin;
 }
 
@@ -32,12 +34,16 @@ export class AuthInfoService {
     const {role} = this.getAuthInfo();
     return role !== ROLES.admin;
   }
-  static isAuthorizedUser(checkabledId: string | number) {
+  static isAuthorizedUser(checkabledId: ID) {
     const {id} = this.getAuthInfo();
     return checkabledId === id;
   }
-  static isUnAuthorizedUser(checkabledId: string | number) {
+  static isUnAuthorizedUser(checkabledId: ID) {
     const {id} = this.getAuthInfo();
     return checkabledId !== id;
+  }
+  static isAuthorizedUserByEmail(emailForCheck: string) {
+    const {email} = this.getAuthInfo();
+    return emailForCheck === email;
   }
 }
