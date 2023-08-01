@@ -6,7 +6,6 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import {UserMenu} from "@view/UserMenu/UserMenu";
 import {avatarStyle} from "./UserDetailsStyle";
-import {colors} from "@view/MuiPagesStyles";
 
 interface UserDetailsProps {
   userName: string;
@@ -33,11 +32,7 @@ export const UserDetails: FC<UserDetailsProps> = ({userName, avatar}) => {
           textAlign: "center",
         }}
       >
-        <Typography
-          sx={{minWidth: userName.length, color: colors.headerItemsColor}}
-        >
-          {userName}
-        </Typography>
+        <Typography sx={{minWidth: userName.length}}>{userName}</Typography>
         <Tooltip title="Account details">
           <IconButton
             onClick={handleClick}
