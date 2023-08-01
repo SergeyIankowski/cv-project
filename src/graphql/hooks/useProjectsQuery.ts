@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
 import {PROJECTS} from "@/graphql/queries";
@@ -20,7 +19,9 @@ const convertQueryData: (data: Project[]) => ProjectTableData[] = data => {
   });
 };
 export const useProjectsQuery = () => {
-  const [tableProjects, setTableProjects] = useState<ProjectTableData[]>([]);
+  const [tableProjects, setTableProjects] = useState<ProjectTableData[] | null>(
+    null
+  );
   const [projects, setProjects] = useState<Project[]>([]);
   const {loading, data, error} = useQuery(PROJECTS, {
     fetchPolicy: FETCH_POLICY.cacheAndNetwork,
