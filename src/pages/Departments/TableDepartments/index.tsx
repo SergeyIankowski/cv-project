@@ -7,9 +7,10 @@ import {useSort} from "@/hooks/useSort";
 import {DepartmentsTableData} from "@/models/TableDataTypes";
 import {departmentsHeadCellsData} from "./departmentsHeadCellsData";
 import {useTranslation} from "react-i18next";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 interface TableDepartmentsProps {
-  departmentsData: DepartmentsTableData[];
+  departmentsData: DepartmentsTableData[] | null;
 }
 
 const DEFAULT_ORDER: Order = "asc";
@@ -25,6 +26,8 @@ export const TableDepartments: FC<TableDepartmentsProps> = ({
       departmentsData
     );
   const {t} = useTranslation();
+
+  if (!sortedRowsOnPage) return <ProgressSpinner />;
   return (
     <TableTemplate>
       <TableHeadTemplate

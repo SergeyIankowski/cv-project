@@ -8,9 +8,10 @@ import {ProjectTableData} from "@/models/TableDataTypes";
 import {Order} from "@/models/Order.type";
 import {useSort} from "@/hooks/useSort";
 import {cvProjectsHeadCellsData} from "./tableCvProjectsHeadCellsData";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 interface TableCvProjectsProps {
-  projectsData: ProjectTableData[];
+  projectsData: ProjectTableData[] | null;
 }
 
 const DEFAULT_ORDER: Order = "asc";
@@ -20,6 +21,8 @@ export const TableCvProjects: FC<TableCvProjectsProps> = ({projectsData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<ProjectTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, projectsData);
   const {t} = useTranslation();
+
+  if (!sortedRowsOnPage) return <ProgressSpinner />;
   return (
     <TableTemplate>
       <TableHeadTemplate<ProjectTableData>

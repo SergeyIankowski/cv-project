@@ -8,9 +8,10 @@ import {employeesHeadCellsData} from "./employeesHeadCellsData";
 import {UserTableData} from "@/models/TableDataTypes";
 import {useSort} from "@/hooks/useSort";
 import {useTranslation} from "react-i18next";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 interface TableEmployeesProps {
-  usersData: UserTableData[];
+  usersData: UserTableData[] | null;
 }
 
 const DEFAULT_ORDER: Order = "asc";
@@ -20,6 +21,8 @@ export const TableEmployees: FC<TableEmployeesProps> = ({usersData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<UserTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, usersData);
   const {t} = useTranslation();
+
+  if (!sortedRowsOnPage) return <ProgressSpinner />;
 
   return (
     <TableTemplate>

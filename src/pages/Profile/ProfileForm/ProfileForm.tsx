@@ -16,6 +16,8 @@ import {InputsContainerStyle} from "./ProfileFormStyle";
 import {AuthInfoService} from "@/services/AuthInfoService";
 import {PROFILE_FORM_KEYS} from "@/models/FormKeysNames";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
+import {Department} from "@/graphql/interfaces/Department.interface";
+import {Position} from "@/graphql/interfaces/Position.interface";
 
 export const ProfileForm: FC = () => {
   const {t} = useTranslation();
@@ -56,7 +58,7 @@ export const ProfileForm: FC = () => {
     await updateUser(id!, dataForSend);
     resetFields();
   };
-  if (loadingUserData) return <ProgressSpinner />;
+  if (loadingUserData || !positions || !departments) return <ProgressSpinner />;
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={InputsContainerStyle}>
@@ -81,11 +83,13 @@ export const ProfileForm: FC = () => {
           label={t("department")}
           name="departmentId"
         >
-          {departments.map((department: {name: string; id: number}) => (
-            <MenuItem key={department.name} value={department.id}>
-              {department.name}
-            </MenuItem>
-          ))}
+          {departments.map(
+            (department: {name: Department["name"]; id: Department["id"]}) => (
+              <MenuItem key={department.name} value={department.id}>
+                {department.name}
+              </MenuItem>
+            )
+          )}
         </Input>
         <Input<UpdateUserFormFields>
           control={control}
@@ -94,11 +98,13 @@ export const ProfileForm: FC = () => {
           label={t("position")}
           name="positionId"
         >
-          {positions.map((position: {name: string; id: number}) => (
-            <MenuItem key={position.name} value={position.id}>
-              {position.name}
-            </MenuItem>
-          ))}
+          {positions.map(
+            (position: {name: Position["name"]; id: Position["id"]}) => (
+              <MenuItem key={position.name} value={position.id}>
+                {position.name}
+              </MenuItem>
+            )
+          )}
         </Input>
         {AuthInfoService.isAuthorizedUser(id!) || AuthInfoService.isAdmin() ? (
           <Button

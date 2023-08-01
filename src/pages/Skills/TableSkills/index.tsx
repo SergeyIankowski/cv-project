@@ -7,9 +7,10 @@ import {Order} from "@/models/Order.type";
 import {skillsHeadCellsData} from "./skillsHeadCellsData";
 import {useSort} from "@/hooks/useSort";
 import {TableRowSkills} from "@/pages/Skills/TableRowSkills";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 interface TableSkillsProps {
-  skillsData: SkillsTableData[];
+  skillsData: SkillsTableData[] | null;
 }
 const DEFAULT_ORDER: Order = "asc";
 const DEFAULT_ORDER_BY: keyof SkillsTableData = "name";
@@ -18,6 +19,8 @@ export const TableSkills: FC<TableSkillsProps> = ({skillsData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<SkillsTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, skillsData);
   const {t} = useTranslation();
+
+  if (!sortedRowsOnPage) return <ProgressSpinner />;
   return (
     <TableTemplate>
       <TableHeadTemplate

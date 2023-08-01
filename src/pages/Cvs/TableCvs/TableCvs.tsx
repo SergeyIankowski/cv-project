@@ -8,9 +8,10 @@ import {Order} from "@/models/Order.type";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableRowCvs} from "@/pages/Cvs/TableRowCvs/TableRowCvs";
 import {cvsHeadCellsData} from "./cvsHeadCellsData";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 interface TableCvsProps {
-  cvsData: CvTableData[];
+  cvsData: CvTableData[] | null;
 }
 
 const DEFAULT_ORDER: Order = "asc";
@@ -20,6 +21,8 @@ export const TableCvs: FC<TableCvsProps> = ({cvsData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<CvTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, cvsData);
   const {t} = useTranslation();
+
+  if (!sortedRowsOnPage) return <ProgressSpinner />;
   return (
     <TableTemplate>
       <TableHeadTemplate<CvTableData>

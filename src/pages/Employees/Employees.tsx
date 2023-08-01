@@ -16,6 +16,7 @@ export const Employees: FC = () => {
     loading
   );
 
+  console.log(searchedData);
   return (
     <>
       <PageLayoutRowContainer>
@@ -23,7 +24,7 @@ export const Employees: FC = () => {
         {AuthInfoService.isAdmin() && <NewEmployeeModal />}
       </PageLayoutRowContainer>
 
-      {loading ? (
+      {loading || !searchedData ? (
         <ProgressSpinner />
       ) : (
         <TableEmployees usersData={searchedData} />
