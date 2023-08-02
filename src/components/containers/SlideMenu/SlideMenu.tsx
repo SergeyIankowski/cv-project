@@ -1,6 +1,6 @@
 import {FC} from "react";
 import Drawer from "@mui/material/Drawer";
-import {SlideMenuItems} from "../../view/SlideMenuItems/SlideMenuItems";
+import {SlideMenuItems} from "@view/SlideMenuItems/SlideMenuItems";
 
 interface SlideMenuProps {
   isOpen: boolean;

@@ -1,37 +1,41 @@
 import {FC, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import {
   RowControlMenuTemplate,
   TableRowControls,
 } from "@view/RowControlMenuTemplate/RowControlMenuTemplate";
-import {Cv} from "@/graphql/interfaces/Cv.interface";
 import {Pages} from "@/models/Pages";
 import {useDeleteCvMutation} from "@/graphql/hooks/useDeleteCvMutation";
 import {AuthInfoService} from "@/services/AuthInfoService";
+import {CvTableData} from "@/models/TableDataTypes";
 
 interface CvsRowControlMenuProps {
-  id: Cv["id"];
+  row: CvTableData;
 }
 
-export const CvsRowControlMenu: FC<CvsRowControlMenuProps> = ({id}) => {
+export const CvsRowControlMenu: FC<CvsRowControlMenuProps> = ({row}) => {
   const navigate = useNavigate();
   const {deleteCv} = useDeleteCvMutation();
+  const {t} = useTranslation();
   const data: TableRowControls = [
     {
-      text: "CV",
+      text: t("cv"),
       icon: "",
       clickCallback: useCallback(() => {
-        navigate(`${id}/${Pages.main.details}`);
+        navigate(`${row.id}/${Pages.main.details}`);
       }, []),
       disabled: false,
     },
     {
-      text: "Delete CV",
+      text: t("delete"),
       icon: "",
       clickCallback: useCallback(() => {
-        deleteCv(id);
+        deleteCv(row.id);
       }, []),
-      disabled: AuthInfoService.isNotAdmin(),
+      disabled:
+        AuthInfoService.isNotAdmin() &&
+        !AuthInfoService.isAuthorizedUserByEmail(row.userEmail),
     },
   ];
   return <RowControlMenuTemplate controlsData={data} />;

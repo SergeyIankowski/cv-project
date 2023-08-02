@@ -5,6 +5,7 @@ export const SIGN_UP = gql`
     signup(auth: $auth) {
       user {
         id
+        email
         role
       }
       access_token

@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useTranslation} from "react-i18next";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableRowLanguages} from "@/pages/Languages/TableRowLanguages/TableRowLanguages";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
@@ -17,10 +18,11 @@ const DEFAULT_ORDER_BY: keyof LanguagesTableData = "name";
 export const TableLanguages: FC<TableLanguagesProps> = ({languagesData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<LanguagesTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, languagesData);
+  const {t} = useTranslation();
   return (
     <TableTemplate>
       <TableHeadTemplate
-        headCells={LanguagesHeadCellsData}
+        headCells={LanguagesHeadCellsData(t("name"), t("nativeName"))}
         order={order}
         orderBy={orderBy}
         hasControlsColumn

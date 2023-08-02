@@ -13,6 +13,7 @@ import {User} from "@/graphql/interfaces/User.interface";
 import {useCvQuery} from "@/graphql/hooks/useCvQuery";
 import {FIELDS_VALIDATION_MESSAGES} from "@/models/fieldsValidationMessages";
 import {UPDATE_CV_FORM_KEYS} from "@/models/FormKeysNames";
+import {useTranslation} from "react-i18next";
 
 interface UpdateCvFormProps {
   cvId: Cv["id"];
@@ -24,6 +25,7 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId, userId}) => {
   const {updateCv} = useUpdateCvMutation();
   const {loadCv} = useCvQuery();
   const {closeModal} = useContext(ModalTemplateContext);
+  const {t} = useTranslation();
   const {
     control,
     handleSubmit,
@@ -48,7 +50,7 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId, userId}) => {
           control={control}
           type="text"
           id="name"
-          label="Name"
+          label={t("name")}
           name="name"
           rules={{required: true}}
           error={Boolean(errors.name)}
@@ -58,7 +60,7 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId, userId}) => {
           control={control}
           type="text"
           id="description"
-          label="Description"
+          label={t("description")}
           name="description"
           rules={{required: true}}
           error={Boolean(errors.description)}
@@ -69,7 +71,7 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId, userId}) => {
         <Input<UpdateCvFormFields>
           control={control}
           type="checkbox"
-          label="Template"
+          label={t("template")}
           id="is_template"
           name="is_template"
         />
@@ -80,7 +82,7 @@ export const UpdateCvForm: FC<UpdateCvFormProps> = ({cv, cvId, userId}) => {
           size="small"
           type="submit"
         >
-          Update CV
+          {t("updateCv")}
         </Button>
       </Box>
     </form>

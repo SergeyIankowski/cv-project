@@ -1,4 +1,5 @@
 import {FC, useCallback, useContext} from "react";
+import {useTranslation} from "react-i18next";
 import {Skill} from "@/graphql/interfaces/Skill.interface";
 import {
   RowControlMenuTemplate,
@@ -15,9 +16,10 @@ interface SkillsRowControlMenuProps {
 export const SkillsRowControlMenu: FC<SkillsRowControlMenuProps> = ({id}) => {
   const {deleteSkill} = useDeleteSkillMutation();
   const {openModal} = useContext(ModalTemplateContext);
+  const {t} = useTranslation();
   const data: TableRowControls = [
     {
-      text: "Update",
+      text: t("update"),
       icon: "",
       clickCallback: useCallback(() => {
         openModal();
@@ -25,7 +27,7 @@ export const SkillsRowControlMenu: FC<SkillsRowControlMenuProps> = ({id}) => {
       disabled: AuthInfoService.isNotAdmin(),
     },
     {
-      text: "Delete",
+      text: t("delete"),
       icon: "",
       clickCallback: useCallback(async () => {
         await deleteSkill(id);

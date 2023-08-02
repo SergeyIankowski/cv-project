@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useTranslation} from "react-i18next";
 import TableBody from "@mui/material/TableBody";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {useSort} from "@/hooks/useSort";
@@ -18,10 +19,17 @@ const DEFAULT_ORDER_BY: keyof CvTableData = "name";
 export const TableCvs: FC<TableCvsProps> = ({cvsData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<CvTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, cvsData);
+  const {t} = useTranslation();
   return (
     <TableTemplate>
       <TableHeadTemplate<CvTableData>
-        headCells={cvsHeadCellsData}
+        headCells={cvsHeadCellsData(
+          t("template"),
+          t("name"),
+          t("description"),
+          t("employee"),
+          t("projects")
+        )}
         order={order}
         orderBy={orderBy}
         hasControlsColumn

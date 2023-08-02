@@ -49,7 +49,11 @@ export const TableHeadTemplate = <T,>({
               </TableSortLabel>
             </TableCell>
           ) : (
-            <TableCell key={headCell.id as string}>
+            <TableCell
+              key={headCell.id as string}
+              align={titleAlign || "right"}
+              style={{fontWeight: "bold"}}
+            >
               <Box sx={{width: "45px"}}>{headCell.content}</Box>
             </TableCell>
           )

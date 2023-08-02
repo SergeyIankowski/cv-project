@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useTranslation} from "react-i18next";
 import Box from "@mui/material/Box";
 
 import {TypographyDetails} from "@view/TypographyDetails";
@@ -11,6 +12,7 @@ interface CvAbilitiesProps {
 }
 
 export const CvAbilities: FC<CvAbilitiesProps> = ({skills, languages}) => {
+  const {t} = useTranslation();
   return (
     <Box
       sx={{
@@ -23,14 +25,14 @@ export const CvAbilities: FC<CvAbilitiesProps> = ({skills, languages}) => {
     >
       <TypographyDetails
         variant="h5"
-        fieldName="Skills"
+        fieldName={t("skills")}
         content={
           skills.map(skill => skill.skill_name) || EmptyFieldStrings.empty
         }
       />
       <TypographyDetails
         variant="h5"
-        fieldName="Languages"
+        fieldName={t("languages")}
         content={
           languages.map(language => language.language_name) ||
           EmptyFieldStrings.empty

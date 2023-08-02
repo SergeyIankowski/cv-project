@@ -1,11 +1,12 @@
 {
-  "include": ["./src/**/*", "module.d.ts", "webpack.config.js", "webpack.dev.js", "webpack.prod.js"],
+  "include": ["./src/**/*", "module.d.ts", "webpack.config.js", "webpack.dev.js", "webpack.prod.js", "next-i18next.config.js"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "./dist/",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
+    "resolveJsonModule": true,
     "lib": ["ESNext", "dom", "dom.Iterable"],
     "module": "ESNext",
     "target": "es5",

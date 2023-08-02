@@ -1,6 +1,7 @@
 import {FC, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 import MenuItem from "@mui/material/MenuItem";
 import {Box} from "@mui/material";
 import {Input} from "@containers/Input";
@@ -17,6 +18,7 @@ import {PROFILE_FORM_KEYS} from "@/models/FormKeysNames";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 export const ProfileForm: FC = () => {
+  const {t} = useTranslation();
   const {departments} = useDepartmentsQuery();
   const {positions} = usePositionsQuery();
   const {id} = useParams();
@@ -62,21 +64,21 @@ export const ProfileForm: FC = () => {
           control={control}
           type="text"
           id="first_name"
-          label="First Name"
+          label={t("firstName")}
           name="first_name"
         />
         <Input<UpdateUserFormFields>
           control={control}
           type="text"
           id="lastName"
-          label="Last Name"
+          label={t("lastName")}
           name="last_name"
         />
         <Input<UpdateUserFormFields>
           control={control}
           select
           id="department"
-          label="Departments"
+          label={t("department")}
           name="departmentId"
         >
           {departments.map((department: {name: string; id: number}) => (
@@ -89,7 +91,7 @@ export const ProfileForm: FC = () => {
           control={control}
           select
           id="position"
-          label="Position"
+          label={t("position")}
           name="positionId"
         >
           {positions.map((position: {name: string; id: number}) => (
@@ -106,7 +108,7 @@ export const ProfileForm: FC = () => {
             type="submit"
             disabled={!isDirty}
           >
-            Update
+            {t("update")}
           </Button>
         ) : (
           ""

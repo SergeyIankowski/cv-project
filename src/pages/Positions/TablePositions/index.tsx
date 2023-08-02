@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useTranslation} from "react-i18next";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {TableRowPositions} from "@/pages/Positions/TableRowPositions";
@@ -17,11 +18,12 @@ const DEFAULT_ORDER_BY: keyof PositionsTableData = "name";
 export const TablePositions: FC<TablePositionsProps> = ({positionsData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<PositionsTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, positionsData);
+  const {t} = useTranslation();
 
   return (
     <TableTemplate>
       <TableHeadTemplate
-        headCells={positionsHeadCellsData}
+        headCells={positionsHeadCellsData(t("name"))}
         order={order}
         orderBy={orderBy}
         hasControlsColumn

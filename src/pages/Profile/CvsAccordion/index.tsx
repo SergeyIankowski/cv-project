@@ -1,5 +1,6 @@
 import {FC, useEffect} from "react";
 import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import {useUserData} from "@/hooks/useUserData";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
@@ -13,6 +14,7 @@ import {UnbindCvButton} from "../UnbindCvButton";
 export const CvsAccordion: FC = () => {
   const {id} = useParams();
   const {loadProfileInfo, userData, loadingUserData} = useUserData(id!);
+  const {t} = useTranslation();
 
   useEffect(() => {
     loadProfileInfo(id);
@@ -25,10 +27,10 @@ export const CvsAccordion: FC = () => {
         <AccordionTemplate key={cv.name} title={cv.name}>
           <Grid container direction="column" gap="5px">
             <Typography fontSize="20px">
-              Description: {cv.description}
+              {t("description")}: {cv.description}
             </Typography>
             <Grid container direction="row" gap="2px" alignItems="center">
-              <Typography fontSize="18px">Has Template: </Typography>
+              <Typography fontSize="18px">{t("hasTemplate")}: </Typography>
               {cv.is_template ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
             </Grid>
             <Grid container direction="row" gap="5px" alignItems="center">

@@ -1,8 +1,8 @@
 import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
-import Chip from "@mui/material/Chip";
 
 import {Input} from "@containers/Input";
 import {Button} from "@containers/Button";
@@ -21,6 +21,7 @@ export const CreateCvForm: FC = () => {
   const {users} = useEmployeesQuery();
   const {loadUserInfo} = useUserQuery();
   const {createCv} = useCreateCv();
+  const {t} = useTranslation();
   const {
     control,
     handleSubmit,
@@ -45,7 +46,7 @@ export const CreateCvForm: FC = () => {
           control={control}
           type="text"
           id="name"
-          label="Name *"
+          label={t("name")}
           name="name"
           rules={{required: true}}
           error={Boolean(errors.name)}
@@ -55,7 +56,7 @@ export const CreateCvForm: FC = () => {
           control={control}
           type="text"
           id="description"
-          label="Description *"
+          label={t("description")}
           name="description"
           rules={{required: true}}
           error={Boolean(errors.description)}
@@ -67,7 +68,7 @@ export const CreateCvForm: FC = () => {
           control={control}
           select
           id="userId"
-          label="User"
+          label={t("user")}
           name="userId"
           rules={{required: true}}
           error={Boolean(errors.userId)}
@@ -83,11 +84,11 @@ export const CreateCvForm: FC = () => {
           control={control}
           type="checkbox"
           id="is_template"
-          label="Template*"
+          label={t("template")}
           name="is_template"
         />
         <Button variant="contained" color="error" size="small" type="submit">
-          Create Cv
+          {t("createCv")}
         </Button>
       </Box>
     </form>

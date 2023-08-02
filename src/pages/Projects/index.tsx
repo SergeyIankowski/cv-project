@@ -7,6 +7,7 @@ import {useTableSearch} from "@/hooks/useTableSearch";
 import {ProjectTableData} from "@/models/TableDataTypes";
 import {CreateProjectModal} from "./CreateProjectModal";
 import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 export const Projects: FC = () => {
   const {tableProjects, loading} = useProjectsQuery();
@@ -19,7 +20,7 @@ export const Projects: FC = () => {
     <>
       <PageLayoutRowContainer>
         <SearchInput onSearch={handleSearchingData} />
-        <CreateProjectModal />
+        {AuthInfoService.isAdmin() && <CreateProjectModal />}
       </PageLayoutRowContainer>
       <TableProjects projectsData={searchedData} />
     </>

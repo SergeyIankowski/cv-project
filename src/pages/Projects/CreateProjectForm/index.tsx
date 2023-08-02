@@ -1,5 +1,6 @@
 import {FC, useContext} from "react";
 import {useForm} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import MenuItem from "@mui/material/MenuItem";
@@ -23,6 +24,7 @@ export const CreateProjectForm: FC = () => {
   const {createProject} = useCreateProjectMutation();
   const {skills} = useSkillsQuery();
   const {closeModal} = useContext(ModalTemplateContext);
+  const {t} = useTranslation();
   const {
     control,
     handleSubmit,
@@ -45,7 +47,7 @@ export const CreateProjectForm: FC = () => {
           control={control}
           type="text"
           id="name"
-          label="Name"
+          label={t("name")}
           name="name"
           rules={{required: true}}
           error={Boolean(errors.name)}
@@ -55,7 +57,7 @@ export const CreateProjectForm: FC = () => {
           control={control}
           type="text"
           id="internal_name"
-          label="Internal Name"
+          label={t("internalName")}
           name="internal_name"
           rules={{required: true}}
           error={Boolean(errors.name)}
@@ -67,7 +69,7 @@ export const CreateProjectForm: FC = () => {
           control={control}
           type="text"
           id="description"
-          label="Description"
+          label={t("description")}
           name="description"
           multiline
           rules={{required: true}}
@@ -80,7 +82,7 @@ export const CreateProjectForm: FC = () => {
           control={control}
           type="text"
           id="domain"
-          label="Domain"
+          label={t("domain")}
           name="domain"
           rules={{required: true}}
           error={Boolean(errors.name)}
@@ -90,7 +92,7 @@ export const CreateProjectForm: FC = () => {
           control={control}
           type="date"
           id="start_date"
-          label="Start Date"
+          label={t("startDate")}
           name="start_date"
           required
         />
@@ -98,7 +100,7 @@ export const CreateProjectForm: FC = () => {
           control={control}
           type="date"
           id="end_date"
-          label="End Date"
+          label={t("endDate")}
           name="end_date"
           required
         />
@@ -106,7 +108,7 @@ export const CreateProjectForm: FC = () => {
           control={control}
           type="number"
           id="team_size"
-          label="Team Size"
+          label={t("teamSize")}
           name="team_size"
           rules={{required: true}}
           error={Boolean(errors.name)}
@@ -114,7 +116,7 @@ export const CreateProjectForm: FC = () => {
         />
         <SelectWithControl<ProjectFormFields, Skill["id"][]>
           name="skillsIds"
-          label="Skills"
+          label={t("skills")}
           control={control}
           defaultValue={[]}
           renderValue={selected => (
@@ -133,7 +135,7 @@ export const CreateProjectForm: FC = () => {
           ))}
         </SelectWithControl>
         <Button variant="contained" color="error" size="small" type="submit">
-          Create
+          {t("create")}
         </Button>
       </Box>
     </form>

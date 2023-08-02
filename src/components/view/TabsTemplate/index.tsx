@@ -11,7 +11,7 @@ interface TabsTemplateProps {
 }
 
 export const TabsTemplate: FC<TabsTemplateProps> = ({tabs}) => {
-  const [value, handleChange] = useTabsLinksHighlighting(tabs[0].label);
+  const [value, handleChange] = useTabsLinksHighlighting(tabs[0].value);
   return (
     <Box sx={{width: "100%"}}>
       <Box sx={{borderBottom: 1, borderColor: "divider", color: "green"}}>

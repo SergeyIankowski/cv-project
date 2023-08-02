@@ -10,6 +10,7 @@ import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
 import {ModalLayout} from "@view/MuiPagesStyles";
 import {UpdateDepartmentFormFields} from "@/models/FormFieldsTypes";
 import {useUpdateDepartmentMutation} from "@/graphql/hooks/useUpdateDepartmentMutation";
+import {useTranslation} from "react-i18next";
 
 interface UpdateDepartmentFormProps {
   id: Department["id"];
@@ -27,6 +28,7 @@ export const UpdateDepartmentForm: FC<UpdateDepartmentFormProps> = ({
   });
   const {closeModal} = useContext(ModalTemplateContext);
   const {updateDepartment} = useUpdateDepartmentMutation();
+  const {t} = useTranslation();
 
   const onSubmit = async (data: DepartmentInput) => {
     await updateDepartment(id, data);
@@ -38,11 +40,11 @@ export const UpdateDepartmentForm: FC<UpdateDepartmentFormProps> = ({
         <Input<UpdateDepartmentFormFields>
           control={control}
           id="name"
-          label="Name"
+          label={t("name")}
           name="name"
         />
         <Button variant="contained" color="error" size="small" type="submit">
-          Update
+          {t("update").toUpperCase()}
         </Button>
       </Box>
     </form>

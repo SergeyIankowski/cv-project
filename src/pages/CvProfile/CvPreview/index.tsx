@@ -1,6 +1,7 @@
 import {FC, ReactInstance, useEffect, useRef} from "react";
 import {useParams} from "react-router-dom";
 import {useReactToPrint} from "react-to-print";
+import {useTranslation} from "react-i18next";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
@@ -18,6 +19,7 @@ export const CvPreview: FC = () => {
   const {id} = useParams();
   const {loadCv, cvData, called, loading} = useCvQuery();
   const cvRef = useRef<ReactInstance | null>(null);
+  const {t} = useTranslation();
   useEffect(() => {
     if (!called) loadCv(id!);
   }, [cvData]);
@@ -36,7 +38,7 @@ export const CvPreview: FC = () => {
           variant="contained"
           onClick={handlePrintClick}
         >
-          Print
+          {t("print").toUpperCase()}
         </Button>
 
         <Box ref={cvRef}>

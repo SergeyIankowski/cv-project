@@ -1,6 +1,6 @@
 import {FC, useCallback} from "react";
 import {useNavigate} from "react-router-dom";
-import Settings from "@mui/icons-material/Settings";
+import {useTranslation} from "react-i18next";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
@@ -20,9 +20,10 @@ export const EmployeesRowControlMenu: FC<EmployeesRowControlMenuProps> = ({
 }) => {
   const navigate = useNavigate();
   const {deleteUser} = useDeleteUser();
+  const {t} = useTranslation();
   const data: TableRowControls = [
     {
-      text: "Profile",
+      text: t("profile"),
       icon: <AccountCircleIcon fontSize="medium" />,
       clickCallback: useCallback(() => {
         const pathToUserProfile = `${Pages.main.root}${Pages.main.employees}/${id}/${Pages.main.profile}`;
@@ -31,13 +32,7 @@ export const EmployeesRowControlMenu: FC<EmployeesRowControlMenuProps> = ({
       disabled: false,
     },
     {
-      text: "Settings",
-      icon: <Settings fontSize="medium" />,
-      clickCallback: useCallback(() => {}, []),
-      disabled: true,
-    },
-    {
-      text: "Delete",
+      text: t("delete"),
       icon: <DeleteIcon fontSize="medium" />,
       clickCallback: useCallback(async () => {
         deleteUser(id);

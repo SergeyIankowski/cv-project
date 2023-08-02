@@ -1,6 +1,7 @@
 import {FC, useContext, useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
 
@@ -23,6 +24,7 @@ export const UpdateSkillsForm: FC = () => {
   const {skills} = useSkillsQuery();
   const {updateUser} = useUpdateUser();
   const {closeModal} = useContext(ModalTemplateContext);
+  const {t} = useTranslation();
 
   const [skillsForChoose, setSkillsForChoose] = useState<Skill[]>([]);
   const {control, handleSubmit} = useForm<UpdateProfileSkillsFormFields>({
@@ -60,7 +62,7 @@ export const UpdateSkillsForm: FC = () => {
           control={control}
           select
           id="skill_name"
-          label="Skill Name"
+          label={t("skillName")}
           name="skill_name"
         >
           <MenuItem value={undefined}></MenuItem>
@@ -74,7 +76,7 @@ export const UpdateSkillsForm: FC = () => {
           control={control}
           select
           id="mastery"
-          label="Mastery"
+          label={t("mastery")}
           name="mastery"
         >
           <MenuItem value={undefined}></MenuItem>
@@ -85,7 +87,7 @@ export const UpdateSkillsForm: FC = () => {
           ))}
         </Input>
         <Button variant="contained" color="error" size="small" type="submit">
-          Update
+          {t("update")}
         </Button>
       </Box>
     </form>

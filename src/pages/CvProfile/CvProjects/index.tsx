@@ -8,10 +8,11 @@ import {ProjectTableData} from "@/models/TableDataTypes";
 import {PageLayoutRowContainer} from "@/components/view/PageLayoutRowContainer";
 import {SearchInput} from "@/components/view/SearchInput/SearchInput";
 import {CvProjectsModal} from "@/pages/CvProfile/CvProjects/CvProjectsModal";
+import {AuthInfoService} from "@/services/AuthInfoService";
 
 export const CvProjects: FC = () => {
   const {id} = useParams();
-  const {loadCv, tableCvProjects, loading} = useCvQuery();
+  const {loadCv, tableCvProjects, cvData, loading} = useCvQuery();
   const {searchedData, handleSearchingData} = useTableSearch<ProjectTableData>(
     tableCvProjects,
     loading
@@ -26,7 +27,12 @@ export const CvProjects: FC = () => {
     <>
       <PageLayoutRowContainer>
         <SearchInput onSearch={handleSearchingData} />
-        <CvProjectsModal />
+        {AuthInfoService.isAdmin() ||
+        AuthInfoService.isAuthorizedUser(cvData?.user?.id || "") ? (
+          <CvProjectsModal />
+        ) : (
+          ""
+        )}
       </PageLayoutRowContainer>
       <TableCvProjects projectsData={searchedData} />
     </>

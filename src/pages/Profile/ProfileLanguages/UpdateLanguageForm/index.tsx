@@ -19,6 +19,7 @@ import {
 } from "@/models/LanguagesProficiency";
 import {prepareUserForUpdatingLanguages} from "@/utils/prepareUserForUpdatingLanguages";
 import {getLanguagesNamesWithoutChoosed} from "@/utils/getLanguagesNamesWithoutChoosed";
+import {useTranslation} from "react-i18next";
 
 export const UpdateLanguageForm: FC = () => {
   const {id} = useParams();
@@ -26,6 +27,7 @@ export const UpdateLanguageForm: FC = () => {
   const {languages} = useLanguagesQuery();
   const {updateUser} = useUpdateUser();
   const {closeModal} = useContext(ModalTemplateContext);
+  const {t} = useTranslation();
 
   const [languagesForChoose, setLanguagesForChoose] = useState<Language[]>([]);
   const {control, handleSubmit} = useForm<AddLanguageFormFields>({
@@ -64,7 +66,7 @@ export const UpdateLanguageForm: FC = () => {
           control={control}
           select
           id="language_name"
-          label="Language Name"
+          label={t("languageName")}
           name="language_name"
         >
           <MenuItem value={undefined}></MenuItem>
@@ -78,7 +80,7 @@ export const UpdateLanguageForm: FC = () => {
           control={control}
           select
           id="proficiency"
-          label="Proficiency"
+          label={t("proficiency")}
           name="proficiency"
         >
           <MenuItem value={undefined}></MenuItem>
@@ -89,7 +91,7 @@ export const UpdateLanguageForm: FC = () => {
           ))}
         </Input>
         <Button variant="contained" color="error" size="small" type="submit">
-          Update
+          {t("update")}
         </Button>
       </Box>
     </form>

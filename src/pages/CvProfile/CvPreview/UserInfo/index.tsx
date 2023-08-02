@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useTranslation} from "react-i18next";
 import DefaultUser from "@/assets/defaultUser.png";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -23,6 +24,7 @@ export const UserInfo: FC<UserInfoProps> = ({
   position,
   department,
 }) => {
+  const {t} = useTranslation();
   return (
     <Box
       sx={{
@@ -41,25 +43,25 @@ export const UserInfo: FC<UserInfoProps> = ({
       <Divider flexItem />
       <TypographyDetails
         variant="h5"
-        fieldName="Name"
+        fieldName={t("name")}
         content={name || EmptyFieldStrings.empty}
       />
       <Divider flexItem />
       <TypographyDetails
         variant="h5"
-        fieldName="Email"
+        fieldName={t("email")}
         content={email || EmptyFieldStrings.empty}
       />
       <Divider flexItem />
       <TypographyDetails
         variant="h5"
-        fieldName="Position"
+        fieldName={t("position")}
         content={position || EmptyFieldStrings.empty}
       />
       <Divider flexItem />
       <TypographyDetails
         variant="h5"
-        fieldName="Department"
+        fieldName={t("department")}
         content={department || EmptyFieldStrings.empty}
       />
     </Box>

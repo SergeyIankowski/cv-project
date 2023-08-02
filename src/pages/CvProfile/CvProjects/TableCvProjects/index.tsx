@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useTranslation} from "react-i18next";
 import TableBody from "@mui/material/TableBody";
 import {TableTemplate} from "@view/TableTemplate/TableTemplate";
 import {TableHeadTemplate} from "@view/TableHeadTemplate/TableHeadTemplate";
@@ -18,10 +19,17 @@ const DEFAULT_ORDER_BY: keyof ProjectTableData = "name";
 export const TableCvProjects: FC<TableCvProjectsProps> = ({projectsData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<ProjectTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, projectsData);
+  const {t} = useTranslation();
   return (
     <TableTemplate>
       <TableHeadTemplate<ProjectTableData>
-        headCells={cvProjectsHeadCellsData}
+        headCells={cvProjectsHeadCellsData(
+          t("name"),
+          t("internalName"),
+          t("domain"),
+          t("startDate"),
+          t("endDate")
+        )}
         order={order}
         orderBy={orderBy}
         hasControlsColumn={false}

@@ -1,4 +1,5 @@
 import {FC} from "react";
+import {useTranslation} from "react-i18next";
 import {Button} from "@/components/containers/Button";
 import {useUnbindCvMutation} from "@/graphql/hooks/useUnbindCvMutation";
 import {Cv} from "@/graphql/interfaces/Cv.interface";
@@ -9,6 +10,7 @@ interface UnbindCvButtonProps {
 
 export const UnbindCvButton: FC<UnbindCvButtonProps> = ({id}) => {
   const {unbindCv} = useUnbindCvMutation();
+  const {t} = useTranslation();
 
   const clickHandler = async () => {
     await unbindCv(id);
@@ -21,7 +23,7 @@ export const UnbindCvButton: FC<UnbindCvButtonProps> = ({id}) => {
       size="small"
       onClick={clickHandler}
     >
-      Unbind CV
+      {t("unbindCv")}
     </Button>
   );
 };

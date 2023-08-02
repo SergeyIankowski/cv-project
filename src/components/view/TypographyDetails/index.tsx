@@ -20,7 +20,7 @@ export const TypographyDetails: FC<GeneralProps> = ({
       <Typography
         variant={variant}
         sx={{
-          color: colors.authLinksColor,
+          color: colors.headerItemsColor,
         }}
       >
         {`${fieldName}:`}

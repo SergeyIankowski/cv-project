@@ -1,4 +1,5 @@
 import {FC, useCallback} from "react";
+import {useTranslation} from "react-i18next";
 import {
   RowControlMenuTemplate,
   TableRowControls,
@@ -15,9 +16,10 @@ interface ProjectsRowControlProps {
 export const ProjectsRowControl: FC<ProjectsRowControlProps> = ({id}) => {
   const navigate = useNavigate();
   const {deleteProject} = useDeleteProjectMutation();
+  const {t} = useTranslation();
   const data: TableRowControls = [
     {
-      text: "Project",
+      text: t("project"),
       icon: "",
       clickCallback: useCallback(() => {
         navigate(String(id));
@@ -25,7 +27,7 @@ export const ProjectsRowControl: FC<ProjectsRowControlProps> = ({id}) => {
       disabled: false,
     },
     {
-      text: "Delete Project",
+      text: t("delete"),
       icon: "",
       clickCallback: useCallback(() => {
         deleteProject(id);
