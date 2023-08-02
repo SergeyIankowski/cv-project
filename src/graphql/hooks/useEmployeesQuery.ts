@@ -7,7 +7,9 @@ import {UserTableData} from "@/models/TableDataTypes";
 import {User} from "../interfaces/User.interface";
 
 export const useEmployeesQuery = () => {
-  const [usersForTable, setUsersForTable] = useState<UserTableData[]>([]);
+  const [usersForTable, setUsersForTable] = useState<UserTableData[] | null>(
+    null
+  );
   const [users, setUsers] = useState<User[]>([]);
   const {loading, data, error} = useQuery(USERS, {
     fetchPolicy: FETCH_POLICY.cacheAndNetwork,

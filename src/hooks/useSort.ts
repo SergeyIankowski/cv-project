@@ -5,23 +5,25 @@ import {MouseEvent, useCallback, useEffect, useState} from "react";
 export function useSort<Type>(
   defaultOrder: Order,
   defaultOrderBy: keyof Type,
-  data: Type[]
+  data: Type[] | null
 ): [
   Order,
   keyof Type,
-  Type[],
+  Type[] | null,
   (event: MouseEvent, newOrderBy: keyof Type) => void
 ] {
   const [order, setOrder] = useState<Order>(defaultOrder);
   const [orderBy, setOrderBy] = useState(defaultOrderBy);
-  const [sortedArray, setSortedArray] = useState<Type[]>([]);
+  const [sortedArray, setSortedArray] = useState<Type[] | null>(null);
 
   useEffect(() => {
+    if (!data) return;
     const copy = [...data];
     const arrayOnMount = copy.sort(getComparator(defaultOrder, defaultOrderBy));
     setSortedArray(arrayOnMount);
   }, []);
   useEffect(() => {
+    if (!data) return;
     const copy = [...data];
     const arrayOnMount = copy.sort(getComparator(order, orderBy));
     setSortedArray(arrayOnMount);
@@ -35,6 +37,7 @@ export function useSort<Type>(
       setOrder(toggledOrder);
       setOrderBy(newOrderBy);
 
+      if (!sortedArray) return;
       const sortedRows = sortedArray.sort(
         getComparator(toggledOrder, newOrderBy)
       );

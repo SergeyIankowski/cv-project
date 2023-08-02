@@ -7,9 +7,10 @@ import {Order} from "@/models/Order.type";
 import {LanguagesTableData} from "@/models/TableDataTypes";
 import {LanguagesHeadCellsData} from "./LanguagesHeadCellsData";
 import {useSort} from "@/hooks/useSort";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 interface TableLanguagesProps {
-  languagesData: LanguagesTableData[];
+  languagesData: LanguagesTableData[] | null;
 }
 
 const DEFAULT_ORDER: Order = "asc";
@@ -19,6 +20,8 @@ export const TableLanguages: FC<TableLanguagesProps> = ({languagesData}) => {
   const [order, orderBy, sortedRowsOnPage, handleRequestSort] =
     useSort<LanguagesTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, languagesData);
   const {t} = useTranslation();
+
+  if (!sortedRowsOnPage) return <ProgressSpinner />;
   return (
     <TableTemplate>
       <TableHeadTemplate

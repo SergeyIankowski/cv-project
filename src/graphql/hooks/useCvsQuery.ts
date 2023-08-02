@@ -19,7 +19,7 @@ const convertQueryData: (data: Cv[]) => CvTableData[] = data => {
 };
 
 export const useCvsQuery = () => {
-  const [tableData, setTableData] = useState<CvTableData[]>([]);
+  const [tableData, setTableData] = useState<CvTableData[] | null>(null);
   const [cvs, setCvs] = useState<Cv[]>([]);
   const {loading, data, error} = useQuery(CVS, {
     fetchPolicy: FETCH_POLICY.cacheAndNetwork,

@@ -14,6 +14,9 @@ import {ModalLayout} from "@view/MuiPagesStyles";
 import {CreateUserFormFields} from "@/models/FormFieldsTypes";
 import {ModalTemplateContext} from "@view/ModalTemplate/ModalTemplateContext";
 import {FIELDS_VALIDATION_MESSAGES} from "@/models/fieldsValidationMessages";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
+import {Department} from "@/graphql/interfaces/Department.interface";
+import {Position} from "@/graphql/interfaces/Position.interface";
 
 export const EmployeeAddingForm: FC = () => {
   const {departments} = useDepartmentsQuery();
@@ -33,6 +36,7 @@ export const EmployeeAddingForm: FC = () => {
     closeModal();
   };
 
+  if (!positions || !departments) return <ProgressSpinner />;
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box sx={ModalLayout}>
@@ -90,11 +94,13 @@ export const EmployeeAddingForm: FC = () => {
           }
           rules={{required: true}}
         >
-          {departments.map((department: {name: string; id: number}) => (
-            <MenuItem key={department.name} value={department.id}>
-              {department.name}
-            </MenuItem>
-          ))}
+          {departments.map(
+            (department: {name: Department["name"]; id: Department["id"]}) => (
+              <MenuItem key={department.name} value={department.id}>
+                {department.name}
+              </MenuItem>
+            )
+          )}
         </Input>
         <Input<CreateUserFormFields>
           control={control}
@@ -108,11 +114,13 @@ export const EmployeeAddingForm: FC = () => {
           }
           rules={{required: true}}
         >
-          {positions.map((position: {name: string; id: number}) => (
-            <MenuItem key={position.name} value={position.id}>
-              {position.name}
-            </MenuItem>
-          ))}
+          {positions.map(
+            (position: {name: Position["name"]; id: Position["id"]}) => (
+              <MenuItem key={position.name} value={position.id}>
+                {position.name}
+              </MenuItem>
+            )
+          )}
         </Input>
         <Input<CreateUserFormFields>
           control={control}

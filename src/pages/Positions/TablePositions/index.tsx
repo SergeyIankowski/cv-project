@@ -7,9 +7,10 @@ import {PositionsTableData} from "@/models/TableDataTypes";
 import {Order} from "@/models/Order.type";
 import {useSort} from "@/hooks/useSort";
 import {positionsHeadCellsData} from "./positionsHeadCellsData";
+import {ProgressSpinner} from "@view/ProgressSpinner/ProgressSpinner";
 
 interface TablePositionsProps {
-  positionsData: PositionsTableData[];
+  positionsData: PositionsTableData[] | null;
 }
 
 const DEFAULT_ORDER: Order = "asc";
@@ -20,6 +21,7 @@ export const TablePositions: FC<TablePositionsProps> = ({positionsData}) => {
     useSort<PositionsTableData>(DEFAULT_ORDER, DEFAULT_ORDER_BY, positionsData);
   const {t} = useTranslation();
 
+  if (!sortedRowsOnPage) return <ProgressSpinner />;
   return (
     <TableTemplate>
       <TableHeadTemplate
