@@ -11,7 +11,6 @@ export const useSignUpMutation = () => {
   useEffect(() => {
     if (error) return;
     if (!loading && data) {
-      console.log(data);
       setAuthToken(data.signup.access_token);
       AuthInfoService.saveAuthInfo(data.login.user);
     }

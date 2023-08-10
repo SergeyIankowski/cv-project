@@ -13,8 +13,8 @@ export const convertCreatedUserDataToRequestData = (
       first_name: data.first_name,
       last_name: data.last_name,
     },
-    departmentId: data.departmentId,
-    positionId: data.positionId,
+    departmentId: data.departmentId || "",
+    positionId: data.positionId || "",
     cvsIds: [],
     role: data.role!,
   };
