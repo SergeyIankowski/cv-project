@@ -10,6 +10,7 @@ import {useForm} from "react-hook-form";
 import {AuthFormFields} from "@/models/FormFieldsTypes/";
 import {useLoginQuery} from "@/graphql/hooks/useLoginQuery";
 import {AUTH_FIEDS_KEYS} from "@/models/FormKeysNames";
+import {prepareAuthFormFieldsToRequest} from "@/utils/prepareAuthFormFieldsToRequest";
 
 export const SignInForm = () => {
   const [
@@ -31,7 +32,8 @@ export const SignInForm = () => {
   const {loadLoginData} = useLoginQuery();
 
   const onSubmit = (data: AuthFormFields) => {
-    loadLoginData({variables: {auth: data}});
+    const dataForSend = prepareAuthFormFieldsToRequest(data);
+    loadLoginData({variables: {auth: dataForSend}});
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
