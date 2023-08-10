@@ -12,7 +12,7 @@ export const useSignUpMutation = () => {
     if (error) return;
     if (!loading && data) {
       setAuthToken(data.signup.access_token);
-      AuthInfoService.saveAuthInfo(data.login.user);
+      AuthInfoService.saveAuthInfo(data.signup.user);
     }
   }, [loading, error, data]);
 
