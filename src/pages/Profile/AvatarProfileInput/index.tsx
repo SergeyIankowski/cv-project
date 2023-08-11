@@ -46,7 +46,7 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
     }
   };
 
-  const validateFileAndUpload = (file: File | undefined) => {
+  const validateFileAndUpload = async (file: File | undefined) => {
     if (
       AuthInfoService.isUnAuthorizedUser(id!) &&
       AuthInfoService.isNotAdmin()
@@ -59,7 +59,8 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
       return;
     }
     if (file && id && file.size <= 4000000) {
-      convertAvatarToRequestData(file, uploadAvatarData);
+      const dataForSend = await convertAvatarToRequestData(file);
+      uploadAvatarData(dataForSend);
     }
   };
 
