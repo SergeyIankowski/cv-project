@@ -89,10 +89,6 @@ export const EmployeeAddingForm: FC = () => {
           label={t("department")}
           name="departmentId"
           error={Boolean(errors.departmentId)}
-          helperText={
-            errors.departmentId && FIELDS_VALIDATION_MESSAGES.emptyField
-          }
-          rules={{required: true}}
         >
           {departments.map(
             (department: {name: Department["name"]; id: Department["id"]}) => (
@@ -109,10 +105,6 @@ export const EmployeeAddingForm: FC = () => {
           label={t("position")}
           name="positionId"
           error={Boolean(errors.positionId)}
-          helperText={
-            errors.positionId && FIELDS_VALIDATION_MESSAGES.emptyField
-          }
-          rules={{required: true}}
         >
           {positions.map(
             (position: {name: Position["name"]; id: Position["id"]}) => (

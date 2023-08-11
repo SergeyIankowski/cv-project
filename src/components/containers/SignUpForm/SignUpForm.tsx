@@ -13,6 +13,7 @@ import {Pages} from "@/models/Pages";
 import {AuthFormFields} from "@/models/FormFieldsTypes/";
 import {useSignUpMutation} from "@/graphql/hooks/useSignUpMutation";
 import {AUTH_FIEDS_KEYS} from "@/models/FormKeysNames";
+import {prepareAuthFormFieldsToRequest} from "@/utils/prepareAuthFormFieldsToRequest";
 
 export const SignUpForm: FC = () => {
   const [
@@ -36,8 +37,9 @@ export const SignUpForm: FC = () => {
   const {signUp} = useSignUpMutation();
 
   const onSubmit = async (data: AuthFormFields) => {
+    const dataForSend = prepareAuthFormFieldsToRequest(data);
     try {
-      await signUp({variables: {auth: data}});
+      await signUp({variables: {auth: dataForSend}});
     } catch (e) {
       console.error(e);
       reset();

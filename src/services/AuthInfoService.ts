@@ -27,12 +27,12 @@ export class AuthInfoService {
     }
   }
   static isAdmin() {
-    const {role} = this.getAuthInfo();
-    return role === ROLES.admin;
+    const {role}: {role: string} = this.getAuthInfo();
+    return role.toLowerCase() === ROLES.admin.toLowerCase();
   }
   static isNotAdmin() {
-    const {role} = this.getAuthInfo();
-    return role !== ROLES.admin;
+    const {role}: {role: string} = this.getAuthInfo();
+    return role.toLowerCase() !== ROLES.admin.toLowerCase();
   }
   static isAuthorizedUser(checkabledId: ID) {
     const {id} = this.getAuthInfo();
