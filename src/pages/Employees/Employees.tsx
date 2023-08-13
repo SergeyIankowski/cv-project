@@ -16,7 +16,6 @@ export const Employees: FC = () => {
     loading
   );
 
-  console.log(searchedData);
   return (
     <>
       <PageLayoutRowContainer>
