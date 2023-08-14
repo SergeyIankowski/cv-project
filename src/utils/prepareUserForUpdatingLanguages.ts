@@ -25,7 +25,7 @@ export const prepareUserForUpdatingLanguages = (
   };
   return {
     profile,
-    departmentId: oldUser.department.id,
-    positionId: oldUser.position.id,
+    departmentId: oldUser?.department?.id || "",
+    positionId: oldUser.position?.id || "",
   };
 };

@@ -25,7 +25,7 @@ export const prepareUserForUpdatingSkills = (
   };
   return {
     profile,
-    departmentId: oldUser.department.id,
-    positionId: oldUser.position.id,
+    departmentId: oldUser?.department?.id || "",
+    positionId: oldUser?.position?.id || "",
   };
 };

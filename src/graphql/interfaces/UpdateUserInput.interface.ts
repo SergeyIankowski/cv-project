@@ -6,6 +6,6 @@ import {ProfileInput} from "./ProfileInput.interface";
 export interface UpdateUserInput {
   profile: ProfileInput;
   cvsIds?: Cv["id"][];
-  departmentId: Department["id"];
-  positionId: Position["id"];
+  departmentId?: Department["id"];
+  positionId?: Position["id"];
 }
