@@ -13,7 +13,7 @@ export const useDeleteAvatar = () => {
   const deleteAvatarCallback = async (id: string | number) => {
     await deleteAvatar({
       variables: {
-        id: Number(id) - 2,
+        id: Number(id),
       },
     });
   };
