@@ -30,7 +30,11 @@ export const UpdateLanguageForm: FC = () => {
   const {t} = useTranslation();
 
   const [languagesForChoose, setLanguagesForChoose] = useState<Language[]>([]);
-  const {control, handleSubmit} = useForm<AddLanguageFormFields>({
+  const {
+    control,
+    handleSubmit,
+    formState: {isDirty},
+  } = useForm<AddLanguageFormFields>({
     defaultValues: {
       language_name: "",
       proficiency: LanguagesProficiency.a1,
@@ -90,7 +94,13 @@ export const UpdateLanguageForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
-        <Button variant="contained" color="error" size="small" type="submit">
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          type="submit"
+          disabled={!isDirty}
+        >
           {t("update")}
         </Button>
       </Box>

@@ -27,7 +27,11 @@ export const UpdateSkillsForm: FC = () => {
   const {t} = useTranslation();
 
   const [skillsForChoose, setSkillsForChoose] = useState<Skill[]>([]);
-  const {control, handleSubmit} = useForm<UpdateProfileSkillsFormFields>({
+  const {
+    control,
+    handleSubmit,
+    formState: {isDirty},
+  } = useForm<UpdateProfileSkillsFormFields>({
     defaultValues: {
       skill_name: "",
       mastery: SkillsMastery.novice,
@@ -86,7 +90,13 @@ export const UpdateSkillsForm: FC = () => {
             </MenuItem>
           ))}
         </Input>
-        <Button variant="contained" color="error" size="small" type="submit">
+        <Button
+          variant="contained"
+          color="error"
+          size="small"
+          type="submit"
+          disabled={!isDirty}
+        >
           {t("update")}
         </Button>
       </Box>
