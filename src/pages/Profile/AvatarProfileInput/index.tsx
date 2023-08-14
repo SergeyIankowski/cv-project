@@ -139,33 +139,38 @@ export const AvatarProfileInput: FC<AvatarProfileInputProps> = ({
           </Box>
         </Box>
         <Box>
-          <label>
-            <Grid container direction="column" alignItems="center">
-              {dragActive ? (
-                <Typography variant="h6" sx={UploadHead}>
-                  {t("putTheFile")}
-                </Typography>
-              ) : (
-                <>
-                  <Grid container alignItems="flex-end">
-                    <UploadFileIcon sx={{width: "50px", height: "50px"}} />
-                    <Typography variant="h6" sx={UploadHead}>
-                      {t("uploadAvatarImage")}
-                    </Typography>
-                  </Grid>
-                  <Typography variant="subtitle1" sx={{color: "grey"}}>
-                    {t("moreThanFifty")}
+          {AuthInfoService.isAdmin() ||
+          AuthInfoService.isAuthorizedUser(id!) ? (
+            <label>
+              <Grid container direction="column" alignItems="center">
+                {dragActive ? (
+                  <Typography variant="h6" sx={UploadHead}>
+                    {t("putTheFile")}
                   </Typography>
-                </>
-              )}
-              <input
-                type="file"
-                accept="image/png, image/jpeg, image/gif"
-                style={{visibility: "hidden"}}
-                onChange={changeHandler}
-              />
-            </Grid>
-          </label>
+                ) : (
+                  <>
+                    <Grid container alignItems="flex-end">
+                      <UploadFileIcon sx={{width: "50px", height: "50px"}} />
+                      <Typography variant="h6" sx={UploadHead}>
+                        {t("uploadAvatarImage")}
+                      </Typography>
+                    </Grid>
+                    <Typography variant="subtitle1" sx={{color: "grey"}}>
+                      {t("moreThanFifty")}
+                    </Typography>
+                  </>
+                )}
+                <input
+                  type="file"
+                  accept="image/png, image/jpeg, image/gif"
+                  style={{visibility: "hidden"}}
+                  onChange={changeHandler}
+                />
+              </Grid>
+            </label>
+          ) : (
+            ""
+          )}
         </Box>
       </Grid>
     </form>

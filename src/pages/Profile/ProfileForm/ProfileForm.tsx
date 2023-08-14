@@ -42,10 +42,10 @@ export const ProfileForm: FC = () => {
   });
   const resetFields = () =>
     reset({
-      [PROFILE_FORM_KEYS.firstName]: userData.profile.first_name,
-      [PROFILE_FORM_KEYS.lastName]: userData.profile.last_name,
-      [PROFILE_FORM_KEYS.departmentId]: userData.department?.id,
-      [PROFILE_FORM_KEYS.positionId]: userData.position?.id,
+      [PROFILE_FORM_KEYS.firstName]: userData.profile.first_name || "",
+      [PROFILE_FORM_KEYS.lastName]: userData.profile.last_name || "",
+      [PROFILE_FORM_KEYS.departmentId]: userData.department?.id || "",
+      [PROFILE_FORM_KEYS.positionId]: userData.position?.id || "",
     });
   useEffect(() => {
     const userIsUploaded = calledUserData && !loadingUserData && userData;
