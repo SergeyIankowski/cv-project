@@ -1,4 +1,4 @@
-# Curriculum Vitae Project :briefcase
+# Curriculum Vitae Project
 
 Curriculum Vitae is a simple application which similar to HRM in different companies.
 
@@ -11,7 +11,7 @@ Curriculum Vitae is a simple application which similar to HRM in different compa
 
 3. _Start the dev server:_ `yarn start` or `npm run start`
 
-## Database :computer
+## Database
 
 To work with the database in our application, we use GraphQL and Apollo Client
 
